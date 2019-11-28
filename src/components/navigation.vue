@@ -13,7 +13,7 @@
         <div class="navmenu col-md-10 col-12 text-right phone">
         <ul class=" ml-0 pl-0 pt-2" v-bind:class="{ block: navigation }">
             <li class="nav-item" >
-                <a class="story"><router-link to="/" exact-active-class="active">BUY</router-link></a>
+                <a class="story"><router-link to="/" exact-active-class="active">BUYs</router-link></a>
             </li>
              <li class="nav-item">
             <a class="models"><router-link to="/sell" exact-active-class="active" >SELL</router-link></a>
