@@ -1,10 +1,13 @@
 module.exports = {
     devServer: {
-      proxy: {
+      proxy:{
         '/api': {
-          target: 'https//immense-chamber-94004.herokuapp.com',
+          target: 'https://backend-bikex.herokuapp.com/',
           ws: true,
           changeOrigin: true
+        },
+        '/':{
+          target: "https://api.razorpay.com/"
         }
       }
     }
