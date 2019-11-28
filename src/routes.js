@@ -15,6 +15,9 @@ import sell from './components/sell'
 import checkout from './components/checkout'
 import ourstory from './components/ourstory'
 import pay from './components/payment'
+import signup from './components/signin'
+import login from './components/login'
+import profile from './components/profile'
 
 export default[
     
@@ -32,8 +35,11 @@ export default[
    {path:'/sell', component:sell},
    {path:'/ourstory', component:ourstory},
    {path:'/vehicle/:id', component:display},
-   {path:'/checkout',component:checkout},
+   {path:'/checkout/:id',component:checkout},
    {path:'/payment',component:pay},
+   {path:'/login', component:login},
+   {path:'/signup', component:signup},
+   {path:'/profile', component:profile},
    {path: '*',component:notFound}
    
 ]
