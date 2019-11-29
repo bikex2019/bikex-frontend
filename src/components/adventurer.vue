@@ -67,7 +67,9 @@
         </div> 
 
         <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && !datas.length == 0 && filtereddata.length == 0">
-            <p class="mt-4">we are coming back on stock</p>
+            <p class="mt-4">sorry :(</p>
+            <p class="mt-4">currently we are out of stock</p>
+            <p class="mt-4">we are coming back on stock soon</p>
         </div> 
 
     <!-- <div class="loading text-center mb-4" style="min-height:200px" v-if="loading">

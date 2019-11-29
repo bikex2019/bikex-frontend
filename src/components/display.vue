@@ -53,7 +53,7 @@
   <div class="price-panel mr-0 pr-0 ml-0 col-12 col-md-12 mt-2 mb-1">
      <div class="row col-12 pr-0 mr-0">
         <div class="col-md-3 col-12 description">
-        <h1 class="margin">{{product[0].name}}</h1>
+        <h1 class="margin">{{models[0].modal_name}}</h1>
         <p class="label">The power of all</p>
         </div>
          <div class="col-md-5 col-12 price">
@@ -64,17 +64,17 @@
            <button class="buttons">START PURCHASE</button>
         </div> -->
          <div class="col-md-2 display-laptop">
-              <button class="buttons" v-on:click="startpurchase" >BOOK</button>
+              <button class="buttons" v-on:click="checkout">BOOK</button>
         </div>
         <div class="col-md-2 display-laptop">
-              <button class="buttons" v-on:click="startpurchase" >PAY IN FULL</button>
+              <button class="buttons" v-on:click="checkout" >PAY IN FULL</button>
         </div>
         
          
         <div class="fixed-bottom display-mobile mobile-panel">
             <div class="row">
               <div class="col-12 p-0 m-0">
-              <button class="buttons" v-on:click="startpurchase" >START PURCHASE</button>
+              <button class="buttons" v-on:click="checkout" >START PURCHASE</button>
             </div>
             
         
@@ -118,32 +118,36 @@
               <div class="row">
                 <div class="col-md-12 col-12 mr-0 pr-0 ml-0">
                   <p><strong>Colour</strong> : Black</p>
-                  <p><strong>Mileage</strong> : 45kmpl</p>
-                  <p><strong>Fuel Capacity</strong> : 4l</p>
-                  <p><strong>Kerb Weight</strong> : 123kg</p>
-                  <p><strong>Displacement</strong> : 150cc</p>
+                  <p><strong>Mileage</strong> : {{models[0].mileage}}</p>
+                  <p><strong>Fuel Capacity</strong> : {{models[0].tank_capacity}}</p>
+                  <p><strong>Kerb Weight</strong> : {{models[0].tank_capacity}}kg</p>
+                  <p><strong>Displacement</strong> : {{models[0].engine_cc}}</p>
                 </div>
               </div>
             </div>
           </div>
-        <div class="col-md-4 col-12 text-left mt-4 pl-0">
-            <div class="detail-header">
-              <p>PERFORMANCE</p>
-            </div>
-            <div class="history-content">
-              <div class="row">
-                <div class="col-md-12 col-12 mr-0 pr-0 ml-0">
-                  <p><strong>Ignition</strong> : Twin Spark</p>
-                  <p><strong>No of Gears</strong> : 4</p>
-                  <p><strong>Max Power</strong> : 13.8 bhp @9000 rpm</p>
-                  <p><strong>Max Torque</strong> : 13.4Nm @ 6000 rpm</p>
-                  <p><strong>Fuel Delivery System</strong> : Fuel Injection</p>
-                  <p><strong>Cooling System</strong> : Liquid Cooled</p>
+            <div class="col-md-4 col-12 text-left mt-4 pl-0">
+                <div class="detail-header">
+                  <p>PERFORMANCE</p>
+                </div>
+                <div class="history-content">
+                  <div class="row">
+                    <div class="col-md-12 col-12 mr-0 pr-0 ml-0">
+                      <p><strong>Ignition</strong> :{{models[0].engine_cc}}</p>
+                      <p><strong>No of Gears</strong> : {{models[0].number_of_gears}}</p>
+                      <p><strong>Wheel Type</strong> : {{models[0].wheel_type}}rpm</p>
+                      <p><strong>Tyre Type</strong> : {{models[0].tyre_type}}rpm</p>
+                      <p><strong>Fuel Delivery System</strong> : {{models[0].fuel_system}}</p>
+                      <p><strong>Cooling System</strong> : {{models[0].cooling_system}}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
 
+        </div>
+
+        <div class="container text-center" style="min-height:200px" v-if="modelloading">
+          <p class="mt-5"> Loading Model description for you..</p>
         </div>
       </div>
       <div class="col-md-11 middle-align col-12 m-0 p-0 pt-4 pb-4">
@@ -151,152 +155,33 @@
         <p>Special Feature</p>
       </div>
       <div class="history-content text-left">
-       <p> "Bajaj categorizes CT100 as the jackpot bike offering superior mileage and low maintenance.
-              Bajaj CT100 is layered with a new decal design. The SNS (Spring in Spring Suspension) technology aids in 
-              conquering the most challenging road conditions. It has a long padded seat delivering a high level of comfort
-              and making the commute on rougher terrains easier. The powerful engine helps in extracting the maximum efficiency. "</p>
+       <p>{{models[0].comments}}</p>
       </div>
     </div>
      </div>
   </div>
-
-
 <div class="col-md-11 middle-align bikex-font">
-  <div class="row col-12 col-md-12 mt-4 mb-4 paragraph-size">
-    <div class="col-md-8 text-left">
-      <div class="col-md-12 mt-4 mb-4 padding-none-mobil-view">
 
-        <div class="container text-left p-0 m-0 mt-4 mobil-view">
-          <h3 class="why-finance">Why Finance with BikeX ?</h3>
-          <ul class="text-left m-0 p-0 decoration-none">
-            <li class="py-2"><img src="https://assets.vroomcdn.com/static-rebrand/icons/svg/400-gt/check-mark-red.svg" class="sc-cmIlrE cGnyOk"> 
-            Apply in minutes</li>
-            <li class="py-2"><img src="https://assets.vroomcdn.com/static-rebrand/icons/svg/400-gt/check-mark-red.svg" class="sc-cmIlrE cGnyOk"> 
-            Seamless process</li>
-            <li class="py-2"><img src="https://assets.vroomcdn.com/static-rebrand/icons/svg/400-gt/check-mark-red.svg" class="sc-cmIlrE cGnyOk"> 
-            Highly competitive rates</li>
-            <li class="py-2"><img src="https://assets.vroomcdn.com/static-rebrand/icons/svg/400-gt/check-mark-red.svg" class="sc-cmIlrE cGnyOk"> 
-            Safe and secure</li>
-          </ul>
-        </div>
-
-
-        <p>Calculate your Payment</p>
-
-        <div class="row">
-          <div class="col-md-6">
-            <input type="range" min="10000" max="20000" v-model="downPayment" class="slider ml-0 pl-0" id="myRange">
-            <p>Down Payment: {{downPayment}} <span id="demo"></span></p>
-          </div>
-          <div class="col-md-6">
-            <input type="range" min="12" max="36" v-model="tenure" class="slider ml-0 pl-0" id="myRange">
-            <p>Months: {{tenure}} <span id="demo"></span></p>
-          </div>
-        </div>
-
-        <div class="row mb-0">
-          <div class="col-md-6 text-left">
-            <p>Interest Rate: {{interest}}%</p>
-          </div>
-        </div>
-
-        <div class="container text-left p-0 m-0 mt-4 laptop-views">
-          <h3 class="why-finance">Why Finance with BikeX ?</h3>
-          <ul class="text-left m-0 p-0 decoration-none">
-            <li class="py-2"><img src="https://assets.vroomcdn.com/static-rebrand/icons/svg/400-gt/check-mark-red.svg" class="sc-cmIlrE cGnyOk"> 
-            Apply in minutes</li>
-            <li class="py-2"><img src="https://assets.vroomcdn.com/static-rebrand/icons/svg/400-gt/check-mark-red.svg" class="sc-cmIlrE cGnyOk"> 
-            Seamless process</li>
-            <li class="py-2"><img src="https://assets.vroomcdn.com/static-rebrand/icons/svg/400-gt/check-mark-red.svg" class="sc-cmIlrE cGnyOk"> 
-            Highly competitive rates</li>
-            <li class="py-2"><img src="https://assets.vroomcdn.com/static-rebrand/icons/svg/400-gt/check-mark-red.svg" class="sc-cmIlrE cGnyOk"> 
-            Safe and secure</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 m-0 p-0 mt-4 mb-4">
-                  <div class="card m-0 p-0 ml-4 m-0">
-                      <div class="heading bikex-header col-md-12 m-0 p-0">
-                        <p class="my-2 ml-1">FINANCE WITH BIKEX</p>
-                      </div>
-                      <div class="row col-12 m-0 p-0 paragraph-size">
-                        <div class="col-md-6 col-6 m-0 mt-2 p-0 text-left">
-                            <p class="pl-2">Vehicle Price</p>
-                        </div>
-                        <div class="col-md-6 col-6 pr-1 m-0 mt-2 p-0 text-right paragraph-size">
-                          <p>Rs. {{price}}</p>
-                        </div>
-                      </div>
-
-                      <div class="row col-12 m-0 p-0 paragraph-size">
-                        <div class="col-md-6 col-6 m-0 p-0 text-left">
-                            <p class="pl-2">Shipping</p>
-                        </div>
-                        <div class="col-md-6 col-6 pr-1 m-0 p-0 text-right paragraph-size">
-                          <p>Rs. {{shipping}}</p>
-                        </div>
-                      </div>
-                          <hr>
-                      <div class="row col-12 m-0 p-0 paragraph-size">
-                        <div class="col-md-6 col-6 m-0 p-0 text-left">
-                            <p class="pl-2">Total Price</p>
-                        </div>
-                        <div class="col-md-6 col-6 pr-1 m-0 p-0 text-right paragraph-size">
-                          <p>Rs. {{price + shipping}}</p>
-                        </div>
-                      </div>
-
-                      <div class="row col-12 m-0 p-0 paragraph-size">
-                        <div class="col-md-6 col-6 m-0 p-0 text-left">
-                            <p class="pl-2">Down Payment</p>
-                        </div>
-                        <div class="col-md-6 col-6 pr-1 m-0 p-0 text-right paragraph-size">
-                          <p>Rs. {{downPayment}}</p>
-                        </div>
-                      </div>
-
-                      <div class="row col-12 m-0 p-0 paragraph-size">
-                        <div class="col-md-6 col-6 m-0 p-0 text-left">
-                            <p class="pl-2">Amount Financed</p>
-                        </div>
-                        <div class="col-md-6 col-6 pr-1 m-0 p-0 text-right paragraph-size">
-                          <p>Rs. {{loanAmount}}</p>
-                        </div>
-                      </div>
-
-                      <div class="row col-12 m-0 p-0 paragraph-size">
-                        <div class="col-md-6 col-6 m-0 p-0 text-left">
-                            <p class="pl-2">Emi Estimated</p>
-                        </div>
-                        <div class="col-md-6 col-6 pr-1 m-0 p-0 text-right paragraph-size">
-                          <p>Rs. {{monthlyPayable}}</p>
-                        </div>
-                      </div>
-                      <div class="col-md-12 mb-3">
-                        <button class="btn btn-block border highlight" v-on:click="checkout">APPLY NOW</button>
-                      </div>
-                  </div>
-            </div>
-  </div>
 
   <nav class="navbar-fix col-md-12 p-0 m-0 fixed-top" v-if="shownav">
      <div class="price-panel mr-0 pr-0 ml-0 col-12 mb-1" style="background-color:white">
      <div class="row col-12 col-md-10" style="margin:0 auto">
         <div class="col-md-3 col-12 description">
-        <h1 class="margin">{{product[0].name}}</h1>
+        <h1 class="margin">{{models[0].modal_name}}</h1>
         <p class="label">The power of all</p>
         </div>
-         <div class="col-md-5 col-12 price">
+         <div class="col-md-4 col-12 price">
         <p class="margin">Rs. 35000</p>
         <p class="label"><span style="color:#ffb52f">Down Payment</span> starts at 3500/month</p>
         </div>
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-4 display-laptop">
-           <button class="buttons">START PURCHASE</button>
+        <div class="col-md-2 display-laptop">
+              <button class="buttons" v-on:click="checkout">BOOK</button>
+        </div>
+        <div class="col-md-3 display-laptop">
+              <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
         </div>
         
          
@@ -316,9 +201,20 @@
   </div>
   </nav>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 card">
 
+    </div>
+  </div>
 </div>
 
+</div>
+        <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
+            <div id="text" class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+            </div>
+        </div>
 
 </div>
 </template>
@@ -329,20 +225,25 @@ export default {
    data(){
     return{
       id:'',
-        uploaded:[],
-        images: [],
-          product: [{id:2, name: 'Honda 3G'}],
-          displayBlock:false,
-          currentSlide: 0,
-          added:[],
-          alreadyExist:false,
-          isExpand:false,
-          expandedImage:'',
-           downPayment: 10000,
+      uploaded:[],
+      images: [],
+      product: [{id:2, name: 'Honda 3G'}],
+      displayBlock:false,
+      currentSlide: 0,
+      added:[],
+      alreadyExist:false,
+      isExpand:false,
+      expandedImage:'',
+      downPayment: 10000,
       tenure: 12,
       price:35000,
       shipping:400,
-              shownav:false
+      shownav:false,
+      loading:true,
+      modelloading:false,
+      models:[],
+      vehicles:[],
+      similar:[],
 
         }
       },
@@ -351,14 +252,28 @@ export default {
       Slide,
   },
 created(){
+  this.loading = true
   this.id = this.$route.params.id
     window.addEventListener('scroll', this.handleScroll);
-  this.$http.get('https://backend-bikex.herokuapp.com/api/uploads/'+ this.id)
+    this.$http.get('https://backend-bikex.herokuapp.com/api/uploads/'+ this.id)
           .then(res=>{
            this.uploaded = res.body.data
            this.images = this.uploaded[0].images
-           window.console.log(this.uploaded[0].images)
          })
+     this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
+          .then(res=>{
+          this.modelloading = true
+          this.vehicles = res.body[0].model_id
+          this.$http.get('https://backend-bikex.herokuapp.com/api/models/'+ res.body[0].model_id).then(response=>{
+            this.models = response.body
+            this.modelloading = false
+            this.loading=false
+          }).catch((err)=>{
+            this.msg = err.body
+            this.modelloading = false
+            this.loading=false
+          })
+        })    
 },
     destroyed () {
       window.removeEventListener('scroll', this.handleScroll);
@@ -853,4 +768,23 @@ img.hover-shadow {
   font-size: 14px;
   font-weight: bold
 }
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(233, 227, 227, 0.3);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 </style>
