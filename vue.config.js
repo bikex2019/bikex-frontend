@@ -6,9 +6,7 @@ module.exports = {
           ws: true,
           changeOrigin: true
         },
-        '/':{
-          target: "https://api.razorpay.com/"
-        }
-      }
+      },
+      proxy:"https://api.razorpay.com/"
     }
   }
