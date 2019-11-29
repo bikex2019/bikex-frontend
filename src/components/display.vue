@@ -353,7 +353,7 @@ export default {
 created(){
   this.id = this.$route.params.id
     window.addEventListener('scroll', this.handleScroll);
-  this.$http.get('http://localhost:3000/api/uploads/'+ this.id)
+  this.$http.get('https://backend-bikex.herokuapp.com/api/uploads/'+ this.id)
           .then(res=>{
            this.uploaded = res.body.data
            this.images = this.uploaded[0].images
