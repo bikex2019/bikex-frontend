@@ -4,21 +4,21 @@
     <carousel :perPage="1" :loop="true" paginationActiveColor="#ffb52f">
       <slide v-for="(image, index) in images" @slideclick="handleSlideClick(image)" :key="index">
         <div class="image text-center">
-          <img :src="'http://localhost:3000/myImages/bikexImages/'+ image" width="auto" height="200px">
+          <img :src="image" width="auto" height="200px">
         </div>
       </slide>
     </carousel>
   </div>
   <div id="myModalMobile" class="modalmobile" v-bind:class="{'block': isExpand}">
   <span class="closemobile" v-on:click="closemobileModal">&times;</span>
-  <img class="modal-content-mobile" id="img01" :src="'http://localhost:3000/myImages/bikexImages/'+ expandedImage">
+  <img class="modal-content-mobile" id="img01" :src="expandedImage">
 </div>
 
   <div class="display-laptop mt-0 pt-0 m-0 p-0">
     <div class="row m-0 p-0 c">
-        <!-- <img :src="'http://localhost:3000/myImages/bikexImages/'+ image" v-on:click="openModal(index);"> -->
+        <!-- <img :src="image" v-on:click="openModal(index);"> -->
         <div class="image-container" v-for="(image, index) in images" :key="index">
-                   <img :src="'http://localhost:3000/myImages/bikexImages/'+ image" v-on:click="openModal(index);">
+                   <img :src="image" v-on:click="openModal(index);">
         </div>
     </div>
      <div class="load" v-if="images.length == 0">
@@ -36,14 +36,14 @@
           <div class="numbertext">
             <p>{{currentSlide + 1}} / {{images.length}}</p>
           </div>
-            <img :src="'http://localhost:3000/myImages/bikexImages/'+ images[currentSlide]" style="width:auto" height="465px" class="image-modal">
+            <img :src="images[currentSlide]" style="width:auto" height="465px" class="image-modal">
         </div>
         <a class="prev" v-on:click="minusSlides()"><i class='fa fa-angle-left' style='font-size:48px;color: #ffb52f'></i></a>
         <a class="next" v-on:click="plusSlides()"><i class='fa fa-angle-right' style='font-size:48px;color: #ffb52f'></i></a>
         <div class="preview mb-4">
           <div class="row p-0 m-0">
             <div class="col-md-1 p-0 m-0" v-for="(image, index) in images" :key="index" >
-              <img class="demo cursor" :src="'http://localhost:3000/myImages/bikexImages/'+ image" style="width:auto" height="70px" v-on:click="openModal(index)" alt="Nature and sunrise">
+              <img class="demo cursor" :src="image" style="width:auto" height="70px" v-on:click="openModal(index)" alt="Nature and sunrise">
             </div>
           </div>
         </div>

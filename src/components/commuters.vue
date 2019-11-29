@@ -44,7 +44,7 @@
                         <div class="card" v-on:click="display(image.vehicle_id)"> 
                             <div class="image text-center">
                                 <img v-if="image.url" :src="[image.url]" width="100%" height="55%">
-                                <img v-else src="'https://immense-chamber-94004.herokuapp.com/myImages/bikex-Display-Images/Image-1574334322668.jpg" width="100%" height="30%">
+                                <img v-else :src="image.path" width="100%" height="30%">
                             </div>
                             <div class="card-body text-center mt-4">
                                 <p v-if="image.type == 'premium'"><span class="label label-default">Premium</span></p>
