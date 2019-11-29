@@ -61,17 +61,20 @@
         <p class="label"><span style="color:#ffb52f">Down Payment</span> starts at 3500/month</p>
         </div>
         <!-- <div class="col-md-3 col-12">
-           <button class="buttons">BOOK NOW</button>
+           <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-4 display-laptop">
-              <router-link to="/checkout"> <button class="buttons">BOOK NOW</button></router-link>
+         <div class="col-md-2 display-laptop">
+              <button class="buttons" v-on:click="startpurchase" >BOOK</button>
+        </div>
+        <div class="col-md-2 display-laptop">
+              <button class="buttons" v-on:click="startpurchase" >PAY IN FULL</button>
         </div>
         
          
         <div class="fixed-bottom display-mobile mobile-panel">
             <div class="row">
               <div class="col-12 p-0 m-0">
-              <router-link to="/checkout"> <button class="buttons">BOOK NOW</button></router-link>
+              <button class="buttons" v-on:click="startpurchase" >START PURCHASE</button>
             </div>
             
         
@@ -272,7 +275,7 @@
                         </div>
                       </div>
                       <div class="col-md-12 mb-3">
-                        <button class="btn btn-block border highlight">APPLY NOW</button>
+                        <router-link to="/checkout" style="text-decoration:none"><button class="btn btn-block border highlight">APPLY NOW</button></router-link>
                       </div>
                   </div>
             </div>
@@ -290,17 +293,17 @@
         <p class="label"><span style="color:#ffb52f">Down Payment</span> starts at 3500/month</p>
         </div>
         <!-- <div class="col-md-3 col-12">
-           <button class="buttons">BOOK NOW</button>
+           <button class="buttons">START PURCHASE</button>
         </div> -->
          <div class="col-md-4 display-laptop">
-           <button class="buttons">BOOK NOW</button>
+           <button class="buttons">START PURCHASE</button>
         </div>
         
          
         <div class="fixed-bottom display-mobile mobile-panel">
             <div class="row">
               <div class="col-12 p-0 m-0">
-               <button class="buttons">BOOK NOW</button>
+               <button class="buttons">START PURCHASE</button>
             </div>
             
         
@@ -325,6 +328,7 @@ import { Carousel, Slide } from 'vue-carousel';
 export default {
    data(){
     return{
+      id:'',
         uploaded:[],
         images: [],
           product: [{id:2, name: 'Honda 3G'}],
@@ -347,8 +351,9 @@ export default {
       Slide,
   },
 created(){
+  this.id = this.$route.params.id
     window.addEventListener('scroll', this.handleScroll);
-  this.$http.get('http://localhost:3000/api/uploads/'+ this.$route.params.id)
+  this.$http.get('http://localhost:3000/api/uploads/'+ this.id)
           .then(res=>{
            this.uploaded = res.body.data
            this.images = this.uploaded[0].images
@@ -368,6 +373,14 @@ created(){
     },
    
   methods:{
+       startpurchase(){
+              window.scrollTo({
+                top: 800,
+                left: 0,
+                behavior: 'smooth'
+            })
+              // this.$router.push('/checkout/' + this.id)  
+        },
      handleScroll () {
         this.shownav = window.scrollY > 380
       },
@@ -444,6 +457,7 @@ cursor: pointer;
   display: none;
 }
 .buttons{
+ 
   margin-top: 10px;
   width: 100%;
 }
@@ -558,12 +572,15 @@ cursor: pointer;
 }
 .buttons{
   padding: 10px 35px 10px 35px;
+  font-size: 14px;
+  font-weight: 400;
+  height: inherit;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   background-color:  #ffb52f;
-  color: black;
-  border: none;
+  border: 1px solid transparent;
+  color: #fff;
   box-shadow: none;
-  font-size: 15px;
-  font-family: 'Montserrat', sans-serif;
 }
 .row1:after {
   content: "";
