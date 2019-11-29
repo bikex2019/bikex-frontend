@@ -96,7 +96,7 @@
                                             </tr>                                             
                                             <tr class="order-total">
                                                 <th>Total Amount</th>
-                                                <td><strong><span class="amount">RS 52500.00</span></strong>
+                                                <td><strong><span class="amount">{{price}}.00</span></strong>
                                                 </td>
                                             </tr>								
                                         </tfoot>
@@ -104,7 +104,10 @@
                                 </div>
                                 <div class="payment-method mt-40">                                   
                                         <div class="order-button-payment">
-                                            <input type="submit" value="Place order" />
+                                            <button class="mybutton" type="submit" id="rzp-button1" v-on:click="pay">
+                                                <span v-if="!payload">PAY NOW</span>
+                                                <span v-else>Loading..</span>
+                                            </button>
                                         </div>								
                                     </div>
                                 </div>
@@ -114,6 +117,55 @@
 
 </template>
 
+<script>
+export default {
+    data(){
+        return{
+            price:500,
+            payload:false
+        }
+    },
+    methods:{
+        
+         pay(){
+            this.payload = true
+            var options = {
+            "key": "rzp_test_hWIr4WWlHGQ70c", // Enter the Key ID generated from the Dashboard
+            "amount": this.price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
+            "currency": "INR",
+            "name": "Acme Corp",
+            "description": "A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami",
+            "image": "https://example.com/your_logo",
+            "payment_capture":1,    
+            "handler": function (response){
+                alert('sucessfull', response.razorpay_payment_id)
+            },
+            "notes": {
+                "address": "note value"
+            },
+            "theme": {
+                "color": "#ffb52f"
+            }
+        };
+
+         this.$http.post('http://rzp_test_hWIr4WWlHGQ70c:MeeC2WCpWLzKCjptairpDirQ@localhost:8080/v1/orders',{
+                "amount":this.price * 100,
+                "currency":"INR",
+                "payment_capture":1
+                })
+                .then((res)=>{
+                    this.payload = false
+                    var rzp1 = new window.Razorpay({...options,order_id:res.body.id}); 
+                    rzp1.open();
+                })
+        },
+
+        verifySignature:function(response){
+         alert('sucessfull', response.razorpay_payment_id)
+            },
+    }
+}
+</script>
 
 <style scoped>
 .margin{
@@ -3461,6 +3513,28 @@ p.checkout-coupon input[type="submit"] {
     border: 1px solid #ffb52f;
     color: #fff;
 }
+
+.order-button-payment .mybutton {
+    background: #464646 none repeat scroll 0 0;
+    border: 1px solid transparent;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    height: inherit;
+    letter-spacing: 1px;
+    margin: 20px 0 0;
+    padding: 13px 20px 11px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+}
+.order-button-payment .mybutton:hover {
+    background: #ffb52f;
+    border: 1px solid #ffb52f;
+    color: #fff;
+}
+
 .coupon-info p.form-row input[type="submit"] {
     background: #252525 none repeat scroll 0 0;
     border: medium none;
