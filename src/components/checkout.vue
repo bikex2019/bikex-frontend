@@ -154,7 +154,7 @@ export default {
             }
         };
 
-         this.$http.post('http://rzp_test_hWIr4WWlHGQ70c:MeeC2WCpWLzKCjptairpDirQ@bikex-frontend.firebaseapp.com/v1/orders',{
+         this.$http.post('http://rzp_test_hWIr4WWlHGQ70c:MeeC2WCpWLzKCjptairpDirQ@www.bikex.in/v1/orders',{
                 "amount":this.price * 100,
                 "currency":"INR",
                 "payment_capture":1
