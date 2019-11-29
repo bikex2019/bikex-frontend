@@ -132,7 +132,7 @@ export default {
                 this.$router.push('/login')
         }
 
-         this.$http.get('http://localhost:3000/api/customers/'+ this.id)
+         this.$http.get('https://backend-bikex.herokuapp.com/api/customers/'+ this.id)
           .then(response=>{
           this.profile = response.body
          })

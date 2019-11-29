@@ -63,7 +63,7 @@ export default {
         log_me(){
             if(this.email){
             this.loading = true
-            this.$http.post('http://localhost:3000/api/customers/validate',{
+            this.$http.post('https://backend-bikex.herokuapp.com/api/customers/validate',{
               email:this.email,
               password:this.password,
             }).

@@ -125,6 +125,12 @@ export default {
             payload:false
         }
     },
+    mounted(){
+        window.scrollTo({
+                top: 0,
+                left: 0,
+            })
+    },
     methods:{
         
          pay(){
@@ -148,7 +154,7 @@ export default {
             }
         };
 
-         this.$http.post('http://rzp_test_hWIr4WWlHGQ70c:MeeC2WCpWLzKCjptairpDirQ@localhost:8080/v1/orders',{
+         this.$http.post('http://rzp_test_hWIr4WWlHGQ70c:MeeC2WCpWLzKCjptairpDirQ@https://bikex-frontend.firebaseapp.com/v1/orders',{
                 "amount":this.price * 100,
                 "currency":"INR",
                 "payment_capture":1

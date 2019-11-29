@@ -79,7 +79,7 @@ export default {
             alert('already signed in')
             this.$router.push('/profile')
         }
-          this.$http.get('http://localhost:3000/api/customers')
+          this.$http.get('https://backend-bikex.herokuapp.com/api/customers')
           .then(response=>{
           this.users = response.body
          })
@@ -94,7 +94,7 @@ export default {
             }
         },
         checkmail(){
-            this.$http.post('http://localhost:3000/api/customers/emailverify',{
+            this.$http.post('https://backend-bikex.herokuapp.com/api/customers/emailverify',{
             email:this.email,
             }).
             then(response=>{
@@ -108,7 +108,7 @@ export default {
         },
         signup(){
            if(!this.email_message && !this.password_message){
-            this.$http.post('http://localhost:3000/api/customers',{
+            this.$http.post('https://backend-bikex.herokuapp.com/api/customers',{
               firstname:this.firstname,
               lastname:this.lastname,
               phone:this.phone,

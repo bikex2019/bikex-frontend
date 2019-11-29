@@ -275,7 +275,7 @@
                         </div>
                       </div>
                       <div class="col-md-12 mb-3">
-                        <router-link to="/checkout" style="text-decoration:none"><button class="btn btn-block border highlight">APPLY NOW</button></router-link>
+                        <button class="btn btn-block border highlight" v-on:click="checkout">APPLY NOW</button>
                       </div>
                   </div>
             </div>
@@ -411,6 +411,9 @@ created(){
                 this.currentSlide--
               }
           },
+          checkout(){
+            this.$router.push('/checkout/' + this.id)
+          }
         
       },
       computed:{

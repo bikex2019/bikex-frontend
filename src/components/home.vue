@@ -78,12 +78,6 @@
                 </div>
             </div>  
             <values></values>  
-
-        <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="load">
-            <div id="text" class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-            </div>
-        </div>
 </div>          
 </template>
 <script>
@@ -92,7 +86,6 @@ export default {
   data(){
     return{
       isScrolled:false,
-      loading:true
     }
   },
   components:{
@@ -105,10 +98,6 @@ export default {
                 top: 0,
                 left: 0,
             })
-      setTimeout(()=>{
-         this.loading = false
-          window.console.log(this.loading)
-      }, 500)
   },
   beforeDestroy () {
   },
