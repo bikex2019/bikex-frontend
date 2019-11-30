@@ -6,7 +6,7 @@
               <h3 class="menu">COMPANY</h3>
               <ul class="nav-list">
                 <li><router-link to="/ourstory">Our Story</router-link></li>
-                <li><router-link to="/careers">Careers</router-link></li>            
+                        
                 <li><router-link to="/faq">FAQ</router-link></li>            
               </ul>
             </div>
@@ -25,10 +25,10 @@
             <div class=" contact col-md-3 text-left contentss ok">
              <h3 class="menu">CONTACT</h3> 
               <ul class="nav-list">
-                <li><span>Email: </span><a href="mailto:bikex@gmail.com">bikex@gmail.com</a></li>            
-                <li><span>Phones: </span><a class="phone" href="tel: (080) 9999-9999">(080) 9999-9999</a></li> 
+                <li><span>Email: </span><a href="mailto:info@bikex.in">info@bikex.in</a></li>            
+                <li><span>Phones: </span><a class="phone" href="tel: +91 9742744444">+91 9742744444</a></li> 
                 <li><span>Address: </span>
-                <a class="map-responsive" href="https://goo.gl/maps/eJKcARiWnqRXDc5u5" target="_blank">hal 2nd stage,sdsdsdbengaluru</a>
+                <a class="map-responsive" href="https://goo.gl/maps/eJKcARiWnqRXDc5u5" target="_blank">Site No: 19, Bytarayanapura-560092 </a>
                 </li>           
               </ul>
             </div>
@@ -63,9 +63,7 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Oswald:600&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
 .footer{
   min-height: 250px;
   /* padding: 1; */
@@ -78,15 +76,13 @@ export default {
 }
 span{
     color: #a7a7a7;
-font-size: 16px;
-  font-weight: 600;
-  font-family: 'Poppins', sans-serif;
+font-size: 15px;
+  font-weight: 400;
 
 }
 .navbar-brand{
       margin-bottom: .5rem;
   font-size: 1.5rem;
-  font-family: 'Coda', cursive;
   font-weight: bold;
   padding: 0px;
 }
@@ -99,15 +95,12 @@ h3.menu {
 }
 
 .menu{
-font-size: 24px;
-font-weight: 600;
+font-size: 18px;
+font-weight: bold;
 color:#e4e4e4;
-font-family: 'Oswald', sans-serif;
 }
 .sub-menu p{
   font-size: 5px;
-  font-family: 'Montserrat', sans-serif;
-
 }
 .social a{
   padding-right: 10px;
@@ -135,8 +128,6 @@ color: #1da1f2
 li{
   font-size: 15px;
   font-weight: 300;
-  font-family: 'Poppins', sans-serif;
-
 }
 .desktopmap{
   padding-top: 0px;
@@ -153,8 +144,7 @@ ul li a:hover {
 }
 .batch p{
   font-size: 9px;
-     font-family: 'Montserrat', sans-serif;
-
+  
 }
 .footer-classic{
     background-color: #001232 !important

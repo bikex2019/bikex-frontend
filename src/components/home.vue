@@ -5,19 +5,18 @@
                     <div class="row p-0 m-0">
                         <div class="col-md-6 p-0 m-0">
                             <div class="overview-content">
-                                <h1>WE SELL
+                                <h1>HANDPICKED
                                   <span>RE</span><strong>FURBISHED</strong></h1>
-                                <h2>BIKES IN <span>BENGALURU</span></h2>
-                                <p><strong>BIKEX</strong> the most largest bike store in the woRld can serve you latest quality of motorcycle also you can sell here your motorcycle it quo minus iduod maxie placeat facere possimus, omnis voluptas assumenda est, omnis dolor llendus. Temporibus autem quibusdam </p>
-                                    <!-- <h4>HAVE ANY QUESTION? </h4>
-                                    <div class="question-contact">
-                                        <div class="question-icon">
-                                            <i class="fa fa-mobile" style="font-size:23px" aria-hidden="true"></i>
-                                        </div>
-                                        <div class="question-content-number">
-                                            <h6>+91 9742744444</h6>
-                                        </div>
-                                    </div> -->
+                                <h2>BIKES AT <span>FIXED PRICE</span></h2>
+                                <p class="monte"><strong>High quality</strong> 
+                                 ‘one of a kind’ preloved bikes - the first company in India to sell a ‘branded’ bike online.
+                                 Who said buying a two-wheeler has to be complicated, time-consuming and expensive?
+                                  At BikeX, you are only a few minutes away from owning a high quality ‘branded’ refurbished bike at a FIXED price.
+                                 We make buying a two-wheeler an unforgettable experience - choose a bike, experience it, buy it, ride it away!</p>
+
+                                 <p class="mt-4 no-mobile">
+                                     In our store, every handpicked bike comes with a story of its own. You get to create a new one.
+                                 </p>
                                     <div class="question-area">
                                   <div class="button text-left mb-4 mt-4">
                                    <router-link to="/commuters"><button class="viewbikes-button">View Bikes</button></router-link>
@@ -26,25 +25,20 @@
                             </div>
                         </div>
                         <link rel="stylesheet" href="../assets/css/icofont.css">
-                        <div class="col-md-6 p-0 m-0">
+                        <div class="col-md-6 p-0 m-0 no-mobile">
                             <div class="overview-img pl-3">
                                 <img class="tilter m-0 p-0" src="../assets/BikeX_Hero_Image2.png"  alt="">
                             </div>
-                              <!-- <button v-if="!isScrolled" v-on:click="downFunction()" class="btn" id="myBtn" title="Go to top">
-                             <i class="fa fa-angle-down" aria-hidden="true"></i> -->
-                             <!-- </button>
-                              <button v-else v-on:click="topFunction()" class="btn" id="myBtn" title="Go to top">
-                             <i class="fa fa-angle-up" aria-hidden="true"></i>
-                             </button> -->
                         </div>
                     </div>
                 </div>
             </div>
 
      <div class="banner-area mb-5 p-0 m-0">
-                <div class="container p-0 m-0">
+                <div class="container p-0 m-0 phone-center">
+                    <p class="mb-4 mt-2 p-0" style="font-size:19px"><strong>EXPLORE OUR SELECTION</strong></p>
                     <div class="row p-0 m-0">
-                        <div class="col-md-4 col-lg-4 p-2 m-0">
+                        <div class="col-md-4 col-4 col-lg-4 pl-0 pr-2 m-0">
                             <div class="banner-wrapper mb-3">
                                <router-link to="/commuters">
                                   <a><img class="resize_fit_center" src="../assets/commuter1.jpg" alt="image"></a>
@@ -54,7 +48,7 @@
                                </router-link>
                             </div>
                         </div>
-                        <div class="col-md-4 col-lg-4 p-2 m-0">
+                        <div class="col-md-4 col-4 col-lg-4 pl-0 pr-1 m-0">
                             <div class="banner-wrapper mb-3">
                                <router-link to="/traveller">
                                 <a ><img class="resize_fit_center" src="../assets/traveller1.jpg" alt="image"></a>
@@ -64,7 +58,7 @@
                                 </router-link>
                             </div>
                         </div>
-                        <div class="col-md-4 col-lg-4 p-2 m-0">
+                        <div class="col-md-4 col-4 col-lg-4 pl-1 p-0 m-0">
                             <div class="banner-wrapper mb-3">
                                <router-link to="adventurer">
                                   <a><img class="resize_fit_center" src="../assets/enfield.jpg" alt="image"></a>
@@ -120,16 +114,16 @@ export default {
   width: 362px;
   height: 262px;
 }
-.resize_fit_center:hover {
-    
-  transform: scale(1.29);
-  transition: 1.5s;/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-
 @media only screen and (max-width: 780px) {
     .overview-content {
         margin-top: 25px !important;
         text-align: center;
+    }
+    .phone-center{
+        text-align: center
+    }
+    .banner-wrapper::after {
+    border: none !important
     }
     .overview-content h1 , .overview-content h2 {
         color: #001232;
@@ -138,11 +132,20 @@ export default {
         letter-spacing: 0.8px;
         margin: 0;
     }
+    .no-mobile{
+        display: none !important
+    }
     #myBtn{
     display: none !important
     }
     .resize_fit_center{
     height: 50% !important;
+    }
+    .banner-content {
+    bottom: 19px !important;
+}
+    .banner-content > h2 {
+        font-size: 11px !important;
     }
     .banner-area{
     border: 1px solid rgb(248, 248, 248, 0.8)
@@ -150,11 +153,17 @@ export default {
     .question-area .button{
     text-align: center !important
     }
+    .banner-wrapper{
+        margin: 0 !important
+    }
     .viewbikes-button{
     width:90% !important;
     padding: 12px 22px !important;
-    letter-spacing: 0.7px;
-    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    height: inherit;
+    letter-spacing: 1px;
+    
     }
 }
 #myBtn {
@@ -174,21 +183,21 @@ export default {
   border: none!important
 }
 .viewbikes-button{
-    border-radius: 3px;
-    opacity: 0.9;
     width: 40%;
-    background-color:	 #ffb52f;
+    background-color:#ffb52f;
     box-shadow: none;
-    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    height: inherit;
+    letter-spacing: 1.2px;
+    color: #001232;
     padding: 8px 22px;
     outline: none;
-    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
     border:none;
 }
 .viewbikes-button:hover{
-  opacity: 1;
-    background-color:	 #ffb52f;
-    border-color: #ffb52f;
+  opacity: 0.9;
 }
 .margin{
     margin: 0 auto
@@ -230,7 +239,7 @@ export default {
     display: inline-block;
 }
 .question-content-number > h6 {
-    font-family: 'Montserrat', sans-serif;
+    
     color: #ffffff;
     font-weight: bold;
     font-size: 22px;
@@ -279,15 +288,14 @@ transform: translateZ(20px);
     margin: 6px 0 40px;
 }
 .overview-content > p {
-  font-size: 15px;
-  font-weight: 300;
-  margin: 0;
-  width: 93%;
-  letter-spacing: 0.6px
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+    text-align: justify;
+    color: #364d59;
 }
 .overview-content > p span {
     color: #303030;
-    font-weight: 600;
     font-size: 16px;
 }
 .banner-wrapper::after {

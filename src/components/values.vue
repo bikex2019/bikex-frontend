@@ -1,6 +1,6 @@
 <template>
     <div class="container col-md-12 m-0 p-0 mb-4">
-        <div class="row border p-0 pb-4 mb-4 main m-0 p-0 laptop-main">
+        <div class="row border p-0 pb-0 mb-4 main m-0 p-0 laptop-main">
          <div class="col-md-8 col-12 mt-3 mb-4 p-0 text-left laptop-container">
              <div class="col-md-12 pl-0 ml-0 title pb-2">
                  <h2><strong>BIKE</strong><span style="color:#ffb52f"><strong>X</strong></span><strong> VALUES</strong></h2>
@@ -10,10 +10,10 @@
                     <a class="nav-link active head1" id="Finance-tab" data-toggle="tab" href="#Finance" role="tab" aria-controls="Finance" aria-selected="true">Fixed-Price</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link head1" id="Refurbishing-tab" data-toggle="tab" href="#Refurbishing" role="tab" aria-controls="Refurbishing" aria-selected="false">Refurbishing</a>
+                    <a class="nav-link head1" id="Refurbishing-tab" data-toggle="tab" href="#Refurbishing" role="tab" aria-controls="Refurbishing" aria-selected="false">Refurbished</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link head1" id="returns-tab" data-toggle="tab" href="#returns" role="tab" aria-controls="returns" aria-selected="false">No-Risky-Return</a>
+                    <a class="nav-link head1" id="returns-tab" data-toggle="tab" href="#returns" role="tab" aria-controls="returns" aria-selected="false">Buy-Protect Policy</a>
                 </li>
                <li class="nav-item">
                     <a class="nav-link head1" id="returns-tab" data-toggle="tab" href="#warranty" role="tab" aria-controls="returns" aria-selected="false">Warranty</a>
@@ -23,78 +23,94 @@
 <!-- Tab panes -->
 <div class="tab-content ml-0 pl-0 col-md-8 mt-4">
     <div class="tab-pane active" id="Finance" role="tabpanel" >
-        <h2 class="head2">Finance</h2>
-           <p class="trust-content mt-3">
-               We have assigned a fixed price - one price for every segment! We have identified a mechanism and built a single price format for each of our segments. This enables us to give the same weightage to the bikes belonging to the specific segment. This nulls any further negotiation as the deal is already pretty lucrative and benefiting! 
-           </p>
+        <h2 class="head2">One price for every segment</h2>
+        <p class="trust-content mt-3">
+            We have identified a mechanism and built a single price format for each of our segments.
+            This enables us to give the same weightage to the bikes belonging to the specific segment.
+            It also nulls any further negotiation as the deal is already pretty lucrative and benefiting.
+            You definitely cannot say no to a fixed price, one of a kind, refurbished bike. 
+        </p>
     </div>
-  <div class="tab-pane" id="Refurbishing" role="tabpanel" ><h2 class="head2">Refurbishing</h2><p class="trust-content mt-3">
-      All the preloved bikes undergo rigorous diagnostic tests and multiple, multiple, multiple inspections. If we find any defective part then they are replaced with brand new ones. These bikes are test-ridden several times before we list them on our site. Our aim is to sell bikes that are of the highest quality. Hence, the bike collection we have on our website is ‘as good as’ new! 
-      </p></div>  
-  <div class="tab-pane" id="returns" role="tabpanel" ><h2 class="head2 mt-3">Easy Returns</h2>
-      <p class="trust-content">
-          get to know your bike, set the rhythm! You two have a long way to go... so if you can’t be with each other for 7 days, there is no way you would last years to come. If you feel that zing, the bike is yours. If you don’t, you can either return it and get a full refund OR let’s get you another one. As long as it is within 7 days and the new model you choose is from the same segment, we will exchange it for free.
-      </p> 
-  </div>
-  <div class="tab-pane" id="warranty" role="tabpanel"><h2 class="head2 mt-3">Warranty</h2><p class="trust-content">
-      The bikes, in the premium segment, are still under manufacturer’s warranty, which is for about 6 months. We give an additional Bikex warranty of 6 months. The servicing can either be done at the manufacturer’s servicing centre or in any of our workshops. Bikes in all the other segments come with a 1 year Bikex warranty. The maintenance and servicing can be done in any of our Bikex workshops. 
-      </p></div>
+    <div class="tab-pane" id="Refurbishing" role="tabpanel" >
+        <h2 class="head2">Refurbished Vehicles</h2>
+        <p class="trust-content mt-3">
+            All the preloved bikes undergo rigorous diagnostic tests and multiple, multiple, multiple inspections.
+            The parts are replaced with brand new original spares. These bikes are test-ridden several times before we list them on our site. We assure you that the vehicles at BikeX are of the highest quality.
+            Hence, the bike collection we have on our website is ‘as good as’ new! 
+        </p>
+    </div>  
+    <div class="tab-pane" id="returns" role="tabpanel" ><h2 class="head2 mt-3">3-Day Buy-Protect Policy</h2>
+        <p class="trust-content mt-3">
+        Every bike comes with a 3-day buy protect policy that includes no-cost replacement/servicing/repairs.
+        If anything goes wrong with the mechanism of the bike, the repairs will be on us and the parts will be replaced for free. You won’t need to pay a penny for this. 
+        </p> 
+    </div>
+  <div class="tab-pane" id="warranty" role="tabpanel">
+      <h2 class="head2 mt-3">Warranty</h2>
+        <p class="trust-content mt-3">
+            The bikes, in all our segments, comes with a manufacturer’s warranty and an extended BikeX warranty of 6 months.
+            The servicing can either be done at the manufacturer’s servicing centre or in any of our workshops.
+            As long as the bike is within the warranty period, the servicing will be on us!
+        </p>
+    </div>
  </div>
 </div>
-    <div class="col-md-4 col-8 pt-4 mt-2 mr-0 pr-0 imager text-right">
-                <img src="../assets/newvalue.jpg" height="auto">
-            </div>
-    </div> 
-          <div class="services-area col-md-12 m-0 p-0 mt-4">
-                <div class="container m-0 p-0">
-                    <div class="row m-0 p-0">
-                        <div class="col-lg-3 col-md-6 mb-4 m-0 pr-2 p-0 no-mobile-pad">
-                            <div class="single-services orange mb-30 text-center">
+<div class="col-md-4 col-8 pt-4 mt-2 mr-0 pr-0 imager text-right">
+    <img src="../assets/bikex_values_3.png" height="100%">
+    </div>
+</div> 
+
+<div class="services-area col-md-12 m-0 p-0 mt-4 margin">
+                <div class="container m-0 p-0 margin">
+                    <div class="row m-0 p-0 margin">
+                        <div class="col-lg-3 col-md-6 mb-4 m-0 pr-2 p-0 no-mobile-pad col-12">
+                            <div class="single-services orange mb-30 col-12 margin text-center">
                                 <div class="services-icon">
-                                    <img alt="" src="../assets/img/icon-img/3.png">
+                                    <img alt="" src="../assets/support.svg" width="25%">
                                 </div>
                                 <div class="services-text">
-                                    <h5>FREE SHIPPING</h5>
-                                    <p>Free shipping on all orders.</p>
+                                    <h5><strong>24/7 Support</strong></h5>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad">
-                            <div class="single-services yellow mb-30 text-center">
+                        <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad col-12">
+                            <div class="single-services yellow mb-30 col-12 margin text-center">
                                 <div class="services-icon">
-                                    <img alt="" src="../assets/img/icon-img/4.png">
+                                    <img alt="" src="../assets/tracking.png" width="25%">
                                 </div>
                                 <div class="services-text">
-                                    <h5>ONLINE SUPPORT</h5>
-                                    <p>Online support 24 hours a day</p>
+                                    <h5><strong>Door Delivery</strong></h5>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad">
-                            <div class="single-services purple mb-30 text-center">
+                        <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad col-12">
+                            <div class="single-services purple mb-30 col-12 margin text-center">
                                 <div class="services-icon">
-                                    <img alt="" src="../assets/img/icon-img/5.png">
+                                    <img alt="" src="../assets/tools.png" width="25%">
                                 </div>
                                 <div class="services-text">
-                                    <h5>MONEY RETURN</h5>
-                                    <p>Back guarantee under 5 days</p>
+                                    <h5><strong>Door Servicing</strong></h5>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 mb-4 m-0 p-0">
-                            <div class="single-services sky mb-30 text-center">
+                        <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 col-12 no-mobile-pad col-12">
+                            <div class="single-services sky mb-30 col-12 margin text-center">
                                 <div class="services-icon">
-                                    <img alt="" src="../assets/img/icon-img/6.png">
+                                    <img alt="" src="../assets/key.png" width="24%">
                                 </div>
                                 <div class="services-text">
-                                    <h5>MEMBER DISCOUNT</h5>
-                                    <p>Onevery order over $150 and above</p>
+                                   <h5><strong>Assured Buy-Back</strong></h5>
+                                    <p></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
     </div>
 </template>
 
@@ -125,7 +141,7 @@
     padding: 0px 10px 0px 10px;
 }
 .nav-tabs{
-      padding: 0px 10px 0px 10px;
+      padding: 0px 0px 0px 10px;
 }
 
 }
@@ -185,7 +201,6 @@
     display: inline-block;
 }
 .question-content-number > h6 {
-    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     font-weight: bold;
     font-size: 22px;
@@ -259,9 +274,9 @@ transform: translateZ(20px);
 .laptop-main{
     margin-bottom: 50px !important;
 }
-.laptop-main h2{
+/* .laptop-main h2{
     letter-spacing: 1.5px
-}
+} */
     
  .banner-wrapper.mrg-mb-md {
         margin-bottom: 30px;
@@ -356,33 +371,34 @@ transform: translateZ(20px);
 
   .nav-link{
     font-size: 12px;
+    font-weight: bold;
     color: black;
-    font-family: 'poppins', sans-serif;
   }
   .trust-content{
-    font-family: 'poppins', sans-serif;
     font-size: 15px;
     padding: 0;
-    margin: 0
+    margin: 0;
+    text-align: justify
   }
 @media screen and (max-width: 775px) {
   .nav-link{
-    font-size: 9px;
+    font-size: 10px;
     color: black;
-    font-family: 'poppins', sans-serif;
     display: block;
     padding: 8px 10px;
   }
   .title h2, .head2{
-    font-size:22px;
-    font-family: 'poppins', sans-serif;
+    font-size:15px;
     font-weight:bold;
   }
   .imager img{
   display: none
 }
 }
-
+.title h2, .head2{
+    font-size:20px;
+    font-weight:bold;
+  }
 
 /* just for laptop / / just for laptop // just for laptop // just for laptop */
 @media screen and (min-width: 700px){
@@ -438,8 +454,8 @@ padding-top: 30px;
 }
 .services-text > h5 {
     color: #4f4e4e;
-    font-size: 16px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 400;
     margin: 12px 0 15px;
 }
 .services-text > p {

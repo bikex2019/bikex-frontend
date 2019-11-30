@@ -194,9 +194,10 @@ export default {
     display: inline-block;
     text-decoration: none;
     background-color: transparent;
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif; */
     font-size: 12px;
     padding-right: 30px;
+    font-weight: bold
 }
 .navmenu .dropdown-menu{
     font-family: 'Montserrat', sans-serif;
@@ -205,7 +206,7 @@ export default {
 
 .navmenu ul li a{
     color: black;
-    font-weight: bold;
+    letter-spacing: 1px;
     text-decoration: none;
     cursor: pointer;
 }
