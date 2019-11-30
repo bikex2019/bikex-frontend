@@ -1,10 +1,17 @@
 <template>
   <div id="app">
-    <div class="container col-md-12 text-center bg-top">
-      <strong>
-      <p class="bg-red m-0 p-0">This is the Beta Release</p>
-      <p class="bg-red m-0 p-0">(Booking Unavailable Check Offline)</p>
-      </strong>
+    <div class="container col-md-12 text-center bg-top" v-if="demo">
+      <div class="row p-0 m-0">
+        <div class="col-md-11 m-0 p-0">
+        <strong>
+          <p class="bg-red m-0 p-0">This is the Beta Release</p>
+          <p class="bg-red m-0 p-0">(Booking Unavailable Check Offline)</p>
+        </strong>
+        </div>
+         <div class="col-md-1 col-1 m-0 p-0 pt-1 close text-right" v-on:click="demo =! demo">
+             <i class="fa fa-times" style="font-size:14px;"></i>
+        </div>
+     </div>
     </div>
     <navigation></navigation>
   <div class="contents">
@@ -21,11 +28,12 @@ export default {
   name: 'app',
   data(){
     return{
+          demo:true
     }
   },
   components: {
     navigation,
-    myfooter
+    myfooter,
   },
   mounted () {
   },
@@ -70,6 +78,9 @@ export default {
 }
 .bg-top{
   background-color: #ffb52f
+}
+.close{
+  cursor: pointer;
 }
 </style>
 

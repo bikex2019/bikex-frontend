@@ -14,16 +14,16 @@
         <div class="navmenu col-md-10 col-12 text-right phone">
         <ul class=" ml-0 pl-0 pt-2" v-bind:class="{ block: navigation }">
             <li class="nav-item" >
-                <a class="story"><router-link to="/commuters" exact-active-class="active">BUY</router-link></a>
+                <a class="story" v-on:click="navigation = false"><router-link to="/commuters" exact-active-class="active">BUY</router-link></a>
             </li>
              <li class="nav-item">
-            <a class="models"><router-link to="/sell" exact-active-class="active" >SELL</router-link></a>
+            <a class="models" v-on:click="navigation = false"><router-link to="/sell" exact-active-class="active">SELL</router-link></a>
             </li>
             <li class="nav-item">
-            <a class="models"><router-link to="/finance" exact-active-class="active">FINANCE</router-link></a>
+            <a class="models" v-on:click="navigation = false"><router-link to="/finance" exact-active-class="active">FINANCE</router-link></a>
             </li>
-              <li class="nav-item">
-            <a class="models"><router-link to="/ourstory" exact-active-class="active" >OUR STORY</router-link></a>
+              <li class="nav-item" v-on:click="navigation = false">
+            <a class="models"><router-link to="/ourstory" exact-active-class="active">OUR STORY</router-link></a>
             </li>
             <!-- <li class="nav-item">
            <a href="tel:+91 9742744444"><h6><i class="fa fa-phone mr-1" aria-hidden="true" style="color:#FFB52F"></i>+91 9742744444</h6> </a>
@@ -142,6 +142,10 @@ export default {
   } 
   .navmenu ul{
     display: none;
+  }
+  .active{
+  border-bottom: none !important;
+  padding-bottom: 5px
   }
   .block{
     display: none !important

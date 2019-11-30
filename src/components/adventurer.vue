@@ -15,10 +15,9 @@
                 </div>
                </div>
            </div>
-             <div class="product-area mb-4 p-0">
-                <div class="container col-12">
-                    <div class="section-title text-center mb-50">
-                        <h2>CHOOSE YOUR BIKE</h2>
+             <div class="product-area mb-4 mt-3 p-0 col-md-10" style="margin:0 auto">
+                <div class="container col-12 m-0 p-0">
+                    <div class="section-title jumbotron m-0 mb-4 p-0 pt-2 pb-2 text-center mb-50">
                         <p><span>Bikex,</span> the most latgest bike store in Bengaluru can serve you latest quality of reborn motorcycle in fixed price.</p>
                     </div>
                     <div class="product-tab-list text-center col-12 nav product-menu-mrg" role="tablist">
@@ -37,11 +36,11 @@
         </div>
         <div>
         </div>
-        <div class="col-md-10 py-2" style="margin:0 auto">
-            <div class="container m-0 p-0">
-                <p class="m-0 p-0" v-if="filtereddata.length!=0">Found {{filtereddata.length}} bikex from {{filter}} categories vehicles.</p>
+        <div class="col-md-10 py-2 mb-4" style="margin:0 auto">
+            <div class="container m-0 p-0 mb-3">
+                <p class="m-0 p-0 color" v-if="filtereddata.length!=0">{{filtereddata.length}} Results</p>
             </div>
-            <div class="row pl-2 pr-2" >
+            <div class="row pl-2 pr-2 mb-4" >
                 <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="filtereddata" v-for="(image, index) in filtereddata" :key="index">  
                     <div class="moterbike"> 
                         <div class="card" v-on:click="display(image.vehicle_id)"> 
@@ -49,9 +48,9 @@
                                 <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
                                 <img v-else :src="image.path" width="100%" height="30%">
                             </div>
-                            <div class="card-body text-center mt-4">
-                                <p class="bike-name pb-2">Rs. {{image.selling_price}}</p>
-                                <p>{{image.engine_cc}} CC</p>
+                            <div class="card-body text-left mt-1">
+                                <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
+                                <p class="bold">RS.{{image.selling_price}}</p>
                             </div>
                             
                         </div> 
@@ -67,9 +66,9 @@
         </div> 
 
         <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && !datas.length == 0 && filtereddata.length == 0">
-            <p class="mt-4">sorry :(</p>
-            <p class="mt-4">currently we are out of stock</p>
-            <p class="mt-4">we are coming back on stock soon</p>
+            <p class="mt-4 bold">sorry :(</p>
+            <p class="mt-4 bold">currently we are out of stock</p>
+            <p class="mt-4 bold">we are coming back on stock soon</p>
         </div> 
 
     <!-- <div class="loading text-center mb-4" style="min-height:200px" v-if="loading">
@@ -204,10 +203,29 @@ export default {
     margin-top: 80px;
 }
 
+.bold{
+    font-weight: 500
+}
+.color{
+    color:#001232;  
+    font-weight: 500
+}
+.bike-name{
+    text-transform: uppercase;
+    color:#001232;
+    font-size:17px !important;
+    letter-spacing: 0.4px;
+}
+.section-title p{
+        font-size: 15px;
+        font-weight: 500
+    }
+   .section-title h2{
+        font-size: 18px;
+    }  
 .breadcrumb{
 background-color: transparent;
 padding:0 !important;
-font-family: 'Montserrat', sans-serif;
 font-weight: bold;
 }
 .bread li{
@@ -215,7 +233,7 @@ font-weight: bold;
     list-style: none
 }
 .breadcrumb li a{
-        font-size: 11px;
+        font-size: 15px;
         color: black;
 }
 .active{
@@ -274,12 +292,11 @@ font-weight: bold;
     cursor: pointer;
 }
 .card-body p{
-      font-size: 13px;
-      margin-top: 0px;
-      font-family: 'Montserrat', sans-serif;
-      line-height: 3PX;
-      padding:0px;
-      cursor: pointer;
+    margin: 2px 0px;
+    font-size: 15px;
+    margin-top: 0px;
+    padding:0px;
+    cursor: pointer;
 }
 
 /* loading */

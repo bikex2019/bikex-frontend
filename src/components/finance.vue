@@ -2,14 +2,14 @@
   <div class="finance">
         <!-- icons grid -->
         <div class="container middle col-md-10 col-12 pl-0 pt-4">
-          <div class="row col-12">
-            <div class="col-md-4 col-12 margin-bottom">  
+          <div class="row col-12 m-0 p-0 mt-4 mb-4">
+            <div class="col-md-4 col-12 margin-bottom m-0 p-0">  
                 <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
-                              <i class="fa fa-chevron-circle-right" style="color:#ffb53f"></i>  
+                             <img src="../assets/check.svg" width="15px">  
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left mt-1 ">
-                              <h6 class="card-title pb-2 mb-0">Apply in Minutes</h6>
+                              <p class="cool pb-2 mb-0">Apply in Minutes</p>
                               <p class="card-text">Apply online in as few as 5 minutes. We'll respond quickly with your financing information.</p>
                             </div>  
                   </div>
@@ -18,10 +18,10 @@
                
                 <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
-                              <i class="fa fa-chevron-circle-right" style="color:#ffb53f"></i>  
+                             <img src="../assets/check.svg" width="15px">  
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left mt-1 ">
-                              <h6 class="card-title pb-2 mb-0">Highly Competitive Rates</h6>
+                              <p class="cool pb-2 mb-0">Highly Competitive Rates</p>
                               <p class="card-text">Our 12+ banks and lending partners will compete with each other to get you a low rate.</p>
                             </div>  
                         </div>
@@ -32,10 +32,10 @@
               
                <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
-                               <i class="fa fa-chevron-circle-right" style="color:#ffb53f"></i>    
+                              <img src="../assets/check.svg" width="15px">    
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left mt-1 ">
-                              <h6 class="card-title pb-2 mb-0">Easy Registration</h6>
+                              <p class="cool pb-2 mb-0">Easy Registration</p>
                               <p class="card-text">When you finance with Bikex, (details will be added later)</p>
                             </div>  
                         </div>
@@ -43,19 +43,18 @@
                     </div>
                   </div>
   <!-- icons grid -->
-      <hr>
   <!-- image section -->
-    <div class="container midddle p-0 col-md-9 col-12">
-      <div class="row col-12 pt-4">
-          <div class="col-md-6">
+    <div class="container midddle p-0 col-md-10 col-12">
+      <div class="row col-12 pt-4 m-0 p-0 mt-4">
+          <div class="col-md-6 m-0 p-0">
              <div class="col-md-12 ml-0 pl-0 text-left">
-                <h4 class="ml-0 pl-0 pb-3"><strong>how it works?</strong></h4>
+                <h3 class="ml-0 pl-0 pb-3"><strong>how it works?</strong></h3>
              </div>
               
-                   <div class="row pb-3 col-12">
+                   <div class="row pb-3 col-12 m-0 p-0">
                       <div class="col-md-1 col-1 m-0 p-0">
                          
-                      <i class="fa fa-arrow-circle-right mt-1" style="color:#ffb53f"></i>
+                     <img src="../assets/check.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Browse away</p>
@@ -66,7 +65,7 @@
                     <div class="row pb-3 col-12">
                       <div class="col-md-1 col-1 m-0 p-0">
                         
-                      <i class="fa fa-arrow-circle-right mt-1" style="color:#ffb53f"></i>
+                     <img src="../assets/check.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Get Your Financing Terms</p>
@@ -77,7 +76,7 @@
                     <div class="row pb-3 col-12">
                       <div class="col-md-1 col-1 m-0 p-0">
                         
-                      <i class="fa fa-arrow-circle-right mt-1" style="color:#ffb53f"></i>
+                     <img src="../assets/check.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Payment dilemma</p>
@@ -144,9 +143,6 @@ export default {
 </script>
 <style scoped>
 
-@import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Coda|Coda+Caption:800&display=swap');
-
 @media only screen and (max-width: 600px) {
           .container .row{
           margin:0;
@@ -166,9 +162,7 @@ export default {
             font-size:10px;
           }
           .size p{
-            font-size:10px;
             padding-top:4px;
-            font-family: 'Montserrat', sans-serif;
             font-weight: bold;
           }
           .middle{
@@ -186,19 +180,14 @@ export default {
 
 
 .hit{
-  font-family: 'Monda', sans-serif;
 font-weight: bold;
-font-size:30px;
 margin-left: 5px;
 }
 .py-1{
-    font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
   font-weight: 400;
 
 }
 .ptag{
-  font-size:14px;
 }
 .middle{
   margin: 0 auto;
@@ -217,15 +206,12 @@ margin-left: 5px;
 }
 
 .features-icons .features-icons-item .features-icons-icon i {
-  font-size: 4.5rem;
 }
 
 .features-icons .features-icons-item:hover .features-icons-icon i {
-  font-size: 5rem;
 }
  .text{
    text-align: left;
-   font-size: 14px;
  }
     .text1{
    text-align: left;
@@ -242,10 +228,9 @@ ul{
   list-style: none;
 }
 .card-text{
-  font-size: 12px
 }
 .cool{
-  font-weight:500;
+  font-weight: bold
 }
 
 .hey{
