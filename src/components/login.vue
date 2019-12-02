@@ -105,6 +105,12 @@ export default {
   .mobile{
       display: none !important
   }
+  .inputText{
+      width: 80% !important
+  }
+  .login{
+      text-align: center !important
+  }
 }
 
 .inputText {

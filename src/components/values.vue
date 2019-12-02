@@ -23,7 +23,7 @@
 <!-- Tab panes -->
 <div class="tab-content ml-0 pl-0 col-md-8 mt-4">
     <div class="tab-pane active" id="Finance" role="tabpanel" >
-        <h2 class="head2">One price for every segment</h2>
+        <h5 class="head2">One price for every segment</h5>
         <p class="trust-content mt-3">
             We have identified a mechanism and built a single price format for each of our segments.
             This enables us to give the same weightage to the bikes belonging to the specific segment.
@@ -32,21 +32,21 @@
         </p>
     </div>
     <div class="tab-pane" id="Refurbishing" role="tabpanel" >
-        <h2 class="head2">Refurbished Vehicles</h2>
+        <h5 class="head2">Refurbished Vehicles</h5>
         <p class="trust-content mt-3">
             All the preloved bikes undergo rigorous diagnostic tests and multiple, multiple, multiple inspections.
             The parts are replaced with brand new original spares. These bikes are test-ridden several times before we list them on our site. We assure you that the vehicles at BikeX are of the highest quality.
             Hence, the bike collection we have on our website is ‘as good as’ new! 
         </p>
     </div>  
-    <div class="tab-pane" id="returns" role="tabpanel" ><h2 class="head2 mt-3">3-Day Buy-Protect Policy</h2>
+    <div class="tab-pane" id="returns" role="tabpanel" ><h5 class="head2 mt-3">3-Day Buy-Protect Policy</h5>
         <p class="trust-content mt-3">
         Every bike comes with a 3-day buy protect policy that includes no-cost replacement/servicing/repairs.
         If anything goes wrong with the mechanism of the bike, the repairs will be on us and the parts will be replaced for free. You won’t need to pay a penny for this. 
         </p> 
     </div>
   <div class="tab-pane" id="warranty" role="tabpanel">
-      <h2 class="head2 mt-3">Warranty</h2>
+      <h5 class="head2 mt-3">Warranty</h5>
         <p class="trust-content mt-3">
             The bikes, in all our segments, comes with a manufacturer’s warranty and an extended BikeX warranty of 6 months.
             The servicing can either be done at the manufacturer’s servicing centre or in any of our workshops.
@@ -118,35 +118,41 @@
 @import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 @media only screen and (max-width: 780px) {
-.overview-content {
-    margin-top: 19px !important;
-    text-align: center
-}
-.nav-link{
-    padding: 7px !important;
-}
-#myBtn{
-  display: none !important
-}
-.no-mobile-pad{
-    padding: 0 !important
-}
-.mobile-top{
-    margin-top: 50px !important
-}
-.question-area{
-  text-align: center !important
-}
-.title{
+    .overview-content {
+        margin-top: 19px !important;
+        text-align: center
+    }
+    .nav-link{
+        padding: 7px !important;
+    }
+    #myBtn{
+    display: none !important
+    }
+    .no-mobile-pad{
+        padding: 0 !important
+    }
+    .mobile-top{
+        margin-top: 50px !important
+    }
+    .question-area{
     text-align: center !important
-}
-.tab-pane{
-    padding: 0px 10px 0px 10px;
-}
-.nav-tabs{
-      padding: 0px 0px 0px 10px;
-}
+    }
+    .title{
+        text-align: center !important
+    }
+    .tab-pane{
+        padding: 0px 10px 0px 10px;
+        min-height: 100%
+    }
+    .nav-tabs{
+        padding: 0px 0px 0px 10px;
+    }
 
+}
+.tab-pane h5{
+text-transform: uppercase;
+font-size: 16px;
+font-weight: bold
 }
 #myBtn {
   z-index: 1;
@@ -238,7 +244,7 @@ transform: translateZ(20px);
 .overview-content h1 , .overview-content h2 {
     color: #001232;
     font-weight: 400;
-    font-size: 36px;
+    font-size: 16px;
     margin: 0;
 }
 .overview-content h1 span {
@@ -397,22 +403,25 @@ transform: translateZ(20px);
   .imager img{
   display: none
 }
-}
-.title h2, .head2{
-    font-size:20px;
-    font-weight:bold;
+ .trust-content{
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    text-align: justify
   }
+}
+
 
 /* just for laptop / / just for laptop // just for laptop // just for laptop */
 @media screen and (min-width: 700px){
 .laptop-container{
     margin-top: 50px !important;
     padding-left:30px !important
-}
+        }
 
-.button{
-padding-top: 30px;
-}
+        .button{
+        padding-top: 30px;
+        }
 }
 /* just for laptop // just for laptop // just for laptop // just for laptop */
 

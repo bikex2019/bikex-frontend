@@ -1,11 +1,6 @@
 <template>
      <div class="site-wrap" id="home-section">
 
- 
-
-
-
-   
 
     <div class="site-section py-5">
       <div class="container">

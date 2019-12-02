@@ -25,7 +25,7 @@
         </div>
     </div>
      <div class="load" v-if="images.length == 0">
-              <div class="loading text-center mb-4" style="min-height:300px">
+              <div class="loading text-center mb-4" style="min-height:250px">
                 <div class="spinner-border" role="status" style="margin-top:10%">
                   <span class="sr-only">Loading...</span>
                 </div>
