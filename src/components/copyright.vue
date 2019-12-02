@@ -1,8 +1,8 @@
 <template>
     
-        <div class = "copyright-guidelines col-md-10 margin mt-3 mb-5">
+        <div class = "copyright-guidelines col-md-10 margin mt-4 mb-5">
   
-         <h2 class="mt-5 m-0 p-0 mb-3">COPYRIGHT GUIDLINE</h2>   
+         <h4 class="m-0 p-0 mb-3 text-center">COPYRIGHT GUIDLINE</h4>   
             <p class="text-left mt-3">This Copyright Guideline, together with our Terms of Use, Privacy Policy, Disclaimer Policy and any other Terms of Use or Guidelines connected with the use of the Platform, constitute a legally binding agreement (the “Agreement”) between You and the Website in relation to Your use of the Services.</p>
             
         <h5 class="text-left mt-5 font-bold " style="color: #4a4a4a;" >1. Ownership:</h5>
@@ -58,54 +58,55 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
   @media only screen and (max-width: 600px) {
-  h2{
-    font-family: 'Montserrat', sans-serif;
+  h4{
     text-align: center !important;
-    font-size: 25px;
+    font-size: 18px;
     font-weight: bold
   }
+  p{
+      font-size: 12px !important
+  }
+  h5{
+    font-size: 15px !important 
+  }
 }
-h2{
-    font-family: 'Montserrat', sans-serif;
+
+h4{
+font-weight: 700;
+font-size: 20px;
 }
+
 p{
     font-weight:light;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    letter-spacing: 0.7px;
-    line-height: 1.6;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: justify !important;
 }
 h5{
-        font-size: 20px;
+        font-size: 16px;
         font-weight: bold;
-        font-family: 'Montserrat', sans-serif;
-        color:black;
+            color:black !important;
         letter-spacing: 0.6px;
+        text-transform: uppercase
 }
 .margin{
     margin:0 auto;
 }
 .jumbo-block {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 13px;
     background-color: #f2f2f2;
-    margin-top: 10px;
-    letter-spacing: 0.25px;
-      display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    display: block;
+    text-align: justify !important;
 }
 .privacy-policy{
     margin: 0 auto;
     background-color:white;
 }
 ul{
-     
+    font-size: 13px;
+    font-weight: 500;
     display: block;
     list-style-type: disc;
-  
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
@@ -114,7 +115,7 @@ ul{
 
 .legal-bullet-list{
  
-    line-height: 2.7;
+    line-height: 2.3;
     letter-spacing: 0.3px;
     color: #041022;
 
@@ -124,6 +125,9 @@ ul{
       color:red
   }
   .abc{
-      padding-bottom:50px;
+      padding-bottom:75px;
+  }
+  .padding{
+      padding-bottom:35px;
   }
 </style>

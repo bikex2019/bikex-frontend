@@ -1,13 +1,16 @@
 <template>
 <div class="product-display" style="margin:0 auto">
-  <div class="display-mobile col-12 m-0 p-0">
+  <div class="display-mobile mt-4 col-12 p-0">
     <carousel :perPage="1" :loop="true" paginationActiveColor="#ffb52f">
       <slide v-for="(image, index) in images" @slideclick="handleSlideClick(image)" :key="index">
-        <div class="image text-center">
+        <div class="image text-center mt-4">
           <img :src="image" width="auto" height="200px">
         </div>
       </slide>
     </carousel>
+  </div>
+  <div class="loader display-mobile" v-if="loading">
+    <p>Loading Images..</p>
   </div>
   <div id="myModalMobile" class="modalmobile" v-bind:class="{'block': isExpand}">
   <span class="closemobile" v-on:click="closemobileModal">&times;</span>
@@ -27,7 +30,7 @@
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
-        </div>
+      </div>
 
     <div id="myModal" class="modal mt-4" v-bind:class="{ 'block': displayBlock }">
       <div class="modal-content">
@@ -53,13 +56,16 @@
   <div class="price-panel mr-0 pr-0 ml-0 col-12 col-md-12 mt-2 mb-1">
      <div class="row col-12 pr-0 mr-0">
         <div class="col-md-3 col-12 description">
-        <h1 class="margin">{{models[0].modal_name}}</h1>
-        <p class="label">The power of all</p>
+        <h1 class="margin" v-for="(models, index) in models" :key="index">{{models.modal_name}}</h1>
+        <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
         </div>
-         <div class="col-md-5 col-12 price">
-        <p class="margin">Rs. 35000</p>
-        <p class="label"><span style="color:#ffb52f">Down Payment</span> starts at 3500/month</p>
-        </div>
+         <div class="col-md-5 col-12 price" v-for="(vehicles, index) in vehicles" :key="index">
+        <p class="margin">Rs. {{vehicles.selling_price}}</p>
+        <p class="label">Check for<span ><router-link to="/finance" style="color:#ffb52f; text-decoration:none"> Finance</router-link></span></p>
+       </div>
+       <div class="col-md-5  col-12 price" v-if="loading">
+        <p class="margin">Loading price..</p>
+       </div>
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
@@ -72,15 +78,13 @@
         
          
         <div class="fixed-bottom display-mobile mobile-panel">
-            <div class="row">
-              <div class="col-12 p-0 m-0">
-              <button class="buttons" v-on:click="checkout" >START PURCHASE</button>
+            <div class="row m-0 p-0">
+              <div class="col-7 p-0 m-0">
+              <button class="buttons mr-1 m-0" v-on:click="checkout" >START PURCHASE</button>
             </div>
-            
-        
-             <!-- <div class="col-2 text-left ml-0 pl-3 mt-3 pr-4" v-on:click="wishlist(product[0].id)">
-                <i class='far fa-heart ml-3' style='font-size:30px;color: #ffb52f'></i>
-            </div> -->
+             <div class="col-4 p-0 m-0">
+              <button class="buttons ml-3 m-0" v-on:click="checkout" >BOOK</button>
+            </div>
             </div>
         </div>
      </div>
@@ -116,15 +120,19 @@
             </div>
             <div class="history-content">
               <div class="row">
-                <div class="col-md-12 col-12 mr-0 pr-0 ml-0">
+                <div class="col-md-12 col-12 mr-0 pr-0 ml-0" v-for="(models, index) in models" :key="index">
                   <p><strong>Colour</strong> : Black</p>
-                  <p><strong>Mileage</strong> : {{models[0].mileage}}</p>
-                  <p><strong>Fuel Capacity</strong> : {{models[0].tank_capacity}}</p>
-                  <p><strong>Kerb Weight</strong> : {{models[0].tank_capacity}}kg</p>
-                  <p><strong>Displacement</strong> : {{models[0].engine_cc}}</p>
+                  <p><strong>Mileage</strong> : {{models.mileage}}</p>
+                  <p><strong>Fuel Capacity</strong> : {{models.tank_capacity}}</p>
+                  <p><strong>Kerb Weight</strong> : {{models.tank_capacity}}kg</p>
+                  <p><strong>Displacement</strong> : {{models.engine_cc}}</p>
                 </div>
               </div>
             </div>
+             <div class="loader-sm card mt-3 mr-4" v-if="modelloading"></div>
+             <div class="loader-sm card mt-3 mr-3" v-if="modelloading"></div>
+             <div class="loader-sm card mt-3 mr-2" v-if="modelloading"></div>
+             <div class="loader-sm card mt-3" v-if="modelloading"></div>
           </div>
             <div class="col-md-4 col-12 text-left mt-4 pl-0">
                 <div class="detail-header">
@@ -132,30 +140,34 @@
                 </div>
                 <div class="history-content">
                   <div class="row">
-                    <div class="col-md-12 col-12 mr-0 pr-0 ml-0">
-                      <p><strong>Ignition</strong> :{{models[0].engine_cc}}</p>
-                      <p><strong>No of Gears</strong> : {{models[0].number_of_gears}}</p>
-                      <p><strong>Wheel Type</strong> : {{models[0].wheel_type}}rpm</p>
-                      <p><strong>Tyre Type</strong> : {{models[0].tyre_type}}rpm</p>
-                      <p><strong>Fuel Delivery System</strong> : {{models[0].fuel_system}}</p>
-                      <p><strong>Cooling System</strong> : {{models[0].cooling_system}}</p>
+                    <div class="col-md-12 col-12 mr-0 pr-0 ml-0" v-for="(models, index) in models" :key="index">
+                      <p><strong>Ignition</strong> :{{models.engine_cc}}</p>
+                      <p><strong>No of Gears</strong> : {{models.number_of_gears}}</p>
+                      <p><strong>Wheel Type</strong> : {{models.wheel_type}}rpm</p>
+                      <p><strong>Tyre Type</strong> : {{models.tyre_type}}rpm</p>
+                      <p><strong>Fuel Delivery System</strong> : {{models.fuel_system}}</p>
+                      <p><strong>Cooling System</strong> : {{models.cooling_system}}</p>
                     </div>
                   </div>
                 </div>
+              <div class="loader-sm card mt-3 mr-4" v-if="modelloading"></div>
+             <div class="loader-sm card mt-3 mr-3" v-if="modelloading"></div>
+             <div class="loader-sm card mt-3 mr-2" v-if="modelloading"></div>
+             <div class="loader-sm card mt-3" v-if="modelloading"></div>
               </div>
 
         </div>
 
         <div class="container text-center" style="min-height:200px" v-if="modelloading">
-          <p class="mt-5"> Loading Model description for you..</p>
+          <!-- <p class="mt-5"> Loading Model description for you..</p> -->
         </div>
       </div>
       <div class="col-md-11 middle-align col-12 m-0 p-0 pt-4 pb-4">
       <div class="heading text-left">
         <p>Special Feature</p>
       </div>
-      <div class="history-content text-left">
-       <p>{{models[0].comments}}</p>
+      <div class="history-content text-left" v-for="(models, index) in models" :key="index">
+       <p>{{models.comments}}</p>
       </div>
     </div>
      </div>
@@ -166,22 +178,25 @@
   <nav class="navbar-fix col-md-12 p-0 m-0 fixed-top" v-if="shownav">
      <div class="price-panel mr-0 pr-0 ml-0 col-12 mb-1" style="background-color:white">
      <div class="row col-12 col-md-10" style="margin:0 auto">
-        <div class="col-md-3 col-12 description">
-        <h1 class="margin">{{models[0].modal_name}}</h1>
-        <p class="label">The power of all</p>
+       <div class="col-md-3 col-12 description">
+        <h1 class="margin" v-for="(models, index) in models" :key="index">{{models.modal_name}}</h1>
+        <h1 class="margin" v-if="models.length == 0" >Loading.</h1>
         </div>
-         <div class="col-md-4 col-12 price">
-        <p class="margin">Rs. 35000</p>
-        <p class="label"><span style="color:#ffb52f">Down Payment</span> starts at 3500/month</p>
-        </div>
+         <div class="col-md-4 col-12 price" v-for="(vehicles, index) in vehicles" :key="index">
+        <p class="margin">Rs. {{vehicles.selling_price}}</p>
+        <p class="label">Check for<span ><router-link to="/finance" style="color:#ffb52f; text-decoration:none"> Finance</router-link></span></p>
+       </div>
+       <div class="col-md-5  col-12 price" v-if="loading">
+        <p class="margin">Loading price..</p>
+       </div>
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-        <div class="col-md-2 display-laptop">
+         <div class="col-md-2 display-laptop">
               <button class="buttons" v-on:click="checkout">BOOK</button>
         </div>
         <div class="col-md-3 display-laptop">
-              <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
+              <button class="buttons" v-on:click="checkout" >PAY IN FULL</button>
         </div>
         
          
@@ -190,32 +205,24 @@
               <div class="col-12 p-0 m-0">
                <button class="buttons">START PURCHASE</button>
             </div>
-            
-        
-             <!-- <div class="col-2 text-left ml-0 pl-3 mt-3 pr-4" v-on:click="wishlist(product[0].id)">
-                <i class='far fa-heart ml-3' style='font-size:30px;color: #ffb52f'></i>
-            </div> -->
             </div>
         </div>
      </div>
   </div>
   </nav>
-
+ <!-- <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
+            <div id="text" class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
 <div class="container">
   <div class="row">
     <div class="col-md-3 card">
-
     </div>
   </div>
 </div>
 
 </div>
-        <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
-            <div id="text" class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-
 </div>
 </template>
 <script>
@@ -240,7 +247,7 @@ export default {
       shipping:400,
       shownav:false,
       loading:true,
-      modelloading:false,
+      modelloading:true,
       models:[],
       vehicles:[],
       similar:[],
@@ -252,9 +259,8 @@ export default {
       Slide,
   },
 created(){
-  this.loading = true
+  window.addEventListener('scroll', this.handleScroll);
   this.id = this.$route.params.id
-    window.addEventListener('scroll', this.handleScroll);
     this.$http.get('https://backend-bikex.herokuapp.com/api/uploads/'+ this.id)
           .then(res=>{
            this.uploaded = res.body.data
@@ -262,12 +268,12 @@ created(){
          })
      this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
           .then(res=>{
-          this.modelloading = true
-          this.vehicles = res.body[0].model_id
-          this.$http.get('https://backend-bikex.herokuapp.com/api/models/'+ res.body[0].model_id).then(response=>{
+          this.vehicles = res.body
+          window.console.log(this.vehicles)
+          this.loading=false
+      this.$http.get('https://backend-bikex.herokuapp.com/api/models/'+ res.body[0].model_id).then(response=>{
             this.models = response.body
             this.modelloading = false
-            this.loading=false
           }).catch((err)=>{
             this.msg = err.body
             this.modelloading = false
@@ -384,12 +390,10 @@ cursor: pointer;
 }
 .heading{
   font-size: 25px;
-  font-family: 'Montserrat', sans-serif;
 }
 .detail-header{
   color: gray;
   font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
 }
 .navbar-fix{
     animation:slide-down 0.7s;
@@ -407,9 +411,8 @@ cursor: pointer;
 .mobile-panel{
   background-color: #fafafa;
   padding-bottom: 20px;
-  padding-left: 30px;
+  padding-left: 13px;
   padding-top: 10px;
-  padding-right: 30px;
   padding-right: 0px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 4px 0px;
 }
@@ -418,19 +421,16 @@ cursor: pointer;
 }
 .label{
   font-size: 13px;
-  font-family: 'Montserrat', sans-serif;
 }
 .history-content{
-    font-family: 'Montserrat', sans-serif;
-}
+  }
 .history-content p{
   margin-bottom: 2px;
   font-size: 15px;
   color: black
 }
 .features-content{
-    font-family: 'Montserrat', sans-serif;
-}
+  }
 .price{
   /* margin-top: 2%; */
   text-align: right;
@@ -441,7 +441,6 @@ cursor: pointer;
 }
 .description h1{
   font-size: 30px;
-  font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
 .description{
@@ -451,6 +450,9 @@ cursor: pointer;
 @media only screen and (max-width: 600px) {
  .display-mobile{
   display: block;
+}
+.margin{
+  margin-top: 30px
 }
 .display-laptop{
   display: none;
@@ -486,7 +488,6 @@ cursor: pointer;
 .price p{
   font-size: 22px;
   font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
 }
 .buttons{
   padding: 10px 35px 10px 35px;
@@ -709,7 +710,6 @@ img.hover-shadow {
 .why-finance{
   font-size: 15px;
   font-weight: bold;
-  font-family: 'Montserrat', sans-serif;
 
 }
 .slider {
@@ -756,7 +756,6 @@ img.hover-shadow {
   margin: 20px 0px 20px;
 }
 .bikex-font{
-  font-family: 'Montserrat', sans-serif;
 }
 .bikex-header{
   background-color:#ffb52f;
@@ -786,5 +785,28 @@ img.hover-shadow {
   top: 50%;
   left: 50%;
 }
-
+.loader{
+  animation: blink 1s linear infinite;
+  min-height:200px;
+}
+.loader-sm{
+  animation: blink 1s linear infinite;
+  min-height:20px;
+  border: none;
+  border-radius: 0px
+}
+@keyframes blink {
+  0%{
+    background-color: gray;
+    opacity: 0.5
+  }
+  50%{
+    background-color: gray;
+    opacity: 0.3
+  }
+  100%{
+    background-color: gray;
+    opacity: 0.7
+  }
+}
 </style>

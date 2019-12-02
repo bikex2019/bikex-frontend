@@ -1,70 +1,68 @@
 <template>
 <div class="checkout col-md-10 margin ">
      <div class="row">
-                        <div class="col-lg-6 col-md-12 col-12">
-                            <form action="#">
-                                <div class="checkbox-form">						
+                        <div class="col-lg-12 col-md-12 col-12">
+                            <form>
+                      <div class="row">
+                                    <div class="checkbox-form col-lg-6">					
                                     <h3>Billing Details</h3>
                                     <div class="row">     
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>First Name <span class="required">*</span></label>										
-                                                <input type="text" placeholder="" />
+                                                <input type="text" v-model="name" required placeholder="" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Last Name <span class="required">*</span></label>										
-                                                <input type="text" placeholder="" />
+                                                <input type="text" v-model="lname" required placeholder="" />
                                             </div>
                                         </div>
                                          <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Email Address <span class="required">*</span></label>										
-                                                <input type="email" />
+                                                <input type="email" v-model="email"/>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Phone  <span class="required">*</span></label>										
-                                                <input type="text" />
+                                                <input type="text" v-model="phone" required />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
                                                 <label>Address <span class="required">*</span></label>
-                                                <input type="text" placeholder="Street address" />
+                                                <input type="text" required v-model="address1" placeholder="Street address" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">									
-                                                <input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
+                                                <input type="text" required v-model="address2" placeholder="Apartment, suite, unit etc. (optional)" />
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="checkout-form-list">
                                                 <label>Town / City <span class="required">*</span></label>
-                                                <input type="text" />
+                                                <input type="text" v-model="city" required />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>State / County <span class="required">*</span></label>										
-                                                <input type="text" placeholder="" />
+                                                <input type="text" v-model="country" required placeholder="" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="checkout-form-list">
                                                 <label>Postcode / Zip <span class="required">*</span></label>										
-                                                <input type="text" />
+                                                <input type="text" v-model="zip" required/>
                                             </div>
                                         </div>                                                                              							
-                                    </div>                                   											
+                                    </div>                                											
                                 </div>
-                            </form>
-                        </div>	
-                        <div class="col-lg-6 col-md-12 col-12">
-                            <div class="your-order">
+                            <div class="your-order col-md-6 mb-4 text-center">
                                 <h3>Your order</h3>
                                 <div class="your-order-table table-responsive">
                                     <table>
@@ -96,22 +94,32 @@
                                             </tr>                                             
                                             <tr class="order-total">
                                                 <th>Total Amount</th>
-                                                <td><strong><span class="amount">{{price}}.00</span></strong>
+                                                <td><strong><span class="amount" v-for="(price, index) in vehicle" :key="index">{{price.selling_price}}.00</span></strong>
                                                 </td>
                                             </tr>								
                                         </tfoot>
                                     </table>
                                 </div>
-                                <div class="payment-method mt-40">                                   
+                                <div class="payment-method mt-4">                                   
                                         <div class="order-button-payment">
+                                             <p style="color:red" class="m-0 p-0">{{msg}}</p>
                                             <button class="mybutton" type="submit" id="rzp-button1" v-on:click="pay">
                                                 <span v-if="!payload">PAY NOW</span>
                                                 <span v-else>Loading..</span>
                                             </button>
+                                        </div>
+                                        <div class="desclaimer pt-4 text-left">
+                                      <ul>
+                                        <li>By submitting this form you agree to all bikex <router-link to="/termsandcondition">terms and conditions</router-link>.</li>    
+                                        <li>For any other assistance please <router-link to="/contact-us">contact</router-link> us.</li>
+                                      </ul>
                                         </div>								
                                     </div>
                                 </div>
-                            </div>
+                      </div>
+                            </form>
+                        </div>	
+                   
                         </div>
                     </div>
 
@@ -122,7 +130,20 @@ export default {
     data(){
         return{
             price:500,
-            payload:false
+            vehicle:[],
+            payload:false,
+            err:1,
+            id:'',
+            msg:'',
+            name:'',
+            lname:'',
+            email:'',
+            zip:'',
+            city:'',
+            country:'',
+            address1:'',
+            address2:'',
+            phone:''
         }
     },
     mounted(){
@@ -130,14 +151,19 @@ export default {
                 top: 0,
                 left: 0,
             })
+             this.id = this.$route.params.id
+           this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
+          .then(res=>{
+          this.vehicle = res.body
+          })
     },
     methods:{
-        
          pay(){
+             if(this.name && this.lname && this.email && this.phone && this.zip && this.city && this.country && this.address1 && this.address2){
             this.payload = true
             var options = {
             "key": "rzp_test_hWIr4WWlHGQ70c", // Enter the Key ID generated from the Dashboard
-            "amount": this.price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
+            "amount": this.vehicle[0].selling_price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
             "currency": "INR",
             "name": "Acme Corp",
             "description": "A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami",
@@ -152,10 +178,13 @@ export default {
             "theme": {
                 "color": "#ffb52f"
             }
-        };
+        }
+        }else{
+            this.msg = 'Please fill all the Fields'
+        }
 
          this.$http.post('https://rzp_test_hWIr4WWlHGQ70c:MeeC2WCpWLzKCjptairpDirQ@www.bikex.in/v1/orders',{
-                "amount":this.price * 100,
+                "amount":this.vehicle[0].selling_price * 100,
                 "currency":"INR",
                 "payment_capture":1
                 })
@@ -169,6 +198,11 @@ export default {
         verifySignature:function(response){
          alert('sucessfull', response.razorpay_payment_id)
             },
+    },
+    computer:{
+        validator(){
+            return this.err
+        }
     }
 }
 </script>
@@ -229,7 +263,6 @@ export default {
 .icon-cart > span.count-price-add {
     color: #2f2f2f;
     display: inline-block;
-    font-family: "Oswald",sans-serif;
     font-size: 20px;
     font-weight: bold;
     line-height: 1;
@@ -240,7 +273,6 @@ export default {
     border-radius: 50px;
     color: #ffb52f;
     display: inline-block;
-    font-family: "Oswald",sans-serif;
     font-size: 11px;
     font-weight: 500;
     height: 18px;
@@ -413,7 +445,6 @@ export default {
     display: block;
     font-size: 20px;
     transition: all 0.3s ease 0s;
-    font-family: "Oswald",sans-serif;
     font-weight: bold;
 }
 .chosen-container-single .chosen-single span:hover {
@@ -540,7 +571,6 @@ export default {
 .main-menu ul li a {
     color: #bdbdbd;
     display: inline-block;
-    font-family: "Oswald",sans-serif;
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -1137,11 +1167,9 @@ export default {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 7px;
-    font-family: "Oswald",sans-serif;
 }
 .product-price > span {
     color: #353535;
-    font-family: "Oswald",sans-serif;
     font-size: 24px;
     font-weight: bold;
     line-height: 1;
@@ -1200,7 +1228,6 @@ export default {
     color: #9b9b9b;
     font-weight: bold;
     font-size: 18px;
-    font-family: "Oswald",sans-serif;
     position: relative;
     transition: all .3s ease 0s;
 }
@@ -1260,14 +1287,12 @@ export default {
 .latest-price > span {
     color: #e1e1e1;
     display: block;
-    font-family: "Oswald",sans-serif;
     font-size: 18px;
 }
 .latext-btn > a {
     background-color: #fff;
     color: #001232;
     display: inline-block;
-    font-family: "Oswald",sans-serif;
     font-size: 18px;
     font-weight: bold;
     padding: 8px 25px 10px;
@@ -1300,7 +1325,6 @@ export default {
 .product-title-price-2 > span {
     color: #353535;
     display: block;
-    font-family: "Oswald",sans-serif;
     font-size: 18px;
     line-height: 1;
     margin-bottom: 5px;
@@ -1387,7 +1411,6 @@ export default {
     color: #001232;
     font-size: 16px;
     line-height: 1;
-    font-family: "Oswald",sans-serif;
 }
 .name-designation {
     margin-top: 28px;
@@ -1415,7 +1438,6 @@ export default {
 .testimonial-active.owl-carousel .owl-nav div {
     color: #9b9b9b;
     display: inline-block;
-    font-family: "Oswald",sans-serif;
     font-size: 18px;
     font-weight: bold;
     margin: 0 18px 0 0;
@@ -1632,7 +1654,6 @@ export default {
     color: #b6b6b6;
     font-size: 18px;
     font-weight: 400;
-    font-family: "Oswald",sans-serif;
 }
 .footer-support {
     margin-top: 27px;
@@ -2962,7 +2983,6 @@ h1.cart-heading {
 .table-content table th {
     border-top: medium none;
     color: #353535;
-    font-family: "Oswald",sans-serif;
     font-size: 18px;
     font-weight: 400;
     padding: 0 10px 12px;

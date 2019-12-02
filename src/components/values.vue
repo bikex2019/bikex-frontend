@@ -1,5 +1,5 @@
 <template>
-    <div class="container col-md-12 m-0 p-0 mb-4">
+    <div class="container col-md-12 m-0 p-0 mb-4 mobile-top">
         <div class="row border p-0 pb-0 mb-4 main m-0 p-0 laptop-main">
          <div class="col-md-8 col-12 mt-3 mb-4 p-0 text-left laptop-container">
              <div class="col-md-12 pl-0 ml-0 title pb-2">
@@ -70,7 +70,7 @@
                                 </div>
                                 <div class="services-text">
                                     <h5><strong>24/7 Support</strong></h5>
-                                    <p></p>
+                                    <p>Have tricky queries or need help with selecting the bike? We are only one call away and we’ll be there to save your day!</p>
                                 </div>
                             </div>
                         </div>
@@ -80,8 +80,8 @@
                                     <img alt="" src="../assets/tracking.png" width="25%">
                                 </div>
                                 <div class="services-text">
-                                    <h5><strong>Door Delivery</strong></h5>
-                                    <p></p>
+                                    <h5><strong>Doorstep Delivery</strong></h5>
+                                    <p>oh yes, we do! It’s free if the delivery is within a radius of 10km from the workshop. Of course, you will be charged if the distance exceeds 10kms.</p>
                                 </div>
                             </div>
                         </div>
@@ -91,8 +91,8 @@
                                     <img alt="" src="../assets/tools.png" width="25%">
                                 </div>
                                 <div class="services-text">
-                                    <h5><strong>Door Servicing</strong></h5>
-                                    <p></p>
+                                    <h5><strong>Doorstep servicing</strong></h5>
+                                    <p>Let our mechanics take care of your bike while you sip a cup of homemade tea in the comfort of your living room!</p>
                                 </div>
                             </div>
                         </div>
@@ -102,8 +102,8 @@
                                     <img alt="" src="../assets/key.png" width="24%">
                                 </div>
                                 <div class="services-text">
-                                   <h5><strong>Assured Buy-Back</strong></h5>
-                                    <p></p>
+                                   <h5><strong>Assured buy-back</strong></h5>
+                                    <p>Customers can exchange their BikeX vehicle in the next 2 years and avail a cashback of up to 60 per cent! Customers will get an assured buyback certificate from BikeX.</p>
                                 </div>
                             </div>
                         </div>
@@ -130,6 +130,9 @@
 }
 .no-mobile-pad{
     padding: 0 !important
+}
+.mobile-top{
+    margin-top: 50px !important
 }
 .question-area{
   text-align: center !important
@@ -370,7 +373,7 @@ transform: translateZ(20px);
 }
 
   .nav-link{
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     color: black;
   }
@@ -448,6 +451,7 @@ padding-top: 30px;
 .single-services {
     box-shadow: 0 0 2px 0.5px rgba(0, 0, 0, 0.22);
     padding: 30px 10px 25px;
+    min-height: 100%;
 }
 .services-icon {
     margin-right: 20px;
@@ -460,6 +464,8 @@ padding-top: 30px;
 }
 .services-text > p {
     margin: 0;
+    text-align: justify;
+    font-size: 13px;
 }
 .single-services:hover .services-icon img {
     animation: 500ms ease-in-out 0s normal none 1 running zoomIn;

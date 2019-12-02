@@ -3,8 +3,8 @@
    <div class="overview-area pb-4 text-left p-0 m-0">
                 <div class="container p-0 m-0">
                     <div class="row p-0 m-0">
-                        <div class="col-md-6 p-0 m-0">
-                            <div class="overview-content">
+                        <div class="col-md-6 p-0 m-0 background">
+                            <div class="overview-content mobile-top">
                                 <h1>HANDPICKED
                                   <span>RE</span><strong>FURBISHED</strong></h1>
                                 <h2>BIKES AT <span>FIXED PRICE</span></h2>
@@ -34,9 +34,9 @@
                 </div>
             </div>
 
-     <div class="banner-area mb-5 p-0 m-0">
-                <div class="container p-0 m-0 phone-center">
-                    <p class="mb-4 mt-2 p-0" style="font-size:19px"><strong>EXPLORE OUR SELECTION</strong></p>
+     <div class="banner-area mb-4 p-0 m-0">
+                <div class="container p-0 m-0 phone-center mb-4">
+                    <p class="mt-3 mb-4 p-0 mobile-top" style="font-size:19px"><strong>EXPLORE OUR SELECTION</strong></p>
                     <div class="row p-0 m-0">
                         <div class="col-md-4 col-4 col-lg-4 pl-0 pr-2 m-0">
                             <div class="banner-wrapper mb-3">
@@ -115,6 +115,7 @@ export default {
   height: 262px;
 }
 @media only screen and (max-width: 780px) {
+
     .overview-content {
         margin-top: 25px !important;
         text-align: center;
@@ -125,12 +126,36 @@ export default {
     .banner-wrapper::after {
     border: none !important
     }
+    .mobile-top{
+        margin-top: 50px !important;
+        margin-bottom: 20px !important
+    }
+    .background{
+            background-color: rgb(0, 18, 50,0.5);
+    }
+    .overview-area{
+        background-color: rgba(5, 5, 5, 0.5);
+       background-image: url('../assets/bikex_values_3.png');    
+        background-size: 115%;
+        padding-bottom: 0px !important;
+        background-repeat: no-repeat 
+            }
+    .overview-content{
+        padding: 13px !important
+    }
     .overview-content h1 , .overview-content h2 {
         color: #001232;
         font-weight: 400;
-        font-size: 33px !important;
+        text-align: left;
+        font-size: 24px !important;
         letter-spacing: 0.8px;
-        margin: 0;
+    }
+    .overview-content > p {
+    font-size: 14px !important;
+    padding: 0;
+    margin: 0 !important;
+    text-align: justify;
+    color: rgb(255, 255, 255) !important;
     }
     .no-mobile{
         display: none !important
@@ -162,8 +187,7 @@ export default {
     font-size: 14px;
     font-weight: 400;
     height: inherit;
-    letter-spacing: 1px;
-    
+    letter-spacing: 1px;    
     }
 }
 #myBtn {

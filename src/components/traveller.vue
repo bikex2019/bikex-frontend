@@ -18,7 +18,9 @@
              <div class="product-area mb-4 mt-3 p-0 col-md-10" style="margin:0 auto">
                 <div class="container col-12 m-0 p-0">
                     <div class="section-title jumbotron m-0 mb-4 p-0 pt-2 pb-2 text-center mb-50">
-                        <p><span>Bikex,</span> the most latgest bike store in Bengaluru can serve you latest quality of reborn motorcycle in fixed price.</p>
+                        <p><span>Traveller</span> 
+                        - make your long journeys comfortable and fun with our ‘traveller’ bike collection.
+                        </p>
                     </div>
                     <div class="product-tab-list text-center col-12 nav product-menu-mrg" role="tablist">
                         <a class="active"  data-toggle="tab" v-on:click="filterkey('all')">
@@ -180,7 +182,7 @@ export default {
 </script>
 <style scoped>
 @media only screen and (max-width: 600px) {
-    .breadcrumb{  
+        .breadcrumb{  
         float: none;
         justify-content: center
     }
@@ -192,12 +194,18 @@ export default {
     font-size: 12px !important;
     }
     .section-title p{
-        font-size: 10px;
+        font-size: 10px !important;
+        margin:0 !important
     }
      .section-title h2{
         font-size: 15px;
     }
-
+    .card-body .bike-name{
+        font-size: 10px !important
+    }
+    .color{
+        font-size: 12px !important
+    }
 }
 .top{
     margin-top: 80px;

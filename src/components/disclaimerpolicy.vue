@@ -1,7 +1,7 @@
 <template>
     
-        <div class = "privacy-policy col-md-10 mt-5 mb-5">
-         <h2 class="mt-5 m-0 p-0">DISCLAIMER POLICY</h2>
+        <div class = "privacy-policy col-md-10 mt-4 mb-5">
+         <h4 class="text-center mb-4 m-0 p-0">DISCLAIMER POLICY</h4>
             <div class="col-md-12 m-0 p-0">
                  <p class="jumbo-block  p-3">We are committed to protecting the personal information that you share with us. 
                 Please read this Privacy Policy carefully, as it sets forth our practices regarding the information we collect
@@ -59,133 +59,76 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
   @media only screen and (max-width: 600px) {
-  h2{
-    font-family: 'Montserrat', sans-serif;
+  h4{
     text-align: center !important;
-   font-size: 25px;
+    font-size: 18px;
     font-weight: bold
   }
+  p{
+      font-size: 12px !important
+  }
+  h5{
+    font-size: 15px !important 
+  }
 }
-h2{
-    font-family: 'Montserrat', sans-serif;
+
+h4{
+font-weight: 700;
+font-size: 20px;
 }
+
 p{
     font-weight:light;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    letter-spacing: 0.7px;
-    line-height: 1.6;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: justify !important;
 }
 h5{
-        font-size: 20px;
+        font-size: 16px;
         font-weight: bold;
-        font-family: 'Montserrat', sans-serif;
-        color:black;
+            color:black !important;
         letter-spacing: 0.6px;
+        text-transform: uppercase
 }
 .margin{
     margin:0 auto;
 }
 .jumbo-block {
-    font-size: 15px;
+    font-size: 13px;
     background-color: #f2f2f2;
-    font-family: 'Montserrat', sans-serif;
-    letter-spacing: 0.25px;
     display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    text-align: justify !important;
 }
 .privacy-policy{
     margin: 0 auto;
     background-color:white;
 }
-
-  @media only screen and (max-width: 600px) {
-  .col-s-7 {width: 58.33%;} 
-  h2{
-    font-family: 'Montserrat', sans-serif;
-    text-align: center !important
-}
-  }
-
-
-/* loading */
-#overlay {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(233, 227, 227, 0.8);
-  z-index: 2;
-  cursor: pointer;
+ul{
+    font-size: 13px;
+    font-weight: 500;
+    display: block;
+    list-style-type: disc;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+   
 }
 
-#text{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-size: 20px;
-  color: black;
-  transform: translate(-50%,-50%);
-  -ms-transform: translate(-50%,-50%);
-}
+.legal-bullet-list{
+ 
+    line-height: 2.3;
+    letter-spacing: 0.3px;
+    color: #041022;
 
-.loader::before{
-    content: '';
-      display: block;
-      --color:#ffb52f;
-      width: 100px;
-      height: 100px;
-      background-color: var(--color);
-      animation: rotate 3s infinite;
   }
-  .loader{
-    --color: #5d62bd;
-    width: 100px;
-    height: 100px;
-    background-color: var(--color);
-    outline: 6px solid var(--color);
-    outline-offset: -1px;
-    transform: rotate(45deg) scale(0.5);
+
+  .red{
+      color:red
   }
-  @keyframes rotate {
-      0% {
-      transform-origin: bottom left;
-      transform: translate(-5px, -105px) rotate(0deg) scale(1.1)
-      }
-      25% {
-      transform-origin: bottom left;
-      transform: translate(-5px, -105px) rotate(-180deg) scale(1.1);
-      }
-      26% {
-      transform-origin: top left;
-      transform: translate(-5px, 105px) rotate(-180deg) scale(1.1)
-      }
-      50% {
-      transform-origin: top left;
-      transform: translate(-5px, 105px) rotate(-360deg) scale(1.1);
-      }
-      51% {
-      transform-origin: top right;
-      transform: translate(5px, 105px) rotate(-360deg) scale(1.1)
-      }
-      75% {
-      transform-origin: top right;
-      transform: translate(5px, 105px) rotate(-540deg) scale(1.1)
-      }
-      76% {
-      transform-origin: bottom right;
-      transform: translate(5px, -105px) rotate(-540deg) scale(1.1)
-      }
-      100% {
-      transform-origin: bottom right;
-      transform: translate(5px, -105px) rotate(-720deg) scale(1.1)
-      }
+  .abc{
+      padding-bottom:75px;
   }
-  
+  .padding{
+      padding-bottom:35px;
+  }
 </style>

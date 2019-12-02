@@ -18,7 +18,9 @@
              <div class="product-area mb-4 mt-3 p-0 col-md-10" style="margin:0 auto">
                 <div class="container col-12 m-0 p-0">
                     <div class="section-title jumbotron m-0 mb-4 p-0 pt-2 pb-2 text-center mb-50">
-                        <p><span>Bikex,</span> the most latgest bike store in Bengaluru can serve you latest quality of reborn motorcycle in fixed price.</p>
+                        <p><span>Commuters</span>
+                        - for your day to day travel. Now make it effortless and hassle-free.
+                        </p>
                     </div>
                     <div class="product-tab-list text-center col-12 nav product-menu-mrg" role="tablist">
                         <a class="active"  data-toggle="tab" v-on:click="filterkey('all')">
@@ -50,7 +52,7 @@
                             </div>
                             <div class="card-body text-left mt-1">
                                 <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
-                                <p class="bold">RS.{{image.selling_price}}</p>
+                                <p class="bold bike-sp">RS.{{image.selling_price}}</p>
                             </div>
                             
                         </div> 
@@ -70,12 +72,6 @@
             <p class="mt-4 bold">currently we are out of stock</p>
             <p class="mt-4 bold">we are coming back on stock soon</p>
         </div> 
-
-    <!-- <div class="loading text-center mb-4" style="min-height:200px" v-if="loading">
-              <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-        </div>
-    </div> -->
     <div >
         <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
             <div id="text" class="spinner-border" role="status">
@@ -192,12 +188,18 @@ export default {
     font-size: 12px !important;
     }
     .section-title p{
-        font-size: 10px;
+        font-size: 10px !important;
+        margin:0 !important
     }
      .section-title h2{
         font-size: 15px;
     }
-
+    .card-body .bike-name{
+        font-size: 10px !important
+    }
+    .color{
+        font-size: 12px !important
+    }
 }
 .top{
     margin-top: 80px;
@@ -214,7 +216,6 @@ export default {
     text-transform: uppercase;
     color:#001232;
     font-size:17px !important;
-    letter-spacing: 0.4px;
 }
 .section-title p{
         font-size: 15px;
