@@ -2,7 +2,7 @@
 <footer class="footer-classic col-md-12" style="background: #f5f5f0;">
         <div class="container col-md-10 margin">
           <div class="row custom">
-            <div class="col-md-3 text-left contentss ok">
+            <div class="col-md-3 col-6 text-left contentss ok">
               <h3 class="menu">COMPANY</h3>
               <ul class="nav-list">
                 <li><router-link to="/ourstory">Our Story</router-link></li>
@@ -11,7 +11,7 @@
               </ul>
             </div>
 
-            <div class=" policy col-md-3 text-left contentss ok">
+            <div class=" policy col-md-3 col-6 text-left contentss ok">
               <h3 class="menu">POLICIES</h3>
               <ul class="nav-list">
                 
@@ -22,7 +22,7 @@
               </ul>
             </div>
 
-            <div class=" contact col-md-3 text-left contentss ok">
+            <div class=" contact col-md-3 col-6 text-left contentss ok">
              <h3 class="menu">CONTACT</h3> 
               <ul class="nav-list">
                 <li><span>Email: </span><a href="mailto:info@bikex.in">info@bikex.in</a></li>            
@@ -33,7 +33,7 @@
               </ul>
             </div>
 
-            <div class="col-md-3 text-left ok mt-0">
+            <div class="col-md-3 text-left col-6 ok mt-0">
               <a href="" class="navbar-brand" routerLink="/"><img class="logolight" src="../assets/bikexlight2.svg" width="90px" height="59px"></a>
               <div class="social">
                 <p class="social"><a href="https://www.facebook.com/ontrack" target="_blank"><i class="fb fa fa-facebook fa-2x"></i> </a>
@@ -41,10 +41,10 @@
                 <a href="https://www.twitter.com/ontrack" target="_blank">  <i class="tweet fa fa-twitter fa-2x"></i></a></p>
                </div>  
 
-               <div class="batch">
+               <!-- <div class="batch">
                   <p class="rights"><span>©  </span><span class="copyright-year">2019</span>
                   <span> BikeX</span><span>. </span><span>All Rights Reserved.</span></p>
-                </div>
+                </div> -->
             </div>
 
             
@@ -154,8 +154,8 @@ ul li a:hover {
 }
 
 @media only screen and (max-width: 700px) {
-.ok{
-  text-align: center !important
+.contentss{
+text-align: left !important
 }
 }
 

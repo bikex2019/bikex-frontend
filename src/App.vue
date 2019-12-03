@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="container col-md-12 text-center bg-top" v-if="demo">
+    <!-- <div class="container col-md-12 text-center bg-top" v-if="demo">
       <div class="row p-0 m-0">
         <div class="col-md-11 m-0 p-0">
         <strong>
@@ -12,7 +12,7 @@
              <i class="fa fa-times" style="font-size:14px;"></i>
         </div>
      </div>
-    </div>
+    </div> -->
     <navigation></navigation>
   <div class="contents">
     <router-view></router-view>
@@ -48,10 +48,12 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
 @media only screen and (max-width: 600px) {
-
-.displayblock{
-  display: block !important
-}
+  .displayblock{
+    display: block !important
+  }
+  .contents{
+    margin-top: 50px !important;
+  }
 }
 .contents{
   margin-top: 10px;

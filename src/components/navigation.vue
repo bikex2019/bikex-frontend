@@ -1,15 +1,22 @@
 <template>
   
      <div class="navigation p-0 m-0">
-          <nav class="navbar p-0 m-0 mt-2">
+          <nav class="navbar p-0 m-0 mt-2 mynav">
       <div class="row col-md-10 margin">
         <div class="col-md-2 col-12 m-0 pt-2 pl-2 pr-0 logo">
             <router-link to="/">
-              <img src="../assets/bikex_temp_logo.svg" width="130px">
+              <img src="../assets/bikex-logo.svg" width="130px">
               <span style="color:black;font-size:10px;text-decoration:none"><STRONG>BLR</STRONG></span>
             </router-link>
-              <a v-if="navigation" v-on:click="navigation = false"> <i class="fa fa-times mt-2 mr-2 pull-right" style="font-size:32px"></i></a>
-              <i v-else class="fa fa-bars pull-right mt-2 mr-2 p-0 mobile" style="font-size:30px" v-on:click="navigation = true"></i>
+              <a v-if="navigation" v-on:click="navigation = false">
+                 <i class="mt-2 mr-2 pull-right">
+                   <img src="../assets/cross.svg" width="22px">
+                 </i>
+                 
+                 </a>
+              <i v-else class=" pull-right mt-2 mr-2 p-0 mobile" v-on:click="navigation = true">
+                <img src="../assets/menu-bikex.svg" width="25px">
+              </i>
         </div>
         <div class="navmenu col-md-10 col-12 text-right phone">
         <ul class=" ml-0 pl-0 pt-2" v-bind:class="{ block: navigation }">
@@ -28,7 +35,7 @@
             <!-- <li class="nav-item">
            <a href="tel:+91 9742744444"><h6><i class="fa fa-phone mr-1" aria-hidden="true" style="color:#FFB52F"></i>+91 9742744444</h6> </a>
             </li> -->
-                <li class="nav-item"  v-if="!isLogged">
+                <li class="nav-item"  v-if="!isLogged" v-on:click="navigation = false">
                 <a class="story"><router-link to="/login" exact-active-class="active">LOGIN</router-link></a>
             </li>
              <li class="nav-item dropdown m-0" v-else>
@@ -53,35 +60,42 @@
             <router-link to="/">
               <img src="../assets/bikex_temp_logo.svg" width="130px">
             </router-link>
-              <a v-if="navigation" v-on:click="navigation = false"> <i class="fa fa-times mt-2 mr-2 pull-right" style="font-size:32px"></i></a>
-              <i v-else class="fa fa-bars pull-right mt-2 mr-2 p-0 mobile" style="font-size:30px" v-on:click="navigation = true"></i>
+               <a v-if="navigation" v-on:click="navigation = false">
+                 <i class="mt-2 mr-2 pull-right">
+                   <img src="../assets/cross.svg" width="22px">
+                 </i>
+                 
+                 </a>
+              <i v-else class=" pull-right mt-2 mr-2 p-0 mobile" v-on:click="navigation = true">
+                <img src="../assets/menu-bikex.svg" width="25px">
+              </i>
         </div>
         <div class="navmenu col-md-10 col-12 text-right phone">
         <ul class=" ml-0 pl-0 pt-3" v-bind:class="{ block: navigation }">
-               <li class="nav-item" >
+               <li class="nav-item" v-on:click="navigation = false">
                 <a class="story"><router-link to="/commuters" exact-active-class="active">BUY</router-link></a>
             </li>
-             <li class="nav-item">
+             <li class="nav-item" v-on:click="navigation = false">
             <a class="models"><router-link to="/sell" exact-active-class="active" >SELL</router-link></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-on:click="navigation = false">
             <a class="models"><router-link to="/finance" exact-active-class="active">FINANCE</router-link></a>
             </li>
-              <li class="nav-item">
+              <li class="nav-item" v-on:click="navigation = false">
             <a class="models"><router-link to="/ourstory" exact-active-class="active" >OUR STORY</router-link></a>
             </li>
             <!-- <li class="nav-item">
            <a href="tel:+91 9742744444"><h6><i class="fa fa-phone mr-1" aria-hidden="true" style="color:#FFB52F"></i>+91 9742744444</h6> </a>
             </li> -->
-            <li class="nav-item"  v-if="!isLogged" @button-clicked="update">
+            <li class="nav-item"  v-if="!isLogged" @button-clicked="update" v-on:click="navigation = false">
                 <a class="story"><router-link to="/login" exact-active-class="active">LOGIN</router-link></a>
             </li>
              <li class="nav-item dropdown" v-else>
-                <a class="nav-link dropdown-toggle m-0 p-0" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle m-0 p-0" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-on:click="toggle =! toggle">
                   {{user}}
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item"><router-link to="profile">PROFILE</router-link></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" v-if="toggle">
+                  <a class="dropdown-item"  v-on:click="navigation = false"><router-link to="profile">PROFILE</router-link></a>
                   <a class="dropdown-item" v-on:click="logout">SIGN OUT</a>
                 </div>
               </li>
@@ -105,7 +119,8 @@ export default {
         navigation:false,
         shownav:false,
         isLogged:false,
-        user:''
+        user:'',
+        toggle:false
       }
     },
   created () {
@@ -126,6 +141,7 @@ export default {
         localStorage.removeItem('token')
         localStorage.removeItem('temp')
         window.location.reload()
+        this.navigation = false
       },
       update(){
         this.isLogged = false
@@ -143,6 +159,28 @@ export default {
   .navmenu ul{
     display: none;
   }
+  .margin{
+    margin: 1px!important;
+    padding: 0 !important
+  }
+  .navmenu .dropdown-menu{
+    text-align: center;
+    width: 100%;
+    position: relative;
+    margin-top: 12px !important;
+    border: none !important;
+    font-size: 12px;
+  }
+  .mynav{
+    border-bottom: 1px solid rgb(133, 127, 127,0.07);
+    margin: 0px 0px 5px 0px !important;
+    padding-bottom: 5px !important;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
   .active{
   border-bottom: none !important;
   padding-bottom: 5px
@@ -153,7 +191,8 @@ export default {
   .navbar ul li{
      display: block !important;
      text-align: center;
-     padding: 10px
+     padding: 10px;
+     font-weight: bold;
   }
   .logo{
     background: #ffffff;
@@ -161,7 +200,10 @@ export default {
   }
   .phone{
   padding-right: 0 !important;
-  margin-right: 0 !important
+  margin-right: 0 !important;
+  }
+  .navigate{
+    display: none
   }
 }
 .dropdown-toggle{
@@ -204,8 +246,8 @@ export default {
     font-weight: bold
 }
 .navmenu .dropdown-menu{
-    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
+    font-weight: bold
 }
 
 .navmenu ul li a{

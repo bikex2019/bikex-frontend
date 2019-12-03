@@ -1,6 +1,6 @@
 <template>
-    <div class="container col-md-12 m-0 p-0 mb-4 mobile-top">
-        <div class="row border p-0 pb-0 mb-4 main m-0 p-0 laptop-main">
+    <div class="container col-md-12 col-12 pt-4">
+        <div class="row border p-0 mb-4 main m-0 laptop-main">
          <div class="col-md-8 col-12 mt-3 mb-4 p-0 text-left laptop-container">
              <div class="col-md-12 pl-0 ml-0 title pb-2">
                  <h2><strong>BIKE</strong><span style="color:#ffb52f"><strong>X</strong></span><strong> VALUES</strong></h2>
@@ -64,45 +64,45 @@
                 <div class="container m-0 p-0 margin">
                     <div class="row m-0 p-0 margin">
                         <div class="col-lg-3 col-md-6 mb-4 m-0 pr-2 p-0 no-mobile-pad col-12">
-                            <div class="single-services orange mb-30 col-12 margin text-center">
-                                <div class="services-icon">
+                            <div class="single-services row orange mb-30 col-12 margin text-center">
+                                <div class="services-icon col-3 col-md-12">
                                     <img alt="" src="../assets/support.svg" width="25%">
                                 </div>
-                                <div class="services-text">
+                                <div class="services-text col-9 col-md-12">
                                     <h5><strong>24/7 Support</strong></h5>
                                     <p>Have tricky queries or need help with selecting the bike? We are only one call away and we’ll be there to save your day!</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad col-12">
-                            <div class="single-services yellow mb-30 col-12 margin text-center">
-                                <div class="services-icon">
+                            <div class="single-services row yellow mb-30 col-12 margin text-center">
+                                <div class="services-icon col-3 col-md-12">
                                     <img alt="" src="../assets/tracking.png" width="25%">
                                 </div>
-                                <div class="services-text">
+                                <div class="services-text col-9 col-md-12">
                                     <h5><strong>Doorstep Delivery</strong></h5>
                                     <p>oh yes, we do! It’s free if the delivery is within a radius of 10km from the workshop. Of course, you will be charged if the distance exceeds 10kms.</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad col-12">
-                            <div class="single-services purple mb-30 col-12 margin text-center">
-                                <div class="services-icon">
+                            <div class="single-services row purple mb-30 col-12 margin text-center">
+                                <div class="services-icon col-3 col-md-12">
                                     <img alt="" src="../assets/tools.png" width="25%">
                                 </div>
-                                <div class="services-text">
+                                <div class="services-text col-9 col-md-12">
                                     <h5><strong>Doorstep servicing</strong></h5>
                                     <p>Let our mechanics take care of your bike while you sip a cup of homemade tea in the comfort of your living room!</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 col-12 no-mobile-pad col-12">
-                            <div class="single-services sky mb-30 col-12 margin text-center">
-                                <div class="services-icon">
-                                    <img alt="" src="../assets/key.png" width="24%">
+                        <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 no-mobile-pad col-12">
+                            <div class="single-services row sky mb-30 col-12  margin text-center">
+                                <div class="services-icon col-3 col-md-12">
+                                    <img alt="" src="../assets/key.png" width="25%">
                                 </div>
-                                <div class="services-text">
-                                   <h5><strong>Assured buy-back</strong></h5>
+                                <div class="services-text col-9 col-md-12">
+                                   <h5 class="m-0 p-0"><strong>Assured buy-back</strong></h5>
                                     <p>Customers can exchange their BikeX vehicle in the next 2 years and avail a cashback of up to 60 per cent! Customers will get an assured buyback certificate from BikeX.</p>
                                 </div>
                             </div>
@@ -129,13 +129,19 @@
     display: none !important
     }
     .no-mobile-pad{
-        padding: 0 !important
+        padding: 0px !important;
+        margin: 0px !important;
     }
-    .mobile-top{
-        margin-top: 50px !important
+    .single-services{
+        box-shadow: none !important
     }
     .question-area{
     text-align: center !important
+    }
+    .services-area{
+        box-shadow: 0 2px 4px rgba(0,0,0,.07) !important;
+        border: 1px solid #dee2e6!important;
+        margin-bottom: 50px !important;
     }
     .title{
         text-align: center !important
@@ -146,6 +152,17 @@
     }
     .nav-tabs{
         padding: 0px 0px 0px 10px;
+    }
+    .services-icon img{
+        width: 80%
+    }
+    .services-text h5{
+        margin: 0 !important;
+        padding: 0!important;
+        text-align: left
+    }
+    .single-services{
+        padding: 20px 0px !important
     }
 
 }
@@ -404,7 +421,7 @@ transform: translateZ(20px);
   display: none
 }
  .trust-content{
-    font-size: 14px;
+    font-size: 13px;
     padding: 0;
     margin: 0;
     text-align: justify
@@ -421,6 +438,12 @@ transform: translateZ(20px);
 
         .button{
         padding-top: 30px;
+        }
+        .services-icon{
+            width: 100% !important
+        }
+        .services-text > h5 {
+            margin: 0 !important
         }
 }
 /* just for laptop // just for laptop // just for laptop // just for laptop */
@@ -463,7 +486,7 @@ transform: translateZ(20px);
     min-height: 100%;
 }
 .services-icon {
-    margin-right: 20px;
+    /* margin-right: 20px; */
 }
 .services-text > h5 {
     color: #4f4e4e;
@@ -472,7 +495,7 @@ transform: translateZ(20px);
     margin: 12px 0 15px;
 }
 .services-text > p {
-    margin: 0;
+    margin: 5px 0px;
     text-align: justify;
     font-size: 13px;
 }

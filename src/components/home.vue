@@ -1,7 +1,7 @@
 <template>
 <div class="col-md-10 margin">
-   <div class="overview-area pb-4 text-left p-0 m-0">
-                <div class="container p-0 m-0">
+   <div class="overview-area pb-4 text-left">
+                <div class="container mobile-margin">
                     <div class="row p-0 m-0">
                         <div class="col-md-6 p-0 m-0 background">
                             <div class="overview-content mobile-top">
@@ -34,8 +34,8 @@
                 </div>
             </div>
 
-     <div class="banner-area mb-4 p-0 m-0">
-                <div class="container p-0 m-0 phone-center mb-4">
+     <div class="banner-area mb-4">
+                <div class="container phone-center mb-4">
                     <p class="mt-3 mb-4 p-0 mobile-top" style="font-size:19px"><strong>EXPLORE OUR SELECTION</strong></p>
                     <div class="row p-0 m-0">
                         <div class="col-md-4 col-4 col-lg-4 pl-0 pr-2 m-0">
@@ -120,8 +120,16 @@ export default {
         margin-top: 25px !important;
         text-align: center;
     }
+    .mobile-margin{
+        margin: 0px !important;
+        padding: 0px !important
+    }
     .phone-center{
         text-align: center
+    }
+    .margin{
+        margin: 0px !important;
+        padding: 0px !important
     }
     .banner-wrapper::after {
     border: none !important
@@ -131,20 +139,21 @@ export default {
         margin-bottom: 20px !important
     }
     .background{
-            background-color: rgb(0, 18, 50,0.5);
+            /* background-color: black; */
     }
     .overview-area{
-        background-color: rgba(5, 5, 5, 0.5);
-       background-image: url('../assets/bikex_values_3.png');    
+        background-color: rgba(231, 227, 161, 0.1);
+        /* background-image: url('../assets/bikex_values_3.png');    
         background-size: 115%;
-        padding-bottom: 0px !important;
-        background-repeat: no-repeat 
+      
+        background-repeat: no-repeat;*/
+          padding-bottom: 0px !important; 
             }
     .overview-content{
         padding: 13px !important
     }
     .overview-content h1 , .overview-content h2 {
-        color: #001232;
+        color: black !important;
         font-weight: 400;
         text-align: left;
         font-size: 24px !important;
@@ -155,7 +164,7 @@ export default {
     padding: 0;
     margin: 0 !important;
     text-align: justify;
-    color: rgb(255, 255, 255) !important;
+    /* color: rgb(255, 255, 255) !important; */
     }
     .no-mobile{
         display: none !important
@@ -168,13 +177,13 @@ export default {
     }
     .banner-content {
     bottom: 19px !important;
-}
+    }
     .banner-content > h2 {
         font-size: 11px !important;
     }
-    .banner-area{
-    border: 1px solid rgb(248, 248, 248, 0.8)
-    }
+    /* .banner-area{
+    border: 1px solid rgb(248, 248, 248, 0.8);
+    } */
     .question-area .button{
     text-align: center !important
     }
@@ -224,7 +233,7 @@ export default {
   opacity: 0.9;
 }
 .margin{
-    margin: 0 auto
+    margin: 0 auto;
 }
  .resize_fit_center {
     max-width:100%;
