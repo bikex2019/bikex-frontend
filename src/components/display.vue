@@ -35,14 +35,20 @@
     <div id="myModal" class="modal mt-4" v-bind:class="{ 'block': displayBlock }">
       <div class="modal-content">
         <div class="mySlides text-center">
-          <span class="close cursor" v-on:click="closeModal"><i class='fa fa-times' style='font-size:48px;color:#ffb52f'></i></span>
+          <span class="close cursor" v-on:click="closeModal">
+            <img src="../assets/close.svg" width="30px">
+          </span>
           <div class="numbertext">
             <p>{{currentSlide + 1}} / {{images.length}}</p>
           </div>
             <img :src="images[currentSlide]" style="width:auto" height="465px" class="image-modal">
         </div>
-        <a class="prev" v-on:click="minusSlides()"><i class='fa fa-angle-left' style='font-size:48px;color: #ffb52f'></i></a>
-        <a class="next" v-on:click="plusSlides()"><i class='fa fa-angle-right' style='font-size:48px;color: #ffb52f'></i></a>
+        <a class="prev" v-on:click="minusSlides()">
+          <img src="../assets/back.svg" width="50px">
+        </a>
+        <a class="next" v-on:click="plusSlides()">
+          <img src="../assets/next.svg" width="50px">
+        </a>
         <div class="preview mb-4">
           <div class="row p-0 m-0">
             <div class="col-md-1 p-0 m-0" v-for="(image, index) in images" :key="index" >

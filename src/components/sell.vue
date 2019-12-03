@@ -2,7 +2,7 @@
   <div class="finance bg">
 <div class="middle col-md-10">
       <div class="row col-md-12 bg m-0 p-0">
-      <div class="col-md-6 makemedown pt-5 m-0 p-0">
+      <div class="col-md-6 makemedown m-0 p-0">
          <h4>We buy motorcycles.</h4>
             <h3><strong>We pay a heapful of green<span style="color:#ffb52f"> notes.</span></strong></h3>
             <p class="sell-content">-we make it quick and hassle-free. We are here to ensure that you avoid those mind-numbing pitfalls that quite a few sellers get pulled into. We are always looking for used motorcycles and will buy any make or model. Fill up this form and sell away!
@@ -17,35 +17,35 @@
       </div>
     </div>
 </div>
-        <section class="bg-light middle pt-1 pb-5 col-md-10 mt-4">
-        <div class="container  col-md-12 col-12 pl-0 ">
-          <div class="row col-12 mt-5">
-            <div class="col-md-4 col-12 margin-bottom">  
-                <div class="row col-12">
-                            <div class="col-md-12 col-11 m-0 p-0 text-left mt-1 ">
+  <section class="bg-light middle pt-1 pb-5 col-md-10 col-12 mt-4">
+        <div class="container col-12 p-0">
+          <div class="row col-12 mt-5 m-0 p-0">
+            <div class="col-md-4 col-12 margin-bottom m-0 p-0">  
+                <div class="row col-12 m-0 p-0">
+                            <div class="col-md-12 col-12 m-0 p-0 text-left mt-1">
                               <div class="row m-0 p-0">
                                 <div>
                                   <img src="../assets/clock.svg" width="35px"> 
                                 </div>
-                              <div class="col-md-10 col-10">
+                              <div class="col-md-10 m-0 p-0 pl-3 col-10">
                                 <h6 class="card-title pb-2 mb-0"><strong>Quick & Hassle-Free</strong></h6>
-                               <p class="card-text">All we need is the basic information to start the selling process</p>
+                               <p class="card-text m-0 p-0">All we need is the basic information to start the selling process</p>
                               </div>
                             </div>  
                             </div>
                   </div>
             </div>
-            <div class="col-md-4 col-12 margin-bottom">
+            <div class="col-md-4 col-12 margin-bottom m-0 p-0">
                
                 <div class="row col-12">
-                            <div class="col-md-12 col-11 m-0 p-0 text-left mt-1 ">
+                            <div class="col-md-12 col-12 m-0 p-0 text-left mt-1">
                               <div class="row m-0 p-0">
                                 <div class="">
                                   <img src="../assets/saveb.svg" width="40px"> 
                                 </div>
-                                <div class="col-md-10 col-10">
+                                <div class="col-md-10 m-0 p-0 pl-3 col-10 ">
                                    <h6 class="card-title pb-2 mb-0"><strong>Valuation is fair </strong></h6>
-                                <p class="card-text">We offer the ‘right’ and the highest trade prices... </p>
+                                <p class="card-text m-0 p-0">We offer the ‘right’ and the highest trade prices... </p>
                                 </div>
                               </div>
                             </div>  
@@ -53,15 +53,15 @@
                 
              </div>
             
-            <div class="col-md-4 col-12 margin-bottom">
+            <div class="col-md-4 col-12 margin-bottom m-0 p-0">
               
                <div class="row m-0 p-0">
                          <div class="">
                                   <img src="../assets/pickup-truck.svg" width="35px"> 
                                 </div>
-                            <div class="col-md-10 col-10">
+                            <div class="col-md-10 m-0 p-0 pl-3 col-10">
                               <h6 class="card-title pb-2 mb-0"><strong>Doorstep Pick-up</strong></h6>
-                              <p class="card-text">We will schedule a time to pick up the bike...</p>
+                              <p class="card-text m-0 p-0">We will schedule a time to pick up the bike...</p>
                             </div>  
                         </div>
                       </div>
@@ -270,12 +270,12 @@ export default {
           .middle{
           margin:0 auto;
           }
-           text-center{
+          .text-center{
             margin:0;
             padding:0
           }
           .margin-bottom{
-            margin-bottom: 15px;
+            margin-bottom: 15px !important;
           }
       }
 

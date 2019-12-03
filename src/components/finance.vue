@@ -3,12 +3,12 @@
         <!-- icons grid -->
         <div class="container middle col-md-10 col-12 pl-0 pt-4">
           <div class="row col-12 m-0 p-0 mt-4 mb-4">
-            <div class="col-md-4 col-12 margin-bottom m-0 p-0">  
+            <div class="col-md-4 col-12 margin-bottom">  
                 <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
                              <img src="../assets/check.svg" width="15px">  
                             </div>
-                            <div class="col-md-11 col-11 m-0 p-0 text-left mt-1 ">
+                            <div class="col-md-11 col-11 m-0 p-0 text-left ">
                               <p class="cool pb-2 mb-0">Apply in Minutes</p>
                               <p class="card-text">Apply online in as few as 5 minutes. We'll respond quickly with your financing information.</p>
                             </div>  
@@ -20,7 +20,7 @@
                             <div class="col-md-1 col-1 m-0 p-0">
                              <img src="../assets/check.svg" width="15px">  
                             </div>
-                            <div class="col-md-11 col-11 m-0 p-0 text-left mt-1 ">
+                            <div class="col-md-11 col-11 m-0 p-0 text-left ">
                               <p class="cool pb-2 mb-0">Highly Competitive Rates</p>
                               <p class="card-text">Our 12+ banks and lending partners will compete with each other to get you a low rate.</p>
                             </div>  
@@ -34,7 +34,7 @@
                             <div class="col-md-1 col-1 m-0 p-0">
                               <img src="../assets/check.svg" width="15px">    
                             </div>
-                            <div class="col-md-11 col-11 m-0 p-0 text-left mt-1 ">
+                            <div class="col-md-11 col-11 m-0 p-0 text-left ">
                               <p class="cool pb-2 mb-0">Easy Registration</p>
                               <p class="card-text">When you finance with Bikex, (details will be added later)</p>
                             </div>  
@@ -45,10 +45,10 @@
   <!-- icons grid -->
   <!-- image section -->
     <div class="container midddle p-0 col-md-10 col-12">
-      <div class="row col-12 pt-4 m-0 p-0 mt-4">
-          <div class="col-md-6 m-0 p-0">
-             <div class="col-md-12 ml-0 pl-0 text-left">
-                <h3 class="ml-0 pl-0 pb-3"><strong>how it works?</strong></h3>
+      <div class="row col-12 pt-4 mt-4">
+          <div class="col-md-6">
+             <div class="col-md-12 text-left">
+                <h3 class=" pb-3"><strong>how it works?</strong></h3>
              </div>
               
                    <div class="row pb-3 col-12 m-0 p-0">

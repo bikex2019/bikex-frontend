@@ -5,48 +5,48 @@
           <div class="card" v-for="(data, index) in displayImage" :key="index">
             <img :src="data.path" alt="" width="100%">
             <div class="card-description pl-3 pt-3 pb-4">
-                <!-- <p class="header pt-1 p-0 m-0">2019 | Activa 3G</p>
-                <p class="paragraph pt-1 p-0 m-0">The Active road shedder</p> -->
                 <p class="header pt-1 m-0 p-0" v-for="(vehicle, index) in vehicle" :key="index">Total Price Rs. {{vehicle.selling_price}}</p>
 
-                <div class="row mt-4 p-4">
+                 <div class="row mt-4 p-4">
                 <div class="col-md-6 text-left">
                     <p>
                         <i class="fa fa-check checked mr-3" aria-hidden="true"></i>
                         <span class="paragraph">RTO</span>
                     </p>
                 </div>
-                 <div class="col-md-6 text-left">
+                <div class="col-md-6 text-left">
                      <p>
                         <i class="fa fa-check checked mr-3" aria-hidden="true"></i>
                         <span class="paragraph">INSURANCE</span>
                     </p>
                 </div>
 
-                     <div class="col-md-6 text-left">
+                <div class="col-md-6 text-left">
                     <p>
                         <i class="fa fa-times not-checked mr-3" aria-hidden="true"></i>
                         <span class="paragraph">THIRD PARTY</span>
                     </p>
                 </div>
-                 <div class="col-md-6 text-left">
+                <div class="col-md-6 text-left">
                      <p>
                         <i class="fa fa-check checked mr-3" aria-hidden="true"></i>
                         <span class="paragraph">TRANSFER</span>
                     </p>
                 </div>
-
             </div>
-            
+    </div>
+     
+</div>
+    <div class="loader" v-if="loading">
             </div>
-          </div>
-
-          
-
+            <div class="loader-sm mt-3" v-if="loading"></div>
+            <div class="loader-sm mt-3" v-if="loading"></div>
+            <div class="loader-sm mt-3" v-if="loading"></div>
+            <div class="loader-sm mt-3" v-if="loading"></div>
       </div>
 
       <div class="card col-md-8 mb-4 p-5">
-            <p class="top-header mt-4">How would you like to pay?</p>
+            <p class="top-header mt-0">How would you like to pay?</p>
             <div class="row border m-0 p-0 mb-4">
                 <div class="col-md-12 m-0 p-0">
                     <p class="caption m-0 pl-3 p-0 ">MOST POPULAR OPTIONS</p>
@@ -203,5 +203,29 @@ margin:0 auto;
     font-size:15px;
     font-weight: 500;
     letter-spacing: 1px
+}
+.loader{
+  animation: blink 1s linear infinite;
+  min-height:200px;
+}
+.loader-sm{
+  animation: blink 1s linear infinite;
+  min-height:20px;
+  border: none;
+  border-radius: 0px
+}
+@keyframes blink {
+  0%{
+    background-color: rgb(216, 214, 214);
+    opacity: 0.5
+  }
+  50%{
+    background-color: rgb(173, 166, 166);
+    opacity: 0.3
+  }
+  100%{
+    background-color: rgb(199, 179, 179);
+    opacity: 0.7
+  }
 }
 </style>

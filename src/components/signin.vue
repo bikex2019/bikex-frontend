@@ -1,12 +1,12 @@
 
 <template>
-    <div class="login col-md-8 center border mb-4 mt-4 p-4">
-        <div class="row mt-4 mb-4">
+    <div class="login col-md-8 center mb-4 mt-3 p-4">
+        <div class="row border mt-3 mb-4 px-4 pt-4">
             <div class="col-md-6 mobile mt-4">
                 <img src="../assets/login.jpg" width="100%">
             </div>
-            <div class="col-md-6 m-0 p-0">
-                <h2>Sign Up Free!</h2>
+            <div class="col-md-6col-12 pt-4">
+                <h5 class="text-center">SIGN UP</h5>
                 <div class="row">
                     <div class="col-md-12 mt-4">
                         <p class="error m-0 p-0">{{response_message}}</p>
@@ -174,7 +174,7 @@ outline: none !important;
 border: none;
 border-bottom: 1px solid gray;
 border-radius: 0px;
-width: 70%
+width: 100%
 }
 .inputText:focus{
     border-bottom: 1px solid #ffb52f;
@@ -184,11 +184,13 @@ input:focus, textarea:focus, select:focus{
   box-shadow: none !important
 }
 .floating-label {
-  position: absolute;
-  pointer-events: none;
-  left: 30px;
-  top: 8px;
-  transition: 0.2s ease all;
+    font-size: 13px;
+    font-weight: 500;
+    position: absolute;
+    pointer-events: none;
+    left: 30px;
+    top: 8px;
+    transition: 0.2s ease all;
 }
 
 input:focus ~ .floating-label,

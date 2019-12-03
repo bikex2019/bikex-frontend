@@ -1,6 +1,6 @@
 <template>
     
-        <div class = "privacy-policy col-md-10 mt-4 mb-">
+        <div class = "privacy-policy col-md-10 mt-5 mb-4">
          <h4 class="mt-4 m-0 p-0 text-center">TERMS AND CONDITION</h4>
             <div class="col-md-12 m-0 p-0 mt-4">
                  <p class="jumbo-block  p-3">We are committed to protecting the personal information that you share with us. 
@@ -94,6 +94,9 @@ export default {
   }
   p{
       font-size: 12px !important
+  }
+  .privacy-policy{
+      margin-top: 80px!important
   }
   h5{
     font-size: 15px !important 

@@ -1,27 +1,27 @@
 <template>
     <div class="login col-md-8 col-12 mt-4 mb-4 center">
-        <div class="row border m-0 p-0">
+        <div class="row border mt-4 mb-4 mx-1 px-4 pt-4">
             <div class="col-md-6 mobile mt-4 mb-4">
                 <img src="../assets/login.jpg" width="100%">
             </div>
-            <div class="col-md-6 m-0 p-0 col-12 pt-4">
+            <div class="col-md-6 col-12 pt-4">
                 <h5 class="text-center">LOG IN</h5>
-                <div class="row">
+                <div class="row text-center">
                     <div class="col-md-12 mt-4 text-center" v-if="response_message">
                         <p class="error">{{response_message}}</p>
                     </div>
-                 <div class="col-md-12 mb-4 ml-4 mt-4 text-center">
-                  <input type="email" v-model="email" class="inputText form-control" required/>
+                 <div class="col-md-12 mb-4 mt-4 text-center">
+                  <input type="text" v-model="email" class="inputText form-control" required/>
                   <span class="floating-label" >Email</span>
                 </div>
-                  <div class="col-md-12 mb-4 ml-4">
+                  <div class="col-md-12 mb-4">
                   <input type="password" v-model="password" class="inputText form-control" required />
                   <span class="floating-label" >Password</span>
                 </div>
-                <div class="col-md-12 mb-4 ml-4 pt-4 justify-content-center">
+                <div class="col-md-12 mb-4 pt-4 justify-content-center">
                    <button class="action-button" v-on:click="log_me">LOGIN</button>
                 </div>
-                <div class="col-md-12 mb-4 ml-4 pt-4">
+                <div class="col-md-12 mb-4 pt-4">
                     <p>Need Account? <router-link to="/signup">sign up.</router-link></p>
                 </div>
             </div>
@@ -100,16 +100,18 @@ export default {
 }
 .login{
     background-color: #fefefe;
-    margin-top: 90px !important
+    margin-top: 50px !important;
+    margin-bottom: 50px !important
 }
 @media only screen and (max-width: 600px) {
   .mobile{
       display: none !important
   }
   .inputText{
-      width: 90% !important
+      width: 100% !important
   }
   .login{
+       margin-top: 90px !important;
       text-align: center !important
   }
 }
@@ -119,7 +121,7 @@ outline: none !important;
 border: none;
 border-bottom: 1px solid gray;
 border-radius: 0px;
-width: 80%
+width: 100%
 }
 .inputText:focus{
     border-bottom: 1px solid #ffb52f;
@@ -129,11 +131,13 @@ input:focus, textarea:focus, select:focus{
   box-shadow: none !important
 }
 .floating-label {
-  position: absolute;
-  pointer-events: none;
-  left: 30px;
-  top: 8px;
-  transition: 0.2s ease all;
+    font-size: 13px;
+    font-weight: 500;
+    position: absolute;
+    pointer-events: none;
+    left: 30px;
+    top: 8px;
+    transition: 0.2s ease all;
 }
 
 input:focus ~ .floating-label,

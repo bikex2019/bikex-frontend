@@ -60,6 +60,9 @@ export default {
   p{
       font-size: 12px !important
   }
+   .privacy-policy{
+      margin-top: 80px!important
+  }
   h5{
     font-size: 15px !important 
   }

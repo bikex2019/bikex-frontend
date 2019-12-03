@@ -74,11 +74,14 @@
                                         </thead>
                                         <tbody>
                                             <tr class="cart_item">
-                                                <td class="product-name">
+                                                <td class="product-name" >
                                                     Total <strong class="product-quantity"></strong>
                                                 </td>
-                                                <td class="product-total">
-                                                    <span class="amount">RS 41000.00</span>
+                                                <td v-if="loading">
+                                              <strong><span class="amount" >Loading..</span></strong>
+                                                </td>
+                                                <td class="product-total" v-for="(price, index) in vehicle" :key="index">
+                                                    <span class="amount">{{price.selling_price}}.00</span>
                                                 </td>
                                             </tr>
                                            
@@ -86,14 +89,23 @@
                                         <tfoot>
                                             <tr class="cart-subtotal">
                                                 <th>RTO</th>
-                                                <td><span class="amount">RS 9000.00</span></td>
+                                                <td v-if="loading">
+                                              <strong><span class="amount" >Loading..</span></strong>
+                                                </td>
+                                                <td><span class="amount">{{rto}}</span></td>
                                             </tr> 
                                              <tr class="cart-subtotal">
                                                 <th>Insurance</th>
-                                                <td><span class="amount">RS 9000.00</span></td>
+                                                <td v-if="loading">
+                                              <strong><span class="amount" >Loading..</span></strong>
+                                                </td>
+                                                <td><span class="amount">{{insurance}}</span></td>
                                             </tr>                                             
                                             <tr class="order-total">
                                                 <th>Total Amount</th>
+                                                <td v-if="loading">
+                                              <strong><span class="amount" >Loading..</span></strong>
+                                                </td>
                                                 <td><strong><span class="amount" v-for="(price, index) in vehicle" :key="index">{{price.selling_price}}.00</span></strong>
                                                 </td>
                                             </tr>								
@@ -130,6 +142,9 @@ export default {
     data(){
         return{
             price:500,
+            rto:'',
+            insurance:'',
+            loading:true,
             vehicle:[],
             payload:false,
             err:1,
@@ -155,6 +170,9 @@ export default {
            this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
           .then(res=>{
           this.vehicle = res.body
+          this.loading = false
+          this.rto = 900
+          this.insurance = 900
           })
     },
     methods:{
@@ -197,10 +215,10 @@ export default {
          alert('sucessfull', response.razorpay_payment_id)
             },
     },
-    computer:{
+    computed:{
         validator(){
             return this.err
-        }
+        },
     }
 }
 </script>
