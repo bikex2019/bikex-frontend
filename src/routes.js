@@ -19,6 +19,8 @@ import signup from './components/signin'
 import login from './components/login'
 import profile from './components/profile'
 import payment from './components/payment'
+import booking from './components/booking'
+import invoice from './components/invoice'
 
 export default[
     
@@ -37,6 +39,8 @@ export default[
    {path:'/ourstory', component:ourstory},
    {path:'/vehicle/:id', component:display},
    {path:'/checkout/:id',component:checkout},
+   {path:'/booking/:id',component:booking},
+   {path:'/invoice/:id',component:invoice},
    {path:'/payment/:id',component:payment},
    {path:'/payment',component:pay},
    {path:'/login', component:login},
