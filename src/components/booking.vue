@@ -80,33 +80,20 @@
                                                 <td v-if="loading">
                                               <strong><span class="amount" >Loading..</span></strong>
                                                 </td>
-                                                <td class="product-total" v-for="(price, index) in vehicle" :key="index">
-                                                    <span class="amount">{{price.selling_price}}.00</span>
+                                                <td class="product-total">
+                                                    <span class="amount">1000.00</span>
                                                 </td>
                                             </tr>
                                            
                                         </tbody>
                                         <tfoot>
-                                            <tr class="cart-subtotal">
-                                                <th>RTO</th>
-                                                <td v-if="loading">
-                                              <strong><span class="amount" >Loading..</span></strong>
-                                                </td>
-                                                <td><span class="amount">{{rto}}</span></td>
-                                            </tr> 
-                                             <tr class="cart-subtotal">
-                                                <th>Insurance</th>
-                                                <td v-if="loading">
-                                              <strong><span class="amount" >Loading..</span></strong>
-                                                </td>
-                                                <td><span class="amount">{{insurance}}</span></td>
-                                            </tr>                                             
+                                                                              
                                             <tr class="order-total">
-                                                <th>Total Amount</th>
+                                                <th>Booking Amount</th>
                                                 <td v-if="loading">
                                               <strong><span class="amount" >Loading..</span></strong>
                                                 </td>
-                                                <td><strong><span class="amount" v-for="(price, index) in vehicle" :key="index">{{price.selling_price}}.00</span></strong>
+                                                <td><strong><span class="amount" >Rs. 1000.00</span></strong>
                                                 </td>
                                             </tr>								
                                         </tfoot>
@@ -234,7 +221,7 @@ export default {
             this.loading=true
              var options = {
                             "key": "rzp_test_8H0gv4ohtIQp1m", // Enter the Key ID generated from the Dashboard
-                            "amount": this.vehicle[0].selling_price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
+                            "amount": 1000 * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
                             "currency": "INR",
                             "name": "Acme Corp",
                             "email":this.email,
@@ -253,7 +240,7 @@ export default {
                             }
                         };
                         this.$http.post('http://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@localhost:8080/v1/orders',{
-                            "amount":this.vehicle[0].selling_price * 100,
+                            "amount":1000 * 100,
                             "currency":"INR",
                             "payment_capture":1
                         }).then((res)=>{
@@ -277,16 +264,10 @@ export default {
         },
         changeStatus(){
              this.$http.put('https://backend-bikex.herokuapp.com/api/procurestatus/' + this.vehicle[0]._id,{
-                    status:5,
-                    date:this.date
-                    }).then(()=>{
-                         this.$swal({
-                            position: 'top-end',
-                            icon: 'error',
-                            title: 'Ordered Sucessfully.',
-                            showConfirmButton: false,
-                            timer: 1500
-                            }) 
+                status:4,
+                date:this.date
+                    }).then((res)=>{
+                        window.console.log(res)
                         this.$router.push('/invoice/'+ this.myorder_id)
                     }) .catch((err)=>{
                         this.loading = false;
@@ -5746,4 +5727,18 @@ p.checkout-coupon input[type="submit"] {
   top: 50%;
   left: 50%;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </style>

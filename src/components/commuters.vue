@@ -53,6 +53,8 @@
                             <div class="card-body text-left mt-1">
                                 <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
                                 <p class="bold bike-sp">RS.{{image.selling_price}}</p>
+                                 <span class="badge badge-danger" v-if="image.status==4">Sale Pending</span>
+                                  <span class="badge badge-success" v-else>Available</span>
                             </div>
                             
                         </div> 
@@ -110,11 +112,11 @@ export default {
     //   }, 2000)
     },
     beforeMount(){
-	this.$http.get('https://immense-chamber-94004.herokuapp.com/api/fetch/live-vehicle')
+	this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle')
       .then(response=>{this.vehicles= response.body;
-      });this.$http.get('https://immense-chamber-94004.herokuapp.com/api/models')
+      });this.$http.get('https://backend-bikex.herokuapp.com/api/models')
       .then(res=>{this.models= res.body;});
-      this.$http.get('https://immense-chamber-94004.herokuapp.com/api/upload-display')
+      this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
       .then(resp=>{this.displayImage= resp.body.data;this.loading = false});
     },
     methods:{

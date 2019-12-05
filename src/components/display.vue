@@ -59,13 +59,13 @@
       </div>
     </div>
   </div>
-  <div class="price-panel mr-0 pr-0 ml-0 col-12 col-md-12 mt-2 mb-1">
+  <div class="price-panel mr-0 pr-0 ml-0 col-12 col-md-12 mt-2 mb-1" v-for="(vehicles, index) in vehicles" :key="index">
      <div class="row col-12 pr-0 mr-0">
         <div class="col-md-3 col-12 description">
         <h1 class="margin" v-for="(models, index) in models" :key="index">{{models.modal_name}}</h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
         </div>
-         <div class="col-md-5 col-12 price" v-for="(vehicles, index) in vehicles" :key="index">
+         <div class="col-md-5 col-12 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
         <p class="label">Check for<span ><router-link to="/finance" style="color:#ffb52f; text-decoration:none"> Finance</router-link></span></p>
        </div>
@@ -75,22 +75,30 @@
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-2 display-laptop">
-              <button class="buttons" v-on:click="checkout">BOOK</button>
+         <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
+           <button class="buttons" v-on:click="book" >BOOK</button>
         </div>
-        <div class="col-md-2 display-laptop">
-              <button class="buttons" v-on:click="checkout" >PAY IN FULL</button>
+        <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
+              <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
+        </div>
+        <div v-else  class="col-md-4 display-laptop">
+          <span class="badge badge-danger">Sale Pending</span>
+           <button class="buttons" v-on:click="gotocommuter">FIND A MATCH</button>
         </div>
         
          
         <div class="fixed-bottom display-mobile mobile-panel">
             <div class="row m-0 p-0">
-              <div class="col-7 p-0 m-0">
-              <button class="buttons mr-1 m-0" v-on:click="checkout" >START PURCHASE</button>
-            </div>
-             <div class="col-4 p-0 m-0">
-              <button class="buttons ml-3 m-0" v-on:click="checkout" >BOOK</button>
-            </div>
+              <div class="col-7 p-0 m-0"  v-if="vehicles.status == 3">
+              <button class="buttons mr-1 m-0" v-on:click="checkout">START PURCHASE</button>
+              </div>
+              <div class="col-4 p-0 m-0"  v-if="vehicles.status == 3">
+                <button class="buttons ml-3 m-0" v-on:click="book" >BOOK</button>
+              </div>
+              <div v-else class="text-center col-12 mr-4">
+                <span class="badge badge-danger mr-2">Sale Pending</span>
+                <button class="mybtn p-2" v-on:click="gotocommuter">Look for other vehicle</button>
+              </div>
             </div>
         </div>
      </div>
@@ -182,13 +190,13 @@
 
 
   <nav class="navbar-fix col-md-12 p-0 m-0 fixed-top" v-if="shownav">
-     <div class="price-panel mr-0 pr-0 ml-0 col-12 mb-1" style="background-color:white">
-     <div class="row col-12 col-md-10" style="margin:0 auto">
+     <div class="price-panel mr-0 pr-0 ml-0 col-12 mb-1" style="background-color:white" >
+     <div class="row col-12 col-md-10" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
        <div class="col-md-3 col-12 description">
         <h1 class="margin" v-for="(models, index) in models" :key="index">{{models.modal_name}}</h1>
         <h1 class="margin" v-if="models.length == 0" >Loading.</h1>
         </div>
-         <div class="col-md-4 col-12 price" v-for="(vehicles, index) in vehicles" :key="index">
+         <div class="col-md-4 col-12 price">
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
         <p class="label">Check for<span ><router-link to="/finance" style="color:#ffb52f; text-decoration:none"> Finance</router-link></span></p>
        </div>
@@ -198,11 +206,15 @@
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-2 display-laptop">
-              <button class="buttons" v-on:click="checkout">BOOK</button>
+            <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
+           <button class="buttons" v-on:click="book" >BOOK</button>
         </div>
-        <div class="col-md-3 display-laptop">
-              <button class="buttons" v-on:click="checkout" >PAY IN FULL</button>
+        <div class="col-md-3 display-laptop" v-if="vehicles.status == 3">
+              <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
+        </div>
+        <div v-else  class="col-md-4 display-laptop" >
+          <span class="badge badge-danger">Sale Pending</span>
+           <button class="buttons" v-on:click="gotocommuter">FIND A MATCH</button>
         </div>
         
          
@@ -275,7 +287,6 @@ created(){
      this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
           .then(res=>{
           this.vehicles = res.body
-          window.console.log(this.vehicles)
           this.loading=false
       this.$http.get('https://backend-bikex.herokuapp.com/api/models/'+ res.body[0].model_id).then(response=>{
             this.models = response.body
@@ -340,6 +351,12 @@ created(){
           },
           checkout(){
             this.$router.push('/checkout/' + this.id)
+          },
+           book(){
+            this.$router.push('/booking/' + this.id)
+          },
+          gotocommuter(){
+        this.$router.push('/commuters')
           }
         
       },
@@ -506,6 +523,17 @@ cursor: pointer;
   border: 1px solid transparent;
   color: #fff;
   box-shadow: none;
+}
+.mybtn{
+ font-size: 14px;
+  font-weight: 400;
+  height: inherit;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color:  #ffb52f;
+  border: 1px solid transparent;
+  color: #fff;
+  box-shadow: none; 
 }
 .row1:after {
   content: "";
