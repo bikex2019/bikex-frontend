@@ -201,7 +201,7 @@ export default {
     methods:{
         pay(){
         this.payload = true
-         this.$http.post('http://localhost:3000/api/purchases',{
+         this.$http.post('https://backend-bikex.herokuapp.com/api/purchases',{
                     customer_id:localStorage.getItem('temp'),
                     vehicle_id:this.vehicle[0].vehicle_id,
                     firstname: this.name,
@@ -252,7 +252,7 @@ export default {
                                 "color": "#ffb52f"
                             }
                         };
-                        this.$http.post('http://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@localhost:8080/v1/orders',{
+                        this.$http.post('http://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@www.bikex.in/v1/orders',{
                             "amount":this.vehicle[0].selling_price * 100,
                             "currency":"INR",
                             "payment_capture":1
