@@ -17,7 +17,7 @@
       </div>
     </div>
 </div>
-  <section class="bg-light middle pt-1 pb-5 col-md-10 col-12 mt-4">
+  <section class="bg-light middle pt-1 pb-5 col-md-10 col-12 mt-4 sell-top">
         <div class="container col-12 p-0">
           <div class="row col-12 mt-5 m-0 p-0">
             <div class="col-md-4 col-12 margin-bottom m-0 p-0">  
@@ -231,6 +231,10 @@ export default {
 }
 .bg-light {
     background-color: whitesmoke!important;
+}
+.sell-top{
+  background-color: rgba(231, 227, 161, 0.1);
+  background-image: url('../assets/back.png'); 
 }
 @media only screen and (max-width: 600px) {
          .makemedown{

@@ -43,7 +43,7 @@
                   {{user}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <router-link to="profile"><a class="dropdown-item">PROFILE</a></router-link>
+                  <router-link to="/profile"><a class="dropdown-item">PROFILE</a></router-link>
                   <a class="dropdown-item" v-on:click="logout">SIGN OUT</a>
                 </div>
               </li>      
@@ -95,7 +95,7 @@
                   {{user}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" v-if="toggle">
-                  <a class="dropdown-item"  v-on:click="navigation = false"><router-link to="profile">PROFILE</router-link></a>
+                  <a class="dropdown-item"  v-on:click="navigation = false"><router-link to="/profile">PROFILE</router-link></a>
                   <a class="dropdown-item" v-on:click="logout">SIGN OUT</a>
                 </div>
               </li>

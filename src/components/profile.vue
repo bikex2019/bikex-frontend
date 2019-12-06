@@ -4,17 +4,19 @@
             <div class="row mb-2">
                     <div class="col-md-3 border text-center">
                         <img src="../assets/account.svg" class="mt-3" alt="" width="100px" height="100px">
-                            <h6 class="mb-4 mt-3"><span>{{profile.firstname}} </span> <span>{{profile.lastname}}</span></h6>
-                            <p v-if="loading">Loading</p>
-                            <div class=" mt-5 text-left pt-4 p-2">
+                        <div class="loader-sm mt-3" v-if="loading"></div>
+                            <h6 class="mb-4 mt-3" v-else><span>{{profile.firstname}} </span> <span>{{profile.lastname}}</span></h6>
+                            <div class=" mt-5 no-margin text-left pt-4 p-2">
                             <p class="text-center"><strong>My Information</strong></p>
-                            <p class="text-center">Phone no: {{profile.phone}}</p>
-                            <p class="text-center">Email id: {{profile.email}}</p>
+                            <div class="loader-sm mt-3" v-if="loading"></div>
+                            <p class="text-center" v-else>Phone no: <span v-if="loading">Loading</span>{{profile.phone}}</p>
+                            <div class="loader-sm mt-3" v-if="loading"></div>
+                            <p class="text-center" v-else>Email id: <span v-if="loading">Loading</span>{{profile.email}}</p>
                             </div>
                     </div>
                     <div class="col-md-9 margin ">
                    <div class="col-md-12 border ml-1 margin">  
-                     <ul class="nav nav-tabs" id="myTab" role="tablist">
+                     <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active head1" id="Finance-tab" data-toggle="tab" href="#Finance" role="tab" aria-controls="Finance" aria-selected="true">PROFILE</a>
                             </li>
@@ -23,35 +25,35 @@
                             </li>
                                     
                      </ul> 
-                        <div class="tab-content mt-3 mb-3 col-md-12 border" v-if="loading_purchase == false && bookings.length>0">
+                        <div class="tab-content mt-4 no-margin border phone-left mb-3 col-md-12 border" v-if="loading_purchase == false && bookings.length>0">
                             <div class="tab-pane active" id="Finance" role="tabpanel"  v-for="(data, index) in bookings" :key="index">
                             <div class="pixel1 col-md-3 p-0 m-0  text-center">
                                  <p class="m-0 p-0">Order Id: {{data._id}}</p>
                              </div>
                             <hr>
-                            <div class="row mt-3">
+                            <div class="row mt-3 no-margin">
                                 <div class="col-md-3">
                                    <img :src="data.image" alt="cd" width="100px" height="75px">
                                 </div>
-                                <div class="col-md-2 m-0 p-0 mt-3 ">
+                                <div class="col-md-2 m-0 p-0 mt-3 no-margin">
                                     <p class="pixel ">{{data.model}}</p>
                                     <p class="smallfont ">Color: blue</p>
                                 </div>
                                 
-                                   <div class="col-md-2 m-0 p-0 mt-3 text-center ">
+                                   <div class="col-md-2 col-6 m-0 p-0 mt-3 no-margin text-center phone-left">
                                     <p class="pixel">Rs {{data.amount}}</p>
                                 </div>
-                                <div class="col-md-3 mt-3 text-center">
+                                <div class="col-md-3 col-6 mt-3 text-center no-margin phone-left">
                                   <p class="" v-if="data.payment_status == 1">Paid</p>
                                    <p class="" v-if="data.payment_status == 3">Cash on Delivery</p>
                                 </div>
                             </div>
-                            <div class="row pixel mt-3">
-                                <div class="text-left col-md-6" >
-                                  <p class=""><span class="smallfont">Ordered On</span> {{data.date | moment("dddd, MMMM Do YYYY")}}</p>
+                            <div class="row pixel mt-3 no-margin">
+                                <div class="text-left col-md-6 no-margin" >
+                                  <p class="m-0 p-0"><span class="smallfont">Ordered On</span> {{data.date | moment("dddd, MMMM Do YYYY")}}</p>
                                 </div>
-                                <div class="text-right col-md-6" >
-                                  <p class=""><span class="smallfont">Order Total</span> Rs {{data.amount}}</p>
+                                <div class="text-right col-md-6 phone-left no-margin" >
+                                  <p class="m-0 p-0"><span class="smallfont">Order Total</span> Rs {{data.amount}}</p>
                                 </div>
                             </div>
                             </div>
@@ -61,12 +63,12 @@
                                  </div>
                             </div>
                         </div>
-                        <div class="tab-content mt-3 mb-3 col-md-12 border" v-if="loading_purchase == false && bookings.length == 0">
+                        <div class="tab-content mt-3 no-margin mb-3 col-md-12 border" v-if="loading_purchase == false && bookings.length == 0">
                             <div class="tab-pane active" id="Finance" role="tabpanel">
                                 <p>You have not made any bookings.</p>
                             </div>
                         </div>
-                            <div class="loader" v-if="loading_purchase"></div>
+                            <div class="loader mt-3" v-if="loading_purchase"></div>
                             <div class="loader-sm mt-3" v-if="loading_purchase"></div>
                             <div class="loader-sm mt-3" v-if="loading_purchase"></div>
                             <div class="loader-sm mt-3" v-if="loading_purchase"></div>
@@ -170,6 +172,13 @@ export default {
     .overview-content {
         margin-top: 19px !important;
         text-align: center
+    }
+    .no-margin{
+        padding: 0 !important;
+        margin:0 !important
+    }
+    .phone-left{
+        text-align: left !important
     }
     .nav-link{
         padding: 7px !important;
