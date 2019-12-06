@@ -143,7 +143,8 @@ export default {
     }
     .overview-area{
         background-color: rgba(231, 227, 161, 0.1);
-        /* background-image: url('../assets/bikex_values_3.png');    
+        background-image: url('../assets/back.png'); 
+        /*   
         background-size: 115%;
       
         background-repeat: no-repeat;*/
