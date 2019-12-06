@@ -166,7 +166,9 @@ export default {
             auth_msg: '',
             location:null,
             customer_id:'',
-            myorder_id:''
+            myorder_id:'',
+            model_name:'',
+            displayImage:[]
         }
     },
     beforeCreate(){
@@ -193,11 +195,15 @@ export default {
            this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
           .then(res=>{
           this.vehicle = res.body
+         this.$http.get('https://backend-bikex.herokuapp.com/api/models/'+ res.body[0].model_id)
+                .then(res=>{this.model_name= res.body;});
           this.loading = false
           this.rto = 900
           this.insurance = 900
           })
-    },
+          this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display/' + this.id)
+            .then(resp=>{this.displayImage= resp.body.data;});
+            },
     methods:{
         pay(){
         this.payload = true
@@ -208,6 +214,8 @@ export default {
                     lastname: this.lastname,
                     phone: this.phone,
                     email: this.email,
+                    image:this.displayImage[0].path,
+                    model:this.model_name[0].modal_name,
                     amount:this.vehicle[0].selling_price,
                     address1:this.address1,
                     address2:this.address2,
@@ -252,7 +260,7 @@ export default {
                                 "color": "#ffb52f"
                             }
                         };
-                        this.$http.post('https://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@www.bikex.in/v1/orders',{
+                        this.$http.post('https://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@bikex.in/v1/orders',{
                             "amount":this.vehicle[0].selling_price * 100,
                             "currency":"INR",
                             "payment_capture":1

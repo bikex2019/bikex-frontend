@@ -13,7 +13,8 @@ import 'sweetalert2/dist/sweetalert2.min.css';
  
 Vue.use(VueSweetalert2);
 Vue.use(VueCarousel);
-Vue.use(Autocomplete)
+Vue.use(Autocomplete);
+Vue.use(require('vue-moment'));
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);

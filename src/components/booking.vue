@@ -239,7 +239,7 @@ export default {
                                 "color": "#ffb52f"
                             }
                         };
-                        this.$http.post('https://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@www.bikex.in/v1/orders',{
+                        this.$http.post('https://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@bikex.in/v1/orders',{
                             "amount":1000 * 100,
                             "currency":"INR",
                             "payment_capture":1
