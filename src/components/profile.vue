@@ -18,7 +18,7 @@
                    <div class="col-md-12 border ml-1 margin">  
                      <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active head1" id="Finance-tab" data-toggle="tab" href="#Finance" role="tab" aria-controls="Finance" aria-selected="true">PROFILE</a>
+                                <a class="nav-link active head1" id="Finance-tab" data-toggle="tab" href="#Finance" role="tab" aria-controls="Finance" aria-selected="true">HISTORY</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link head1" id="Refurbishing-tab" data-toggle="tab" href="#Refurbishing" role="tab" aria-controls="Refurbishing" aria-selected="false">WISH LIST</a>
@@ -45,6 +45,7 @@
                                 </div>
                                 <div class="col-md-3 col-6 mt-3 text-center no-margin phone-left">
                                   <p class="" v-if="data.payment_status == 1">Paid</p>
+                                  <p class="" v-if="data.payment_status == 2">Booked</p>
                                    <p class="" v-if="data.payment_status == 3">Cash on Delivery</p>
                                 </div>
                             </div>
@@ -72,7 +73,7 @@
                             <div class="loader-sm mt-3" v-if="loading_purchase"></div>
                             <div class="loader-sm mt-3" v-if="loading_purchase"></div>
                             <div class="loader-sm mt-3" v-if="loading_purchase"></div>
-                            <div class="loader-sm mt-3" v-if="loading_purchase"></div>
+                            <div class="loader-sm mt-3 mb-4" v-if="loading_purchase"></div>
                         </div>
 
                     </div>

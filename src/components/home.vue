@@ -1,7 +1,7 @@
 <template>
-<div class="col-md-10 margin col-sm-10">
+<div class="col-md-10 margin">
    <div class="overview-area pb-4 text-left">
-                <div class="container mobile-margin p-0 m-0">
+                <div class="container p-0 m-0">
                     <div class="row p-0 m-0">
                         <div class="col-md-6 ipad-col-4 p-0 m-0 background">
                             <div class="overview-content mobile-top">

@@ -251,7 +251,7 @@ export default {
                             "description": "A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami",
                             "payment_capture":1,    
                             "handler": ((res)=>{
-                                this.updatedatabase(res)
+                                 this.updatedatabase(res)
                             }),
                             "notes": {
                                 "address": "note value"
@@ -260,7 +260,7 @@ export default {
                                 "color": "#ffb52f"
                             }
                         };
-                        this.$http.post('https://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@bikex.in/v1/orders',{
+                        this.$http.post('http://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@localhost:8080/v1/orders',{
                             "amount":this.vehicle[0].selling_price * 100,
                             "currency":"INR",
                             "payment_capture":1

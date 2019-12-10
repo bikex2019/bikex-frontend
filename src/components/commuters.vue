@@ -69,7 +69,6 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-
         <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && !datas.length == 0 && filtereddata.length == 0">
             <p class="mt-4 bold">sorry :(</p>
             <p class="mt-4 bold">currently we are out of stock</p>
@@ -118,7 +117,7 @@ export default {
       });this.$http.get('https://backend-bikex.herokuapp.com/api/models')
       .then(res=>{this.models= res.body;});
       this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
-      .then(resp=>{this.displayImage= resp.body.data;this.loading = false});
+      .then(resp=>{this.displayImage= resp.body.data;this.loading = false;window.console.log(this.displayImage)});
     },
     methods:{
         display(id){

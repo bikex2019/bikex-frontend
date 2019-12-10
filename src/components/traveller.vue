@@ -18,8 +18,8 @@
              <div class="product-area mb-4 mt-3 p-0 col-md-10" style="margin:0 auto">
                 <div class="container col-12 m-0 p-0">
                     <div class="section-title jumbotron m-0 mb-4 p-0 pt-2 pb-2 text-center mb-50">
-                        <p><span>Traveller</span> 
-                        - make your long journeys comfortable and fun with our ‘traveller’ bike collection.
+                        <p><span>Commuters</span>
+                        - for your day to day travel. Now make it effortless and hassle-free.
                         </p>
                     </div>
                     <div class="product-tab-list text-center col-12 nav product-menu-mrg" role="tablist">
@@ -47,12 +47,15 @@
                     <div class="moterbike"> 
                         <div class="card" v-on:click="display(image.vehicle_id)"> 
                             <div class="image text-center">
+                                <div class="top-left" v-if="image.status==4">
+                                    <span >Sale Pending</span>
+                               </div>
                                 <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
                                 <img v-else :src="image.path" width="100%" height="30%">
                             </div>
                             <div class="card-body text-left mt-1">
                                 <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
-                                <p class="bold">RS.{{image.selling_price}}</p>
+                                <p class="bold bike-sp">RS.{{image.selling_price}}</p>
                             </div>
                             
                         </div> 
@@ -66,18 +69,11 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-
         <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && !datas.length == 0 && filtereddata.length == 0">
             <p class="mt-4 bold">sorry :(</p>
             <p class="mt-4 bold">currently we are out of stock</p>
             <p class="mt-4 bold">we are coming back on stock soon</p>
         </div> 
-
-    <!-- <div class="loading text-center mb-4" style="min-height:200px" v-if="loading">
-              <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-        </div>
-    </div> -->
     <div >
         <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
             <div id="text" class="spinner-border" role="status">
@@ -116,12 +112,12 @@ export default {
     //   }, 2000)
     },
     beforeMount(){
-	this.$http.get('https://immense-chamber-94004.herokuapp.com/api/fetch/live-vehicle')
+	this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle')
       .then(response=>{this.vehicles= response.body;
-      });this.$http.get('https://immense-chamber-94004.herokuapp.com/api/models')
+      });this.$http.get('https://backend-bikex.herokuapp.com/api/models')
       .then(res=>{this.models= res.body;});
-      this.$http.get('https://immense-chamber-94004.herokuapp.com/api/upload-display')
-      .then(resp=>{this.displayImage= resp.body.data;this.loading = false});
+      this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
+      .then(resp=>{this.displayImage= resp.body.data;this.loading = false;window.console.log(this.displayImage)});
     },
     methods:{
         display(id){
@@ -181,8 +177,24 @@ export default {
 }
 </script>
 <style scoped>
+.top-left {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 0px;
+    color: white;
+    background-color: #ffb52f;
+    padding: 4px 8px;
+}
 @media only screen and (max-width: 600px) {
-        .breadcrumb{  
+    .breadcrumb{  
         float: none;
         justify-content: center
     }
@@ -222,7 +234,6 @@ export default {
     text-transform: uppercase;
     color:#001232;
     font-size:17px !important;
-    letter-spacing: 0.4px;
 }
 .section-title p{
         font-size: 15px;
