@@ -62,12 +62,16 @@
   <div class="price-panel mr-0 pr-0 ml-0 col-12 col-md-12 mt-2 mb-1" v-for="(vehicles, index) in vehicles" :key="index">
      <div class="row col-12 pr-0 mr-0">
         <div class="col-md-3 col-12 description">
-        <h1 class="margin" v-for="(models, index) in models" :key="index">{{models.modal_name}}</h1>
+        <h1 class="margin" v-for="(models, index) in models" :key="index">
+          <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
+           <span class="badge ml-4">Sale Pending</span>
+        </h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
+        <label>The Hero Choice</label>
         </div>
          <div class="col-md-5 col-12 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
-        <p class="label">Check for<span ><router-link to="/finance" style="color:#ffb52f; text-decoration:none"> Finance</router-link></span></p>
+        <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
        <div class="col-md-5  col-12 price" v-if="loading">
         <p class="margin">Loading price..</p>
@@ -76,13 +80,13 @@
            <button class="buttons">START PURCHASE</button>
         </div> -->
          <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
-           <button class="buttons" v-on:click="book" >BOOK</button>
+           <button class="buttons" v-on:click="book" >RESERVE</button>
         </div>
         <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
         </div>
         <div v-else  class="col-md-4 display-laptop">
-          <span class="badge badge-danger">Sale Pending</span>
+          <!-- <span class="badge badge-danger">Sale Pending</span> -->
            <button class="buttons" v-on:click="gotocommuter">FIND A MATCH</button>
         </div>
         
@@ -93,10 +97,10 @@
               <button class="buttons mr-1 m-0" v-on:click="checkout">START PURCHASE</button>
               </div>
               <div class="col-4 p-0 m-0"  v-if="vehicles.status == 3">
-                <button class="buttons ml-3 m-0" v-on:click="book" >BOOK</button>
+                <button class="buttons ml-3 m-0" v-on:click="book" >RESERVE</button>
               </div>
               <div v-else class="text-center col-12 mr-4">
-                <span class="badge badge-danger mr-2">Sale Pending</span>
+                <!-- <span class="badge badge-danger mr-2">Sale Pending</span> -->
                 <button class="mybtn p-2" v-on:click="gotocommuter">Look for other vehicle</button>
               </div>
             </div>
@@ -193,12 +197,16 @@
      <div class="price-panel mr-0 pr-0 ml-0 col-12 mb-1" style="background-color:white" >
      <div class="row col-12 col-md-10" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
        <div class="col-md-3 col-12 description">
-        <h1 class="margin" v-for="(models, index) in models" :key="index">{{models.modal_name}}</h1>
-        <h1 class="margin" v-if="models.length == 0" >Loading.</h1>
+        <h1 class="margin" v-for="(models, index) in models" :key="index">
+          <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
+           <span class="badge ml-4">Sale Pending</span>
+        </h1>
+        <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
+        <label>The Hero Choice</label>
         </div>
-         <div class="col-md-4 col-12 price">
+         <div class="col-md-5 col-12 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
-        <p class="label">Check for<span ><router-link to="/finance" style="color:#ffb52f; text-decoration:none"> Finance</router-link></span></p>
+        <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
        <div class="col-md-5  col-12 price" v-if="loading">
         <p class="margin">Loading price..</p>
@@ -206,23 +214,30 @@
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-            <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
-           <button class="buttons" v-on:click="book" >BOOK</button>
+         <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
+           <button class="buttons" v-on:click="book" >RESERVE</button>
         </div>
-        <div class="col-md-3 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
         </div>
-        <div v-else  class="col-md-4 display-laptop" >
-          <span class="badge badge-danger">Sale Pending</span>
+        <div v-else  class="col-md-4 display-laptop">
+          <!-- <span class="badge badge-danger">Sale Pending</span> -->
            <button class="buttons" v-on:click="gotocommuter">FIND A MATCH</button>
         </div>
         
          
         <div class="fixed-bottom display-mobile mobile-panel">
-            <div class="row">
-              <div class="col-12 p-0 m-0">
-               <button class="buttons">START PURCHASE</button>
-            </div>
+            <div class="row m-0 p-0">
+              <div class="col-7 p-0 m-0"  v-if="vehicles.status == 3">
+              <button class="buttons mr-1 m-0" v-on:click="checkout">START PURCHASE</button>
+              </div>
+              <div class="col-4 p-0 m-0"  v-if="vehicles.status == 3">
+                <button class="buttons ml-3 m-0" v-on:click="book" >RESERVE</button>
+              </div>
+              <div v-else class="text-center col-12 mr-4">
+                <!-- <span class="badge badge-danger mr-2">Sale Pending</span> -->
+                <button class="mybtn p-2" v-on:click="gotocommuter">Look for other vehicle</button>
+              </div>
             </div>
         </div>
      </div>
@@ -403,6 +418,10 @@ cursor: pointer;
 .display-mobile{
   display: none;
 }
+.badge{
+  background-color: #ffb52f;
+  border-radius: 0px !important;
+}
 .buttons{
  
   margin-top: 10px;
@@ -463,7 +482,7 @@ cursor: pointer;
    margin-bottom: 0px;
 }
 .description h1{
-  font-size: 30px;
+  font-size: 20px;
   font-weight: bold;
 }
 .description{
@@ -509,7 +528,7 @@ cursor: pointer;
  margin-bottom: 20px;
 }
 .price p{
-  font-size: 22px;
+  font-size: 17px;
   font-weight: bold;
 }
 .buttons{
