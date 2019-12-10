@@ -4,33 +4,33 @@
         <div class="col-md-4 col-12">
           <div class="card" v-for="(data, index) in displayImage" :key="index">
             <img :src="data.path" alt="" width="100%">
-            <div class="card-description pl-3 pt-3 pb-4">
-                <p class="header pt-1 m-0 p-0" v-for="(vehicle, index) in vehicle" :key="index">Total Price Rs. {{vehicle.selling_price}}</p>
+            <div class="card-description text-center p-0 m-0">
+                <p class="header pt-3 m-0 p-0" v-for="(vehicle, index) in vehicle" :key="index">Total Price Rs. {{vehicle.selling_price}}</p>
 
-                 <div class="row mt-4 p-4">
-                <div class="col-md-6 text-left">
+                 <div class="row mt-3 p-0 m-0 px-5">
+                <div class="col-md-6 m-0 p-0 text-left">
                     <p>
-                        <i class="fa fa-check checked mr-3" aria-hidden="true"></i>
-                        <span class="paragraph">RTO</span>
+                        <i class="fa fa-check checked mr-2" style="font-size:8px;" aria-hidden="true"></i>
+                        <span class="paragraph1">RTO</span>
                     </p>
                 </div>
-                <div class="col-md-6 text-left">
+                <div class="col-md-6 m-0 p-0 text-left">
                      <p>
-                        <i class="fa fa-check checked mr-3" aria-hidden="true"></i>
-                        <span class="paragraph">INSURANCE</span>
+                        <i class="fa fa-check checked mr-2" style="font-size:8px;" aria-hidden="true"></i>
+                        <span class="paragraph1">INSURANCE</span>
                     </p>
                 </div>
 
-                <div class="col-md-6 text-left">
+                <div class="col-md-6 m-0 p-0 text-left">
                     <p>
-                        <i class="fa fa-times not-checked mr-3" aria-hidden="true"></i>
-                        <span class="paragraph">THIRD PARTY</span>
+                        <i class="fa fa-times not-checked mr-2" style="font-size:8px;" aria-hidden="true"></i>
+                        <span class="paragraph1">THIRD PARTY</span>
                     </p>
                 </div>
-                <div class="col-md-6 text-left">
+                <div class="col-md-6 m-0 p-0 text-left">
                      <p>
-                        <i class="fa fa-check checked mr-3" aria-hidden="true"></i>
-                        <span class="paragraph">TRANSFER</span>
+                        <i class="fa fa-check checked mr-2" style="font-size:8px;" aria-hidden="true"></i>
+                        <span class="paragraph1">TRANSFER</span>
                     </p>
                 </div>
             </div>
@@ -203,6 +203,10 @@ margin:0 auto;
     font-size:15px;
     font-weight: 500;
     letter-spacing: 1px
+}
+.paragraph1{
+    font-size: 13px;
+    font-weight: 500;
 }
 .loader{
   animation: blink 1s linear infinite;

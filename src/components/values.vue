@@ -60,7 +60,7 @@
     </div>
 </div> 
 
-<div class="services-area col-md-12 m-0 p-0 mt-4 margin">
+<div class="services-area col-md-12 col-lg-12 m-0 p-0 mt-4 margin">
                 <div class="container m-0 p-0 margin">
                     <div class="row m-0 p-0 margin">
                         <div class="col-lg-3 col-md-6 mb-4 m-0 pr-2 p-0 no-mobile-pad col-12">
@@ -177,6 +177,11 @@
         padding: 20px 0px !important
     }
 
+}
+@media (min-width: 1100px){
+.container {
+    max-width: 100% !important;
+}
 }
 .margin-custom{
     margin-top: 3.5rem!important;
