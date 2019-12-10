@@ -1,9 +1,9 @@
 <template>
-<div class="col-md-10 margin">
+<div class="col-md-10 margin col-sm-10">
    <div class="overview-area pb-4 text-left">
-                <div class="container mobile-margin">
+                <div class="container mobile-margin p-0 m-0">
                     <div class="row p-0 m-0">
-                        <div class="col-md-6 p-0 m-0 background">
+                        <div class="col-md-6 ipad-col-4 p-0 m-0 background">
                             <div class="overview-content mobile-top">
                                 <h1>HANDPICKED
                                   <span>RE</span><strong>FURBISHED</strong></h1>
@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <link rel="stylesheet" href="../assets/css/icofont.css">
-                        <div class="col-md-6 p-0 m-0 no-mobile">
+                        <div class="col-md-6 ipad-col-8 p-0 m-0 no-mobile">
                             <div class="overview-img pl-3">
                                 <img class="tilter m-0 p-0" src="../assets/BikeX_Hero_Image2.png"  alt="">
                             </div>
@@ -34,14 +34,14 @@
                 </div>
             </div>
 
-     <div class="banner-area mb-4">
-                <div class="container phone-center mb-4">
-                    <p class="mt-3 mb-4 p-0 mobile-top" style="font-size:19px"><strong>EXPLORE OUR SELECTION</strong></p>
+     <div class="banner-area mb-4 m-0 p-0">
+                <div class="container phone-center mb-4 m-0 p-0">
+                    <p class="m-0 mb-4 p-0 mobile-top" style="font-size:19px"><strong>EXPLORE OUR SELECTION</strong></p>
                     <div class="row p-0 m-0">
                         <div class="col-md-4 col-4 col-lg-4 pl-0 pr-2 m-0">
                             <div class="banner-wrapper mb-3">
                                <router-link to="/commuters">
-                                  <a><img class="resize_fit_center" src="../assets/commuter1.jpg" alt="image"></a>
+                                  <a><img class="resize_fit_center" src="../assets/commuters16.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>COMMUTER</h2>
                                 </div>
@@ -109,13 +109,74 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
 @import '../assets/css/loader.css';
 
-.resize_fit_center{
-  transition: transform 1.5s ease;
-  width: 362px;
-  height: 262px;
+@media (min-width: 1200px){
+.container {
+    max-width: 100% !important;
 }
-@media only screen and (max-width: 780px) {
-
+.resize_fit_center{
+    width: 100% !important;
+    height: auto;
+}
+}
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+    .overview-content h1, .overview-content h2 {
+        color: #001232;
+        font-weight: 400;
+        font-size: 19px !important;
+        margin: 0;
+    }
+    .overview-content > p{
+        font-size: 12px !important;
+        padding: 0;
+        margin: 0;
+        text-align: justify;
+        color: #364d59;
+    }
+    .overview-content > h2 {
+    margin: 6px 0 13px !important;
+        }
+        .resize_fit_center {
+            width: auto !important;
+             height: auto !important
+        }
+        .banner-content > h2[data-v-957c9522] {
+    font-size: 20px !important;
+        }
+    .ipad-col-4{
+        width: 33.33% !important;
+    }
+    .ipad-col-8{
+        width: 66.66% !important;
+    }
+    .viewbikes-button{
+        width: 70% !important
+    }
+    .overview-content{
+        margin-top: 10px !important;
+    }
+      .col-md-10{
+          width: 100% !important
+      }
+      .col-md-6{
+          width: 33.33% !important
+      }
+  }
+@media only screen and (max-width: 767px) {
+    .resize_fit_center{
+    transition: transform 1.5s ease;
+    width: 362px;
+    height: 262px;
+    }
+    .container {
+    width: 100% !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
     .overview-content {
         margin-top: 25px !important;
         text-align: center;

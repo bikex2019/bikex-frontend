@@ -1,8 +1,8 @@
 <template>
-    <div class="container col-md-12 col-12 pt-4">
+    <div class="container col-md-12 col-12 pt-4 m-0 p-0">
         <div class="row border p-0 mb-4 main m-0 laptop-main">
-         <div class="col-md-8 col-12 mt-3 mb-4 p-0 text-left laptop-container">
-             <div class="col-md-12 pl-0 ml-0 title pb-2">
+         <div class="col-md-8 ipad-col-12 col-12 mb-4 p-0 text-left laptop-container">
+             <div class="col-md-12 pl-0 ml-0 title pb-2 text-left">
                  <h2><strong>BIKE</strong><span style="color:#ffb52f"><strong>X</strong></span><strong> VALUES</strong></h2>
              </div>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -21,7 +21,7 @@
             </ul> 
         
 <!-- Tab panes -->
-<div class="tab-content ml-0 pl-0 col-md-8 mt-4">
+<div class="tab-content ml-0 pl-0 col-md-12 margin-custom">
     <div class="tab-pane active" id="Finance" role="tabpanel" >
         <h5 class="head2">One price for every segment</h5>
         <p class="trust-content mt-3">
@@ -56,7 +56,7 @@
  </div>
 </div>
 <div class="col-md-4 col-8 pt-4 mt-2 mr-0 pr-0 imager text-right">
-    <img src="../assets/bikex_values_3.png" height="100%">
+    <img src="../assets/bikex_values_final.png" height="100%">
     </div>
 </div> 
 
@@ -117,7 +117,19 @@
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-@media only screen and (max-width: 780px) {
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+    .ipad-col-12{
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    }
+    .imager{
+        display: none !important
+    }
+  }
+@media only screen and (max-width: 767px) {
     .overview-content {
         margin-top: 19px !important;
         text-align: center
@@ -165,6 +177,9 @@
         padding: 20px 0px !important
     }
 
+}
+.margin-custom{
+    margin-top: 3.5rem!important;
 }
 .tab-pane h5{
 text-transform: uppercase;
@@ -406,7 +421,7 @@ transform: translateZ(20px);
     margin: 0;
     text-align: justify
   }
-@media screen and (max-width: 775px) {
+@media screen and (max-width: 767px) {
   .nav-link{
     font-size: 10px;
     color: black;
@@ -432,8 +447,8 @@ transform: translateZ(20px);
 /* just for laptop / / just for laptop // just for laptop // just for laptop */
 @media screen and (min-width: 700px){
 .laptop-container{
-    margin-top: 50px !important;
-    padding-left:30px !important
+    margin-top: 20px !important;
+    padding-left:20px !important
         }
 
         .button{

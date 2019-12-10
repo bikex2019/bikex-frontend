@@ -47,14 +47,15 @@
                     <div class="moterbike"> 
                         <div class="card" v-on:click="display(image.vehicle_id)"> 
                             <div class="image text-center">
+                                <div class="top-left" v-if="image.status==4">
+                                    <span >Sale Pending</span>
+                               </div>
                                 <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
                                 <img v-else :src="image.path" width="100%" height="30%">
                             </div>
                             <div class="card-body text-left mt-1">
                                 <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
                                 <p class="bold bike-sp">RS.{{image.selling_price}}</p>
-                                 <span class="badge badge-danger" v-if="image.status==4">Sale Pending</span>
-                                  <span class="badge badge-success" v-else>Available</span>
                             </div>
                             
                         </div> 
@@ -177,6 +178,22 @@ export default {
 }
 </script>
 <style scoped>
+.top-left {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 0px;
+    color: white;
+    background-color: #ffb52f;
+    padding: 4px 8px;
+}
 @media only screen and (max-width: 600px) {
     .breadcrumb{  
         float: none;
