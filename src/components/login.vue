@@ -38,7 +38,7 @@
                         <p class="error">{{response_message}}</p>
                     </div>
                     <div class="col-md-12 mb-4 pt-4">
-                        <p class="labels">Don't have Account? <router-link to="/signup">Sign up.</router-link></p>
+                        <p class="labels">Don't have Account? <router-link to="/signup" style="color:#f6b949">Sign up.</router-link></p>
                     </div>
             </div>
       </div>

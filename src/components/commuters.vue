@@ -174,7 +174,7 @@ export default {
           temp4.push(...this.commuters)
        }else{
         var x = this.commuters.find(d=>{
-            return d.type == this.filter
+            return d.type === this.filter
         })
         if(x){
             temp4.push({...x})
