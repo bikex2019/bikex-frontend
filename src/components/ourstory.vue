@@ -2,196 +2,83 @@
      <div class="site-wrap" id="home-section">
 
 
-    <div class="site-section py-5">
+    <div class="site-section col-md-6 margin ">
       <div class="container">
         <div class="row align-items-center">
+          <div class="col-md-6 margin text-left mt-0" >
+            <img src="../assets/story2.png" alt="Image" class="img-fluid">
+          </div>
           <div class="col-md-6">
             <div class="heading-39101 mb-5">
-              <span class="backdrop">Story</span>
-              <span class="subtitle-39191">Discover Story</span>
+              
               <h3>Our Story</h3>
             </div>
-            <p>The wide array of bikes gets a complete overhaul and is tuned up to give it a new bike feel! Part by part they are disassembled, thoroughly cleaned, and of course, re-greased. All the defective parts are replaced and everything – and we mean everything– is screwed back together.</p>
+            <p class="fontsize">The purpose of giving these machines a second life through creative recycling is what compelled us to kickstart this company. These preloved vehicles have once been owned, used and undoubtedly brought greatest of pleasures to the one riding them. The wide array of vehicles gets a complete overhaul and is tuned up to give it a new feel. Part by part they are disassembled, thoroughly cleaned, and of course, re-greased. The parts are replaced with brand new original spares and everything – and we mean everything – is screwed back together.</p>
             <p></p>
           </div>
-          <div class="col-md-6" data-aos="fade-right">
-            <img src="../assets/images/offroad.png" alt="Image" class="img-fluid">
-          </div>
+          
         </div>
       </div>
     </div>
 
 
-    <div class="site-section py-5">
+    <div class="site-section col-md-6 margin">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-md-5 order-2 ml-auto">
+          <div class="col-md-6 ">
             <div class="heading-39101 mb-5">
-              <span class="backdrop">Mission</span>
-              <span class="subtitle-39191">Our Mission</span>
+              
               <h3>Our Mission</h3>
             </div>
-            <p>Our bike collection is UNIQUE, always in high demand and it changes pretty often, so if you see something you just can’t do without -  GRAB it quick! You can even visit our experience centre for a test-ride and get an idea about how our creative minds seep life into these machines. Read more about the experience centres here
- 
-</p>
+            <p class="fontsize">Our mission is to ensure that every individual has the opportunity to own a vehicle and travel independently. We aspire to become the most credible and reliable company selling preloved, refurbished vehicles.</p>
+          </div>
+           <div class="col-md-6 margin  text-right" >
+            <img src="../assets/mission2.png" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="site-section  col-md-6 margin mt-0">
+      <div class="container">
+        <div class="row align-items-center">
+           <div class="col-md-6 margin text-left" >
+            <img src="../assets/vision2.png" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <div class="heading-39101 mb-5">
+              
+              <h3>Our Vision</h3>
+            </div>
+            <p class="fontsize">To make preloved, refurbished vehicles accessible to every individual and to ensure the online purchase process is quick, hassle-free and convenient.</p>
             <p></p>
           </div>
-          <div class="col-md-6 order-1" data-aos="fade-left">
-            <img src="../assets/images/hero_1.jpg" alt="Image" class="img-fluid">
-          </div>
+         
         </div>
       </div>
     </div>
 
-  <div class="row justify-content-center text-center">
-          <div class="col-md-10">
-            <div class="heading-39101 mb-5">
-              <span class="backdrop text-center">BikeX</span>
-              <span class="subtitle-39191">Why us ?</span>
-              <h3>Why BikeX</h3>
-            </div>
-          </div>
-        </div>
- 
-    <div class="container">
-      <div class="row">
-        <div class="col">
-    
-
-             <div class = "faq col-md-10 mb-5 mt-3 text-center" style="margin:0 auto">
-
-       <div class="container mb-3" v-for="(faqs, index) in faq" :key="index">
-            <button class="accordion" v-on:click="openaccord(faqs._id)">{{faqs.question}}
-            <p class="pull-right m-0 p-0" v-if="id==faqs._id">
-            <i class="fa fa-angle-up" aria-hidden="true"></i>
-            </p>
-            <p class="pull-right m-0 p-0" v-else>
-           <i class="fa fa-angle-down" aria-hidden="true"></i>
-            </p>
-        </button>
-        <div class="panel text-left" v-bind:class="{panel100: id == faqs._id}">
-        <p class="pt-4 pb-0">{{faqs.answer}}</p>
-        </div>
-       </div>
-
-        <div class="loading text-center mt-4 mb-4" v-if="!loading && faq.length == 0">
-              <p>We're adding up contents soon..</p>
-              <p>Feel free to come back again !</p>
-        </div>
-
-       <div class="loading text-center mt-4 mb-4" style="min-height:200px" v-if="loading">
-              <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-    </div>
-        </div>
-      </div>
-    </div>
-
-    
-    <div class="site-section">
-
-      <div class="container">
-        <div class="row justify-content-center text-center">
-          <div class="col-md-10">
-            <div class="heading-39101 mb-5">
-              <span class="backdrop text-center">Our Team</span>
-              <span class="subtitle-39191">Amazing Staff</span>
-              <h3>Meet Our Team</h3>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="person-29191 text-center">
-              <img src="../assets/images/person_1.jpg" alt="Image" class="img-fluid mb-4">
-              <div class="px-4">
-                <h2 class="mb-2">Rakesh S</h2>
-                <p class="caption mb-4">UI developer</p>
-             
-              
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="person-29191 text-center">
-              <img src="../assets/images/person_1.jpg" alt="Image" class="img-fluid mb-4">
-              <div class="px-4">
-                <h2 class="mb-2">Abhinash</h2>
-                <p class="caption mb-4">Mean Stack developer</p>
-               
-               
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="person-29191 text-center">
-              <img src="../assets/images/person_1.jpg" alt="Image" class="img-fluid mb-4">
-              <div class="px-4">
-                <h2 class="mb-2">Harshit</h2>
-                <p class="caption mb-4">Founder & CEO</p>
-                
-             
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>    
-    </div>
-</template>
+     </div>
+  </template>
 
 <script>
 export default {
-    data(){
-       return{
-           id:0,
-           expand: false,
-           faq:[
-             {"_id":1,"question":'Affordable prices',"answer":"and we cannot harp on this enough! "},
-             {"_id":2,"question":'Passionate about recycling',"answer":"Environment is always on our minds! "},
-            {"_id":3,"question":'Servicing/Repairs',"answer":"while you sip a hot cup of coffee – but not for long! Our mechanics are great!"},
-             {"_id":4,"question":'Free Shipping',"answer":" oh yes, we do! Of course, for only a minimum charge of Rs. 500. "},
-             {"_id":5,"question":'Quick turnarounds',"answer":"now don’t you go doubting us."},
-             {"_id":6,"question":'Happy to offer expert advice',"answer":"Always, always, always! "},
-
-
-           ],
-           loading:false
-       }
-    },
-    created(){
-          
-    },
-     mounted(){
-        window.scrollTo({
-                top: 0,
-                left: 0,
-            })
-    },
-    methods:{
-        openaccord(id){
-            if(this.id != id){
-                this.id = id
-               
-            }else{
-                this.id = 0
-            }
-        }
-    }
-
 }
 </script>
 
 <style scoped>
+.fontsize{
+    line-height: 1.7;
+    color: #364d59 !important;
+    font-weight: 300;
+    font-size: 0.9rem;
+    font-family: "Work Sans", sans-serif;
+    
+}
+
+.margin{
+  margin: 0 auto;
+}
  @keyframes fade-in{
   0%{
     opacity: 0;

@@ -36,9 +36,9 @@
             <div class="col-md-3 text-left col-6 ok mt-0">
               <a href="" class="navbar-brand" routerLink="/"><img class="logolight" src="../assets/bikexlight2.svg" width="90px" height="59px"></a>
               <div class="social">
-                <p class="social"><a href="https://www.facebook.com/ontrack" target="_blank"><i class="fb fa fa-facebook fa-2x"></i> </a>
-                <a href="https://www.instagram.com/ontrack" target="_blank"> <i class="insta fa fa-instagram fa-2x"></i></a>
-                <a href="https://www.twitter.com/ontrack" target="_blank">  <i class="tweet fa fa-twitter fa-2x"></i></a></p>
+                <p class="social"><a href="https://www.facebook.com/BikeX-103950884429747/?modal=admin_todo_tour" target="_blank"><i class="fb fa fa-facebook fa-2x"></i> </a>
+                <a href="https://www.instagram.com/bikex_blr/" target="_blank"> <i class="insta fa fa-instagram fa-2x"></i></a>
+                <a href="https://twitter.com/BikeX12" target="_blank">  <i class="tweet fa fa-twitter fa-2x"></i></a></p>
                </div>  
 
                <!-- <div class="batch">

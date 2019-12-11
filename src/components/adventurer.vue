@@ -70,9 +70,12 @@
             </div>
         </div> 
         <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && datas.length == 0 && filtereddata.length == 0">
-            <p class="mt-4 bold">sorry :(</p>
-            <p class="mt-4 bold">the vehicles are out of stock</p>
+            <!-- <p class="mt-4 bold">sorry :(</p>
+            <p class="mt-4 bold">the vehicles are out of stock</p> -->
             <!-- <p class="mt-4 bold">we are coming back on stock soon</p> -->
+             <img src="../assets/out-of-stock-bikex.svg" width="10%">
+           
+            <p class="mt-4 bold">The vehicles are out of stock</p>
         </div> 
     <div >
         <!-- <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">

@@ -70,8 +70,12 @@
             </div>
         </div> 
         <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && datas.length == 0 && filtereddata.length == 0">
-            <p class="mt-4 bold">sorry :(</p>
-            <p class="mt-4 bold">the vehicles are out of stock</p>
+            <!-- <p class="mt-4 bold">sorry :(</p> -->
+            
+            
+                <img src="../assets/out-of-stock-bikex.svg" width="10%">
+           
+            <p class="mt-4 bold">The vehicles are out of stock</p>
             <!-- <p class="mt-4 bold">we are coming back on stock soon</p> -->
         </div> 
     <div >
@@ -226,6 +230,7 @@ export default {
 .bold{
     font-weight: 500
 }
+
 .color{
     color:#001232;  
     font-weight: 500

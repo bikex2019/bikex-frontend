@@ -5,7 +5,7 @@
             <div class="col-md-6 mobile mt-4">
                 <img src="../assets/login.jpg" width="100%">
             </div>
-            <div class="col-md-6col-12 pt-4">
+            <div class="col-md-6 col-12 pt-4">
                 <h5 class="text-center">SIGN UP</h5>
                 <div class="row">
                     <div class="col-md-12 mt-4">
