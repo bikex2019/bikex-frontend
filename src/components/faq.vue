@@ -42,7 +42,7 @@ export default {
     },
     created(){
           this.loading = true
-          this.$http.get('https://immense-chamber-94004.herokuapp.com/api/faq')
+          this.$http.get('https://backend-bikex.herokuapp.com/api/faq')
           .then(response=>{
            this.faq = response.body
            window.console.log(this.faq)

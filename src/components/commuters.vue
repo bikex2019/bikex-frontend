@@ -45,21 +45,26 @@
             <div class="row pl-2 pr-2 mb-4" >
                 <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="filtereddata" v-for="(image, index) in filtereddata" :key="index">  
                     <div class="moterbike"> 
-                        <div class="card" v-on:click="display(image.vehicle_id)"> 
-                            <div class="image text-center">
-                                <div class="top-left" v-if="image.status==4">
-                                    <span >Sale Pending</span>
-                               </div>
-                                <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
-                                <img v-else :src="image.path" width="100%" height="30%">
-                            </div>
-                            <div class="card-body text-left mt-1">
-                                <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
-                                <p class="bold bike-sp">RS.{{image.selling_price}}</p>
-                            </div>
-                            
-                        </div> 
-                    </div>                   
+                            <div class="card" v-on:click="display(image.vehicle_id)"> 
+                                <div class="image text-center" style="min-height:50px;">
+                                    <div class="top-left" v-if="image.status==4">
+                                        <span >Sale Pending</span>
+                                </div>
+                                    <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
+                                    <img v-else :src="image.path" width="100%" height="30%">
+                                </div>
+                                <div class="card-body text-left mt-1">
+                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
+                                    <p class="bold bike-sp">RS.{{image.selling_price}}</p>
+                                </div>
+                            </div> 
+                                
+                             <!-- <div class="card mt-2" v-if="index == 0"> 
+                                <div class="image text-center mt-4" style="min-height:50px;">
+                                    <img src="../assets/placeholder.png" width="100%">
+                                </div>
+                            </div>  -->
+                    </div>                 
                 </div>    
                 
             </div>          
