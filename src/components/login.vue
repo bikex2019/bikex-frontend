@@ -1,37 +1,49 @@
 <template>
     <div class="login col-md-8 col-12 mt-4 mb-4 center">
-        <div class="row border mt-4 mb-4 mx-1 px-4 pt-4">
-            <div class="col-md-6 mobile mt-4 mb-4">
-                <img src="../assets/login.jpg" width="100%">
-            </div>
-            <div class="col-md-6 col-12 pt-4">
-                <h5 class="text-center">LOG IN</h5>
-                <div class="row text-center">
-                    <div class="col-md-12 mt-4 text-center" v-if="response_message">
+       
+    <div class="modal-content m-0 p-0">
+      <div class="modal-header m-0 p-0">
+        <div class="back mt-5 ml-3 pt-5">
+          <h2 class="modal-title m-0 p-0" id="exampleModalLabel">LOGIN</h2>
+        </div>
+         <!-- <img src="../assets/LOGIN.svg" width="130px" class="mt-5"> -->
+        <!-- <button type="button" class="close pr-4 pt-4" data-dismiss="modal" aria-label="Close">
+          <img src="../assets/close-button.svg" width="22px">
+        </button> -->
+      </div>
+      <div class="modal-body">
+       <div class="row text-center col-md-8" style="margin:0 auto">
+                    <div class="col-md-3 col-3 mt-4 text-center">
+                      <label class="labels" for="">Email</label>
+                    </div>
+                    <div class="col-md-9 col-9 mb-4 mt-3 text-center">
+                    <input type="text" v-model="email" class="inputText form-control" required/>
+                    <span class="floating-label" >Enter email</span>
+                    </div>
+                    <div class="col-md-3 col-3 mt-4 text-center">
+                      <label for="" class="labels">Password</label>
+                    </div>
+                    <div class="col-md-9 col-9 mb-4 mt-3 text-center">
+                    <input type="password" v-model="password" class="inputText form-control" required />
+                    <span class="floating-label" >Enter password</span>
+                    
+                    <div class="col-md-12 mb-2 pt-4 mt-3 text-left m-0 p-0">
+                    <button class="action-button" v-on:click="log_me">
+                      <span v-if="!loading">LOGIN</span>
+                       <div v-else class="spinner-border spinner-border-sm"></div>
+                      </button>
+                    </div>
+                    </div>
+                    <div class="col-md-12 m-0 p-0 text-center" v-if="response_message">
                         <p class="error">{{response_message}}</p>
                     </div>
-                 <div class="col-md-12 mb-4 mt-4 text-center">
-                  <input type="text" v-model="email" class="inputText form-control" required/>
-                  <span class="floating-label" >Email</span>
-                </div>
-                  <div class="col-md-12 mb-4">
-                  <input type="password" v-model="password" class="inputText form-control" required />
-                  <span class="floating-label" >Password</span>
-                </div>
-                <div class="col-md-12 mb-4 pt-4 justify-content-center">
-                   <button class="action-button" v-on:click="log_me">LOGIN</button>
-                </div>
-                <div class="col-md-12 mb-4 pt-4">
-                    <p>Need Account? <router-link to="/signup">sign up.</router-link></p>
-                </div>
+                    <div class="col-md-12 mb-4 pt-4">
+                        <p class="labels">Don't have Account? <router-link to="/signup">Sign up.</router-link></p>
+                    </div>
             </div>
-                </div>
-        </div>
-        <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
-            <div id="text" class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-            </div>
-        </div>
+      </div>
+    </div>
+
     </div>
 </template>
 
@@ -95,6 +107,23 @@ export default {
 .error{
     color: red;
 }
+.modal-header{
+  min-height: 150px;
+  background-color: rgb(0, 18, 51);
+  background-image: url("../assets/heroes.png");
+  background-size: cover;
+  overflow: hidden
+
+}
+ .modal-title{
+    color: #fefefe;
+    font-size: 30px;
+    font-weight: 700
+  }
+   .labels{
+    font-size: 13px;
+    font-weight: 500;
+  }
 .center{
     margin: 0 auto
 }
@@ -153,9 +182,9 @@ input:not(:focus):valid ~ .floating-label{
   box-shadow: none !important
 }
 .action-button{
-    border: 1.5px solid #ffb52f;
-    background-color: white;
-    color: #ffb52f;
+    border: 1.5px solid #001232;
+    background-color: #000a1b;
+    color: white;
     cursor: pointer;
     font-size: 14px;
     font-weight: 600;
@@ -165,9 +194,11 @@ input:not(:focus):valid ~ .floating-label{
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
     width: 60%;
+    border-radius: 21px
 }
 .action-button:hover{
-        background-color:  #ffb52f;
+        background-color:  #000a1b;
+        opacity: 0.9;
         color:cornsilk;
 }
 

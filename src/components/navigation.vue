@@ -36,7 +36,10 @@
            <a href="tel:+91 9742744444"><h6><i class="fa fa-phone mr-1" aria-hidden="true" style="color:#FFB52F"></i>+91 9742744444</h6> </a>
             </li> -->
                 <li class="nav-item"  v-if="!isLogged" v-on:click="navigation = false">
-                <a class="story"><router-link to="/login" exact-active-class="active">LOGIN</router-link></a>
+                <a class="story" data-toggle="modal" data-target="#exampleModal">
+                  <!-- <router-link to="/login" exact-active-class="active">LOGIN</router-link> -->
+                  LOGIN
+                  </a>
             </li>
              <li class="nav-item dropdown m-0" v-else>
                 <a class="nav-link dropdown-toggle m-0 p-0" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,7 +91,10 @@
            <a href="tel:+91 9742744444"><h6><i class="fa fa-phone mr-1" aria-hidden="true" style="color:#FFB52F"></i>+91 9742744444</h6> </a>
             </li> -->
             <li class="nav-item"  v-if="!isLogged" @button-clicked="update" v-on:click="navigation = false">
-                <a class="story"><router-link to="/login" exact-active-class="active">LOGIN</router-link></a>
+                <a class="story" data-toggle="modal" data-target="#exampleModal">
+                  <!-- <router-link to="/login" exact-active-class="active">LOGIN</router-link> -->
+                  LOGIN
+                  </a>
             </li>
              <li class="nav-item dropdown" v-else>
                 <a class="nav-link dropdown-toggle m-0 p-0" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-on:click="toggle =! toggle">
@@ -104,9 +110,56 @@
    
       </div>
   </nav>
-
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content m-0 p-0">
+      <div class="modal-header m-0 p-0">
+        <div class="back mt-5 ml-3 pt-5">
+          <h2 class="modal-title m-0 p-0" id="exampleModalLabel">LOGIN</h2>
+        </div>
+         <!-- <img src="../assets/LOGIN.svg" width="130px" class="mt-5"> -->
+        <button type="button" class="close pr-4 pt-4" data-dismiss="modal" aria-label="Close">
+          <img src="../assets/close-button.svg" width="22px">
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="row text-center col-md-11" style="margin:0 auto">
+                    <div class="col-md-3 col-3 mt-4 text-center">
+                      <label class="labels" for="">Email</label>
+                    </div>
+                    <div class="col-md-9 col-9 mb-4 mt-3 text-center">
+                    <input type="text" v-model="email" class="inputText form-control" required/>
+                    <span class="floating-label" >Enter email</span>
+                    </div>
+                    <div class="col-md-3 col-3 mt-4 text-center">
+                      <label for="" class="labels">Password</label>
+                    </div>
+                    <div class="col-md-9 col-9 mb-4 mt-3 text-center">
+                    <input type="password" v-model="password" class="inputText form-control" required />
+                    <span class="floating-label" >Enter password</span>
+                    
+                    <div class="col-md-12 mb-2 pt-4 mt-3 text-left m-0 p-0">
+                    <button class="action-button" v-on:click="log_me">
+                      <span v-if="!loading">LOGIN</span>
+                       <div v-else class="spinner-border spinner-border-sm"></div>
+                      </button>
+                    </div>
+                    </div>
+                    <div class="col-md-12 m-0 p-0 text-center" v-if="response_message">
+                        <p class="error">{{response_message}}</p>
+                    </div>
+                    <div class="col-md-12 mb-4 pt-4">
+                        <p class="labels">Don't have Account? <router-link to="/signup" data-dismiss="modal">Sign up.</router-link></p>
+                    </div>
+                 </div>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-primary">LOGIN</button>
+      </div> -->
+    </div>
+  </div>
+</div>
  </div>
-
 </template>
 <script>
 
@@ -120,7 +173,11 @@ export default {
         shownav:false,
         isLogged:false,
         user:'',
-        toggle:false
+        toggle:false,
+        email:'',
+        password:'',
+        response_message:'',
+        loading:false
       }
     },
   created () {
@@ -145,7 +202,34 @@ export default {
       },
       update(){
         this.isLogged = false
-      }
+      },
+      log_me(){
+            if(this.email){
+            this.loading = true
+            this.$http.post('https://backend-bikex.herokuapp.com/api/customers/validate',{
+              email:this.email,
+              password:this.password,
+            }).
+            then(response=>{
+            this.data = response.body;
+            if(this.data.err == 0){
+                this.response_message = this.data.msg
+                localStorage.setItem('token', this.data.data[0].firstname)
+                localStorage.setItem('temp', this.data.data[0]._id)
+                this.$router.push('/profile')
+                window.location.reload()
+            }else{
+                this.response_message = this.data.msg 
+            }
+            this.loading = false
+            }).catch(error => { 
+                this.response_message = error.body.msg
+                this.loading = false
+            }) 
+    } else{
+        this.response_message = 'Please provide your E-mail'
+    }
+            }
     },
 }
 </script>
@@ -153,6 +237,12 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
 
 @media only screen and (max-width: 760px) {
+  .modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 2.5rem !important;
+    pointer-events: none;
+  }
   .mobile{
     display: block !important;
   } 
@@ -205,6 +295,100 @@ export default {
   .navigate{
     display: none
   }
+}
+.close img{
+  color: white
+}
+.back{
+    /* border: 1px solid white; */
+    padding: 2px;
+     position:relative;
+    bottom:0;
+    right:0;
+  }
+  .modal-title{
+    color: #fefefe;
+    font-size: 30px;
+    font-weight: 700
+  }
+ .error{
+   color: rgb(128, 4, 4);
+    font-size: 13px;
+    font-weight: 700
+ }
+.action-button{
+    border: 1.5px solid #001232;
+    background-color: #000a1b;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    height: inherit;
+    letter-spacing: 1px;
+    padding: 13px 20px 11px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    width: 60%;
+    border-radius: 21px
+}
+.action-button:hover{
+        background-color:  #000a1b;
+        opacity: 0.9;
+        color:cornsilk;
+}
+.modal-content{
+  border:2px solid #FFB52F;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.modal-header{
+  min-height: 150px;
+  background-color: rgb(0, 18, 51);
+  background-image: url("../assets/heroes.png");
+  background-size: cover;
+  overflow: hidden
+
+}
+
+.inputText {
+outline: none !important;
+border: none;
+border-bottom: 1px solid gray;
+border-radius: 0px;
+width: 100%
+}
+.inputText:focus{
+    border-bottom: 1px solid #ffb52f;
+}
+input:focus, textarea:focus, select:focus{
+  outline: none !important;
+  box-shadow: none !important
+}
+.floating-label {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.7;
+    position: absolute;
+    pointer-events: none;
+    left: 30px;
+    top: 8px;
+    transition: 0.2s ease all;
+}
+ .labels{
+    font-size: 13px;
+    font-weight: 500;
+  }
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  top: -7px;
+  padding: 0px 5px 0px 0px;
+  background-color: #fefefe;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+  z-index: 1;
+  outline: none !important;
+  box-shadow: none !important
 }
 .dropdown-toggle{
   text-transform: uppercase
@@ -304,5 +488,22 @@ export default {
 .nav-item:hover:after { transform: scaleX(1); }
 .nav-item.fromRight:after{ transform-origin:100% 50%; }
 .nav-item.fromLeft:after{  transform-origin:  0% 50%; }
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(233, 227, 227, 0.3);
+  z-index: 2;
+  cursor: pointer;
+}
 
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
 </style>

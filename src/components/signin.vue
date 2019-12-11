@@ -1,21 +1,26 @@
 
 <template>
-    <div class="login col-md-8 center mb-4 mt-3 p-4">
-        <div class="row border mt-3 mb-4 px-4 pt-4">
-            <div class="col-md-6 mobile mt-4">
-                <img src="../assets/login.jpg" width="100%">
-            </div>
-            <div class="col-md-6 col-12 pt-4">
-                <h5 class="text-center">SIGN UP</h5>
-                <div class="row">
-                    <div class="col-md-12 mt-4">
-                        <p class="error m-0 p-0">{{response_message}}</p>
-                    </div>
-                    <div class="col-md-6 mb-4 mt-4">
+    <div class="login col-md-6 center mb-4 mt-3 p-4">
+         <div class="modal-content m-0 p-0">
+      <div class="modal-header m-0 p-0">
+        <div class="back mt-5 ml-3 pt-3">
+          <h2 class="modal-title m-0 p-0" id="exampleModalLabel">SIGNUP</h2>
+        </div>
+         <!-- <img src="../assets/LOGIN.svg" width="130px" class="mt-5"> -->
+        <!-- <button type="button" class="close pr-4 pt-4" data-dismiss="modal" aria-label="Close">
+          <img src="../assets/close-button.svg" width="22px">
+        </button> -->
+      </div>
+      <div class="modal-body">
+    <div class="row text-center col-md-10"  style="margin:0 auto">
+                <div class="col-md-12 mt-2">
+                    <p class="error m-0 p-0">{{response_message}}</p>
+                </div>
+                <div class="col-md-6 mb-4 mt-2">
                   <input type="text" v-model="firstname" class="inputText form-control" required />
                   <span class="floating-label" >First Name</span>
                 </div>
-                <div class="col-md-6 mb-4 mt-4">
+                <div class="col-md-6 mb-4 mt-2">
                   <input type="text" v-model="lastname" class="inputText form-control" required />
                   <span class="floating-label" >Last Name</span>
                 </div>
@@ -43,15 +48,18 @@
                 </div>
             
                 <div class="col-md-12 text-center p-4">
-                    <button class="action-button" v-bind:class="{disable:disable}" v-on:click="signup">SIGN UP</button>
+                    <button class="action-button" v-bind:class="{disable:disable}" v-on:click="signup">
+                        <span v-if="!loading">LOGIN</span>
+                       <div v-else class="spinner-border spinner-border-sm"></div>
+                    </button>
                 </div>
-                <div class="col-md-12 p-3 text-center">
-                   Already a user? <router-link to="/login">Log in</router-link>
+                <div class="col-md-12 p-3 text-center labels">
+                   Have a BikeX account? <router-link to="/login"><span style="color:#f6b949">Log in</span></router-link>
                 </div>
               
             </div>
-                </div>
-        </div>
+      </div>
+    </div>
     </div>
 </template>
 
@@ -65,7 +73,7 @@ export default {
             email:'',
             password:'',
             repeat:'',
-
+            loading:'',
             password_message:'',
             email_message:'',
             data:[],
@@ -108,6 +116,7 @@ export default {
         },
         signup(){
            if(!this.email_message && !this.password_message){
+            this.loading=true
             this.$http.post('https://backend-bikex.herokuapp.com/api/customers',{
               firstname:this.firstname,
               lastname:this.lastname,
@@ -117,10 +126,12 @@ export default {
             }).
             then(response=>{
             this.data = response.body;
-            alert('sucessfull')
+            this.loading = false
+            // alert('sucessfull')
             this.$router.push({path:'/login'})
             }).catch(error => { 
-                this.response_message = error.body.msg
+                this.response_message = error.body.msg;
+                this.loading= false
             })   
             }
            }
@@ -153,22 +164,58 @@ export default {
 .center{
     margin: 0 auto
 }
+.modal-header{
+  background-color: rgb(0, 18, 51);
+  background-image: url("../assets/heroes.png");
+  background-size: cover;
+  overflow: hidden
+
+}
+ .modal-title{
+    color: #fefefe;
+    font-size: 30px;
+    font-weight: 700
+  }
+   .labels{
+    font-size: 13px;
+    font-weight: 500;
+  }
 .login{
     background-color: #fefefe;
+}
+.action-button{
+    border: 1.5px solid #001232;
+    background-color: #000a1b;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    height: inherit;
+    letter-spacing: 1px;
+    padding: 13px 20px 11px;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    width: 60%;
+    border-radius: 21px
+}
+.action-button:hover{
+        background-color:  #000a1b;
+        opacity: 0.9;
+        color:cornsilk;
 }
 @media only screen and (max-width: 600px) {
   .mobile{
       display: none !important
   }
 }
-button.action-button.disable{
+/* button.action-button.disable{
     opacity: 0.8 !important;
     
 }
 button.action-button.disable:hover{
     background-color: transparent !important;
     color: #ffb52f
-}
+} */
 .inputText {
 outline: none !important;
 border: none;
@@ -204,23 +251,5 @@ input:not(:focus):valid ~ .floating-label{
   z-index: 1;
   outline: none !important;
   box-shadow: none !important
-}
-.action-button{
-    border: 1.5px solid #ffb52f;
-    background-color: white;
-    color: #ffb52f;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    height: inherit;
-    letter-spacing: 1px;
-    padding: 13px 20px 11px;
-    text-transform: uppercase;
-    transition: all 0.3s ease 0s;
-    width: 100%;
-}
-.action-button:hover{
-        background-color:  #ffb52f;
-        color:cornsilk;
 }
 </style>

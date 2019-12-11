@@ -4,7 +4,7 @@
     <carousel :perPage="1" :loop="true" paginationActiveColor="#ffb52f">
       <slide v-for="(image, index) in images" @slideclick="handleSlideClick(image)" :key="index">
         <div class="image text-center mt-4">
-          <img :src="image" width="auto" height="200px">
+          <img :src="image" width="100%">
         </div>
       </slide>
     </carousel>
@@ -64,10 +64,10 @@
         <div class="col-md-3 col-12 description">
         <h1 class="margin" v-for="(models, index) in models" :key="index">
           <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
-           <span class="badge ml-4">Sale Pending</span>
+           <span class="badge ml-4"  v-if="vehicles.status == 4">Sale Pending</span>
         </h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
-        <label>The Hero Choice</label>
+        <!-- <label>The Hero Choice</label> -->
         </div>
          <div class="col-md-5 col-12 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
@@ -100,7 +100,7 @@
                 <button class="buttons ml-3 m-0" v-on:click="book" >RESERVE</button>
               </div>
               <div v-else class="text-center col-12 mr-4">
-                <!-- <span class="badge badge-danger mr-2">Sale Pending</span> -->
+                <span  v-if="vehicles.status == 4" class="badge badge-danger mr-2">Sale Pending</span>
                 <button class="mybtn p-2" v-on:click="gotocommuter">Look for other vehicle</button>
               </div>
             </div>
@@ -191,18 +191,16 @@
      </div>
   </div>
 <div class="col-md-11 middle-align bikex-font">
-
-
   <nav class="navbar-fix col-md-12 p-0 m-0 fixed-top" v-if="shownav">
      <div class="price-panel mr-0 pr-0 ml-0 col-12 mb-1" style="background-color:white" >
      <div class="row col-12 col-md-10" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
        <div class="col-md-3 col-12 description">
         <h1 class="margin" v-for="(models, index) in models" :key="index">
           <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
-           <span class="badge ml-4">Sale Pending</span>
+           <span class="badge ml-4" v-if="vehicles.status == 4">Sale Pending</span>
         </h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
-        <label>The Hero Choice</label>
+        <!-- <label>The Hero Choice</label> -->
         </div>
          <div class="col-md-5 col-12 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
