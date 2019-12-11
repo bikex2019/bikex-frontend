@@ -69,7 +69,6 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-        {{datas}}
         <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && datas.length == 0 && filtereddata.length == 0">
             <p class="mt-4 bold">sorry :(</p>
             <p class="mt-4 bold">the vehicles are out of stock</p>
