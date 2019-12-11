@@ -237,12 +237,12 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
 
 @media only screen and (max-width: 760px) {
-  .modal-dialog {
+  /* .modal-dialog {
     position: relative;
     width: auto;
     margin: 2.5rem !important;
     pointer-events: none;
-  }
+  } */
   .mobile{
     display: block !important;
   } 

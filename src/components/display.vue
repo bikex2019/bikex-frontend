@@ -16,7 +16,6 @@
   <span class="closemobile" v-on:click="closemobileModal">&times;</span>
   <img class="modal-content-mobile" id="img01" :src="expandedImage">
 </div>
-
   <div class="display-laptop mt-0 pt-0 m-0 p-0">
     <div class="row m-0 p-0 c">
         <!-- <img :src="image" v-on:click="openModal(index);"> -->
@@ -69,7 +68,7 @@
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
         <!-- <label>The Hero Choice</label> -->
         </div>
-         <div class="col-md-5 col-12 price" >
+         <div class="col-md-4 col-12 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
         <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
@@ -82,7 +81,7 @@
          <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
            <button class="buttons" v-on:click="book" >RESERVE</button>
         </div>
-        <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-3 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
         </div>
         <div v-else  class="col-md-4 display-laptop">
@@ -202,7 +201,7 @@
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
         <!-- <label>The Hero Choice</label> -->
         </div>
-         <div class="col-md-5 col-12 price" >
+         <div class="col-md-4 col-12 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
         <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
@@ -215,7 +214,7 @@
          <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
            <button class="buttons" v-on:click="book" >RESERVE</button>
         </div>
-        <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-3 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
         </div>
         <div v-else  class="col-md-4 display-laptop">
@@ -324,6 +323,11 @@ created(){
     },
    
   methods:{
+    // scroll(){
+    //      window.console.log(this.$refs.demo);
+    //      var x = this.$refs.demo
+    //      x.scrollTo(500, 0)
+    // },
        startpurchase(){
               window.scrollTo({
                 top: 800,

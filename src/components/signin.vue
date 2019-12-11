@@ -49,7 +49,7 @@
             
                 <div class="col-md-12 text-center p-4">
                     <button class="action-button" v-bind:class="{disable:disable}" v-on:click="signup">
-                        <span v-if="!loading">LOGIN</span>
+                        <span v-if="!loading">SIGNUP</span>
                        <div v-else class="spinner-border spinner-border-sm"></div>
                     </button>
                 </div>
