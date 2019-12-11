@@ -75,7 +75,7 @@
             
                 <img src="../assets/out-of-stock-bikex.svg" width="10%">
            
-            <p class="mt-4 bold">The vehicles are out of stock</p>
+            <p class="mt-4 bold">The vehicles are out of stock</p> 
             <!-- <p class="mt-4 bold">we are coming back on stock soon</p> -->
         </div> 
     <div >

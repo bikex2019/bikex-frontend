@@ -3,7 +3,7 @@
      <div class="navigation p-0 m-0">
           <nav class="navbar p-0 m-0 mt-2 mynav">
       <div class="row col-md-10 margin">
-        <div class="col-md-2 col-12 m-0 pt-2 pl-2 pr-0 logo">
+        <div class="col-md-2 col-12 m-0 pt-2 pl-0 pr-0 logo">
             <router-link to="/">
               <img src="../assets/bikex-logo.svg" width="130px">
               <span style="color:black;font-size:10px;text-decoration:none"><STRONG>BLR</STRONG></span>
