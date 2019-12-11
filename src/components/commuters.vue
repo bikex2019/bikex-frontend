@@ -69,7 +69,7 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && filtereddata.length == 0">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && datas.length == 0">
             <!-- <p class="mt-4 bold">sorry :(</p> -->
             
             
@@ -117,11 +117,11 @@ export default {
     },
     beforeMount(){
 	this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle')
-      .then(response=>{this.vehicles= response.body;this.loading = false;window.console.log('1')
+      .then(response=>{this.vehicles= response.body;window.console.log('1')
       }).catch(()=>{this.loading = false});this.$http.get('https://backend-bikex.herokuapp.com/api/models')
       .then(res=>{this.models= res.body;window.console.log('2')}).catch(()=>{this.loading = false});
       this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
-      .then(resp=>{this.displayImage= resp.body.data;this.loading = false;window.console.log('3')}).catch(()=>{this.loading = false});
+      .then(resp=>{this.displayImage= resp.body.data;window.console.log('3')}).catch(()=>{this.loading = false});
     },
     methods:{
         display(id){
