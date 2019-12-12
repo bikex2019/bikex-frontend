@@ -58,12 +58,12 @@
       </div>
     </div>
   </div>
-  <div class="price-panel mr-0 pr-0 ml-0 col-12 col-md-12 mt-2 mb-1" v-for="(vehicles, index) in vehicles" :key="index">
-     <div class="row col-12 pr-0 mr-0">
-        <div class="col-md-3 col-12 description">
+   <div class="price-panel ml-0 col-12 mb-1" style="background-color:white" >
+     <div class="row col-12 col-md-10 p-0" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
+       <div class="col-md-3 col-12 pl-0 description">
         <h1 class="margin" v-for="(models, index) in models" :key="index">
           <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
-           <span class="badge ml-4"  v-if="vehicles.status == 4">Sale Pending</span>
+           <span class="badge ml-4" v-if="vehicles.status == 4">Sale Pending</span>
         </h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
         <!-- <label>The Hero Choice</label> -->
@@ -99,7 +99,7 @@
                 <button class="buttons ml-3 m-0" v-on:click="book" >RESERVE</button>
               </div>
               <div v-else class="text-center col-12 mr-4">
-                <span  v-if="vehicles.status == 4" class="badge badge-danger mr-2">Sale Pending</span>
+                <!-- <span class="badge badge-danger mr-2">Sale Pending</span> -->
                 <button class="mybtn p-2" v-on:click="gotocommuter">Look for other vehicle</button>
               </div>
             </div>
@@ -107,7 +107,7 @@
      </div>
   </div>
 
-  <div class="col-md-11 middle-align col-12 specification pt-4 pl-4">
+  <div class="col-md-10 middle-align col-12 specification pt-4 pl-4">
     <div class="row">
       <div class="col-md-12 col-12 m-0 p-0 pt-4 pb-4">
         <div class="heading text-left ">

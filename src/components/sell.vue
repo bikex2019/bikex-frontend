@@ -28,7 +28,7 @@
         
       </div>
       <div class="modal-body">
-        <p v-if="message">{{message}}</p>
+        <p class="text-center"  style="color:red" v-if="message">{{message}}</p>
         <div class="col-md-12 mb-4 m-0 p-0">
                   <input list="hosting-plan4" type="text" class="form-control" v-model="bike_name" required>
                 <span class="floating-label">Type your bike name</span>
@@ -92,7 +92,7 @@
       <div class="modal-footer ">
        
         <button type="button" class="viewbikes-button" v-on:click="apply"><strong>
-           <span>SIGNUP</span>
+           <span>SUBMIT</span>
             <div v-if="loading" class="spinner-border spinner-border-sm"></div>
           </strong></button>
       </div>
@@ -106,9 +106,9 @@
       </div>
     </div>
 </div>
-  <section class="bg-light middle pt-1 pb-5 col-md-10 col-12 mt-4 sell-top">
-        <div class="container col-12 p-0">
-          <div class="row col-12 mt-5 m-0 p-0">
+
+        <div class="container middle col-md-10">
+          <div class="row bg-light col-12 mt-5 p-5 m-0 p-0">
             <div class="col-md-4 col-12 margin-bottom m-0 p-0">  
                 <div class="row col-12 m-0 p-0">
                             <div class="col-md-12 col-12 m-0 p-0 text-left mt-1">
@@ -156,11 +156,10 @@
                       </div>
                     </div>
                   </div>
-        </section>             
+
   <!-- icons grid -->
      
   <!-- image section -->
-    <section class=" py-3">
       <div class="col-md-10 margin">
              <div class="col-md-12 ml-0 pl-0 text-left m-0 p-0">
                 <h3 class="ml-0 pl-0 pb-3 mt-5"><strong>how it works?</strong></h3>
@@ -220,7 +219,6 @@
                     </div>   
                
           </div>  
-    </section>     
 
    <hr>
     <div class="col-md-12 middle col-12">
@@ -297,7 +295,10 @@ export default {
             then(response=>{
             this.response = response.body;
             this.loading = false
-            
+            this.$swal({
+              title:'Thank You!',
+              text:'We will get in touch with you shortly'
+              })
             }).catch(error => { 
                 this.message = error.body.msg;
                 this.loading= false
@@ -305,7 +306,10 @@ export default {
     }
   },
     mounted () {
-   
+       window.scrollTo({
+                top: 0,
+                left: 0,
+            })
   },
   beforeDestroy () {
   },

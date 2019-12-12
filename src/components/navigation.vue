@@ -18,7 +18,7 @@
                 <img src="../assets/menu-bikex.svg" width="25px">
               </i>
         </div>
-        <div class="navmenu col-md-10 col-12 text-right phone">
+        <div class="navmenu col-md-10 col-12 text-right phone m-0 p-0">
         <ul class=" ml-0 pl-0 pt-2" v-bind:class="{ block: navigation }">
             <li class="nav-item" >
                 <a class="story" v-on:click="navigation = false"><router-link to="/commuters" exact-active-class="active">BUY</router-link></a>
@@ -73,7 +73,7 @@
                 <img src="../assets/menu-bikex.svg" width="25px">
               </i>
         </div>
-        <div class="navmenu col-md-10 col-12 text-right phone">
+        <div class="navmenu col-md-10 col-12 m-0 p-0 text-right phone">
         <ul class=" ml-0 pl-0 pt-3" v-bind:class="{ block: navigation }">
                <li class="nav-item" v-on:click="navigation = false">
                 <a class="story"><router-link to="/commuters" exact-active-class="active">BUY</router-link></a>

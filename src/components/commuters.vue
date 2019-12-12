@@ -17,8 +17,8 @@
            </div>
              <div class="product-area mb-4 mt-3 p-0 col-md-10" style="margin:0 auto">
                 <div class="container col-12 m-0 p-0">
-                    <div class="section-title jumbotron m-0 mb-4 p-0 pt-2 pb-2 text-center mb-50">
-                        <p><span>Commuters</span>
+                    <div class="section-title jumbotron m-0 mb-4 p-0 py-2 pb-2 text-center mb-50">
+                        <p class="p-1 m-0"><span>Commuters</span>
                         - for your day to day travel. Now make it effortless and hassle-free.
                         </p>
                     </div>
