@@ -1,20 +1,37 @@
 <template>
-    <div class = "faq col-md-8 mb-5 mt-3 text-center" style="margin:0 auto">
+    <div class = "faq col-md-8 mb-5 mt-4 text-center" style="margin:0 auto">
          <h4><STRONG>FAQ</STRONG></h4>
 
        <div class="container mb-3" v-for="(faqs, index) in faq" :key="index">
-            <button class="accordion" v-on:click="openaccord(faqs._id)">{{faqs.question}}
+          <button class="accordion" v-on:click="openaccord(faqs._id)">{{faqs.question}}
             <p class="pull-right m-0 p-0" v-if="id==faqs._id">
-            <i class="fa fa-angle-up" aria-hidden="true"></i>
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
             </p>
             <p class="pull-right m-0 p-0" v-else>
-           <i class="fa fa-angle-down" aria-hidden="true"></i>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
             </p>
-        </button>
+          </button>
         <div class="panel text-left" v-bind:class="{panel100: id == faqs._id}">
         <p class="pt-4 pb-0">{{faqs.answer}}</p>
         </div>
        </div>
+
+       <div class="container mb-3">
+          <button class="accordion" v-on:click="openaccord(55555555)">
+            Unanswered query?
+            <p class="pull-right m-0 p-0" v-if="id==55555555">
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </p>
+            <p class="pull-right m-0 p-0" v-else>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </p> 
+          </button>
+        <div class="panel text-left" v-bind:class="{panel100: id == 55555555}">
+        <p class="pt-4 pb-0">You can write to us at <a style="color:#f6b949" href="mailto:info@bikex.in">info@bikex.in</a> or call us at 
+        <a style="color:#f6b949" href="tel: +91 9742744444">+91 9742744444</a></p>
+        </div>
+       </div>
+
 
         <div class="loading text-center mt-4 mb-4" v-if="!loading && faq.length == 0">
               <p>We're adding up contents soon..</p>
