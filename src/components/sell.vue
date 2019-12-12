@@ -9,7 +9,96 @@
             </p>
             <p class="mt-5 mk"><strong>Instant Valuation. Highest trade prices.</strong></p>
           <div class="button text-left mb-4 mt-4">
-             <router-link to="/contactform"><button class="viewbikes-button" v-on:click="vehicles"><strong>SELL YOUR MOTORBIKE</strong></button></router-link> 
+            <button class="viewbikes-button" data-toggle="modal" data-target="#exampleModalCenter" ><strong>SELL YOUR MOTORBIKE</strong></button> 
+            <!-- Button trigger modal -->
+        
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <div class="back mt-4 ml-3 pt-4">
+          <h2 class="modal-title m-0 p-0" id="exampleModalLongTitle">SELL</h2>
+        </div>
+        <!-- <h5 class="modal-title" >FILL</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <img src="../assets/close-button.svg" width="22px">
+        </button>
+        
+      </div>
+      <div class="modal-body">
+        <p v-if="message">{{message}}</p>
+        <div class="col-md-12 mb-4 m-0 p-0">
+                  <input list="hosting-plan4" type="text" class="form-control" v-model="bike_name" required>
+                <span class="floating-label">Type your bike name</span>
+          </div>
+         <div class="form row">
+              <div class="col-md-4 mb-4">
+                  <input list="hosting-plan4" type="text" class="form-control" v-model="make" required>
+                   
+                       
+                <span class="floating-label">Type make</span>
+              </div>
+              <div class="col-md-4 mb-4">
+                <input list="hosting-plan5" type="text" class="form-control" v-model="model" required>
+               
+               <span class="floating-label">Type Model</span>
+              </div>
+                  <div class="col-md-4 mb-4">
+                    <input list="hosting-plan6" type="text" class="form-control" v-model="engine_cc" required>
+                      <span class="floating-label">Engine CC</span>
+                  </div>
+            </div>
+            <div class="row form">
+              <div class="col-md-4 mb-4">
+                <input list="hosting-plan10" type="text" class="form-control" v-model="make_year" required>
+                <span class="floating-label">Make Year</span>
+              </div>
+              <div class="col-md-4 mb-4">
+                 <input list="hosting-plan11" type="text" class="form-control" v-model="km_run" required>
+                   
+                <span class="floating-label">KMs Run</span>
+              </div>
+              <div class="col-md-4 mb-4">
+                 <input list="hosting-plan11" type="text" class="form-control" v-model="vehicle_no" required>
+                <span class="floating-label">Vehicle No</span>
+              </div>   
+            </div>
+     <hr>       
+            <div class="row form">
+              <div class="col-md-6 mb-4">
+                <input list="hosting-plan10" type="text" class="form-control" v-model="name" required>
+                <span class="floating-label">Name</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                 <input list="hosting-plan11" type="number" class="form-control" v-model="mobile" required>
+                <span class="floating-label">Mobile No </span>
+              </div>
+            </div>
+            <div class="row form">
+              <div class="col-md-6 mb-4">
+                <input list="hosting-plan10" type="text" class="form-control" v-model="city" required>
+                <span class="floating-label">Select City</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                 <input list="hosting-plan11" type="text" class="form-control" v-model="state" required>
+                <span class="floating-label">Select state</span>
+              </div>
+             
+            </div>
+      </div>
+   
+      <div class="modal-footer ">
+       
+        <button type="button" class="viewbikes-button" v-on:click="apply"><strong>
+           <span>SIGNUP</span>
+            <div v-if="loading" class="spinner-border spinner-border-sm"></div>
+          </strong></button>
+      </div>
+    </div>
+  </div>
+</div>
           </div>
       </div>
       <div class="col-md-6 mt-0">
@@ -173,10 +262,50 @@
 export default {
   data(){
     return{
+      bike_name: '',
+        make: '',
+        model:  '',
+        engine_cc:  '',
+        make_year:  '',
+        km_run:  '',
+        vehicle_no:  '',
+        name:  '',
+        mobile: '',
+        city:  '',
+        state:  '',
+        loading:false,
+        response:'',
+        message:'',
+    }
+  },
+  methods:{
+    apply(){
+      this.loading = true
+      this.$http.post('https://backend-bikex.herokuapp.com/api/sell',{
+               bike_name: this.bike_name,
+                make: this.make,
+                model:  this.model,
+                engine_cc:  this.engine_cc,
+                make_year:  this.make_year,
+                km_run:  this.km_run,
+                vehicle_no:  this.vehicle_no,
+                name:  this.name,
+                mobile: this.mobile,
+                city:  this.city,
+                state:  this.state,
+            }).
+            then(response=>{
+            this.response = response.body;
+            this.loading = false
+            
+            }).catch(error => { 
+                this.message = error.body.msg;
+                this.loading= false
+            })   
     }
   },
     mounted () {
-  
+   
   },
   beforeDestroy () {
   },
@@ -188,6 +317,80 @@ export default {
 
 
 <style scoped>
+.modal-header{
+  min-height: 100px;
+  background-color: rgb(0, 18, 51);
+  background-image: url("../assets/heroes.png");
+  background-size: cover;
+  overflow: hidden
+
+}
+ .modal-title{
+    color: #fefefe;
+    font-size: 30px;
+    font-weight: 700
+  }
+
+input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  top: -7px;
+  padding: 0px 5px 0px 5px;
+  background-color: #fefefe;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+  z-index: 1;
+  outline: none !important;
+  box-shadow: none !important
+}
+
+textarea:focus ~ .floating-label,
+textarea:not(:focus):valid ~ .floating-label{
+  top: -7px;
+  padding: 0px 5px 0px 5px;
+  background-color: #fefefe;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+  z-index: 1;
+  outline: none !important;
+  box-shadow: none !important
+}
+select:focus ~ .floating-label,
+select:not(:focus):valid ~ .floating-label{
+  top: -7px;
+  padding: 0px 5px 0px 5px;
+  background-color: #fefefe;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+  z-index: 1;
+  outline: none !important;
+  box-shadow: none !important
+}
+
+.inputText {
+outline: none !important;
+}
+input:focus, textarea:focus, select:focus{
+  outline: none !important;
+  box-shadow: none !important
+}
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 30px;
+  top: 8px;
+  transition: 0.2s ease all;
+}
+.modals-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 75%;
+}
+
 .map-responsive{
   text-decoration: none;
   color:black;

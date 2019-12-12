@@ -1,20 +1,54 @@
 <template>
      <div class="site-wrap" id="home-section">
 
-
-    <div class="site-section col-md-6 margin ">
+<div class="site-section col-md-8 margin ">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 margin text-left mt-0" >
+        <div class="row align-items-center my-0 py-0">
+          <div class="col-md-6 col-5 margin  text-left image my-0 py-0" >
             <img src="../assets/story2.png" alt="Image" class="img-fluid">
           </div>
-          <div class="col-md-6">
-            <div class="heading-39101 mb-5">
-              
+          <div class="col-md-6 col-7 my-0 py-0 ">
+            <div class="heading-39101">              
               <h3>Our Story</h3>
             </div>
-            <p class="fontsize">The purpose of giving these machines a second life through creative recycling is what compelled us to kickstart this company. These preloved vehicles have once been owned, used and undoubtedly brought greatest of pleasures to the one riding them. The wide array of vehicles gets a complete overhaul and is tuned up to give it a new feel. Part by part they are disassembled, thoroughly cleaned, and of course, re-greased. The parts are replaced with brand new original spares and everything – and we mean everything – is screwed back together.</p>
-            <p></p>
+            <p class="fontsize phonepad">The purpose of giving these machines a second life through creative recycling is what compelled us to kickstart this company 
+               . Part by part they are disassembled, thoroughly cleaned, and of course, re-greased. The parts are replaced with brand new genuine spares</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    
+
+   <div class="site-section col-md-8 margin ">
+      <div class="container">
+        <div class="row align-items-center my-0 py-0">
+          
+          <div class="col-md-6 col-7 my-0 py-0 ">
+            <div class="heading-39101">              
+              <h3>Our mission</h3>
+            </div>
+            <p class="fontsize phonepad">Our mission is to ensure that every individual has the opportunity to own a vehicle and travel independently. We aspire to become the most credible and reliable company selling preloved, refurbished vehicles.</p>
+          </div>
+          <div class="col-md-6 col-5 margin  text-right image my-0 py-0" >
+            <img src="../assets/mission2.png" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="site-section col-md-8 margin ">
+      <div class="container">
+        <div class="row align-items-center my-0 py-0">
+          <div class="col-md-6 col-5 margin  text-left image my-0 py-0" >
+            <img src="../assets/vision2.png" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-md-6 col-7 my-0 py-0 ">
+            <div class="heading-39101">              
+              <h3>Our Vision</h3>
+            </div>
+            <p class="fontsize phonepad">To make preloved, refurbished vehicles accessible to every individual and to ensure the online purchase process is quick, hassle-free and convenient</p>
           </div>
           
         </div>
@@ -22,41 +56,6 @@
     </div>
 
 
-    <div class="site-section col-md-6 margin">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 ">
-            <div class="heading-39101 mb-5">
-              
-              <h3>Our Mission</h3>
-            </div>
-            <p class="fontsize">Our mission is to ensure that every individual has the opportunity to own a vehicle and travel independently. We aspire to become the most credible and reliable company selling preloved, refurbished vehicles.</p>
-          </div>
-           <div class="col-md-6 margin  text-right" >
-            <img src="../assets/mission2.png" alt="Image" class="img-fluid">
-          </div>
-        </div>
-      </div>
-    </div>
-
-     <div class="site-section  col-md-6 margin mt-0">
-      <div class="container">
-        <div class="row align-items-center">
-           <div class="col-md-6 margin text-left" >
-            <img src="../assets/vision2.png" alt="Image" class="img-fluid">
-          </div>
-          <div class="col-md-6">
-            <div class="heading-39101 mb-5">
-              
-              <h3>Our Vision</h3>
-            </div>
-            <p class="fontsize">To make preloved, refurbished vehicles accessible to every individual and to ensure the online purchase process is quick, hassle-free and convenient.</p>
-            <p></p>
-          </div>
-         
-        </div>
-      </div>
-    </div>
 
      </div>
   </template>
@@ -67,18 +66,41 @@ export default {
 </script>
 
 <style scoped>
+.margin{
+  margin:0 auto;
+}
+
+ @media only screen and (max-width: 600px) {
+.phonepad{
+  font-size:10px !important;
+}
+
+/* h3{
+  margin-bottom: 25px !important;
+} */
+.image{
+  text-align: left !important;
+  width:25% !important;
+  height:25% !important;
+  margin-left:0 !important;
+  margin-right:0 !important;
+  
+  }
+}
+.none{
+display:none !important;
+}
 .fontsize{
     line-height: 1.7;
     color: #364d59 !important;
-    font-weight: 300;
-    font-size: 0.9rem;
+    font-weight: 500;
+    font-size: 0.95rem;
     font-family: "Work Sans", sans-serif;
-    
+    text-align: justify
 }
 
-.margin{
-  margin: 0 auto;
-}
+
+
  @keyframes fade-in{
   0%{
     opacity: 0;
@@ -87,7 +109,7 @@ export default {
     opacity: 1;
   }
     
-  }
+ }
 .accordion {
   color: #444;
   background-color: transparent;

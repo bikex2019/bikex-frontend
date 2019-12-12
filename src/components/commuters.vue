@@ -69,12 +69,12 @@
                 
             </div>          
         </div>
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && filtereddata.length == 0">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && commuters.length == 0">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && datas.length == 0">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && filtereddata.length == 0 ">
             <!-- <p class="mt-4 bold">sorry :(</p> -->
             
             
@@ -123,10 +123,10 @@ export default {
     beforeMount(){
 	this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle')
       .then(response=>{this.vehicles= response.body;window.console.log('1')
-      }).catch(()=>{this.loading = false});this.$http.get('https://backend-bikex.herokuapp.com/api/models')
+      }).catch(()=>{this.loading = false});this.$http.get('https://backend-bikex.herokuapp.com/api/models/type/commuters')
       .then(res=>{this.models= res.body;window.console.log('2')}).catch(()=>{this.loading = false});
       this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
-      .then(resp=>{this.displayImage= resp.body.data;window.console.log('3')}).catch(()=>{this.loading = false});
+      .then(resp=>{this.displayImage= resp.body.data;}).catch(()=>{this.loading = false});
     },
     methods:{
         display(id){
@@ -134,6 +134,8 @@ export default {
         },
         filterkey(id){
             this.filter = id
+            this.loading = false
+            window.console.log(this.filter)
         }
     },
     computed:{
@@ -160,28 +162,36 @@ export default {
       return temp2
     },
     commuters(){
-     const temp3 = []
-            this.megaData.forEach(y => {
-            if (y.vehicle_type === 'commuters') {
-                temp3.push({ ...y })
-            }
-        })
-      return temp3
+    //  const temp3 = []
+    //         this.megaData.forEach(y => {
+    //         if (y.vehicle_type === 'commuters') {
+    //             temp3.push({ ...y })
+    //         }
+    //     })
+      return this.megaData
     },
     filtereddata(){
-    const temp4 =[]
-       if(this.filter === 'all'){
-          temp4.push(...this.commuters)
-       }else{
-        var x = this.commuters.find(d=>{
-            return d.type === this.filter
-        })
-        if(x){
-            temp4.push({...x})
-        }
-       }
-       return temp4
+    const filterparams = this.filter
+    if(filterparams === "all") {
+				return this.commuters;
+			} else {
+				return this.commuters.filter(function(x) {
+					return x.type === filterparams;
+				}); 
+			}
     }
+    // const temp4 =[]
+    //    if(this.filter === 'all'){
+    //       temp4.push(...this.commuters)
+    //    }else{
+    //     var x = this.commuters.find(d=>{
+    //         return d.type === this.filter
+    //     })
+    //     if(x){
+    //         temp4.push({...x})
+    //     }
+    //    }
+    //    return temp4
     }
 }
 </script>

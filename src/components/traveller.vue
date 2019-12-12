@@ -45,37 +45,44 @@
             <div class="row pl-2 pr-2 mb-4" >
                 <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="filtereddata" v-for="(image, index) in filtereddata" :key="index">  
                     <div class="moterbike"> 
-                        <div class="card" v-on:click="display(image.vehicle_id)"> 
-                            <div class="image text-center">
-                                <div class="top-left" v-if="image.status==4">
-                                    <span >Sale Pending</span>
-                               </div>
-                                <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
-                                <img v-else :src="image.path" width="100%" height="30%">
-                            </div>
-                            <div class="card-body text-left mt-1">
-                                <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
-                                <p class="bold bike-sp">RS.{{image.selling_price}}</p>
-                            </div>
-                            
-                        </div> 
-                    </div>                   
+                            <div class="card" v-on:click="display(image.vehicle_id)"> 
+                                <div class="image text-center" style="min-height:50px;">
+                                    <div class="top-left" v-if="image.status==4">
+                                        <span >Sale Pending</span>
+                                </div>
+                                    <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
+                                    <img v-else :src="image.path" width="100%" height="30%">
+                                </div>
+                                <div class="card-body text-left mt-1">
+                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
+                                    <p class="bold bike-sp">RS.{{image.selling_price}}</p>
+                                </div>
+                            </div> 
+                                
+                             <!-- <div class="card mt-2" v-if="index == 0"> 
+                                <div class="image text-center mt-4" style="min-height:50px;">
+                                    <img src="../assets/placeholder.png" width="100%">
+                                </div>
+                            </div>  -->
+                    </div>                 
                 </div>    
                 
             </div>          
         </div>
-         <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && filtereddata.length == 0">
+        {{filtereddata}}
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && commuters.length == 0">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && filtereddata.length == 0">
-            <!-- <p class="mt-4 bold">sorry :(</p>
-            <p class="mt-4 bold">the vehicles are out of stock</p> -->
-            <!-- <p class="mt-4 bold">we are coming back on stock soon</p> -->
-             <img src="../assets/out-of-stock-bikex.svg" width="10%">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && filtereddata.length == 0 ">
+            <!-- <p class="mt-4 bold">sorry :(</p> -->
+            
+            
+                <img src="../assets/out-of-stock-bikex.svg" width="10%">
            
-            <p class="mt-4 bold">The vehicles are out of stock</p>
+            <p class="mt-4 bold">The vehicles are out of stock</p> 
+            <!-- <p class="mt-4 bold">we are coming back on stock soon</p> -->
         </div> 
     <div >
         <!-- <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
@@ -116,11 +123,11 @@ export default {
     },
     beforeMount(){
 	this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle')
-      .then(response=>{this.vehicles= response.body;
-      });this.$http.get('https://backend-bikex.herokuapp.com/api/models')
-      .then(res=>{this.models= res.body;});
+      .then(response=>{this.vehicles= response.body;window.console.log('1')
+      }).catch(()=>{this.loading = false});this.$http.get('https://backend-bikex.herokuapp.com/api/models/type/bikes')
+      .then(res=>{this.models= res.body;window.console.log('2')}).catch(()=>{this.loading = false});
       this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
-      .then(resp=>{this.displayImage= resp.body.data;this.loading = false;window.console.log(this.displayImage)});
+      .then(resp=>{this.displayImage= resp.body.data;this.loading = false}).catch(()=>{this.loading = false});
     },
     methods:{
         display(id){
@@ -128,6 +135,8 @@ export default {
         },
         filterkey(id){
             this.filter = id
+            this.loading = false
+            window.console.log(this.filter)
         }
     },
     computed:{
@@ -154,28 +163,37 @@ export default {
       return temp2
     },
     commuters(){
-     const temp3 = []
-            this.megaData.forEach(y => {
-            if (y.vehicle_type === 'bikes') {
-                temp3.push({ ...y })
-            }
-        })
-      return temp3
+    //  const temp3 = []
+    //         this.megaData.forEach(y => {
+    //         if (y.vehicle_type === 'bikes') {
+    //             temp3.push({ ...y })
+    //         }
+    //     })
+      return this.megaData
     },
     filtereddata(){
-    const temp4 =[]
-       if(this.filter === 'all'){
-          temp4.push(...this.commuters)
-       }else{
-        var x = this.commuters.find(d=>{
-            return d.type == this.filter
-        })
-        if(x){
-            temp4.push({...x})
-        }
-       }
-       return temp4
+    
+    const what = this.filter
+    if(what === "all") {
+				return this.commuters;
+			} else {
+				return this.commuters.filter(function(x) {
+					return x.type === what;
+				}); 
+			}
     }
+    // const temp4 =[]
+    //    if(this.filter === 'all'){
+    //       temp4.push(...this.commuters)
+    //    }else{
+    //     var x = this.commuters.find(d=>{
+    //         return d.type === this.filter
+    //     })
+    //     if(x){
+    //         temp4.push({...x})
+    //     }
+    //    }
+    //    return temp4
     }
 }
 </script>
@@ -229,6 +247,7 @@ export default {
 .bold{
     font-weight: 500
 }
+
 .color{
     color:#001232;  
     font-weight: 500

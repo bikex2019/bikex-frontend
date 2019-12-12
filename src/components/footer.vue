@@ -28,7 +28,7 @@
                 <li><span>Email: </span><a href="mailto:info@bikex.in">info@bikex.in</a></li>            
                 <li><span>Phones: </span><a class="phone" href="tel: +91 9742744444">+91 9742744444</a></li> 
                 <li><span>Address: </span>
-                <a class="map-responsive" href="https://goo.gl/maps/eJKcARiWnqRXDc5u5" target="_blank">Site No: 19, Bytarayanapura-560092 </a>
+                <a class="map-responsive" href="https://goo.gl/maps/tKUuPWbcU4f1bjPX7" target="_blank">Site No: 90, Bytarayanapura-560092 </a>
                 </li>           
               </ul>
             </div>
