@@ -69,8 +69,7 @@
                 
             </div>          
         </div>
-        {{filtereddata}}
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && commuters.length == 0">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && filtereddata.length == 0">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -127,7 +126,7 @@ export default {
       }).catch(()=>{this.loading = false});this.$http.get('https://backend-bikex.herokuapp.com/api/models/type/bikes')
       .then(res=>{this.models= res.body;window.console.log('2')}).catch(()=>{this.loading = false});
       this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
-      .then(resp=>{this.displayImage= resp.body.data;this.loading = false}).catch(()=>{this.loading = false});
+      .then(resp=>{this.displayImage= resp.body.data;}).catch(()=>{this.loading = false});
     },
     methods:{
         display(id){

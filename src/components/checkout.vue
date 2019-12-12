@@ -129,7 +129,7 @@ export default {
           .then(res=>{
           this.vehicle = res.body
           })
-           this.$http.get('https://immense-chamber-94004.herokuapp.com/api/upload-display/' + this.id)
+           this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display/' + this.id)
             .then(resp=>{this.displayImage= resp.body.data;this.loading = false;window.console.log(this.displayImage)});
     },
     methods:{
