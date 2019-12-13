@@ -2,7 +2,7 @@
   
      <div class="navigation p-0 m-0">
           <nav class="navbar p-0 m-0 mt-2 mynav">
-      <div class="row col-md-10 margin">
+      <div class="row col-md-10 margin pr-0">
         <div class="col-md-2 col-12 m-0 pt-2 pl-0 pr-0 logo">
             <router-link to="/">
               <img src="../assets/bikex-logo.svg" width="130px">
@@ -35,13 +35,13 @@
             <!-- <li class="nav-item">
            <a href="tel:+91 9742744444"><h6><i class="fa fa-phone mr-1" aria-hidden="true" style="color:#FFB52F"></i>+91 9742744444</h6> </a>
             </li> -->
-                <li class="nav-item"  v-if="!isLogged" v-on:click="navigation = false">
+                <li class="nav-item p-0"  v-if="!isLogged" v-on:click="navigation = false">
                 <a class="story" data-toggle="modal" data-target="#exampleModal">
                   <!-- <router-link to="/login" exact-active-class="active">LOGIN</router-link> -->
                   LOGIN
                   </a>
             </li>
-             <li class="nav-item dropdown m-0" v-else>
+             <li class="nav-item p-0 dropdown m-0" v-else>
                 <a class="nav-link dropdown-toggle m-0 p-0" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{user}}
                 </a>
@@ -58,7 +58,7 @@
   </nav>
 
    <nav class="navbar navbar-fix p-0 m-0 fixed-top navigate"  v-if="shownav" v-bind:class="{none:$route.path=='/vehicle/:id'}">
-      <div class="row col-md-10 margin">
+      <div class="row col-md-10 margin pl-0">
         <div class="col-md-2 col-12 m-0 pt-2 pl-2 pr-0 logo">
             <router-link to="/">
               <img src="../assets/bikex_temp_logo.svg" width="130px">
@@ -90,13 +90,13 @@
             <!-- <li class="nav-item">
            <a href="tel:+91 9742744444"><h6><i class="fa fa-phone mr-1" aria-hidden="true" style="color:#FFB52F"></i>+91 9742744444</h6> </a>
             </li> -->
-            <li class="nav-item"  v-if="!isLogged" @button-clicked="update" v-on:click="navigation = false">
+            <li class="nav-item pr-0"  v-if="!isLogged" @button-clicked="update" v-on:click="navigation = false">
                 <a class="story" data-toggle="modal" data-target="#exampleModal">
                   <!-- <router-link to="/login" exact-active-class="active">LOGIN</router-link> -->
                   LOGIN
                   </a>
             </li>
-             <li class="nav-item dropdown" v-else>
+             <li class="nav-item p-0 dropdown" v-else>
                 <a class="nav-link dropdown-toggle m-0 p-0" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-on:click="toggle =! toggle">
                   {{user}}
                 </a>

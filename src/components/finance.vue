@@ -2,27 +2,26 @@
   <div class="finance">
         <!-- icons grid -->
         <div class="container middle col-md-10 col-12 pl-0 pt-4">
-          <div class="row col-12 m-0 p-0 mt-4 mb-4">
+          <div class="row col-12 m-0 p-0 mt-4 mb-4 sell-top">
             <div class="col-md-4 col-12 margin-bottom">  
                 <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
                              <img src="../assets/check.svg" width="15px">  
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left ">
-                              <p class="cool pb-2 mb-0">Apply in Minutes</p>
-                              <p class="card-text">Apply online in as few as 5 minutes. We'll respond quickly with your financing information.</p>
+                              <p class="cool pb-2 mb-0">Best Price</p>
+                              <p class="card-text">We help you get the lowest rate from multiple lenders. You can take the loan decision in only a few minutes.</p>
                             </div>  
                   </div>
             </div>
-            <div class="col-md-4 col-12 margin-bottom">
-               
+            <div class="col-md-4 col-12 margin-bottom">              
                 <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
                              <img src="../assets/check.svg" width="15px">  
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left ">
-                              <p class="cool pb-2 mb-0">Highly Competitive Rates</p>
-                              <p class="card-text">Our 12+ banks and lending partners will compete with each other to get you a low rate.</p>
+                               <p class="cool pb-2 mb-0">Quick and Convenient</p>
+                              <p class="card-text">Smart financing options, Easy application, Quick approvals, Hassle-free disbursement </p>
                             </div>  
                         </div>
                 
@@ -35,8 +34,8 @@
                               <img src="../assets/check.svg" width="15px">    
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left ">
-                              <p class="cool pb-2 mb-0">Easy Registration</p>
-                              <p class="card-text">When you finance with Bikex, (details will be added later)</p>
+                              <p class="cool pb-2 mb-0">Multiple Financing Options</p>
+                              <p class="card-text">We work with a few trusted banks and lending partners like IDFC First Bank, ZestMoney, MoneyTap, Hero FinCorp and LendBox.</p>
                             </div>  
                         </div>
                       </div>
@@ -53,41 +52,49 @@
               
                    <div class="row pb-3 col-12 m-0 p-0">
                       <div class="col-md-1 col-1 m-0 p-0">
-                         
                      <img src="../assets/check.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Browse away</p>
-                        <p class="mb-0 p-0 ptag">you will find a wide selection of refurbished bikes. Choose the one that gets your motor running!</p>
+                        <p class="mb-0 p-0 ptag pb-3">You will find a wide selection of refurbished bikes. Choose the one that gets your motor running!</p>
+                          <p class="mb-0 p-0 ptag1 pl-2 pb-3"><strong>1. </strong> Need a quick call with our staff, don’t hesitate – just pick up the phone and dial <a href="tel:080-89874626"><strong style="color:#ffb52f"> 080-89874626</strong></a> </p>
+                          <p class="mb-0 p-0 ptag1 pl-2" ><strong>2. </strong> Struggling to put the money on just one bike – why don’t you take a test ride? Visit our experience centre.</p>
                       </div>
                     </div>  
 
                     <div class="row pb-3 col-12">
                       <div class="col-md-1 col-1 m-0 p-0">
-                        
                      <img src="../assets/check.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
-                        <p class="m-0 p-0 cool">Get Your Financing Terms</p>
-                        <p class="m-0 p-0 ptag">To apply in minutes. You will need to select a vehicle first to receive exact financing terms, need a quick call with our staff, don’t hesitate – just pick up the phone and dial 080-89874626</p>
+                        <p class="m-0 p-0 cool">Begin the purchase</p>
+                        <p class="m-0 p-0 ptag">Finally settled on a bike that you would just love to ride away? Great. Select the bike online and make the purchase.</p>
                       </div>
                     </div>  
 
                     <div class="row pb-3 col-12">
-                      <div class="col-md-1 col-1 m-0 p-0">
-                        
+                      <div class="col-md-1 col-1 m-0 p-0"> 
                      <img src="../assets/check.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Payment dilemma</p>
-                        <p class="m-0 p-0 ptag">we make sure you don’t have any! So here are the options for you (details will be added later)
-</p>
+                        <p class="m-0 p-0 ptag">We make sure you don’t have any! So here are the options for you (details will be added later)</p>
                       </div>
                     </div>   
+
+                    <div class="row pb-3 col-12">
+                      <div class="col-md-1 col-1 m-0 p-0"> 
+                     <img src="../assets/check.svg" width="15px">
+                      </div> 
+                      <div class="col-md-11 col-11 m-0 p-0 text-left">
+                        <p class="m-0 p-0 cool">The bike is yours!</p>
+                        <p class="m-0 p-0 ptag"> Yes, that’s how easy this is. Don’t let us send you off with the bike without a mandatory check-up. Post a rigorous check from our end there will be no going back. You wouldn’t want to ride away without it!</p>
+                      </div>
+                    </div> 
                
           </div>
-        <div class="col-md-6 text-right">
-          <img src="../assets/bikex-finance.jpeg" width="100%">
+        <div class="col-md-6 text-right photosize">
+          <img src="../assets/bf2.png" width="100%">
         </div>
      
     </div>
@@ -95,35 +102,86 @@
   
   <hr>
    <!--image section -->
+  
+   <div class="col-md-8 margin text-center pb-3 display1 ">
+        <h3 class="m-4 p-1 lendh3">Our lending partners</h3>
+        <p class="lendp">We work with a few trusted banks and lending partners like</p>
+         <div class="row mt-4 pb-4 ">
+             
+                    <div class=" col-2  text-center size"                 
+                      v-on:click="set('Headquartered in Mumbai, it offers a range of financing solutions. They use contemporary technologies to provide superior quality financing products and services.',1)"> 
+                      <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfcmobile.png" width="70%">      
+                    </div>
+                    <div class=" col-2 text-center text-left size"
+                     v-on:click="set('Offers a wide range of financing products. It started giving two-wheeler loans in 2013.',2)">
+                        <img v-bind:class="{ gray: active != 2 }" class="size1" src="../assets/lend/heromobile.png" width="100%">
+                    </div>
+                    <div class=" col-2 text-center text-left size "
+                    v-on:click="set('ZestMoney, founded in 2016, is the fastest growing consumer lending fintech company in India. They offer instant financing using modern technology.',3)">
+                            <img v-bind:class="{ gray: active != 3 }" class="size1" src="../assets/lend/zestmobile.png" width="100%">
+                    </div>            
+                    <div class=" col-2  text-center text-left size"
+                    v-on:click="set('MoneyTap gives you an instant approval for credit online for anything that you want.',4)">
+                            <img v-bind:class="{ gray: active != 4 }" class="size1" src="../assets/lend/moneytapmobile.png" width="100%">   
+                    </div>
+                     <div class=" col-2  text-center text-left size"
+                     v-on:click="set('India’s leading peer-to-peer lending company, allows you to acquire instant loan through an online platform.',5)">
+                      <img v-bind:class="{ gray: active != 5 } " class="size1" src="../assets/lend/lendboxmobile.png" width="100%">   
+                    </div>
+                   
+                </div>
 
+                <p class="lendp1" style="color:#001232">{{data}}</p>
+  </div>
+
+<div class="col-md-8 margin text-center pb-5 display">
+        <h3 class="m-4 p-1 lendh3">Our lending partners</h3>
+        <p class="lendp">We work with a few trusted banks and lending partners like</p>
+         <div class="row mt-4 p-4 margin pl-5 col-12">
+               <div class="col-md-1 col-1"></div>
+                    <div class="col-md-2 col-12 text-center size"                 
+                      v-on:click="set('Headquartered in Mumbai, it offers a range of financing solutions. They use contemporary technologies to provide superior quality financing products and services.',1)"> 
+                      <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfc.png" width="100%">      
+                    </div>
+                    <div class="col-md-2 col-12 text-center text-left size"
+                     v-on:click="set('Offers a wide range of financing products. It started giving two-wheeler loans in 2013.',2)">
+                        <img v-bind:class="{ gray: active != 2 }" class="size1" src="../assets/lend/herocolored.png" width="100%">
+                    </div>
+                    <div class="col-md-2 col-12 text-center text-left size "
+                    v-on:click="set('ZestMoney, founded in 2016, is the fastest growing consumer lending fintech company in India. They offer instant financing using modern technology.',3)">
+                            <img v-bind:class="{ gray: active != 3 }" class="size1" src="../assets/lend/zestcolored.png" width="100%">
+                    </div>            
+                    <div class="col-md-2 col-12  text-center text-left size"
+                    v-on:click="set('MoneyTap gives you an instant approval for credit online for anything that you want.',4)">
+                            <img v-bind:class="{ gray: active != 4 }" class="size1" src="../assets/lend/moneytapcolored.png" width="100%">   
+                    </div>
+                     <div class="col-md-2 col-12  text-center text-left size"
+                     v-on:click="set('India’s leading peer-to-peer lending company, allows you to acquire instant loan through an online platform.',5)">
+                      <img v-bind:class="{ gray: active != 5 } " class="size1" src="../assets/lend/lenboxcolored.png" width="100%">   
+                    </div>
+                    <div class="col-md-1  "></div>
+                </div>
+
+                <p class="lendp1" style="color:#001232">{{data}}</p>
+  </div>
+ 
+
+
+<hr>
    <!-- question -->
       <div class="col-md-12 middle col-12">
      
       <div class="col-md-12 text-center">
-        <p class="font hit">questions ?</p>
+        <p class="font hit">Questions?</p>
       </div>
 
       <div class="container col-md-10 col-12 middle">
          <div class="row col-md-12 col-12 mb-4">
-
-            <div class="col-md-4 col-12 text-center border-right no-border">
-                  <p class=""><i style="color:#ffb52f" class="fa fa-home pr-2 pt-1"></i>visit our center</p>
+             <div class="col-md-6 col-12  text-center border-right no-border">
+                 <p class=""><i style="color:#ffb52f" class="fa fa-lg fa-phone pr-2 pt-1"></i>+91 9742744444</p>           
             </div>
-
-             <div class="col-md-4 col-12  text-center border-right no-border">
-              
-                   
-             
-                 <p class=""><i style="color:#ffb52f" class="fa fa-lg fa-phone pr-2 pt-1"></i> 07989 936719</p>
-            
-            </div>
-
-             <div class="col-md-4 col-12 text-center">
-          
-                  
-                  <p class=""><i style="color:#ffb52f" class="fa fa-address-book pr-2 pt-1"></i>Message</p>
-              
-            
+             <div class="col-md-6 col-12 text-center">   
+                  <p class=""><i style="color:#ffb52f" class="fa fa-envelope pr-2 pt-1"></i>Email us</p>
             </div>
          </div>
       </div>
@@ -132,6 +190,19 @@
 </template>
 <script>
 export default {
+  data(){
+    return{
+      data:'',
+      img:'',
+      active:0
+    }
+  },
+ methods:{
+  set(text, active){
+    this.data = text
+    this.active = active
+  }
+ },
      mounted(){
         window.scrollTo({
                 top: 0,
@@ -143,12 +214,80 @@ export default {
 </script>
 <style scoped>
 
+
+
+@media only screen and (min-width: 1200px) {
+  .display1 {display: none;}
+}
+.photosize{
+   
+    max-width:100% !important;
+    height:auto !important;
+
+}
+
+.ghover:hover{
+  color:none;
+  cursor: pointer;
+}
+
+.gray{
+      color:gray;
+      -webkit-filter: grayscale(1); /* Webkit Nightlies & Chrome Canary */
+      -webkit-transition: all .0s ease-in-out;
+      cursor: pointer;
+      
+}
+.gray:hover{
+  color: none;
+      -webkit-filter: grayscale(0);
+      /* -webkit-transform: scale(1.01); */
+}
+.lendp1{
+  font-size:15px;
+  font-weight: 700
+}
+.margin{
+  margin:0 auto;
+}
+.lendh3{
+  font-size:40px !important;
+  font-weight: 700 !important;
+}
+.lendp{
+  font-weight:600;
+  color:gray;
+  letter-spacing: 0.5px;
+}
+.sell-top{
+  background-color: rgba(231, 227, 161, 0.1);
+  background-image: url('../assets/back.png'); 
+  padding:20px !important;
+}
+.ptag1{
+  font-size:14px;
+  color:black;
+  letter-spacing: 0.5px;
+}
 @media only screen and (max-width: 600px) {
           .container .row{
           margin:0;
           padding:0
           }
-          .keep-text-center{
+          .lendh3{
+            font-size:25px !important 
+          }
+          .lendp{
+            font-size:12px !important;
+          }
+          .lendp1{
+            font-size:12px !important;
+          }
+          .col-2 {  
+              flex: 0 0 19.666667%;
+              max-width: 29.666667%;
+                 }
+            .keep-text-center{
             text-align: center !important
           }
           .no-margin{
@@ -176,18 +315,35 @@ export default {
           .margin-bottom{
             margin-bottom: 15px;
           }
+          .size1{
+            width:70% !important;
+          }
+          .display{
+            display: none !important;
+          }
+          .photosize{
+   
+    max-width:100% !important;
+    height:auto !important;
+
+}
+
       }
 
 
 .hit{
 font-weight: bold;
 margin-left: 5px;
+font-size: 24px;
 }
 .py-1{
   font-weight: 400;
 
 }
 .ptag{
+  letter-spacing: 0.5px;
+  font-size:14px;
+  font-weight: 400;
 }
 .middle{
   margin: 0 auto;
@@ -228,6 +384,8 @@ ul{
   list-style: none;
 }
 .card-text{
+  font-size:14px;
+  letter-spacing: 0.5px;
 }
 .cool{
   font-weight: bold

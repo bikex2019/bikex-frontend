@@ -1,5 +1,5 @@
 <template>
-<footer class="footer-classic col-md-12" style="background: #f5f5f0;">
+<footer class="footer-classic p-0 col-md-12" style="background: #f5f5f0;">
         <div class="container col-md-10 margin">
           <div class="row custom">
             <div class="col-md-3 col-6 text-left contentss ok">
@@ -22,7 +22,7 @@
               </ul>
             </div>
 
-            <div class=" contact col-md-3 col-6 text-left contentss ok">
+            <div class=" contact col-md-3 p-0 col-6 text-left contentss ok">
              <h3 class="menu">CONTACT</h3> 
               <ul class="nav-list">
                 <li><span>Email: </span><a href="mailto:info@bikex.in">info@bikex.in</a></li>            

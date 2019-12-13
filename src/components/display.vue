@@ -58,30 +58,30 @@
       </div>
     </div>
   </div>
-   <div class="price-panel ml-0 col-12 mb-1" style="background-color:white" >
+   <div class="price-panel ml-0 col-12 mb-1 p-0" style="background-color:white" >
      <div class="row col-12 col-md-10 p-0" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
-       <div class="col-md-3 col-12 pl-0 description">
+       <div class="col-md-3 col-12 ipad-col-3 description">
         <h1 class="margin" v-for="(models, index) in models" :key="index">
           <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
            <span class="badge ml-4" v-if="vehicles.status == 4">Sale Pending</span>
         </h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
-        <!-- <label>The Hero Choice</label> -->
+        <label>BX{{id}}</label>
         </div>
-         <div class="col-md-4 col-12 price" >
+         <div class="col-md-5 ipad-col-3 col-12 pl-0 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
         <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
-       <div class="col-md-5  col-12 price" v-if="loading">
+       <div class="col-md-6 col-12 price" v-if="loading">
         <p class="margin">Loading price..</p>
        </div>
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
+         <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
            <button class="buttons" v-on:click="book" >RESERVE</button>
         </div>
-        <div class="col-md-3 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
         </div>
         <div v-else  class="col-md-4 display-laptop">
@@ -107,7 +107,7 @@
      </div>
   </div>
 
-  <div class="col-md-10 middle-align col-12 specification pt-4 pl-4">
+  <div class="col-md-10 p-0 middle-align col-12 specification pt-4 pl-4">
     <div class="row">
       <div class="col-md-12 col-12 m-0 p-0 pt-4 pb-4">
         <div class="heading text-left ">
@@ -189,32 +189,32 @@
     </div>
      </div>
   </div>
-<div class="col-md-11 middle-align bikex-font">
+<div class="col-md-11 p-0 middle-align bikex-font">
   <nav class="navbar-fix col-md-12 p-0 m-0 fixed-top" v-if="shownav">
-     <div class="price-panel mr-0 pr-0 ml-0 col-12 mb-1" style="background-color:white" >
-     <div class="row col-12 col-md-10" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
-       <div class="col-md-3 col-12 description">
+ <div class="price-panel ml-0 col-12 mb-1 p-0" style="background-color:white" >
+     <div class="row col-12 col-md-10 p-0" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
+       <div class="col-md-3 col-12 ipad-col-3 description">
         <h1 class="margin" v-for="(models, index) in models" :key="index">
           <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
            <span class="badge ml-4" v-if="vehicles.status == 4">Sale Pending</span>
         </h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
-        <!-- <label>The Hero Choice</label> -->
+        <label>BX{{id}}</label>
         </div>
-         <div class="col-md-4 col-12 price" >
+         <div class="col-md-4 ipad-col-3 col-12 pl-0 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
         <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
-       <div class="col-md-5  col-12 price" v-if="loading">
+       <div class="col-md-6 col-12 price" v-if="loading">
         <p class="margin">Loading price..</p>
        </div>
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-2 display-laptop" v-if="vehicles.status == 3">
+         <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
            <button class="buttons" v-on:click="book" >RESERVE</button>
         </div>
-        <div class="col-md-3 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-3 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
         </div>
         <div v-else  class="col-md-4 display-laptop">
@@ -239,6 +239,7 @@
         </div>
      </div>
   </div>
+
   </nav>
  <!-- <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
             <div id="text" class="spinner-border" role="status">
@@ -491,6 +492,25 @@ cursor: pointer;
   text-align: left;
   margin-top: 1%
 }
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+    .ipad-col-4{
+      flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    }
+    .ipad-col-3{
+      flex: 0 0 25%;
+    max-width: 25%;
+    }
+    .buttons{
+    padding: 10px 15px 10px 15px !important;
+    }
+    .price .label{
+    font-size: 10px !important;
+    }
+  }
 @media only screen and (max-width: 600px) {
  .display-mobile{
   display: block;
@@ -535,15 +555,20 @@ cursor: pointer;
 }
 .buttons{
   padding: 10px 35px 10px 35px;
-  font-size: 14px;
-  font-weight: 400;
-  height: inherit;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  background-color:  #ffb52f;
-  border: 1px solid transparent;
-  color: #fff;
-  box-shadow: none;
+  background-color:#ffb52f;
+    box-shadow: none;
+    font-size: 14px;
+    font-weight: 700;
+    height: inherit;
+    letter-spacing: 1.2px;
+    color: #001232;
+    padding: 8px 22px;
+    outline: none;
+    text-transform: uppercase;
+    border:none;
+}
+.buttons:hover{
+  opacity: 0.9;
 }
 .mybtn{
  font-size: 14px;
@@ -621,7 +646,9 @@ cursor: pointer;
   margin-top: 5px;
   padding-right: 0px !important;
 }
-
+.phone{
+  color:#ffb52f
+}
 /* Next & previous buttons */
 .prev,
 .next {
