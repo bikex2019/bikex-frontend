@@ -1,12 +1,12 @@
 <template>
-  <div class="finance">
+  <div class="finance p-0 m-0">
         <!-- icons grid -->
-        <div class="container middle col-md-10 col-12 pl-0 pt-4">
+        <div class="container middle col-md-10 col-12 p-0 pt-4">
           <div class="row col-12 m-0 p-0 mt-4 mb-4 sell-top">
-            <div class="col-md-4 col-12 margin-bottom">  
+            <div class="col-md-4 ipad-12 col-12 margin-bottom">  
                 <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
-                             <img src="../assets/check.svg" width="15px">  
+                             <img src="../assets/highly_competetive_rates.svg" width="15px">  
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left ">
                               <p class="cool pb-2 mb-0">Best Price</p>
@@ -14,10 +14,10 @@
                             </div>  
                   </div>
             </div>
-            <div class="col-md-4 col-12 margin-bottom">              
+            <div class="col-md-4 ipad-12 col-12 margin-bottom">              
                 <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
-                             <img src="../assets/check.svg" width="15px">  
+                             <img src="../assets/apply_in_minutes.svg" width="15px">  
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left ">
                                <p class="cool pb-2 mb-0">Quick and Convenient</p>
@@ -27,11 +27,11 @@
                 
              </div>
             
-            <div class="col-md-4 col-12 margin-bottom">
+            <div class="col-md-4 ipad-12 col-12 margin-bottom">
               
                <div class="row col-12">
                             <div class="col-md-1 col-1 m-0 p-0">
-                              <img src="../assets/check.svg" width="15px">    
+                              <img src="../assets/easy_registrations.svg" width="15px">    
                             </div>
                             <div class="col-md-11 col-11 m-0 p-0 text-left ">
                               <p class="cool pb-2 mb-0">Multiple Financing Options</p>
@@ -45,14 +45,14 @@
   <!-- image section -->
     <div class="container midddle p-0 col-md-10 col-12">
       <div class="row col-12 pt-4 mt-4">
-          <div class="col-md-6">
+          <div class="col-md-6 ipad-12">
              <div class="col-md-12 text-left">
                 <h3 class=" pb-3"><strong>how it works?</strong></h3>
              </div>
               
                    <div class="row pb-3 col-12 m-0 p-0">
                       <div class="col-md-1 col-1 m-0 p-0">
-                     <img src="../assets/check.svg" width="15px">
+                     <img src="../assets/finance_browsing.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Browse away</p>
@@ -64,7 +64,7 @@
 
                     <div class="row pb-3 col-12">
                       <div class="col-md-1 col-1 m-0 p-0">
-                     <img src="../assets/check.svg" width="15px">
+                     <img src="../assets/fianance_terms.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Begin the purchase</p>
@@ -74,7 +74,7 @@
 
                     <div class="row pb-3 col-12">
                       <div class="col-md-1 col-1 m-0 p-0"> 
-                     <img src="../assets/check.svg" width="15px">
+                     <img src="../assets/finance_browsing.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Payment dilemma</p>
@@ -84,7 +84,7 @@
 
                     <div class="row pb-3 col-12">
                       <div class="col-md-1 col-1 m-0 p-0"> 
-                     <img src="../assets/check.svg" width="15px">
+                     <img src="../assets/finance_dilema.svg" width="15px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">The bike is yours!</p>
@@ -93,7 +93,7 @@
                     </div> 
                
           </div>
-        <div class="col-md-6 text-right photosize">
+        <div class="col-md-6 ipad-12 text-right photosize">
           <img src="../assets/bf2.png" width="100%">
         </div>
      
@@ -106,11 +106,11 @@
    <div class="col-md-8 margin text-center pb-3 display1 ">
         <h3 class="m-4 p-1 lendh3">Our lending partners</h3>
         <p class="lendp">We work with a few trusted banks and lending partners like</p>
-         <div class="row mt-4 pb-4 ">
+         <div class="row mt-4 pb-4 margin-left">
              
-                    <div class=" col-2  text-center size"                 
+                    <div class=" col-2 margin-top text-center size"                 
                       v-on:click="set('Headquartered in Mumbai, it offers a range of financing solutions. They use contemporary technologies to provide superior quality financing products and services.',1)"> 
-                      <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfcmobile.png" width="70%">      
+                       <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfcmobile.png" width="70%">      
                     </div>
                     <div class=" col-2 text-center text-left size"
                      v-on:click="set('Offers a wide range of financing products. It started giving two-wheeler loans in 2013.',2)">
@@ -318,9 +318,9 @@ export default {
           .size1{
             width:70% !important;
           }
-          .display{
+          /* .display{
             display: none !important;
-          }
+          } */
           .photosize{
    
     max-width:100% !important;
@@ -404,5 +404,28 @@ ul{
     background-color: initial;
 }
 
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+    .ipad-12{
+      flex: 0 0 100% !important;
+    max-width: 100% !important;
+    }
+    .margin-bottom{
+      margin-bottom: 20px;
+    }
+    .margin-top{
+        margin-top: 10px;
+    }
+    .margin-left{
+      margin-left: 30px;
+    }
+  }
+@media only screen and (max-width: 1200px) {
+  .display{
+    display: none
+  }
+  }
 
 </style>

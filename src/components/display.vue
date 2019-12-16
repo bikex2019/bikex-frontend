@@ -14,7 +14,11 @@
   </div>
   <div id="myModalMobile" class="modalmobile" v-bind:class="{'block': isExpand}">
   <span class="closemobile" v-on:click="closemobileModal">&times;</span>
-  <img class="modal-content-mobile" id="img01" :src="expandedImage">
+    <div class="image_holder">
+      <v-zoomer style="width:100%; height: 600px; border: solid 1px silver;">
+    <img class="modal-content-mobile" id="img01" :src="expandedImage">
+    </v-zoomer>
+    </div>
 </div>
   <div class="display-laptop mt-0 pt-0 m-0 p-0">
     <div class="row m-0 p-0 c">
@@ -108,7 +112,7 @@
   </div>
 
   <div class="col-md-10 p-0 middle-align col-12 specification pt-4 pl-4">
-    <div class="row">
+    <div class="row col-12">
       <div class="col-md-12 col-12 m-0 p-0 pt-4 pb-4">
         <div class="heading text-left ">
           <p>Details</p>

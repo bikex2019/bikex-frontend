@@ -25,7 +25,7 @@ import invoice from './components/invoice'
 export default[
     
    {path:'/', component:home},
-   {path:'/vehicles', component:vehicles},
+   {path:'/vehicles/:id', component:vehicles},
    {path:'/commuters', component:commuters},
    {path:'/traveller', component:traveller},
    {path:'/adventurer', component:adventurer},

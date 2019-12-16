@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-md-2 m-0 p-0 mt-3 no-margin">
                                     <p class="pixel ">{{data.model}}</p>
-                                    <p class="smallfont ">Color: blue</p>
+                                    <p class="smallfont ">Mode: {{data.mode_of_payment}}</p>
                                 </div>
                                 
                                    <div class="col-md-2 col-6 m-0 p-0 mt-3 no-margin text-center phone-left">
@@ -54,7 +54,7 @@
                                   <p class="m-0 p-0"><span class="smallfont">Ordered On</span> {{data.date | moment("dddd, MMMM Do YYYY")}}</p>
                                 </div>
                                 <div class="text-right col-md-6 phone-left no-margin" >
-                                  <p class="m-0 p-0"><span class="smallfont">Order Total</span> Rs {{data.amount}}</p>
+                                  <p class="m-0 p-0"><span class="smallfont">Order Total</span> Rs {{data.amount | currency}}</p>
                                 </div>
                             </div>
                             </div>

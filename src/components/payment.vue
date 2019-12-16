@@ -1,10 +1,12 @@
 <template>
-<div class="checkout col-md-10 margin ">
+<div class="checkout col-md-12">
      <div class="row">
-                        <div class="col-lg-12 col-md-12 col-12">
-                      <div class="row">
-                                    <div class="checkbox-form col-lg-6">					
-                                    <h3 class="m-0 p-0">Billing Details</h3>
+        <div class="col-lg-12 col-md-12 col-12">
+            <div class="row">
+                <div class="checkbox-form col-lg-12 col-md-12 text-left">
+                                    <h6 v-if="payment_mode == 'cash_on_delivery'"><strong>CASH ON DELIVERY</strong></h6>	
+                                    <h6 v-if="payment_mode == 'online'"><strong>ONLINE PAY</strong></h6>					
+                                     <p>BILLING DETAILS</p>
                                      <p class="m-0 mb-3 mt-3 p-0" style="color:red">{{auth_msg}}</p>
                                     <div class="row">     
                                         <div class="col-md-6">
@@ -62,61 +64,15 @@
                                         </div>                                                                              							
                                     </div>                                											
                                 </div>
-                            <div class="your-order col-md-6 mb-4 p-3 text-center">
-                                <h3>Your order</h3>
-                                <div class="your-order-table table-responsive">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="product-name">Product</th>
-                                                <th class="product-total">Total</th>
-                                            </tr>							
-                                        </thead>
-                                        <tbody>
-                                            <tr class="cart_item">
-                                                <td class="product-name" >
-                                                    Total <strong class="product-quantity"></strong>
-                                                </td>
-                                                <td v-if="loading">
-                                              <strong><span class="amount" >Loading..</span></strong>
-                                                </td>
-                                                <td class="product-total" v-for="(price, index) in vehicle" :key="index">
-                                                    <span class="amount">{{price.selling_price}}.00</span>
-                                                </td>
-                                            </tr>
-                                           
-                                        </tbody>
-                                        <tfoot>
-                                            <tr class="cart-subtotal">
-                                                <th>RTO</th>
-                                                <td v-if="loading">
-                                              <strong><span class="amount" >Loading..</span></strong>
-                                                </td>
-                                                <td><span class="amount">{{rto}}</span></td>
-                                            </tr> 
-                                             <tr class="cart-subtotal">
-                                                <th>Insurance</th>
-                                                <td v-if="loading">
-                                              <strong><span class="amount" >Loading..</span></strong>
-                                                </td>
-                                                <td><span class="amount">{{insurance}}</span></td>
-                                            </tr>                                             
-                                            <tr class="order-total">
-                                                <th>Total Amount</th>
-                                                <td v-if="loading">
-                                              <strong><span class="amount" >Loading..</span></strong>
-                                                </td>
-                                                <td><strong><span class="amount" v-for="(price, index) in vehicle" :key="index">{{price.selling_price}}.00</span></strong>
-                                                </td>
-                                            </tr>								
-                                        </tfoot>
-                                    </table>
-                                </div>
-                                <div class="payment-method mt-4">                                   
-                                        <div class="order-button-payment">
+                                <div class="payment-method col-md-12">                                   
+                                        <div class="order-button-payment text-right">
                                              <p style="color:red" class="m-0 p-0">{{msg}}</p>
-                                            <button class="mybutton" type="submit" v-on:click="pay">
+                                            <button v-if="payment_mode == 'Online Pay'" class="mybutton" type="submit" v-on:click="pay">
                                                 <span v-if="!payload">PAY NOW</span>
+                                                <span v-else>Loading..</span>
+                                            </button>
+                                             <button v-if="payment_mode == 'Cash on Delivery'" class="mybutton" type="submit" v-on:click="order">
+                                                <span v-if="!payload">ORDER NOW</span>
                                                 <span v-else>Loading..</span>
                                             </button>
                                         </div>
@@ -128,9 +84,8 @@
                                         </div>								
                                     </div>
                                 </div>
-                      </div>
                         </div>	
-                   
+                        {{comprehensive}}
                         </div>
                          <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
                              <p>Don't refresh..</p>
@@ -148,7 +103,7 @@ export default {
         return{
             rto:'',
             insurance:'',
-            loading:true,
+            loading:false,
             vehicle:[],
             payload:false,
             err:1,
@@ -171,6 +126,36 @@ export default {
             displayImage:[]
         }
     },
+    props:{
+        v_id: {
+      type: Number,
+      required: true,
+    },
+     payment_mode:{
+      type: String,
+      required: true,
+    },
+    total_price:{
+      type: Number,
+      required: true,
+    },
+    tefflon:{
+      type: Number,
+      required: true,
+    },
+    extended_w:{
+      type: Number,
+      required: true,
+    },
+    rsa:{
+      type: Number,
+      required: true,
+    },
+    comprehensive:{
+      type: Number,
+      required: true,
+    },
+    },
     beforeCreate(){
         let auth = localStorage.getItem('token')
         this.customer_id=localStorage.getItem('temp')
@@ -187,11 +172,12 @@ export default {
         }
     },
     mounted(){
-        window.scrollTo({
-                top: 0,
-                left: 0,
-            })
-        this.id = this.$route.params.id
+        // window.scrollTo({
+        //         top: 0,
+        //         left: 0,
+        //     })
+        // this.id = this.$route.params.id
+        this.id = this.v_id
            this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
           .then(res=>{
           this.vehicle = res.body
@@ -214,9 +200,14 @@ export default {
                     lastname: this.lastname,
                     phone: this.phone,
                     email: this.email,
+                    tefflon: this.tefflon,
+                    mode_of_payment:this.payment_mode,
+                    extended_w: this.extended_w,
+                    rsa: this.rsa,
+                    comprehensive: this.comprehensive,
                     image:this.displayImage[0].path,
                     model:this.model_name[0].modal_name,
-                    amount:this.vehicle[0].selling_price,
+                    amount:this.total_price,
                     address1:this.address1,
                     address2:this.address2,
                     town:this.town,
@@ -238,17 +229,55 @@ export default {
                             this.payload = false
                     })
         },
+        order(){
+        this.payload = true
+         this.$http.post('https://backend-bikex.herokuapp.com/api/purchases',{
+                    customer_id:localStorage.getItem('temp'),
+                    vehicle_id:this.vehicle[0].vehicle_id,
+                    firstname: this.name,
+                    lastname: this.lastname,
+                    phone: this.phone,
+                    email: this.email,
+                    mode_of_payment:this.payment_mode,
+                    image:this.displayImage[0].path,
+                    model:this.model_name[0].modal_name,
+                    tefflon: this.tefflon,
+                    extended_w: this.extended_w,
+                    rsa: this.rsa,
+                    comprehensive: this.comprehensive,
+                    amount:this.total_price,
+                    address1:this.address1,
+                    address2:this.address2,
+                    town:this.town,
+                    state:this.state,
+                    postalcode: this.postalcode,
+                    })
+                    .then((res)=>{
+                        window.console.log(res.body)
+                      if(res.body.err==1){
+                          this.auth_msg = res.body.msg;
+                          this.payload = false
+                      }else{
+                         this.myorder_id = res.body._id
+                        this.changeStatus()
+                      }
+                    })
+                    .catch((err)=>{
+                            this.auth_msg = err.body.msg;
+                            this.payload = false
+                    })
+        },
         makepayment(){
             this.loading=true
              var options = {
                             "key": "rzp_test_8H0gv4ohtIQp1m", // Enter the Key ID generated from the Dashboard
-                            "amount": this.vehicle[0].selling_price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
+                            "amount": this.total_price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
                             "currency": "INR",
-                            "name": "Acme Corp",
+                            "name": this.model_name[0].modal_name,
                             "email":this.email,
                             "phone":this.phone,
                             "order_id":this.myorder_id,
-                            "description": "A Wild Sheep Chase is the third novel by Japanese author  Haruki Murakami",
+                            "description": "Bike",
                             "payment_capture":1,    
                             "handler": ((res)=>{
                                  this.updatedatabase(res)
@@ -260,8 +289,8 @@ export default {
                                 "color": "#ffb52f"
                             }
                         };
-                        this.$http.post('http://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@localhost:8080/v1/orders',{
-                            "amount":this.vehicle[0].selling_price * 100,
+                        this.$http.post('https://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@bikex.in/v1/orders',{
+                            "amount":this.total_price * 100,
                             "currency":"INR",
                             "payment_capture":1
                         }).then((res)=>{
@@ -284,7 +313,7 @@ export default {
                     }) 
         },
         changeStatus(){
-             this.$http.put('https://backend-bikex.herokuapp.com/api/procurestatus/' + this.vehicle[0]._id,{
+             this.$http.put('https://backend-bikex.herokuapp.com/api/procurestatus/' + this.vehicle[0].vehicle_id,{
                     status:5,
                     date:this.date
                     }).then(()=>{
@@ -309,7 +338,7 @@ export default {
         date(){
         return new Date()
       }
-    }
+    } 
 }
 </script>
 
@@ -3647,24 +3676,23 @@ p.checkout-coupon input[type="submit"] {
 }
 
 .order-button-payment .mybutton {
-    background: #464646 none repeat scroll 0 0;
-    border: 1px solid transparent;
-    color: #fff;
+    border: 1.5px solid #001232;
+    background-color: #000a1b;
+    color: white;
     cursor: pointer;
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
     height: inherit;
     letter-spacing: 1px;
-    margin: 20px 0 0;
     padding: 13px 20px 11px;
     text-transform: uppercase;
     transition: all 0.3s ease 0s;
-    width: 100%;
+    width: 30%;
 }
 .order-button-payment .mybutton:hover {
-    background: #ffb52f;
-    border: 1px solid #ffb52f;
-    color: #fff;
+     background-color:  #000a1b;
+        opacity: 0.9;
+        color:cornsilk;
 }
 
 .coupon-info p.form-row input[type="submit"] {

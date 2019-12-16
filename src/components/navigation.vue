@@ -119,7 +119,7 @@
         </div>
          <!-- <img src="../assets/LOGIN.svg" width="130px" class="mt-5"> -->
         <button type="button" class="close pr-4 pt-4" data-dismiss="modal" aria-label="Close">
-          <img src="../assets/close-button.svg" width="22px">
+          <img src="../assets/close_button.svg" width="22px">
         </button>
       </div>
       <div class="modal-body">
@@ -149,7 +149,7 @@
                         <p class="error">{{response_message}}</p>
                     </div>
                     <div class="col-md-12 mb-4 pt-4">
-                        <p class="labels">Don't have Account? <router-link to="/signup" data-dismiss="modal" style="color:#f6b949">Sign up.</router-link></p>
+                        <p class="labels">Don't have an account? <router-link to="/signup" data-dismiss="modal" style="color:#f6b949">Sign up</router-link></p>
                     </div>
                  </div>
       </div>
@@ -216,7 +216,6 @@ export default {
                 this.response_message = this.data.msg
                 localStorage.setItem('token', this.data.data[0].firstname)
                 localStorage.setItem('temp', this.data.data[0]._id)
-                this.$router.push('/profile')
                 window.location.reload()
             }else{
                 this.response_message = this.data.msg 

@@ -29,21 +29,18 @@
       </div>
       <div class="modal-body">
         <p class="text-center"  style="color:red" v-if="message">{{message}}</p>
-        <div class="col-md-12 mb-4 m-0 p-0">
-                  <input list="hosting-plan4" type="text" class="form-control" v-model="bike_name" required>
-                <span class="floating-label">Type your bike name</span>
-          </div>
+        
          <div class="form row">
               <div class="col-md-4 mb-4">
                   <input list="hosting-plan4" type="text" class="form-control" v-model="make" required>
                    
                        
-                <span class="floating-label">Type make</span>
+                <span class="floating-label">Make</span>
               </div>
               <div class="col-md-4 mb-4">
                 <input list="hosting-plan5" type="text" class="form-control" v-model="model" required>
                
-               <span class="floating-label">Type Model</span>
+               <span class="floating-label">Model</span>
               </div>
                   <div class="col-md-4 mb-4">
                     <input list="hosting-plan6" type="text" class="form-control" v-model="engine_cc" required>
@@ -58,7 +55,7 @@
               <div class="col-md-4 mb-4">
                  <input list="hosting-plan11" type="text" class="form-control" v-model="km_run" required>
                    
-                <span class="floating-label">KMs Run</span>
+                <span class="floating-label">KM Run</span>
               </div>
               <div class="col-md-4 mb-4">
                  <input list="hosting-plan11" type="text" class="form-control" v-model="vehicle_no" required>
@@ -66,6 +63,8 @@
               </div>   
             </div>
      <hr>       
+           
+
             <div class="row form">
               <div class="col-md-6 mb-4">
                 <input list="hosting-plan10" type="text" class="form-control" v-model="name" required>
@@ -77,13 +76,28 @@
               </div>
             </div>
             <div class="row form">
+              <div class="col-md-6 mb-4">               
+                <input list="hosting-plan2" type="text" class="form-control" v-model="city" required>
+                  <datalist id="hosting-plan2">
+                    <option value="Bengaluru"></option>
+                     <option value="Hyderabad"></option> 
+                     <option value="Chennai"></option>
+                     <option value="Kochi"></option>
+                     <option value="Thiruvanthapuram"></option>  
+                     
+                  </datalist>
+                  <span class="floating-label">Select City</span>
+               </div>
               <div class="col-md-6 mb-4">
-                <input list="hosting-plan10" type="text" class="form-control" v-model="city" required>
-                <span class="floating-label">Select City</span>
-              </div>
-              <div class="col-md-6 mb-4">
-                 <input list="hosting-plan11" type="text" class="form-control" v-model="state" required>
-                <span class="floating-label">Select state</span>
+                <input list="hosting-plan2" type="text" class="form-control" v-model="State" required>
+                  <datalist id="hosting-plan2">
+                    <option value="Karnataka"></option>   
+                     <option value="Andhra Pradesh"></option> 
+                      <option value="Tamilnadu"></option>  
+                       <option value="Kerala"></option> 
+                        <option value="Goa"></option> 
+                  </datalist>
+                  <span class="floating-label">Select State</span>
               </div>
              
             </div>
@@ -107,14 +121,14 @@
     </div>
 </div>
 
-        <div class="container middle col-md-10">
+        <div class="container middle col-md-10 ">
           <div class="row bg-light col-12 mt-5 p-5 m-0 p-0">
-            <div class="col-md-4 col-12 margin-bottom m-0 p-0">  
+            <div class="col-md-4 col-12 margin-bottom m-0 p-0 ipad-12 ">  
                 <div class="row col-12 m-0 p-0">
                             <div class="col-md-12 col-12 m-0 p-0 text-left mt-1">
                               <div class="row m-0 p-0">
                                 <div>
-                                  <img src="../assets/clock.svg" width="35px"> 
+                                  <img class="imgsize" src="../assets/clock.svg" width="25px"> 
                                 </div>
                               <div class="col-md-10 m-0 p-0 pl-3 col-10">
                                 <h6 class="card-title pb-2 mb-0"><strong>Quick & Hassle-Free</strong></h6>
@@ -124,30 +138,28 @@
                             </div>
                   </div>
             </div>
-            <div class="col-md-4 col-12 margin-bottom m-0 p-0">
-               
-                <div class="row col-12">
-                            <div class="col-md-12 col-12 m-0 p-0 text-left mt-1">
-                              <div class="row m-0 p-0">
-                                <div class="">
-                                  <img src="../assets/saveb.svg" width="40px"> 
-                                </div>
-                                <div class="col-md-10 m-0 p-0 pl-3 col-10 ">
-                                   <h6 class="card-title pb-2 mb-0"><strong>Valuation is fair </strong></h6>
-                                <p class="card-text m-0 p-0">We offer the ‘right’ and the highest trade prices... </p>
-                                </div>
-                              </div>
-                            </div>  
-                        </div>
-                
-             </div>
-            
-            <div class="col-md-4 col-12 margin-bottom m-0 p-0">
+
+              <div class="col-md-4 col-12 margin-bottom m-0 p-0 ipad-12">
               
                <div class="row m-0 p-0">
                          <div class="">
-                                  <img src="../assets/pickup-truck.svg" width="35px"> 
-                                </div>
+                                  <img class="imgsize" src="../assets/saveb.svg" width="25px"> 
+                          </div>
+                            <div class="col-md-10 m-0 p-0 pl-3 col-10">
+                              <h6 class="card-title pb-2 mb-0"><strong>Valuation is fair & square</strong></h6>
+                              <p class="card-text m-0 p-0">We offer the ‘right’ and the highest trade prices. You will walk away with a good chunk of cash.</p>
+                            </div>  
+                        </div>
+                      </div> 
+            
+          
+            
+            <div class="col-md-4 col-12 margin-bottom m-0 p-0 ipad-12">
+              
+               <div class="row m-0 p-0">
+                         <div class="">
+                                  <img class="imgsize" src="../assets/pickup-truck.svg" width="25px"> 
+                          </div>
                             <div class="col-md-10 m-0 p-0 pl-3 col-10">
                               <h6 class="card-title pb-2 mb-0"><strong>Doorstep Pick-up</strong></h6>
                               <p class="card-text m-0 p-0">We will schedule a time to pick up the bike...</p>
@@ -167,7 +179,7 @@
               
                    <div class="row m-0 p-0 pb-3 col-12 col-md-12 mt-2">
                       <div class="mr-2 p-0">
-                         <img src="../assets/check.svg" width="15px">    
+                         <img class="imgsize" src="../assets/sell_1form.svg" width="25px">    
                       </div> 
                       <div class="col-md-10 col-11 m-0 p-0">
                         <p class="m-0 p-0 cool">It all begins with a form</p>
@@ -177,7 +189,7 @@
 
                     <div class="row m-0 p-0 pb-3 col-12 mt-1">
                       <div class="mr-2 p-0">
-                        <img src="../assets/check.svg" width="15px">
+                        <img class="imgsize" src="../assets/sell_2investigate.svg" width="25px">
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
                         <p class="m-0 p-0 cool">Investigation leads to an endgame </p>
@@ -187,7 +199,7 @@
 
                     <div class="row m-0 p-0 pb-3 col-12">
                       <div class="mr-2 p-0">
-                      <img src="../assets/check.svg" width="15px">
+                      <img class="imgsize" src="../assets/sell_3haggling.svg" width="25px">
                       
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
@@ -198,7 +210,7 @@
 
                     <div class="row m-0 p-0 pb-3 col-12">
                       <div class="mr-2 p-0">
-                      <img src="../assets/check.svg" width="15px">
+                      <img class="imgsize" src="../assets/sell_4done.svg" width="25px">
                       
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
@@ -209,7 +221,7 @@
 
                      <div class="row m-0 p-0 pb-3 col-12">
                       <div class="mr-2 p-0">
-                      <img src="../assets/check.svg" width="15px">
+                      <img class="imgsize" src="../assets/sell_5reciept.svg" width="25px">
                       
                       </div> 
                       <div class="col-md-11 col-11 m-0 p-0 text-left">
@@ -229,26 +241,12 @@
 
       <div class="container col-md-10 col-12 middle">
          <div class="row col-md-12 col-12 mb-4">
-
-            <div class="col-md-4 col-12 text-center border-right no-border">
-                  <p class=""><i style="color:#ffb52f" class="fa fa-home pr-2 pt-1"></i><a class="map-responsive" href="https://goo.gl/maps/eJKcARiWnqRXDc5u5" target="_blank">visit our center</a></p>
+             <div class="col-md-6 col-12  text-center border-right no-border">
+                 <p class=""><i style="color:#ffb52f" class="fa fa-lg fa-phone pr-2 pt-1"></i><a class="phone" href="tel: +91 9742744444"><strong>+91 9742744444</strong></a></p>           
             </div>
-
-             <div class="col-md-4 col-12  text-center border-right no-border">
-              
-                   
-             
-                 <p class=""><i style="color:#ffb52f" class="fa fa-lg fa-phone pr-2 pt-1"></i><a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
-            
+             <div class="col-md-6 col-12 text-center">   
+                  <p class=""><i style="color:#ffb52f" class="fa fa-envelope pr-2 pt-1"></i><a class="phone" href="mailto:info@bikex.in"><strong>Email us</strong></a></p>
             </div>
-
-             <div class="col-md-4 col-12 text-center">
-          
-                  
-                  <p class=""><i style="color:#ffb52f" class="fa fa-address-book pr-2 pt-1"></i><a class="phone" href="mailto:info@bikex.in">Message</a></p>
-              
-            
-            </div>     
          </div>
       </div>
     </div>
@@ -321,6 +319,18 @@ export default {
 
 
 <style scoped>
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+    .ipad-12{
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    }
+    .margin-bottom{
+      margin-bottom: 20px !important;
+    }
+  }
 .modal-header{
   min-height: 100px;
   background-color: rgb(0, 18, 51);
@@ -444,6 +454,10 @@ input:focus, textarea:focus, select:focus{
   background-image: url('../assets/back.png'); 
 }
 @media only screen and (max-width: 600px) {
+         .imgsize{
+           width:15px !important;
+         }
+       
          .makemedown{
            margin:0;
            padding: 0;

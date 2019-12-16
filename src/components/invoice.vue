@@ -17,7 +17,8 @@
             <p>Order Id : <strong>{{invoice._id}}</strong></p>
         </div>
          <div class="col-md-6 col-12 mt-4 mb-4">
-            <p>Payment Id: <strong>{{invoice.razorpay_payment_id}}</strong></p>
+            <p v-if="invoice.razorpay_payment_id">Payment Id: <strong>{{invoice.razorpay_payment_id}}</strong></p>
+            <p v-else>Payment Id: <strong>Cash on Delivery</strong></p>
         </div>
         <div class="col-md-6 col-12 mt-4 mb-4">
             <p>Phone: <strong>{{invoice.phone}}</strong></p>
