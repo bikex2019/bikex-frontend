@@ -86,7 +86,7 @@
            <button class="buttons" v-on:click="book" >RESERVE(₹1,000)</button>
         </div>
         <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
-              <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
+              <button class="buttons" v-on:click="checkout">START PURCHASE</button>
         </div>
         <div v-else  class="col-md-4 display-laptop">
           <!-- <span class="badge badge-danger">Sale Pending</span> -->
@@ -124,7 +124,7 @@
             </div>
             <div class="history-content">
               <div class="row">
-                <div class="col-md-12 col-11 mr-0 pr-4 ml-0" v-for="(models, index) in models" :key="index">
+                <div class="col-md-12 col-11 mr-0 pr-5 ml-0" v-for="(models, index) in models" :key="index">
                   <!-- <p style="font-weight:bold">Manufacturer's Warranty</p> -->
                   <p class="mt-0 pt-0" style="text-align:justify">
                     {{models.comments}}
@@ -218,7 +218,7 @@
            <button class="buttons" v-on:click="book" >RESERVE(₹1,000)</button>
         </div>
         <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
-              <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
+              <button class="buttons" v-on:click="checkout">START PURCHASE</button>
         </div>
         <div v-else  class="col-md-4 display-laptop">
           <!-- <span class="badge badge-danger">Sale Pending</span> -->

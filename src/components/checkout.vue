@@ -105,23 +105,23 @@
                   <label for="tefflon" class="m-0 p-0 pl-5">Teflon Coating- ₹550
                   </label>
                   <small class="pl-5 p-0 m-0">
-                    -with a vast experience of detailing & coating more than 3000+ Motorcycles.
+                    - protects the paint of your bike.
                   </small>
                 </div>
                 <div class="checkbox text-left col-md-12 py-2 m-0 p-0">
                     <input type="checkbox" :value="650" id="extended_w" v-model="extended_w" required>
-                    <label for="extended_w" class="m-0 pl-5">Extended Insurance- ₹650</label>
-                    <small for="extended_w" class="pl-5 p-0 m-0">-comes with 6 months additional warranty.</small>
+                    <label for="extended_w" class="m-0 pl-5">Extended warranty- ₹650</label>
+                    <small for="extended_w" class="pl-5 p-0 m-0">- comes with 6 months additional warranty.</small>
                 </div>
                 <div class="checkbox text-left col-md-12 py-2 m-0 p-0">
                     <input type="checkbox" :value="350" id="rsa" v-model="rsa" required>
-                    <label for="rsa" class="m-0 pl-5">RSA(Road Side Assistance)- ₹350</label>
-                    <small class="pl-5 p-0 m-0">-get 24 hrs breakdown service.</small>
+                    <label for="rsa" class="m-0 pl-5">RSA (Road Side Assistance)- ₹350</label>
+                    <small class="pl-5 p-0 m-0">- 24 hrs breakdown service.</small>
                 </div>
                 <div class="checkbox text-left col-md-12 py-2 m-0 p-0">
                     <input type="checkbox" :value="550" id="comprehensive" v-model="comprehensive" required>
-                    <label for="comprehensive" class="m-0 pl-5">Comprehensive warranty- ₹550</label>
-                <small class="pl-5 p-0 m-0">-includes own damage charges.</small>
+                    <label for="comprehensive" class="m-0 pl-5">Comprehensive Insurance- ₹550</label>
+                <small class="pl-5 p-0 m-0">- includes own damage coverage.</small>
                 </div>
                 
                 <div class="coupon col-12 col-md-12 m-0 p-0 mt-5">
@@ -160,32 +160,33 @@
                       <p class="caption m-0 pl-3 p-0 ">MOST POPULAR OPTIONS</p>
                   </div>
                     <div class="col-md-12 py-3">
-                        <p class="header m-0 p-0 ">FINANCE WITH PARTNERS</p>
-                        <p class="paragraph m-0 p-0">We work with over 5+ banks to get you a competitive rate.</p>
+                        <p class="header m-0 p-0 ">FINANCE</p>
+                        <p class="paragraph m-0 p-0">We've partnered with brands you trust when it comes to money</p>
 
                         <div class="row mt-4 p-0">
 
-                            <div class=" col-2 margin-top text-center size"                 
-                            v-on:click="set('Headquartered in Mumbai, it offers a range of financing solutions. They use contemporary technologies to provide superior quality financing products and services.',1)"> 
-                            <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfcmobile.png" width="50%">      
-                          </div>
-                          <div class=" col-2 text-center text-left size"
-                          v-on:click="set('Offers a wide range of financing products. It started giving two-wheeler loans in 2013.',2)">
-                              <img v-bind:class="{ gray: active != 2 }" class="size1" src="../assets/lend/heromobile.png" width="50%">
-                          </div>
-                          <div class=" col-2 text-center text-left size "
-                          v-on:click="set('ZestMoney, founded in 2016, is the fastest growing consumer lending fintech company in India. They offer instant financing using modern technology.',3)">
-                                  <img v-bind:class="{ gray: active != 3 }" class="size1" src="../assets/lend/zestmobile.png" width="50%">
-                          </div>            
-                          <div class=" col-2  text-center text-left size"
-                          v-on:click="set('MoneyTap gives you an instant approval for credit online for anything that you want.',4)">
-                                  <img v-bind:class="{ gray: active != 4 }" class="size1" src="../assets/lend/moneytapmobile.png" width="50%">   
-                          </div>
-                          <div class=" col-2  text-center text-left size"
-                          v-on:click="set('India’s leading peer-to-peer lending company, allows you to acquire instant loan through an online platform.',5)">
-                            <img v-bind:class="{ gray: active != 5 } " class="size1" src="../assets/lend/lendboxmobile.png" width="50%">   
+                                     <div class="col-md-1 col-1"></div>
+                    <div class="col-md-2 col-12 text-center size"                 
+                      v-on:click="set('Headquartered in Mumbai, it offers a range of financing solutions. They use contemporary technologies to provide superior quality financing products and services.',1)"> 
+                      <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfc.png" width="100%">      
                     </div>
-                      <p class="p-3" style="color:#001232">{{data}}</p>
+                    <div class="col-md-2 col-12 text-center text-left size"
+                     v-on:click="set('Offers a wide range of financing products. It started giving two-wheeler loans in 2013.',2)">
+                        <img v-bind:class="{ gray: active != 2 }" class="size1" src="../assets/lend/herocolored.png" width="100%">
+                    </div>
+                    <div class="col-md-2 col-12 text-center text-left size "
+                    v-on:click="set('ZestMoney, founded in 2016, is the fastest growing consumer lending fintech company in India. They offer instant financing using modern technology.',3)">
+                            <img v-bind:class="{ gray: active != 3 }" class="size1" src="../assets/lend/zestcolored.png" width="100%">
+                    </div>            
+                    <div class="col-md-2 col-12  text-center text-left size"
+                    v-on:click="set('MoneyTap gives you an instant approval for credit online for anything that you want.',4)">
+                            <img v-bind:class="{ gray: active != 4 }" class="size1" src="../assets/lend/moneytapcolored.png" width="100%">   
+                    </div>
+                     <div class="col-md-2 col-12  text-center text-left size"
+                     v-on:click="set('India’s leading peer-to-peer lending company, allows you to acquire instant loan through an online platform.',5)">
+                      <img v-bind:class="{ gray: active != 5 } " class="size1" src="../assets/lend/lenboxcolored.png" width="100%">   
+                    </div>
+                      <!-- <p class="p-3" style="color:#001232">{{data}}</p> -->
                         </div>
                     </div>
                 <!-- <div class="col-md-3 mt-4">
@@ -195,27 +196,27 @@
                   <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
                               <p class="header m-0 p-0 ">PAY NOW</p>
-                          <p class="paragraph m-0 p-0">Transfer funds directly from your bank account.</p>
+                          <p class="paragraph m-0 p-0">Debit/Credit Cards, EMIs, Net Banking</p>
                       </div>
                       <div class="col-md-4 mobile-top">
-                      <button class="action-button2" v-on:click="go_shipping('Online Pay')">APPLY</button> 
+                      <button class="action-button2" v-on:click="go_shipping('Online Pay')">PROCEED</button> 
                       </div>
                   </div>
 
                   <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
                           <p class="header m-0 p-0 ">CASH ON DELIVERY</p>
-                          <p class="paragraph m-0 p-0">Pay at the door </p>
+                          <p class="paragraph m-0 p-0">Pay via cash/card upon delivery </p>
                       </div>
                       <div class="col-md-4 mobile-top ">
-                      <button class="action-button2" v-on:click="go_shipping('Cash on Delivery')">APPLY</button> 
+                      <button class="action-button2" v-on:click="go_shipping('Cash on Delivery')">PROCEED</button> 
                       </div>
                   </div>
 
                   <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
-                              <p class="header m-0 p-0 ">CHANGE OF MIND?</p>
-                          <p class="paragraph m-0 p-0">Book this vehicle at just ₹1,000.</p>
+                              <p class="header m-0 p-0 ">NOT SURE YET?</p>
+                          <p class="paragraph m-0 p-0">Reserve this vehicle at just ₹1,000</p>
                       </div>
                       <div class="col-md-4 mobile-top">
                       <button class="action-button2"  v-on:click="go_to_book">RESERVE NOW</button> 

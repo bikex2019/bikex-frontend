@@ -63,39 +63,38 @@
 
             <div class="col-md-8 col-12 text-left m-0 pl-4 p-0 mobile-margin" v-if="open == 'review'">
               <p><strong>
-                  HOW IT WORKS?
+                  TERMS OF DEPOSIT
             </strong></p>
 
             <ul class="m-0 ml-3 p-0 books">
                 <li class="m-0 p-0">
-                <strong>To block the bike, please make a payment of Rs. 1000.</strong>
+                <strong>To block this vehicle, please make a deposit of ₹1,000.</strong>
                 </li>
                 <li class="m-0 p-0">
-                <strong>This is a non-refundable amount.</strong>
+                <strong>This deposit is non-refundable.</strong>
                 </li>
                 <li class="m-0 p-0">
-                <strong>If you decide not to go ahead with the purchase, this amount will be credited back to your account.</strong>
+                <strong>If you decide not to purchase this vehicle,this amount can be adjusted towards another vehicle purchased from us within 30-days of this payment.</strong>
                 </li>
-                <li class="m-0 p-0">
-                <strong>If you wish to buy after blocking the vehicle, change to amount will be refunded  to you.</strong>
+                 <li class="m-0 p-0">
+                <strong>This vehicle will be reserved exclusively for you for not more than 2 working days from the date of deposit.</strong>
                 </li>
             </ul>
-            <div class="col-md-12 m-0 p-0 row addons">
-                <div class="pricing row col-12 col-md-12 m-0 p-0 mt-5">
-                 <div class="col-md-8 m-0 p-0">
-                    <p><strong>Price Details</strong></p>
-                  <p  class="m-0 p-0">Booking Amount</p>
-                  <h2 v-if="!loading" class="m-0 p-0">{{price_comp | currency}}</h2>
+            <div class="col-md-12 m-0 p-0 row addons mt-5">
+                <div class="pricing row col-12 col-md-12 m-0 p-0 mt-4 text-right">
+                 <div class="col-md-8 m-0 p-0 pr-3">
+                  <p  class=" header m-0 p-0">Booking Deposit</p>
+                  <p v-if="!loading" class="paragraph m-0 p-0">{{price_comp | currency}}</p>
                   <h1 v-else>Loading..</h1>
                  </div>
                  <div class="col-md-4 p-0 pull-right">
-                    <button class="action-button2 ml-0 mt-5" v-on:click="go_shipping('Online Pay')">RESERVE NOW</button>
+                    <button class="action-button2 ml-0" v-on:click="go_shipping('Online Pay')">RESERVE NOW</button>
                  </div>
                 </div>
-              <div class="pricing row col-12 col-md-12 m-0 p-0 mt-5">
-                <div class="col-md-8 m-0 p-0">
-                    <p class="header m-0 p-0 ">CHANGE OF MIND?</p>
-                    <p class="paragraph m-0 p-0">Get this vehicle paying full amount.</p>
+              <div class="pricing row col-12 text-right col-md-12 m-0 p-0 mt-5">
+                <div class="col-md-8 m-0 p-0 pr-3">
+                    <p class="header m-0 p-0 ">Changed your mind?</p>
+                    <p class="paragraph m-0 p-0">Purchase this vehicle now.</p>
                 </div>
                 <div class="col-md-4 p-0 pull-right">
                     <button class="action-button2 ml-0" v-on:click="go_direct_pay">PAY NOW</button>
