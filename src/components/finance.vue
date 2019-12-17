@@ -42,6 +42,85 @@
                     </div>
                   </div>
   <!-- icons grid -->
+
+ <div class="button text-center mb-4 mt-4">
+            <button class="viewbikes-button" data-toggle="modal" data-target="#exampleModalCenter" ><strong>Apply For Finance</strong></button> 
+            <!-- Button trigger modal -->
+        
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+         <div class="back mt-4 ml-3 pt-4">
+          <h2 class="modal-title m-0 p-0" id="exampleModalLongTitle">Loan Application</h2>
+        </div>
+        <!-- <h5 class="modal-title" >FILL</h5> -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <img src="../assets/close-button.svg" width="22px">
+        </button>
+        
+      </div>
+      <div class="modal-body">
+        <p class="text-center"  style="color:red" v-if="message">{{message}}</p>
+        
+          <div class="form row">
+              <div class="col-md-6 mb-4">
+                  <input list="hosting-plan1" type="text" class="form-control" v-model="fName" required>     
+                    <span class="floating-label">First Name</span>
+                  </div>
+              <div class="col-md-6 mb-4">
+                <input list="hosting-plan2" type="text" class="form-control" v-model="lname" required>
+               <span class="floating-label">Last Name</span>
+              </div>  
+          </div>
+          <div class="row">
+              <div class="col-md-12 mb-4">
+                <input list="hosting-plan3" type="text" class="form-control" v-model="email" required>
+               <span class="floating-label">Email ID</span>
+              </div> 
+          </div>
+           
+          <div class="row form">
+              <div class="col-md-6 mb-4">
+                <input list="hosting-plan4" type="number" class="form-control" v-model="mobile" required>
+                <span class="floating-label">Mobile Number</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <input list="hosting-plan5" type="number" class="form-control" v-model="pincode" required> 
+                <span class="floating-label">Pincode</span>
+              </div>    
+          </div>
+           <div class="row form">
+              <div class="col-md-6 mb-4">
+                <input list="hosting-plan4" type="date" class="form-control inputtext" v-model="dob" required>
+                <span class="floating-label">Date of birth</span>
+              </div>
+              <div class="col-md-6 mb-4">
+                <input list="hosting-plan5" type="number" class="form-control" v-model="pincode" required> 
+                <span class="floating-label">Annual Income</span>
+              </div>    
+          </div>
+
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <input list="hosting-plan6" type="text" class="form-control" v-model="email" required>
+               <span class="floating-label">Looking for which vehicle?</span>
+              </div> 
+          </div>
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="viewbikes-button" v-on:click="apply"><strong>
+           <span>SUBMIT</span>
+            <div v-if="loading" class="spinner-border spinner-border-sm"></div>
+          </strong></button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
   <!-- image section -->
     <div class="container midddle p-0 col-md-10 col-12">
       <div class="row col-12 pt-4 mt-4">
@@ -110,7 +189,7 @@
              
                     <div class=" col-2 margin-top text-center size"                 
                       v-on:click="set('Headquartered in Mumbai, it offers a range of financing solutions. They use contemporary technologies to provide superior quality financing products and services.',1)"> 
-                       <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfcmobile.png" width="70%">      
+                      <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfcmobile.png" width="70%">      
                     </div>
                     <div class=" col-2 text-center text-left size"
                      v-on:click="set('Offers a wide range of financing products. It started giving two-wheeler loans in 2013.',2)">
@@ -159,7 +238,7 @@
                      v-on:click="set('India’s leading peer-to-peer lending company, allows you to acquire instant loan through an online platform.',5)">
                       <img v-bind:class="{ gray: active != 5 } " class="size1" src="../assets/lend/lenboxcolored.png" width="100%">   
                     </div>
-                    <div class="col-md-1  "></div>
+                    <div class="col-md-1"></div>
                 </div>
 
                 <p class="lendp1" style="color:#001232">{{data}}</p>
@@ -213,8 +292,12 @@ export default {
 }
 </script>
 <style scoped>
-
-
+.margin{
+  margin:0 auto;
+}
+.inputtext {
+outline: none !important;
+}
 
 @media only screen and (min-width: 1200px) {
   .display1 {display: none;}
@@ -427,5 +510,100 @@ ul{
     display: none
   }
   }
+/* modal */
+.viewbikes-button{
+    text-transform: uppercase;
+    opacity: 0.9;
+    background-color:	 #ffb52f;
+    box-shadow: none;
+    color: BLACK;
+    padding: 8px 10px;
+    outline: none;
+    border:none;
+    font-size:14px;
+}
+.viewbikes-button:hover{
+  opacity: 1;
+    background-color:	 #ffb52f;
+    border-color: #ffb52f;
+}
+.modal-header{
+  min-height: 100px;
+  background-color: rgb(0, 18, 51);
+  background-image: url("../assets/heroes.png");
+  background-size: cover;
+  overflow: hidden
+
+}
+ .modal-title{
+    color: #fefefe;
+    font-size: 30px;
+    font-weight: 700
+  }
+
+  input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label{
+  top: -7px;
+  padding: 0px 5px 0px 5px;
+  background-color: #fefefe;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+  z-index: 1;
+  outline: none !important;
+  box-shadow: none !important
+}
+
+textarea:focus ~ .floating-label,
+textarea:not(:focus):valid ~ .floating-label{
+  top: -7px;
+  padding: 0px 5px 0px 5px;
+  background-color: #fefefe;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+  z-index: 1;
+  outline: none !important;
+  box-shadow: none !important
+}
+select:focus ~ .floating-label,
+select:not(:focus):valid ~ .floating-label{
+  top: -7px;
+  padding: 0px 5px 0px 5px;
+  background-color: #fefefe;
+  left: 20px;
+  font-size: 11px;
+  opacity: 1;
+  z-index: 1;
+  outline: none !important;
+  box-shadow: none !important
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 200px !important;
+    overflow-x: hidden;
+}
+
+.inputText {
+outline: none !important;
+}
+input:focus, textarea:focus, select:focus{
+  outline: none !important;
+  box-shadow: none !important
+}
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 30px;
+  top: 8px;
+  transition: 0.2s ease all;
+}
+.modals-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 75%;
+}
 
 </style>

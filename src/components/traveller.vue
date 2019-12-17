@@ -6,8 +6,8 @@
                <div class="row">
                 <div class="col-12 col-md-10 mt-4 p-0" style="margin:0 auto">
                      <ol class="breadcrumb pull-left">
-                    <li class="breadcrumb-item"><router-link to="/commuters" exact-active-class="active">COMMUTER</router-link></li>
-                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">TRAVELLER</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/scooter" exact-active-class="active">SCOOTER</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">COMMUTER</router-link></li>
                     <li class="breadcrumb-item"><router-link to="/adventurer" class="left" exact-active-class="active">ADVENTURER</router-link></li>
 
                     </ol>
@@ -19,7 +19,7 @@
                 <div class="container col-12 m-0 p-0">
                     <div class="section-title jumbotron m-0 mb-4 p-0 pt-2 pb-2 text-center mb-50">
                         <p><span>Commuters</span>
-                        - for your day to day travel. Now make it effortless and hassle-free.
+                        - Make your long journeys comfortable and fun with our ‘commuter’ vehicle collection.
                         </p>
                     </div>
                     <div class="product-tab-list text-center col-12 nav product-menu-mrg" role="tablist">
@@ -54,9 +54,15 @@
                                     <img v-else :src="image.path" width="100%" height="30%">
                                 </div>
                                 <div class="card-body text-left mt-1">
-                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
-                                    <p class="bold bike-sp">RS.{{image.selling_price}}</p>
+                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}}
+                                     <!-- <span>{{image.engine_cc}} </span>CC -->
+                                     </p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="bold bike-sp">{{image.selling_price | currency}}</p>
+                                        <p class="bold bike-sp text-muted" style="text-transform:uppercase;">{{image.type}}</p>
+                                    </div>
                                 </div>
+                                
                             </div> 
                                 
                              <!-- <div class="card mt-2" v-if="index == 0"> 

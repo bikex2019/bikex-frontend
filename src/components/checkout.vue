@@ -8,8 +8,10 @@
       </div>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item px-2" v-bind:class="{ active: open == 'review' }">REVIEW</li>
-          <li class="breadcrumb-item px-2 " aria-current="page" v-bind:class="{ active: open == 'payment' }">PAYMENT</li>
+          <li class="breadcrumb-item px-2" v-bind:class="{ active: open == 'review' }"
+          v-on:click="open = 'review'" style="cursor:pointer">REVIEW</li>
+          <li class="breadcrumb-item px-2 " aria-current="page" v-bind:class="{ active: open == 'payment' }"
+          v-on:click="open = 'payment'" style="cursor:pointer">PAYMENT</li>
           <li class="breadcrumb-item px-2" aria-current="page" v-bind:class="{ active: open == 'shipping'  }">SHIPPING</li>
         </ol>
       </nav>
@@ -216,14 +218,14 @@
                           <p class="paragraph m-0 p-0">Book this vehicle at just ₹1,000.</p>
                       </div>
                       <div class="col-md-4 mobile-top">
-                      <button class="action-button2" @click="book">BOOK</button> 
+                      <button class="action-button2"  v-on:click="go_to_book">RESERVE NOW</button> 
                       </div>
                   </div>
                 </div>
               </div>
 
               <div class="col-md-8 col-12 mobile-margin" v-if="open == 'shipping'">
-                <payment :v_id="Number(id)" :payment_mode="payment_mode" :total_price="Number(price_comp)"
+                <payment :v_id="Number(id)" :payment_mode="payment_mode" :total_price="Number(price_comp)" :vehicle_status="Number(5)"
                 :tefflon="Number(tefflon)" :extended_w="Number(extended_w)" :rsa="Number(rsa)" :comprehensive="Number(comprehensive)"
                 ></payment>
               </div>
@@ -286,6 +288,9 @@ export default {
     methods:{
       book(){
 
+      },
+       go_to_book(){
+          this.$router.push('/booking/'+ this.id)
       },
     set(text, active){
     this.data = text
@@ -623,7 +628,7 @@ margin:0 auto;
 .caption{
  margin: 0;
  padding: 1;
- background: #ffb52f none repeat scroll 0 0;
+ background: #001232 none repeat scroll 0 0;
     border: 1px solid transparent;
     color: #fff;
     cursor: pointer;

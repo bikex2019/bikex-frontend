@@ -21,7 +21,7 @@
         <div class="navmenu col-md-10 col-12 text-right phone m-0 p-0">
         <ul class=" ml-0 pl-0 pt-2" v-bind:class="{ block: navigation }">
             <li class="nav-item" >
-                <a class="story" v-on:click="navigation = false"><router-link to="/commuters" exact-active-class="active">BUY</router-link></a>
+                <a class="story" v-on:click="navigation = false"><router-link to="/scooter" exact-active-class="active">BUY</router-link></a>
             </li>
              <li class="nav-item">
             <a class="models" v-on:click="navigation = false"><router-link to="/sell" exact-active-class="active">SELL</router-link></a>

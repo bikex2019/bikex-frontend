@@ -22,12 +22,12 @@
           <h2 class="modal-title m-0 p-0" id="exampleModalLongTitle">SELL</h2>
         </div>
         <!-- <h5 class="modal-title" >FILL</h5> -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" v-on:click="close_resp">
          <img src="../assets/close-button.svg" width="22px">
         </button>
         
       </div>
-      <div class="modal-body">
+      <div class="modal-body" v-if="!success">
         <p class="text-center"  style="color:red" v-if="message">{{message}}</p>
         
          <div class="form row">
@@ -49,8 +49,8 @@
             </div>
             <div class="row form">
               <div class="col-md-4 mb-4">
-                <input list="hosting-plan10" type="text" class="form-control" v-model="make_year" required>
-                <span class="floating-label">Make Year</span>
+                <input list="hosting-plan10" type="text" class="form-control" v-model="manufacture_year" required>
+                <span class="floating-label">Manufacture Yr</span>
               </div>
               <div class="col-md-4 mb-4">
                  <input list="hosting-plan11" type="text" class="form-control" v-model="km_run" required>
@@ -89,21 +89,56 @@
                   <span class="floating-label">Select City</span>
                </div>
               <div class="col-md-6 mb-4">
-                <input list="hosting-plan2" type="text" class="form-control" v-model="State" required>
-                  <datalist id="hosting-plan2">
-                    <option value="Karnataka"></option>   
-                     <option value="Andhra Pradesh"></option> 
-                      <option value="Tamilnadu"></option>  
-                       <option value="Kerala"></option> 
-                        <option value="Goa"></option> 
+                <input list="hosting-plan30" type="text" class="form-control" v-model="state" required>
+                  <datalist id="hosting-plan30">
+                    <option value="Andaman & Nicobar"></option>
+                    <option value="Andhra Pradesh"></option>
+                    <option value="Arunachal Pradesh"></option>
+                    <option value="Assam"></option>
+                    <option value="Bihar"></option>
+                    <option value="Chattisgarh"></option>
+                    <option value="Chandigarh"></option>
+                    <option value="Dadra and Nagar Haveli"></option>
+                    <option value="Daman and Diu"></option>
+                    <option value="Delhi"></option>
+                    <option value="Goa"></option>
+                    <option value="Gujarat"></option>
+                    <option value="Haryana"></option>
+                    <option value="Himachal Pradesh"></option>
+                    <option value="Jharkhand"></option>
+                     <option value="Jammu and Kashmir"></option>
+                    <option value="Karnataka"></option>
+                    <option value="Kerala"></option>
+                    <option value="Ladakh"></option>
+                    <option value="Lakshadweep"></option>
+                    <option value="Madhya Pradesh"></option>
+                    <option value="Maharashtra"></option>
+                    <option value="Manipur"></option>
+                    <option value="Meghalaya"></option>
+                    <option value="Mizoram"></option>
+                    <option value="Nagaland"></option>
+                    <option value="Odisha"></option>
+                    <option value="Punjab"></option>
+                     <option value="Puducherry"></option>
+                    <option value="Rajasthan"></option>
+                    <option value="Sikkim"></option>
+                    <option value="Tamil Nadu"></option>
+                    <option value="Telangana"></option>
+                    <option value="Tripura"></option>
+                    <option value="Uttar Pradesh"></option>
+                     <option value="Uttarakhand"></option>
+                    <option value="West Bengal"></option>
                   </datalist>
                   <span class="floating-label">Select State</span>
               </div>
              
             </div>
       </div>
-   
-      <div class="modal-footer ">
+       <div class="modal-body text-center p-4" v-else>
+         <h4>Thank you for your request.</h4>
+         <p>Our team will get in touch with you soon!</p>
+         </div>
+      <div class="modal-footer " v-if="!success">
        
         <button type="button" class="viewbikes-button" v-on:click="apply"><strong>
            <span>SUBMIT</span>
@@ -120,7 +155,6 @@
       </div>
     </div>
 </div>
-
         <div class="container middle col-md-10 ">
           <div class="row bg-light col-12 mt-5 p-5 m-0 p-0">
             <div class="col-md-4 col-12 margin-bottom m-0 p-0 ipad-12 ">  
@@ -138,7 +172,6 @@
                             </div>
                   </div>
             </div>
-
               <div class="col-md-4 col-12 margin-bottom m-0 p-0 ipad-12">
               
                <div class="row m-0 p-0">
@@ -231,7 +264,6 @@
                     </div>   
                
           </div>  
-
    <hr>
     <div class="col-md-12 middle col-12">
      
@@ -255,14 +287,15 @@
 
 </template>
 <script>
+// import * as _ from 'lodash'
+// import states from './state.json'
 export default {
   data(){
     return{
-      bike_name: '',
         make: '',
         model:  '',
         engine_cc:  '',
-        make_year:  '',
+        manufacture_year:  '',
         km_run:  '',
         vehicle_no:  '',
         name:  '',
@@ -272,17 +305,25 @@ export default {
         loading:false,
         response:'',
         message:'',
+        // state_data: states
+        success:false
     }
   },
   methods:{
+    close_resp(){
+      if(this.success == true){
+        this.success = false
+      }else{
+        this.success = false
+      }
+    },
     apply(){
       this.loading = true
       this.$http.post('https://backend-bikex.herokuapp.com/api/sell',{
-               bike_name: this.bike_name,
                 make: this.make,
                 model:  this.model,
                 engine_cc:  this.engine_cc,
-                make_year:  this.make_year,
+                manufacture_year:  this.manufacture_year,
                 km_run:  this.km_run,
                 vehicle_no:  this.vehicle_no,
                 name:  this.name,
@@ -293,10 +334,11 @@ export default {
             then(response=>{
             this.response = response.body;
             this.loading = false
-            this.$swal({
-              title:'Thank You!',
-              text:'We will get in touch with you shortly'
-              })
+            // this.$swal({
+            //   title:'Thank You!',
+            //   text:'We will get in touch with you shortly'
+            //   })
+            this.success = true
             }).catch(error => { 
                 this.message = error.body.msg;
                 this.loading= false
@@ -312,7 +354,15 @@ export default {
   beforeDestroy () {
   },
   computed:{
-     
+  states_list(){
+  //  var results = [];
+  //   for (var i = 0; i < this.state_data.length; i++) {
+  //     if (this.states[i + 1].state != this.states[i].state) {
+  //           results.push(this.states[i]);
+  //     }
+    
+   return 0
+  }
   }
 }
 </script>

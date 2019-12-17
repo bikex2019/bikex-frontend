@@ -3,7 +3,7 @@
         <div class="col-md-10 margin ">
             <div class="row mb-2">
                     <div class="col-md-3 border text-center">
-                        <img src="../assets/account.svg" class="mt-3" alt="" width="100px" height="100px">
+                        <img src="../assets/biker.svg" class="mt-3" alt="" width="100px" height="100px">
                         <div class="loader-sm mt-3" v-if="loading"></div>
                             <h6 class="mb-4 mt-3" v-else><span>{{profile.firstname}} </span> <span>{{profile.lastname}}</span></h6>
                             <div class=" mt-5 no-margin text-left pt-4 p-2">
@@ -25,12 +25,12 @@
                             </li>
                                     
                      </ul> 
-                        <div class="tab-content mt-4 no-margin border phone-left mb-3 col-md-12 border" v-if="loading_purchase == false && bookings.length>0">
-                            <div class="tab-pane active" id="Finance" role="tabpanel"  v-for="(data, index) in bookings" :key="index">
-                            <div class="pixel1 col-md-3 p-0 m-0  text-center">
-                                 <p class="m-0 p-0">Order Id: {{data._id}}</p>
+                        <div class="tab-content mt-4 no-margin phone-left mb-3 col-md-12" v-if="loading_purchase == false && bookings.length>0">
+                            <div class="tab-pane active border mb-3 p-2" id="Finance" role="tabpanel"  v-for="(data, index) in bookings" :key="index">
+                            <div class="col-md-12 p-0 m-0  text-center d-flex justify-content-between">
+                                 <p class="pixel1 m-0 p-2">Order Id: {{data._id}}</p>
+                                 <p v-on:click="show_invoice(data._id)" class="show_invoice">View Invoice</p>
                              </div>
-                            <hr>
                             <div class="row mt-3 no-margin">
                                 <div class="col-md-3">
                                    <img :src="data.image" alt="cd" width="100px" height="75px">
@@ -41,20 +41,22 @@
                                 </div>
                                 
                                    <div class="col-md-2 col-6 m-0 p-0 mt-3 no-margin text-center phone-left">
-                                    <p class="pixel">Rs {{data.amount}}</p>
+                                    <p class="pixel">BX{{data.vehicle_id}}</p>
                                 </div>
-                                <div class="col-md-3 col-6 mt-3 text-center no-margin phone-left">
+                                <!-- <div class="col-md-3 col-6 mt-3 text-center no-margin phone-left">
                                   <p class="" v-if="data.payment_status == 1">Paid</p>
                                   <p class="" v-if="data.payment_status == 2">Booked</p>
                                    <p class="" v-if="data.payment_status == 3">Cash on Delivery</p>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="row pixel mt-3 no-margin">
                                 <div class="text-left col-md-6 no-margin" >
-                                  <p class="m-0 p-0"><span class="smallfont">Ordered On</span> {{data.date | moment("dddd, MMMM Do YYYY")}}</p>
+                                  <p class="m-0 p-0"><span class="smallfont">Ordered On</span> {{data.date | moment('MMMM Do YYYY, h:mm a')}}</p>
                                 </div>
                                 <div class="text-right col-md-6 phone-left no-margin" >
-                                  <p class="m-0 p-0"><span class="smallfont">Order Total</span> Rs {{data.amount | currency}}</p>
+                                  <p class="m-0 p-0"><span class="smallfont">Order Total: </span>
+                                  <strong>{{data.amount | currency}}</strong>
+                                  </p>
                                 </div>
                             </div>
                             </div>
@@ -132,6 +134,9 @@ export default {
             localStorage.removeItem('token')
              localStorage.removeItem('temp')
              this.$router.push('/login')
+        },
+        show_invoice(id){
+            this.$router.push('/invoice/'+id)
         }
     }
 
@@ -139,12 +144,18 @@ export default {
 </script>
 
 <style scoped>
+.show_invoice{
+    cursor: pointer;
+}
+.show_invoice:hover{
+    text-decoration: underline
+}
 .gradient{
     background: linear-gradient(to bottom, #ffb53f 50%, #ffccff 100%);
 }
 .pixel1{
     font-size: 14px;
-    background-color:blue;
+    background-color:#001232;
     color:white;   
     border-bottom: 1px solid #e6e6e6;
  

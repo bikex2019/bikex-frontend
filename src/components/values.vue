@@ -23,11 +23,11 @@
 <!-- Tab panes -->
 <div class="tab-content ml-0 pl-0 col-md-12 margin-custom">
     <div class="tab-pane active" id="Finance" role="tabpanel" >
-        <h5 class="head2">One price for every segment</h5>
+        <h5 class="head2">What you see is what you pay</h5>
         <p class="trust-content mt-3">
-            We have identified a mechanism and built a single price format for each of our segments.
-            This enables us to give the same weightage to the bikes belonging to the specific segment.
-            It also nulls any further negotiation as the deal is already pretty lucrative and benefiting.
+            We have built a single price format for each of our vehicle.
+            This price includes the basic price, refurbishment cost, insurance and registration expenses.
+            It nulls any further negotiation as the deal is already pretty lucrative and benefiting.
             You definitely cannot say no to a fixed price, one of a kind, refurbished bike. 
         </p>
     </div>

@@ -7,19 +7,18 @@
                             <div class="overview-content mobile-top">
                                 <h1>HANDPICKED
                                   <span>RE</span><strong>FURBISHED</strong></h1>
-                                <h2>BIKES AT <span>FIXED PRICE</span></h2>
+                                <h2>TWO-WHEELERS AT <span>FIXED PRICE</span></h2>
                                 <p class="monte"><strong>High quality</strong> 
-                                 ‘one of a kind’ preloved bikes - the first company in India to sell a ‘branded’ bike online.
-                                 Who said buying a two-wheeler has to be complicated, time-consuming and expensive?
-                                  At BikeX, you are only a few minutes away from owning a high quality ‘branded’ refurbished bike at a FIXED price.
-                                 We make buying a two-wheeler an unforgettable experience - choose a bike, experience it, buy it, ride it away!</p>
+                                 ‘one of a kind’ preloved two-wheelers - one of its kind to sell a ‘branded’ two-wheelers online.
+                                  At BikeX, you are only a few clicks away from owning a high quality ‘branded’ refurbished two-wheeler at a FIXED price - includes the basic price, refurbishment cost, insurance and registration costs.
+                                 We make buying a two-wheeler an unforgettable experience - choose a two-wheeler, experience it, buy it, ride it away!</p>
 
                                  <p class="mt-4 no-mobile">
                                      In our store, every handpicked bike comes with a story of its own. You get to create a new one.
                                  </p>
                                     <div class="question-area">
                                   <div class="button text-left mb-4 mt-4">
-                                   <router-link to="/commuters"><button class="viewbikes-button">View Bikes</button></router-link>
+                                   <router-link to="/scooter"><button class="viewbikes-button">View Bikes</button></router-link>
                                   </div>
                                 </div>
                             </div>
@@ -40,10 +39,10 @@
                     <div class="row p-0 m-0">
                         <div class="col-md-4 col-4 col-lg-4 pl-0 pr-2 m-0">
                             <div class="banner-wrapper mb-3">
-                               <router-link to="/commuters">
+                               <router-link to="/scooter">
                                   <a><img class="resize_fit_center" src="../assets/commuters16.jpg" alt="image"></a>
                                 <div class="banner-content">
-                                    <h2>COMMUTER</h2>
+                                    <h2>SCOOTER</h2>
                                 </div>
                                </router-link>
                             </div>
@@ -53,7 +52,7 @@
                                <router-link to="/traveller">
                                 <a ><img class="resize_fit_center" src="../assets/traveller1.jpg" alt="image"></a>
                                 <div class="banner-content">
-                                    <h2>TRAVELLER</h2>
+                                    <h2>COMMUTERS</h2>
                                 </div>
                                 </router-link>
                             </div>

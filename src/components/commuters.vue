@@ -6,8 +6,8 @@
                <div class="row">
                 <div class="col-12 col-md-10 mt-4 p-0" style="margin:0 auto">
                      <ol class="breadcrumb pull-left">
-                    <li class="breadcrumb-item"><router-link to="/commuters" exact-active-class="active">COMMUTER</router-link></li>
-                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">TRAVELLER</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/scooter" exact-active-class="active">SCOOTER</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">COMMUTER</router-link></li>
                     <li class="breadcrumb-item"><router-link to="/adventurer" class="left" exact-active-class="active">ADVENTURER</router-link></li>
 
                     </ol>
@@ -18,7 +18,7 @@
              <div class="product-area mb-4 mt-3 p-0 col-md-10" style="margin:0 auto">
                 <div class="container col-12 m-0 p-0">
                     <div class="section-title jumbotron m-0 mb-4 p-0 py-2 pb-2 text-center mb-50">
-                        <p class="p-1 m-0"><span>Commuters</span>
+                        <p class="p-1 m-0"><span>Scooter</span>
                         - for your day to day travel. Now make it effortless and hassle-free.
                         </p>
                     </div>
@@ -26,11 +26,11 @@
                         <a class="active"  data-toggle="tab" v-on:click="filterkey('all')">
                             <h4>ALL</h4>
                         </a>
-                        <a data-toggle="tab" v-on:click="filterkey('standard')">
-                            <h4>STANDARD</h4>
-                        </a>
                         <a data-toggle="tab" v-on:click="filterkey('premium')">
                             <h4>PREMIUM</h4>
+                        </a>
+                        <a data-toggle="tab" v-on:click="filterkey('standard')">
+                            <h4>STANDARD</h4>
                         </a>
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                 <p class="m-0 p-0 color" v-if="filtereddata.length!=0">{{filtereddata.length}} Results</p>
             </div>
             <div class="row pl-2 pr-2 mb-4" >
-                <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="filtereddata" v-for="(image, index) in filtereddata" :key="index">  
+                <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="paginatedData" v-for="(image, index) in paginatedData" :key="index">  
                     <div class="moterbike"> 
                             <div class="card" v-on:click="display(image.vehicle_id)"> 
                                 <div class="image text-center" style="min-height:50px;">
@@ -54,11 +54,18 @@
                                     <img v-else :src="image.path" width="100%" height="30%">
                                 </div>
                                 <div class="card-body text-left mt-1">
-                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
-                                    <p class="bold bike-sp">RS.{{image.selling_price}}</p>
+                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}}
+                                     <!-- <span>{{image.engine_cc}} </span>CC -->
+                                     </p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="bold bike-sp">{{image.selling_price | currency}}</p>
+                                        <p class="bold bike-sp text-muted" style="text-transform:uppercase;">{{image.type}}</p>
+                                    </div>
                                 </div>
-                            </div> 
                                 
+                            </div> 
+                            <div>
+                            </div>
                              <!-- <div class="card mt-2" v-if="index == 0"> 
                                 <div class="image text-center mt-4" style="min-height:50px;">
                                     <img src="../assets/placeholder.png" width="100%">
@@ -66,9 +73,23 @@
                             </div>  -->
                     </div>                 
                 </div>    
-                
+                <div v-if="show == true">
+                    <p>data</p>
+                </div>
             </div>          
         </div>
+        <div class="col-md-12 mb-4">
+            <div class="row">
+                <div class="col-md-12 text-center" v-if="paginatedData.length != 0">
+                    <button class="btn mr-2" v-on:click="prevPage" :disabled="pageNumber==0"><i class="fa fa-angle-double-left" aria-hidden="true"> prev</i></button>
+                    <li v-for="(n, index) in pageCount" :key="index" class="d-inline">
+                        <span class="px-3" v-bind:class="{pagenow : pageNumber == n - 1}"  v-on:click="gotopage(n - 1)">{{n}}</span>
+                    </li>
+                    <button class="btn ml-2" v-on:click="nextPage" :disabled="pageNumber == pageCount - 1">next <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+         </div>
+
         <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && filtereddata.length == 0">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
@@ -89,10 +110,7 @@
             <span class="sr-only">Loading...</span>
             </div>
         </div> -->
-
     </div>
-
-
 </div>
 </template>
 <script>
@@ -106,14 +124,16 @@ export default {
                     loading:true,
                     loadingPage:true,
                     filter : 'all',
-                    novehicle:false
+                    novehicle:false,
+                    pageNumber: 0,
+                    itemperpage:12,
+                    show:false
         }
     },
     mounted(){
         window.scrollTo({
                 top: 0,
                 left: 0,
-                behavior: 'smooth'
             })
     //        setTimeout(()=>{
     //      this.loadingPage = false
@@ -133,13 +153,26 @@ export default {
             this.$router.push('vehicle/' +id)
         },
         filterkey(id){
+            this.pageNumber = 0
             this.filter = id
             this.loading = false
-            window.console.log(this.filter)
+             window.scrollTo({
+                top: 0,
+                left: 0,
+            })
+        },
+        nextPage(){
+             this.pageNumber++;
+        },
+        prevPage(){
+            this.pageNumber--;
+        },
+        gotopage(page){
+            this.pageNumber = page
         }
     },
     computed:{
-        datas(){
+    datas(){
         const temp = []
         this.vehicles.forEach(x => {
             this.models.forEach(y => {
@@ -161,41 +194,37 @@ export default {
         })
       return temp2
     },
-    commuters(){
-    //  const temp3 = []
-    //         this.megaData.forEach(y => {
-    //         if (y.vehicle_type === 'commuters') {
-    //             temp3.push({ ...y })
-    //         }
-    //     })
-      return this.megaData
-    },
     filtereddata(){
     const filterparams = this.filter
     if(filterparams === "all") {
-				return this.commuters;
+				return this.megaData;
 			} else {
-				return this.commuters.filter(function(x) {
+				return this.megaData.filter(function(x) {
 					return x.type === filterparams;
 				}); 
 			}
+    },
+      perpage(){
+          return this.itemperpage
+      },
+    paginatedData(){
+    const start = this.pageNumber * this.perpage,
+          end = start + this.perpage;
+     return this.filtereddata.slice(start, end);
+        },
+    pageCount(){
+      let l = this.filtereddata.length,
+          s = this.itemperpage;
+      return Math.ceil(l/s);
     }
-    // const temp4 =[]
-    //    if(this.filter === 'all'){
-    //       temp4.push(...this.commuters)
-    //    }else{
-    //     var x = this.commuters.find(d=>{
-    //         return d.type === this.filter
-    //     })
-    //     if(x){
-    //         temp4.push({...x})
-    //     }
-    //    }
-    //    return temp4
+    
     }
 }
 </script>
 <style scoped>
+.pagenow{
+    color:gray
+}
 .top-left {
   position: absolute;
   top: 0px;

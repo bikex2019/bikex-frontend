@@ -73,7 +73,7 @@
         <label>BX{{id}}</label>
         </div>
          <div class="col-md-5 ipad-col-3 col-12 pl-0 price" >
-        <p class="margin">Rs. {{vehicles.selling_price}}</p>
+        <p class="margin">{{vehicles.selling_price | currency}}</p>
         <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
        <div class="col-md-6 col-12 price" v-if="loading">
@@ -83,7 +83,7 @@
            <button class="buttons">START PURCHASE</button>
         </div> -->
          <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
-           <button class="buttons" v-on:click="book" >RESERVE</button>
+           <button class="buttons" v-on:click="book" >RESERVE(₹1,000)</button>
         </div>
         <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
@@ -100,7 +100,7 @@
               <button class="buttons mr-1 m-0" v-on:click="checkout">START PURCHASE</button>
               </div>
               <div class="col-4 p-0 m-0"  v-if="vehicles.status == 3">
-                <button class="buttons ml-3 m-0" v-on:click="book" >RESERVE</button>
+                <button class="buttons ml-3 m-0" v-on:click="book" >RESERVE(₹1,000)</button>
               </div>
               <div v-else class="text-center col-12 mr-4">
                 <!-- <span class="badge badge-danger mr-2">Sale Pending</span> -->
@@ -113,38 +113,37 @@
 
   <div class="col-md-10 p-0 middle-align col-12 specification pt-4 pl-4">
     <div class="row col-12">
-      <div class="col-md-12 col-12 m-0 p-0 pt-4 pb-4">
-        <div class="heading text-left ">
+      <div class="col-md-12 col-12 m-0 p-0 pb-4">
+        <!-- <div class="heading text-left ">
           <p>Details</p>
-        </div>
+        </div> -->
         <div class="row col-12">
-          <div class="col-md-5 text-left pl-0">
+          <div class="col-md-6 text-left pl-0 mt-2">
             <div class="detail-header ">
-              <p>HISTORY</p>
+              <p>ABOUT THE VEHICLE</p>
             </div>
             <div class="history-content">
               <div class="row">
-                <div class="col-md-1 col-1 mr-0 pr-0">
-                  <p><i class='fas fa-cogs'></i></p>
-                </div>
-                <div class="col-md-11 col-11 mr-0 pr-0 ml-0">
-                  <p style="font-weight:bold">Manufacturer's Warranty</p>
-                  <p class="mt-0 pt-0">This vehicle still has 20 months left on its Chevrolet manufacturer's warranty.</p>
+                <div class="col-md-12 col-11 mr-0 pr-4 ml-0" v-for="(models, index) in models" :key="index">
+                  <!-- <p style="font-weight:bold">Manufacturer's Warranty</p> -->
+                  <p class="mt-0 pt-0" style="text-align:justify">
+                    {{models.comments}}
+                  </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="col-md-3 col-12 text-left mt-4 pl-0">
+          <div class="col-md-3 col-12 text-left mt-2 pl-0">
             <div class="detail-header">
               <p>BASICS</p>
             </div>
             <div class="history-content">
               <div class="row">
                 <div class="col-md-12 col-12 mr-0 pr-0 ml-0" v-for="(models, index) in models" :key="index">
-                  <p><strong>Colour</strong> : Black</p>
-                  <p><strong>Mileage</strong> : {{models.mileage}}</p>
-                  <p><strong>Fuel Capacity</strong> : {{models.tank_capacity}}</p>
+                  <p v-for="(vehicles, index) in vehicles" :key="index"><strong>Color</strong> : {{vehicles.color}}</p>
+                  <p><strong>Mileage</strong> : {{models.mileage}} kmpl</p>
+                  <p><strong>Fuel Capacity</strong> : {{models.tank_capacity}} L</p>
                   <p><strong>Kerb Weight</strong> : {{models.tank_capacity}}kg</p>
                   <p><strong>Displacement</strong> : {{models.engine_cc}}</p>
                 </div>
@@ -155,17 +154,17 @@
              <div class="loader-sm card mt-3 mr-2" v-if="modelloading"></div>
              <div class="loader-sm card mt-3" v-if="modelloading"></div>
           </div>
-            <div class="col-md-4 col-12 text-left mt-4 pl-0">
+            <div class="col-md-3 col-12 text-left mt-2 pl-0">
                 <div class="detail-header">
                   <p>PERFORMANCE</p>
                 </div>
                 <div class="history-content">
                   <div class="row">
                     <div class="col-md-12 col-12 mr-0 pr-0 ml-0" v-for="(models, index) in models" :key="index">
-                      <p><strong>Ignition</strong> :{{models.engine_cc}}</p>
+                      <p><strong>Engine CC</strong> :{{models.engine_cc}}</p>
                       <p><strong>No of Gears</strong> : {{models.number_of_gears}}</p>
-                      <p><strong>Wheel Type</strong> : {{models.wheel_type}}rpm</p>
-                      <p><strong>Tyre Type</strong> : {{models.tyre_type}}rpm</p>
+                      <p><strong>Wheel Type</strong> : {{models.wheel_type}}</p>
+                      <p><strong>Tyre Type</strong> : {{models.tyre_type}}</p>
                       <p><strong>Fuel Delivery System</strong> : {{models.fuel_system}}</p>
                       <p><strong>Cooling System</strong> : {{models.cooling_system}}</p>
                     </div>
@@ -183,19 +182,19 @@
           <!-- <p class="mt-5"> Loading Model description for you..</p> -->
         </div>
       </div>
-      <div class="col-md-11 middle-align col-12 m-0 p-0 pt-4 pb-4">
+      <!-- <div class="col-md-11 middle-align col-12 m-0 p-0 pt-4 pb-4">
       <div class="heading text-left">
         <p>Special Feature</p>
       </div>
       <div class="history-content text-left" v-for="(models, index) in models" :key="index">
        <p>{{models.comments}}</p>
       </div>
-    </div>
+    </div> -->
      </div>
   </div>
 <div class="col-md-11 p-0 middle-align bikex-font">
   <nav class="navbar-fix col-md-12 p-0 m-0 fixed-top" v-if="shownav">
- <div class="price-panel ml-0 col-12 mb-1 p-0" style="background-color:white" >
+    <div class="price-panel ml-0 col-12 mb-1 p-0" style="background-color:white" >
      <div class="row col-12 col-md-10 p-0" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
        <div class="col-md-3 col-12 ipad-col-3 description">
         <h1 class="margin" v-for="(models, index) in models" :key="index">
@@ -205,7 +204,7 @@
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
         <label>BX{{id}}</label>
         </div>
-         <div class="col-md-4 ipad-col-3 col-12 pl-0 price" >
+         <div class="col-md-5 ipad-col-3 col-12 pl-0 price" >
         <p class="margin">Rs. {{vehicles.selling_price}}</p>
         <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
@@ -216,9 +215,9 @@
            <button class="buttons">START PURCHASE</button>
         </div> -->
          <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
-           <button class="buttons" v-on:click="book" >RESERVE</button>
+           <button class="buttons" v-on:click="book" >RESERVE(₹1,000)</button>
         </div>
-        <div class="col-md-3 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">PAY IN FULL</button>
         </div>
         <div v-else  class="col-md-4 display-laptop">
@@ -233,7 +232,7 @@
               <button class="buttons mr-1 m-0" v-on:click="checkout">START PURCHASE</button>
               </div>
               <div class="col-4 p-0 m-0"  v-if="vehicles.status == 3">
-                <button class="buttons ml-3 m-0" v-on:click="book" >RESERVE</button>
+                <button class="buttons ml-3 m-0" v-on:click="book" >RESERVE(₹1,000)</button>
               </div>
               <div v-else class="text-center col-12 mr-4">
                 <!-- <span class="badge badge-danger mr-2">Sale Pending</span> -->
@@ -243,7 +242,6 @@
         </div>
      </div>
   </div>
-
   </nav>
  <!-- <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
             <div id="text" class="spinner-border" role="status">
@@ -325,6 +323,14 @@ created(){
                 left: 0,
                 behavior: 'smooth'
             })
+
+            window.addEventListener('keydown', (e) => {
+      if (e.key == 'right') {
+        window.console.log('working')
+        this.plusSlides()
+      }
+    });
+
     },
    
   methods:{
@@ -378,7 +384,7 @@ created(){
             this.$router.push('/booking/' + this.id)
           },
           gotocommuter(){
-        this.$router.push('/commuters')
+        this.$router.push('/scooter')
           }
         
       },

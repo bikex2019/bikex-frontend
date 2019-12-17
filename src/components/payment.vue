@@ -85,7 +85,6 @@
                                     </div>
                                 </div>
                         </div>	
-                        {{comprehensive}}
                         </div>
                          <div id="overlay" class="loading text-center mb-4" style="min-height:200px" v-if="loading">
                              <p>Don't refresh..</p>
@@ -154,7 +153,11 @@ export default {
     comprehensive:{
       type: Number,
       required: true,
-    },
+    }, 
+    vehicle_status:{
+      type: Number,
+      required: true,  
+    }
     },
     beforeCreate(){
         let auth = localStorage.getItem('token')
@@ -314,7 +317,7 @@ export default {
         },
         changeStatus(){
              this.$http.put('https://backend-bikex.herokuapp.com/api/procurestatus/' + this.vehicle[0].vehicle_id,{
-                    status:5,
+                    status:this.vehicle_status,
                     date:this.date
                     }).then(()=>{
                          this.$swal({
