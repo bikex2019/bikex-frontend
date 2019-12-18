@@ -117,14 +117,14 @@
         <!-- <div class="heading text-left ">
           <p>Details</p>
         </div> -->
-        <div class="row col-12">
+        <div class="row col-12 no-space">
           <div class="col-md-6 text-left pl-0 mt-2">
             <div class="detail-header ">
               <p>ABOUT THE VEHICLE</p>
             </div>
             <div class="history-content">
               <div class="row">
-                <div class="col-md-12 col-11 mr-0 pr-5 ml-0" v-for="(models, index) in models" :key="index">
+                <div class="col-md-12 col-12 mr-0 pr-5 ml-0" v-for="(models, index) in models" :key="index">
                   <!-- <p style="font-weight:bold">Manufacturer's Warranty</p> -->
                   <p class="mt-0 pt-0" style="text-align:justify">
                     {{models.comments}}
@@ -520,10 +520,26 @@ cursor: pointer;
     .price .label{
     font-size: 10px !important;
     }
+    .buttons{
+    font-size: 12px !important;
+    font-weight: 700;
+    height: inherit;
+    letter-spacing: 1px !important;
+}
   }
 @media only screen and (max-width: 600px) {
  .display-mobile{
   display: block;
+}
+.no-space{
+  margin: 0 !important;
+padding: 0 !important;
+}
+.buttons{
+    font-size: 10px !important;
+    font-weight: 700;
+    height: inherit;
+    letter-spacing: 0px !important;
 }
 .margin{
   margin-top: 30px

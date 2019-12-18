@@ -6,9 +6,9 @@
                <div class="row">
                 <div class="col-12 col-md-10 mt-4 p-0" style="margin:0 auto">
                      <ol class="breadcrumb pull-left">
-                    <li class="breadcrumb-item"><router-link to="/scooter" exact-active-class="active">SCOOTER</router-link></li>
-                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">COMMUTER</router-link></li>
-                    <li class="breadcrumb-item"><router-link to="/adventurer" class="left" exact-active-class="active">ADVENTURER</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/scooter" exact-active-class="active">SCOOTERS</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">COMMUTERS</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/adventurer" class="left" exact-active-class="active">ADVENTURERS</router-link></li>
                     </ol>
                 </div>
                </div>

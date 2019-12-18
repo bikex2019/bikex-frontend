@@ -6,9 +6,9 @@
                <div class="row">
                 <div class="col-12 col-md-10 mt-4 p-0" style="margin:0 auto">
                      <ol class="breadcrumb pull-left">
-                    <li class="breadcrumb-item"><router-link to="/scooter" exact-active-class="active">SCOOTER</router-link></li>
-                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">COMMUTER</router-link></li>
-                    <li class="breadcrumb-item"><router-link to="/adventurer" class="left" exact-active-class="active">ADVENTURER</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/scooter" exact-active-class="active">SCOOTERS</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">COMMUTERS</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/adventurer" class="left" exact-active-class="active">ADVENTURERS</router-link></li>
 
                     </ol>
 
@@ -27,7 +27,10 @@
                             <h4>ALL</h4>
                         </a>
                         <a data-toggle="tab" v-on:click="filterkey('premium')">
-                            <h4>PREMIUM</h4>
+                        <h4>
+                            <img src="../assets/premium.svg" class="premium_img">
+                            PREMIUM
+                        </h4>
                         </a>
                         <a data-toggle="tab" v-on:click="filterkey('standard')">
                             <h4>STANDARD</h4>
@@ -48,7 +51,7 @@
                             <div class="card" v-on:click="display(image.vehicle_id)"> 
                                 <div class="image text-center" style="min-height:50px;">
                                     <div class="top-left" v-if="image.status==4">
-                                        <span >Sale Pending</span>
+                                        <span>Sale Pending</span>
                                 </div>
                                     <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
                                     <img v-else :src="image.path" width="100%" height="30%">
@@ -59,7 +62,9 @@
                                      </p>
                                     <div class="d-flex justify-content-between">
                                         <p class="bold bike-sp">{{image.selling_price | currency}}</p>
-                                        <p class="bold bike-sp text-muted" style="text-transform:uppercase;">{{image.type}}</p>
+                                      
+                                        <img class="premium" v-if="image.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
+                                      
                                     </div>
                                 </div>
                                 
@@ -222,6 +227,12 @@ export default {
 }
 </script>
 <style scoped>
+.premium_img{
+    width: 25px;
+}
+img.premium {
+    margin-top: -25px;
+}
 .pagenow{
     color:gray
 }
@@ -237,11 +248,25 @@ export default {
     text-transform: uppercase;
     white-space: nowrap;
     margin-bottom: 0px;
-    color: white;
+    color: #001232;
     background-color: #ffb52f;
     padding: 4px 8px;
 }
 @media only screen and (max-width: 600px) {
+    .top-left{
+   
+    font-size: 8px !important;
+    line-height: 8px !important;
+    letter-spacing: 0px !important;
+    padding: 3px 8px !important;
+}
+    .premium_img{
+        width: 13px !important;
+    }
+    img.premium {
+    margin-top: 0px !important;
+     width: 20% !important
+}
     .breadcrumb{  
         float: none;
         justify-content: center

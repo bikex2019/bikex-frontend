@@ -182,10 +182,18 @@ export default {
   },
       go_payment(){
           this.open = 'payment'
+           window.scrollTo({
+                top: 10,
+                left: 0,
+            })
       },
       go_shipping(id){
         this.payment_mode = id
         this.open = 'shipping'
+         window.scrollTo({
+                top: 10,
+                left: 0,
+            })
       },
       check_coupon(){
         if(this.coupon){
@@ -581,4 +589,12 @@ margin:0 auto;
     opacity: 0.7
   }
 }
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+.action-button2[data-v-4698bdf9] {
+    font-size: 9px !important;
+}
+  }
 </style>

@@ -166,24 +166,23 @@
                         <div class="row mt-4 p-0">
 
                                      <div class="col-md-1 col-1"></div>
-                    <div class="col-md-2 col-12 text-center size"                 
-                      v-on:click="set('Headquartered in Mumbai, it offers a range of financing solutions. They use contemporary technologies to provide superior quality financing products and services.',1)"> 
+                    <div class="col-md-2 col-12 text-center size"> 
                       <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfc.png" width="100%">      
                     </div>
                     <div class="col-md-2 col-12 text-center text-left size"
-                     v-on:click="set('Offers a wide range of financing products. It started giving two-wheeler loans in 2013.',2)">
+                     >
                         <img v-bind:class="{ gray: active != 2 }" class="size1" src="../assets/lend/herocolored.png" width="100%">
                     </div>
                     <div class="col-md-2 col-12 text-center text-left size "
-                    v-on:click="set('ZestMoney, founded in 2016, is the fastest growing consumer lending fintech company in India. They offer instant financing using modern technology.',3)">
+                     >
                             <img v-bind:class="{ gray: active != 3 }" class="size1" src="../assets/lend/zestcolored.png" width="100%">
                     </div>            
                     <div class="col-md-2 col-12  text-center text-left size"
-                    v-on:click="set('MoneyTap gives you an instant approval for credit online for anything that you want.',4)">
-                            <img v-bind:class="{ gray: active != 4 }" class="size1" src="../assets/lend/moneytapcolored.png" width="100%">   
+                      >
+                    <img v-bind:class="{ gray: active != 4 }" class="size1" src="../assets/lend/moneytapcolored.png" width="100%">   
                     </div>
                      <div class="col-md-2 col-12  text-center text-left size"
-                     v-on:click="set('India’s leading peer-to-peer lending company, allows you to acquire instant loan through an online platform.',5)">
+                      >
                       <img v-bind:class="{ gray: active != 5 } " class="size1" src="../assets/lend/lenboxcolored.png" width="100%">   
                     </div>
                       <!-- <p class="p-3" style="color:#001232">{{data}}</p> -->
@@ -293,16 +292,20 @@ export default {
        go_to_book(){
           this.$router.push('/booking/'+ this.id)
       },
-    set(text, active){
-    this.data = text
-    this.active = active
-  },
       go_payment(){
           this.open = 'payment'
+           window.scrollTo({
+                top: 10,
+                left: 0,
+            })
       },
       go_shipping(id){
         this.payment_mode = id
         this.open = 'shipping'
+         window.scrollTo({
+                top: 10,
+                left: 0,
+            })
       },
       check_coupon(){
         if(this.coupon){
@@ -695,6 +698,30 @@ margin:0 auto;
   100%{
     background-color: rgb(199, 179, 179);
     opacity: 0.7
-  }
+  } 
 }
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+.action-button{
+    font-size: 10px !important;
+}
+.action-button2 {
+    font-size: 9px !important;
+    font-weight: 500;
+    height: inherit;
+    margin-top: 10px;
+    letter-spacing: 1px !important;
+    padding: 13px 1px 11px !important;
+
+  }
+  .list-group-item h6, .total{
+    font-size: 0.8rem !important;
+    font-weight: 700;
+}
+.h2, h2 {
+    font-size: 1rem !important;
+}
+  }
 </style>

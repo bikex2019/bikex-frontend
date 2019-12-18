@@ -80,8 +80,10 @@
                                     <img alt="" src="../assets/tracking.png" width="25%">
                                 </div>
                                 <div class="services-text col-9 col-md-12">
-                                    <h5><strong>Doorstep Delivery</strong></h5>
-                                    <p>oh yes, we do! It’s free if the delivery is within a radius of 10km from the workshop. Of course, you will be charged if the distance exceeds 10kms.</p>
+                                    <h5><strong>Road Side Assistance</strong></h5>
+                                    <p>
+                                        
+                                    </p>
                                 </div>
                             </div>
                         </div>

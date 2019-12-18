@@ -42,7 +42,7 @@
                                <router-link to="/scooter">
                                   <a><img class="resize_fit_center" src="../assets/commuters16.jpg" alt="image"></a>
                                 <div class="banner-content">
-                                    <h2>SCOOTER</h2>
+                                    <h2>SCOOTES</h2>
                                 </div>
                                </router-link>
                             </div>
@@ -62,7 +62,7 @@
                                <router-link to="adventurer">
                                   <a><img class="resize_fit_center" src="../assets/enfield.jpg" alt="image"></a>
                                 <div class="banner-content">
-                                    <h2>ADVENTURER</h2>
+                                    <h2>ADVENTURERS</h2>
                                 </div>
                                </router-link>
                             </div>

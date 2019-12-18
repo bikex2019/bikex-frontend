@@ -105,7 +105,7 @@
 
             <div class="row">
               <div class="col-md-12 mb-4">
-                <input list="hosting-plan6" type="text" class="form-control" v-model="email" required>
+                <input list="hosting-plan6" type="text" class="form-control" v-model="vehicle" required>
                <span class="floating-label">Looking for which vehicle?</span>
               </div> 
           </div>
@@ -212,7 +212,6 @@
 
                 <p class="lendp1" style="color:#001232">{{data}}</p>
   </div>
-
 <div class="col-md-8 margin text-center pb-5 display">
         <h3 class="m-4 p-1 lendh3">Our lending partners</h3>
         <p class="lendp">We work with a few trusted banks and lending partners like</p>
@@ -273,13 +272,25 @@ export default {
     return{
       data:'',
       img:'',
-      active:0
+      active:0,
+      fName:'',
+      lname:'',
+      email:'',
+      mobile:'',
+      pincode:'',
+      dob:'',
+      vehicle:'',
+      message:'',
+      loading:false
     }
   },
  methods:{
   set(text, active){
     this.data = text
     this.active = active
+  },
+  apply(){
+
   }
  },
      mounted(){
