@@ -77,7 +77,7 @@
                                 </div>
                             </div>  -->
                     </div>                 
-                </div>    
+                </div>     
                 <div v-if="show == true">
                     <p>data</p>
                 </div>
@@ -86,9 +86,9 @@
         <div class="col-md-12 mb-4">
             <div class="row">
                 <div class="col-md-12 text-center" v-if="paginatedData.length != 0">
-                    <button class="btn mr-2" v-on:click="prevPage" :disabled="pageNumber==0"><i class="fa fa-angle-double-left" aria-hidden="true"> prev</i></button>
+                    <button class="btn mr-2" v-on:click="prevPage" :disabled="pageNumber==0"><i class="fa fa-angle-double-left" aria-hidden="true"></i>prev</button>
                     <li v-for="(n, index) in pageCount" :key="index" class="d-inline">
-                        <span class="px-3" v-bind:class="{pagenow : pageNumber == n - 1}"  v-on:click="gotopage(n - 1)">{{n}}</span>
+                        <span class="px-3" style="cursor:pointer" v-bind:class="{pagenow : pageNumber == n - 1}"  v-on:click="gotopage(n - 1)">{{n}}</span>
                     </li>
                     <button class="btn ml-2" v-on:click="nextPage" :disabled="pageNumber == pageCount - 1">next <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
                 </div>

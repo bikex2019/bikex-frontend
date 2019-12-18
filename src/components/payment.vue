@@ -273,7 +273,7 @@ export default {
         makepayment(){
             this.loading=true
              var options = {
-                            "key": "rzp_test_8H0gv4ohtIQp1m", // Enter the Key ID generated from the Dashboard
+                            "key": "rzp_live_Vi238TQEagSN3x", // Enter the Key ID generated from the Dashboard
                             "amount": this.total_price * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
                             "currency": "INR",
                             "name": this.model_name[0].modal_name,
@@ -288,11 +288,11 @@ export default {
                             "notes": {
                                 "address": "note value"
                             },
-                            "theme": {
+                            "theme": { 
                                 "color": "#ffb52f"
                             }
                         };
-                        this.$http.post('https://rzp_test_8H0gv4ohtIQp1m:vYtJuwolYu0LWcdZ0OFYASrI@bikex.in/v1/orders',{
+                        this.$http.post('https://rzp_live_Vi238TQEagSN3x:c2ImBntiX8l4ZwHPTXfbJdx4@bikex.in/v1/orders',{
                             "amount":this.total_price * 100,
                             "currency":"INR",
                             "payment_capture":1

@@ -167,23 +167,31 @@
 
                                      <div class="col-md-1 col-1"></div>
                     <div class="col-md-2 col-12 text-center size"> 
+                      <a href="https://capitalfirst.com/apply-for-two-wheeler-loan-online" target="_blank">
                       <img v-bind:class="{ gray: active != 1 }" class="size1" src="../assets/lend/idfc.png" width="100%">      
+                      </a>
                     </div>
                     <div class="col-md-2 col-12 text-center text-left size"
                      >
-                        <img v-bind:class="{ gray: active != 2 }" class="size1" src="../assets/lend/herocolored.png" width="100%">
+                     <a href="https://www.herofincorp.com/two-wheeler-loans" target="_blank">
+                      <img v-bind:class="{ gray: active != 2 }" class="size1" src="../assets/lend/herocolored.png" width="100%">
+                    </a>
                     </div>
                     <div class="col-md-2 col-12 text-center text-left size "
                      >
-                            <img v-bind:class="{ gray: active != 3 }" class="size1" src="../assets/lend/zestcolored.png" width="100%">
+                    <a href="https://app.zestmoney.in/authentication?isSignup=true" target="_blank">
+                    <img v-bind:class="{ gray: active != 3 }" class="size1" src="../assets/lend/zestcolored.png" width="100%">
+                    </a>
                     </div>            
-                    <div class="col-md-2 col-12  text-center text-left size"
-                      >
-                    <img v-bind:class="{ gray: active != 4 }" class="size1" src="../assets/lend/moneytapcolored.png" width="100%">   
+                    <div class="col-md-2 col-12  text-center text-left size">
+                      <a href="https://app.moneytap.com/qual/?product=CL&utm_source=mpx_ontrack&utm_medium=sms&utm_campaign=Pilot1&utm_content=CL" target="_blank">
+                          <img v-bind:class="{ gray: active != 4 }" class="size1" src="../assets/lend/moneytapcolored.png" width="100%">   
+                      </a>
                     </div>
-                     <div class="col-md-2 col-12  text-center text-left size"
-                      >
+                     <div class="col-md-2 col-12  text-center text-left size">
+                       <a href="https://app.lendbox.in/signup/borrower" target="_blank">
                       <img v-bind:class="{ gray: active != 5 } " class="size1" src="../assets/lend/lenboxcolored.png" width="100%">   
+                       </a>
                     </div>
                       <!-- <p class="p-3" style="color:#001232">{{data}}</p> -->
                         </div>
@@ -195,14 +203,14 @@
                   <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
                               <p class="header m-0 p-0 ">PAY NOW</p>
-                          <p class="paragraph m-0 p-0">Debit/Credit Cards, EMIs, Net Banking</p>
+                          <p class="paragraph m-0 p-0">Debit/Credit Cards, EMIs, Net Banking.</p>
                       </div>
                       <div class="col-md-4 mobile-top">
                       <button class="action-button2" v-on:click="go_shipping('Online Pay')">PROCEED</button> 
                       </div>
                   </div>
 
-                  <div class="row border m-0 p-0 mb-4 py-3">
+                  <!-- <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
                           <p class="header m-0 p-0 ">CASH ON DELIVERY</p>
                           <p class="paragraph m-0 p-0">Pay via cash/card upon delivery </p>
@@ -210,12 +218,12 @@
                       <div class="col-md-4 mobile-top ">
                       <button class="action-button2" v-on:click="go_shipping('Cash on Delivery')">PROCEED</button> 
                       </div>
-                  </div>
+                  </div> -->
 
                   <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
                               <p class="header m-0 p-0 ">NOT SURE YET?</p>
-                          <p class="paragraph m-0 p-0">Reserve this vehicle at just ₹1,000</p>
+                          <p class="paragraph m-0 p-0">Reserve this vehicle at just ₹1,000, remaining pay via cash/card upon delivery.</p>
                       </div>
                       <div class="col-md-4 mobile-top">
                       <button class="action-button2"  v-on:click="go_to_book">RESERVE NOW</button> 
@@ -272,6 +280,10 @@ export default {
       // checkout
     },
     created(){
+       window.scrollTo({
+                top: 0,
+                left: 0,
+            })
       let i = 0
         this.id = this.$route.params.id
            this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
@@ -295,7 +307,7 @@ export default {
       go_payment(){
           this.open = 'payment'
            window.scrollTo({
-                top: 10,
+                top: 0,
                 left: 0,
             })
       },
@@ -303,7 +315,7 @@ export default {
         this.payment_mode = id
         this.open = 'shipping'
          window.scrollTo({
-                top: 10,
+                top: 0,
                 left: 0,
             })
       },

@@ -42,7 +42,7 @@
                                <router-link to="/scooter">
                                   <a><img class="resize_fit_center" src="../assets/commuters16.jpg" alt="image"></a>
                                 <div class="banner-content">
-                                    <h2>SCOOTES</h2>
+                                    <h2>SCOOTERS</h2>
                                 </div>
                                </router-link>
                             </div>

@@ -248,13 +248,25 @@
             <span class="sr-only">Loading...</span>
             </div>
         </div> -->
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 card">
-    </div>
-  </div>
+       <div class="col-md-11 middle-align similar">
+        <h5 class="">Similar Vehicles:</h5 >
+  <div class="row c mb-4  m-0 p-0"> 
+     <div class="card-container  text-center ml-2 border" v-for="(similar, index) in megaData" :key="index">
+            <div v-on:click="display_this(similar.vehicle_id)">
+            <img class="image" :src="similar.path" width="80%" alt="">
+            
+             <div class="card-body text-left mt-1">
+               <h5 class="" style="font-weight:500">{{similar.modal_name}}</h5>
+                                     <!-- <span>{{image.engine_cc}} </span>CC -->
+                 <div class="d-flex justify-content-between">
+                     <p class="bold bike-sp">{{similar.selling_price | currency}}</p>
+                      <img class="premium" v-if="similar.type == 'premium'" src="../assets/premium.svg" width="10%">
+                 </div>
+             </div>
+            </div>
+      </div> 
 </div>
-
+</div>
 </div>
 </div>
 </template>
@@ -284,6 +296,9 @@ export default {
       models:[],
       vehicles:[],
       similar:[],
+      similar_model:[],
+      displayImage:[]
+
 
         }
       },
@@ -292,6 +307,10 @@ export default {
       Slide,
   },
 created(){
+  window.scrollTo({
+                top: 0,
+                left: 0,
+            })
   window.addEventListener('scroll', this.handleScroll);
   this.id = this.$route.params.id
     this.$http.get('https://backend-bikex.herokuapp.com/api/uploads/'+ this.id)
@@ -306,13 +325,20 @@ created(){
       this.$http.get('https://backend-bikex.herokuapp.com/api/models/'+ res.body[0].model_id).then(response=>{
             this.models = response.body
             this.modelloading = false
+            this.$http.get('https://backend-bikex.herokuapp.com/api/models/type/'+ this.models[0].vehicle_type)
+            .then(res=>{this.similar_model= res.body;}).catch(()=>{this.loading = false});
           }).catch((err)=>{
             this.msg = err.body
             this.modelloading = false
             this.loading=false
           })
-        })    
-},
+        })
+      this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/similar-vehicle?v_id='+this.id)
+      .then(response=>{this.similar= response.body;
+      }).catch(()=>{this.loading = false});
+      this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
+      .then(resp=>{this.displayImage= resp.body.data;}).catch(()=>{this.loading = false});    
+        },
     destroyed () {
       window.removeEventListener('scroll', this.handleScroll);
     },
@@ -321,7 +347,6 @@ created(){
         window.scrollTo({
                 top: 0,
                 left: 0,
-                behavior: 'smooth'
             })
 
             window.addEventListener('keydown', (e) => {
@@ -385,7 +410,15 @@ created(){
           },
           gotocommuter(){
         this.$router.push('/scooter')
-          }
+          },
+        display_this(v_no){
+          window.scrollTo({
+                top: 0,
+                left: 0,
+            })
+            this.$router.push('/vehicle/'+ v_no)
+             window.location.reload()
+        }
         
       },
       computed:{
@@ -413,10 +446,84 @@ created(){
       monthlyPayable: function(){
         return (this.totaltobepaid / this.tenure).toFixed(2)
       },
+
+      datas(){
+        const temp = []
+        this.similar.forEach(x => {
+            this.similar_model.forEach(y => {
+            if (x.model_id === y._id) {
+                temp.push({ ...x, ...y })
+            }
+            })
+        })
+      return temp
+    },
+    megaData(){
+        const temp2 = []
+        this.datas.forEach(x => {
+            this.displayImage.forEach(y => {
+            if (x.vehicle_id === y.vehicle_id) {
+                temp2.push({ ...x, ...y })
+            }
+            })
+        })
+      return temp2
+    }
+
       }
 }
 </script>
 <style scoped>
+.bold{
+    font-weight: 500
+}
+
+.card-body{
+    padding: 6px;
+    cursor: pointer;
+}
+.card-body p{
+    margin: 2px 0px;
+    font-size: 15px;
+    margin-top: 0px;
+    padding:0px;
+    cursor: pointer;
+}
+.bike-name{
+    text-transform: uppercase;
+    color:#001232;
+    font-size:17px !important;
+}
+ .card-body .bike-name{
+        font-size: 10px !important
+    }
+.card-container{
+background-color: #fff !important;
+    background-clip: border-box !important;
+    border: 1px solid rgba(0,0,0,.125) !important;
+    border-radius: .25rem !important;
+    cursor: pointer;
+}
+
+.card-container .image{
+  width: 250px;
+  cursor: pointer;
+}
+.class{
+  width: 100%;
+  overflow-x: scroll
+}
+.c{
+  overflow-x: scroll;
+      display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: inherit;
+    cursor: pointer;
+}
+.image-container img{
+height: 300px;
+cursor: pointer;
+}
 .c{
   overflow-x: scroll;
       display: flex;

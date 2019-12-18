@@ -80,9 +80,9 @@
                                     <img alt="" src="../assets/tracking.png" width="25%">
                                 </div>
                                 <div class="services-text col-9 col-md-12">
-                                    <h5><strong>Road Side Assistance</strong></h5>
+                                    <h5><strong>Doorstep Delivery</strong></h5>
                                     <p>
-                                        
+                                    oh yes, we do! It’s free if the delivery is within a radius of 10km from the workshop. Of course, you will be charged if the distance exceeds 10kms.
                                     </p>
                                 </div>
                             </div>
@@ -90,11 +90,13 @@
                         <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad col-12">
                             <div class="single-services row purple mb-30 col-12 margin text-center">
                                 <div class="services-icon col-3 col-md-12">
-                                    <img alt="" src="../assets/tools.png" width="25%">
+                                    <img alt="" src="../assets/mechanic.png" width="25%">
                                 </div>
                                 <div class="services-text col-9 col-md-12">
-                                    <h5><strong>Doorstep servicing</strong></h5>
-                                    <p>Let our mechanics take care of your bike while you sip a cup of homemade tea in the comfort of your living room!</p>
+                                    <h5><strong>Road Side Assistance</strong></h5>
+                                    <p>
+                                    We are always prepared to attend any kind of service at any time of the day - serving as on-the-spot alternative to searching for local garages, when the vehicle is broken down. 
+                                    </p>
                                 </div>
                             </div>
                         </div>
