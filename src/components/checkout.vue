@@ -280,6 +280,18 @@ export default {
       // checkout
     },
     created(){
+          let auth = localStorage.getItem('token')
+        this.id = localStorage.getItem('temp')
+        if(!auth){
+            this.$swal({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Please Log in',
+                showConfirmButton: false,
+                timer: 2500
+                })
+                this.$router.push('/login')
+        }
        window.scrollTo({
                 top: 0,
                 left: 0,
@@ -322,7 +334,7 @@ export default {
       check_coupon(){
         if(this.coupon){
           this.coupon_check= true
-          if(this.coupon === 'ABHI500'){
+          if(this.coupon === 'FREEDELIVERY'){
          setTimeout(()=>{
           this.coupon_message = '500 Discount added!'
           this.discount = 500

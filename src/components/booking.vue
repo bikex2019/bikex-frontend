@@ -151,6 +151,18 @@ export default {
       // checkout
     },
     created(){
+          let auth = localStorage.getItem('token')
+        this.id = localStorage.getItem('temp')
+        if(!auth){
+            this.$swal({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Please Log in',
+                showConfirmButton: false,
+                timer: 2500
+                })
+                this.$router.push('/login')
+        }
        window.scrollTo({
                 top: 10,
                 left: 0,
