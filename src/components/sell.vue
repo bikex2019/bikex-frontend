@@ -4,7 +4,7 @@
       <div class="row col-md-12 bg m-0 p-0">
       <div class="col-md-6 makemedown m-0 p-0">
          <h4>We buy motorcycles.</h4>
-            <h3><strong>We pay a bundle of green<span style="color:#ffb52f"> notes.</span></strong></h3>
+            <h3><strong>Get the right value for your<span style="color:#ffb52f"> bike.</span></strong></h3>
             <p class="sell-content">-we make it quick and hassle-free. We are here to ensure that you avoid those mind-numbing pitfalls that quite a few sellers get pulled into. We are always looking for used motorcycles and will buy any make or model. Fill up this form and sell away!
             </p>
             <p class="mt-5 mk"><strong>Instant Valuation. Highest trade prices.</strong></p>

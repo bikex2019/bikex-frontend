@@ -256,10 +256,11 @@
       <div class="container col-md-10 col-12 middle">
          <div class="row col-md-12 col-12 mb-4">
              <div class="col-md-6 col-12  text-center border-right no-border">
-                 <p class=""><i style="color:#ffb52f" class="fa fa-lg fa-phone pr-2 pt-1"></i>+91 9742744444</p>           
+                 <p class=""><i  class="fa fa-lg fa-phone pr-2 pt-1"></i>
+                 <strong><a style="color:#ffb52f" class="phone" href="tel: +91 9742744444">+91 9742744444</a></strong></p>           
             </div>
              <div class="col-md-6 col-12 text-center">   
-                  <p class=""><i style="color:#ffb52f" class="fa fa-envelope pr-2 pt-1"></i>Email us</p>
+                  <p class=""><i  class="fa fa-envelope pr-2 pt-1"></i>Email us: <a style="color:#ffb52f" href="mailto:info@bikex.in">info@bikex.in</a></p>
             </div>
          </div>
       </div>
