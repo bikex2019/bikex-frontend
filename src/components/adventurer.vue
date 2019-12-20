@@ -9,26 +9,37 @@
                     <li class="breadcrumb-item"><router-link to="/scooter" exact-active-class="active">SCOOTERS</router-link></li>
                     <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">COMMUTERS</router-link></li>
                     <li class="breadcrumb-item"><router-link to="/adventurer" class="left" exact-active-class="active">ADVENTURERS</router-link></li>
+
                     </ol>
+
                 </div>
                </div>
            </div>
              <div class="product-area mb-4 mt-3 p-0 col-md-10" style="margin:0 auto">
                 <div class="container col-12 m-0 p-0">
-                    <div class="section-title jumbotron m-0 mb-4 p-0 pt-2 pb-2 text-center mb-50">
-                        <p><span>Adventurer</span>
-                        -  for those who are always looking to explore the unfamiliar spots and wading through choppy roads.
+                    <div class="section-title jumbotron m-0 mb-4 p-0 py-2 pb-2 text-center mb-50">                
+                        <p v-if="filter=='all'" class="p-1 m-0">
+                        For those who are always looking to explore the unfamiliar spots and wading through choppy roads.
+                        </p>
+                         <p class="p-1 m-0" v-if="filter=='premium'">
+                     <strong>Less driven, comes with manufacture warranty and fairly new.</strong>
+                        </p>
+                         <p class="p-1 m-0" v-if="filter=='standard'">
+                      <strong>Affordable, vehicles comes with BikeX warranty and completely refurbished.</strong>
                         </p>
                     </div>
                     <div class="product-tab-list text-center col-12 nav product-menu-mrg" role="tablist">
                         <a class="active"  data-toggle="tab" v-on:click="filterkey('all')">
                             <h4>ALL</h4>
                         </a>
+                        <a data-toggle="tab" v-on:click="filterkey('premium')">
+                        <h4>
+                            <img src="../assets/premium.svg" class="premium_img">
+                            PREMIUM
+                        </h4>
+                        </a>
                         <a data-toggle="tab" v-on:click="filterkey('standard')">
                             <h4>STANDARD</h4>
-                        </a>
-                        <a data-toggle="tab" v-on:click="filterkey('premium')">
-                            <h4>PREMIUM</h4>
                         </a>
                     </div>
                 </div>
@@ -41,32 +52,61 @@
                 <p class="m-0 p-0 color" v-if="filtereddata.length!=0">{{filtereddata.length}} Results</p>
             </div>
             <div class="row pl-2 pr-2 mb-4" >
-                <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="filtereddata" v-for="(image, index) in filtereddata" :key="index">  
+                <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="paginatedData" v-for="(image, index) in paginatedData" :key="index">  
                     <div class="moterbike"> 
                             <div class="card" v-on:click="display(image.vehicle_id)"> 
                                 <div class="image text-center" style="min-height:50px;">
                                     <div class="top-left" v-if="image.status==4">
-                                        <span >Sale Pending</span>
-                                </div>
+                                        <span>Sale Pending</span>
+                                    </div>
+                                    <!-- <div class="top-right" v-if="alreadyAdded(image.vehicle_id)" v-on:click="removeFromWish(image.vehicle_id)">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                    </div>
+                                      <div class="top-right" v-else v-on:click="addToWish(image.vehicle_id)">
+                                        <i class="fa fa-heart-o"  aria-hidden="true"></i>
+                                    </div> -->
                                     <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
                                     <img v-else :src="image.path" width="100%" height="30%">
                                 </div>
                                 <div class="card-body text-left mt-1">
-                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}} <span>{{image.engine_cc}} </span>CC</p>
-                                    <p class="bold bike-sp">RS.{{image.selling_price}}</p>
+                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}}
+                                     <!-- <span>{{image.engine_cc}} </span>CC -->
+                                     </p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="bold bike-sp">{{image.selling_price | currency}}</p>
+                                        <!-- <i class="fa fa-heart-o" aria-hidden="true"></i>         -->
+                                        <img class="premium" v-if="image.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
+                                      
+                                    </div>
                                 </div>
-                            </div> 
                                 
+                            </div> 
+                            <div>
+                            </div>
                              <!-- <div class="card mt-2" v-if="index == 0"> 
                                 <div class="image text-center mt-4" style="min-height:50px;">
                                     <img src="../assets/placeholder.png" width="100%">
                                 </div>
                             </div>  -->
                     </div>                 
-                </div>    
-                
+                </div>     
+                <div v-if="show == true">
+                    <p>data</p>
+                </div>
             </div>          
         </div>
+        <div class="col-md-12 mb-4">
+            <div class="row">
+                <div class="col-md-12 text-center" v-if="paginatedData.length != 0">
+                    <button class="btn mr-2" v-on:click="prevPage" :disabled="pageNumber==0"><i class="fa fa-angle-double-left" aria-hidden="true"></i>prev</button>
+                    <li v-for="(n, index) in pageCount" :key="index" class="d-inline">
+                        <span class="px-3" style="cursor:pointer" v-bind:class="{pagenow : pageNumber == n - 1}"  v-on:click="gotopage(n - 1)">{{n}}</span>
+                    </li>
+                    <button class="btn ml-2" v-on:click="nextPage" :disabled="pageNumber == pageCount - 1">next <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+         </div>
+
         <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && filtereddata.length == 0">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
@@ -87,10 +127,7 @@
             <span class="sr-only">Loading...</span>
             </div>
         </div> -->
-
     </div>
-
-
 </div>
 </template>
 <script>
@@ -104,14 +141,18 @@ export default {
                     loading:true,
                     loadingPage:true,
                     filter : 'all',
-                    novehicle:false
+                    novehicle:false,
+                    pageNumber: 0,
+                    itemperpage:12,
+                    show:false,
+                    c_id:'',
+                    wishlist:[]
         }
     },
     mounted(){
         window.scrollTo({
                 top: 0,
                 left: 0,
-                behavior: 'smooth'
             })
     //        setTimeout(()=>{
     //      this.loadingPage = false
@@ -119,21 +160,74 @@ export default {
     //   }, 2000)
     },
     beforeMount(){
+
+    // let auth = localStorage.getItem('token')
+    this.c_id = localStorage.getItem('temp')
+    
 	this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle')
-      .then(response=>{this.vehicles= response.body;window.console.log('1')
+      .then(response=>{this.vehicles= response.body;
       }).catch(()=>{this.loading = false});this.$http.get('https://backend-bikex.herokuapp.com/api/models/type/adventurer')
-      .then(res=>{this.models= res.body;window.console.log('2')}).catch(()=>{this.loading = false});
+      .then(res=>{this.models= res.body;}).catch(()=>{this.loading = false});
       this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
-      .then(resp=>{this.displayImage= resp.body.data;this.loading=false}).catch(()=>{this.loading = false});
+      .then(resp=>{this.displayImage= resp.body.data;}).catch(()=>{this.loading = false});
+      this.$http.get('https://backend-bikex.herokuapp.com/api/wishlist/'+ this.c_id)
+      .then(respon=>{this.wishlist= respon.data;this.loading = false}).catch(()=>{this.loading = false});
     },
     methods:{
         display(id){
             this.$router.push('vehicle/' +id)
         },
         filterkey(id){
+            this.pageNumber = 0
             this.filter = id
             this.loading = false
-            window.console.log(this.filter)
+             window.scrollTo({
+                top: 0,
+                left: 0,
+            })
+        },
+        alreadyAdded(id){
+            for(var i in this.wishlist){
+                if(this.wishlist[i].v_id == id){
+                    window.console.log(i)
+                    return true
+                }else{
+                    return false
+                }
+            }
+        },
+        addToWish(veh_id){
+            if(this.c_id){
+            this.$http.post('https://backend-bikex.herokuapp.com/api/wishlist',{
+                            c_id:this.c_id,
+                            v_id:veh_id
+                        }).then(response=>{
+                            window.console.log(response)
+                            window.location.reload()
+                        })
+            }else{
+                this.$swal({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Please Log in',
+                showConfirmButton: false,
+                timer: 2500
+                })
+                this.$router.push('/login')
+            }
+            
+        },
+        removeFromWish(){
+
+        },
+        nextPage(){
+             this.pageNumber++;
+        },
+        prevPage(){
+            this.pageNumber--;
+        },
+        gotopage(page){
+            this.pageNumber = page
         }
     },
     computed:{
@@ -159,41 +253,43 @@ export default {
         })
       return temp2
     },
-    commuters(){
-    //  const temp3 = []
-    //         this.megaData.forEach(y => {
-    //         if (y.vehicle_type === 'adventurer') {
-    //             temp3.push({ ...y })
-    //         }
-    //     })
-      return this.megaData
-    },
     filtereddata(){
-    const what = this.filter
-    if(what === "all") {
-				return this.commuters;
+    const filterparams = this.filter
+    if(filterparams === "all") {
+				return this.megaData;
 			} else {
-				return this.commuters.filter(function(x) {
-					return x.type === what;
+				return this.megaData.filter(function(x) {
+					return x.type === filterparams;
 				}); 
 			}
+    },
+      perpage(){
+          return this.itemperpage
+      },
+    paginatedData(){
+    const start = this.pageNumber * this.perpage,
+          end = start + this.perpage;
+     return this.filtereddata.slice(start, end);
+        },
+    pageCount(){
+      let l = this.filtereddata.length,
+          s = this.itemperpage;
+      return Math.ceil(l/s);
     }
-    // const temp4 =[]
-    //    if(this.filter === 'all'){
-    //       temp4.push(...this.commuters)
-    //    }else{
-    //     var x = this.commuters.find(d=>{
-    //         return d.type === this.filter
-    //     })
-    //     if(x){
-    //         temp4.push({...x})
-    //     }
-    //    }
-    //    return temp4
+    
     }
 }
 </script>
 <style scoped>
+.premium_img{
+    width: 25px;
+}
+img.premium {
+    margin-top: -25px;
+}
+.pagenow{
+    color:gray
+}
 .top-left {
   position: absolute;
   top: 0px;
@@ -206,11 +302,38 @@ export default {
     text-transform: uppercase;
     white-space: nowrap;
     margin-bottom: 0px;
-    color: white;
+    color: #001232;
     background-color: #ffb52f;
     padding: 4px 8px;
 }
+.top-right {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+    font-size: 20px;
+    line-height: 14px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 4px 8px;
+    cursor: pointer;
+}
 @media only screen and (max-width: 600px) {
+    .top-left{
+   
+    font-size: 8px !important;
+    line-height: 8px !important;
+    letter-spacing: 0px !important;
+    padding: 3px 8px !important;
+}
+    .premium_img{
+        width: 13px !important;
+    }
+    img.premium {
+    margin-top: 0px !important;
+     width: 20% !important
+}
     .breadcrumb{  
         float: none;
         justify-content: center

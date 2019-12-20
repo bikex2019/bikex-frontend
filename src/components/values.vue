@@ -1,7 +1,7 @@
 <template>
     <div class="container col-md-12 col-12 pt-4 m-0 p-0">
         <div class="row border p-0 mb-4 main m-0 laptop-main">
-         <div class="col-md-8 ipad-col-12 col-12 mb-4 p-0 text-left laptop-container">
+         <div class="col-md-8 ipad-col-12 col-12 mb-4 p-0 mobile-marg-2 text-left laptop-container">
              <div class="col-md-12 pl-0 ml-0 title pb-2 text-left">
                  <h2><strong>BIKE</strong><span style="color:#ffb52f"><strong>X</strong></span><strong> VALUES</strong></h2>
              </div>
@@ -431,6 +431,9 @@ transform: translateZ(20px);
     text-align: justify
   }
 @media screen and (max-width: 767px) {
+    .mobile-marg-2{
+        margin-top: 20px;
+    }
   .nav-link{
     font-size: 10px;
     color: black;

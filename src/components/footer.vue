@@ -17,8 +17,8 @@
                 
                 <li><router-link to="/termsandcondition">Terms & Conditions</router-link></li>
                 <li><router-link to="/privacypolicy">Privacy Policy</router-link></li>            
-                <li><router-link to="/disclaimerpolicy">Disclaimer policy</router-link></li> 
-                <li><router-link to="/copyright">Copyright Guidelines</router-link></li>            
+                <!-- <li><router-link to="/disclaimerpolicy">Disclaimer policy</router-link></li> 
+                <li><router-link to="/copyright">Copyright Guidelines</router-link></li>             -->
               </ul>
             </div>
 

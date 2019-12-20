@@ -54,7 +54,7 @@ export default {
            expand: false,
            faq:[],
            loading:false,
-           loadingpage:true
+           loadingpage:true,
        }
     },
     created(){
@@ -62,7 +62,7 @@ export default {
           this.$http.get('https://backend-bikex.herokuapp.com/api/faq')
           .then(response=>{
            this.faq = response.body
-           window.console.log(this.faq)
+          //  window.console.log(this.faq)
            this.loading= false
          })
     },
@@ -80,11 +80,15 @@ export default {
         openaccord(id){
             if(this.id != id){
                 this.id = id
-               
             }else{
                 this.id = 0
             }
         }
+    },
+    computed:{
+      // faqs(){
+      //  return this.$store.state
+      // }
     }
 
 }

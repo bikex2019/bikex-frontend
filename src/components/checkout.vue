@@ -223,7 +223,7 @@
                   <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
                               <p class="header m-0 p-0 ">NOT SURE YET?</p>
-                          <p class="paragraph m-0 p-0">Reserve this vehicle at just ₹1,000, remaining pay via cash/card upon delivery.</p>
+                          <p class="paragraph m-0 p-0">Reserve this vehicle at just ₹1,000, remaining pay via cash/card.</p>
                       </div>
                       <div class="col-md-4 mobile-top">
                       <button class="action-button2"  v-on:click="go_to_book">RESERVE NOW</button> 

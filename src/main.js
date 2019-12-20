@@ -7,7 +7,7 @@ import Autocomplete from '@trevoreyre/autocomplete-vue'
 import '@trevoreyre/autocomplete-vue/dist/style.css'
 import VueCarousel from 'vue-carousel';
 import VueSweetalert2 from 'vue-sweetalert2';
- 
+import store from './store'
 // If you don't need the styles, do not connect
 import 'sweetalert2/dist/sweetalert2.min.css';
 import VueZoomer from 'vue-zoomer'
@@ -35,5 +35,6 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
+  store: store,
   router:router
 }).$mount('#app')

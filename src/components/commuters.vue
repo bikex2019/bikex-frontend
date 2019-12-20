@@ -18,8 +18,14 @@
              <div class="product-area mb-4 mt-3 p-0 col-md-10" style="margin:0 auto">
                 <div class="container col-12 m-0 p-0">
                     <div class="section-title jumbotron m-0 mb-4 p-0 py-2 pb-2 text-center mb-50">
-                        <p class="p-1 m-0"><span>Scooter</span>
-                        - for your day to day travel. Now make it effortless and hassle-free.
+                           <p class="p-1 m-0" v-if="filter=='all' ">
+                      <strong>For your day to day travel. Now make it effortless and hassle-free.</strong>
+                        </p>
+                         <p class="p-1 m-0" v-if="filter=='premium'">
+                     <strong>Less driven, comes with manufacture warranty and fairly new.</strong>
+                        </p>
+                         <p class="p-1 m-0" v-if="filter=='standard'">
+                      <strong>Affordable, vehicles comes with BikeX warranty and completely refurbished.</strong>
                         </p>
                     </div>
                     <div class="product-tab-list text-center col-12 nav product-menu-mrg" role="tablist">
@@ -52,7 +58,13 @@
                                 <div class="image text-center" style="min-height:50px;">
                                     <div class="top-left" v-if="image.status==4">
                                         <span>Sale Pending</span>
-                                </div>
+                                    </div>
+                                    <!-- <div class="top-right" v-if="alreadyAdded(image.vehicle_id)" v-on:click="removeFromWish(image.vehicle_id)">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                    </div>
+                                      <div class="top-right" v-else v-on:click="addToWish(image.vehicle_id)">
+                                        <i class="fa fa-heart-o"  aria-hidden="true"></i>
+                                    </div> -->
                                     <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
                                     <img v-else :src="image.path" width="100%" height="30%">
                                 </div>
@@ -62,7 +74,7 @@
                                      </p>
                                     <div class="d-flex justify-content-between">
                                         <p class="bold bike-sp">{{image.selling_price | currency}}</p>
-                                      
+                                        <!-- <i class="fa fa-heart-o" aria-hidden="true"></i>         -->
                                         <img class="premium" v-if="image.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
                                       
                                     </div>
@@ -132,7 +144,9 @@ export default {
                     novehicle:false,
                     pageNumber: 0,
                     itemperpage:12,
-                    show:false
+                    show:false,
+                    c_id:'',
+                    wishlist:[]
         }
     },
     mounted(){
@@ -146,12 +160,18 @@ export default {
     //   }, 2000)
     },
     beforeMount(){
+
+    // let auth = localStorage.getItem('token')
+    this.c_id = localStorage.getItem('temp')
+    
 	this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle')
-      .then(response=>{this.vehicles= response.body;window.console.log('1')
+      .then(response=>{this.vehicles= response.body;
       }).catch(()=>{this.loading = false});this.$http.get('https://backend-bikex.herokuapp.com/api/models/type/commuters')
-      .then(res=>{this.models= res.body;window.console.log('2')}).catch(()=>{this.loading = false});
+      .then(res=>{this.models= res.body;}).catch(()=>{this.loading = false});
       this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
       .then(resp=>{this.displayImage= resp.body.data;}).catch(()=>{this.loading = false});
+      this.$http.get('https://backend-bikex.herokuapp.com/api/wishlist/'+ this.c_id)
+      .then(respon=>{this.wishlist= respon.data;window.console.log(this.wishlist)}).catch(()=>{this.loading = false});
     },
     methods:{
         display(id){
@@ -165,6 +185,40 @@ export default {
                 top: 0,
                 left: 0,
             })
+        },
+        alreadyAdded(id){
+            for(var i in this.wishlist){
+                if(this.wishlist[i].v_id == id){
+                    window.console.log(i)
+                    return true
+                }else{
+                    return false
+                }
+            }
+        },
+        addToWish(veh_id){
+            if(this.c_id){
+            this.$http.post('https://backend-bikex.herokuapp.com/api/wishlist',{
+                            c_id:this.c_id,
+                            v_id:veh_id
+                        }).then(response=>{
+                            window.console.log(response)
+                            window.location.reload()
+                        })
+            }else{
+                this.$swal({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Please Log in',
+                showConfirmButton: false,
+                timer: 2500
+                })
+                this.$router.push('/login')
+            }
+            
+        },
+        removeFromWish(){
+
         },
         nextPage(){
              this.pageNumber++;
@@ -251,6 +305,19 @@ img.premium {
     color: #001232;
     background-color: #ffb52f;
     padding: 4px 8px;
+}
+.top-right {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  text-align: center;
+    font-size: 20px;
+    line-height: 14px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 4px 8px;
+    cursor: pointer;
 }
 @media only screen and (max-width: 600px) {
     .top-left{

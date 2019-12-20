@@ -82,13 +82,13 @@
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
+         <div class="col-md-2 ipad-col-3 px-1 mt-2 display-laptop" v-if="vehicles.status == 3">
            <button class="buttons" v-on:click="book" >RESERVE(₹1,000)</button>
         </div>
-        <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-2 ipad-col-3 px-1 mt-2 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">START PURCHASE</button>
         </div>
-        <div v-else  class="col-md-4 display-laptop">
+        <div v-else  class="col-md-4 mt-2 display-laptop">
           <!-- <span class="badge badge-danger">Sale Pending</span> -->
            <button class="buttons" v-on:click="gotocommuter">FIND A MATCH</button>
         </div>
@@ -110,6 +110,11 @@
         </div>
      </div>
   </div>
+
+<div class="col-md-10 margin text-center bg">
+ <strong class="pfont"><p>This price inclusive of basic price, refurbishment cost, registration cost & transfer charges.</p></strong>
+  </div>
+
 
   <div class="col-md-10 p-0 middle-align col-12 specification pt-4 pl-4">
     <div class="row col-12">
@@ -214,13 +219,13 @@
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
+         <div class="col-md-2 ipad-col-3 mt-2 px-1 display-laptop" v-if="vehicles.status == 3">
            <button class="buttons" v-on:click="book" >RESERVE(₹1,000)</button>
         </div>
-        <div class="col-md-2 ipad-col-3 px-1 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-2 ipad-col-3 mt-2 px-1 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">START PURCHASE</button>
         </div>
-        <div v-else  class="col-md-4 display-laptop">
+        <div v-else  class="col-md-4 mt-2 display-laptop">
           <!-- <span class="badge badge-danger">Sale Pending</span> -->
            <button class="buttons" v-on:click="gotocommuter">FIND A MATCH</button>
         </div>
@@ -754,6 +759,16 @@ padding: 0 !important;
   margin: auto;
   padding: 0;
   width: 100%;
+}
+.bg{
+  background-color:#e6e6e6; 
+  letter-spacing: 1.5px;
+  border-bottom: 3px solid #ffb52f;
+  padding-top:5px;
+  padding-bottom:0px !important;
+}
+.margin{
+  margin:0 auto;
 }
 
 /* The Close Button */

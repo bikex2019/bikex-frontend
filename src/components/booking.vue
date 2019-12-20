@@ -68,16 +68,16 @@
 
             <ul class="m-0 ml-3 p-0 books">
                 <li class="m-0 p-0">
-                <strong>To block this vehicle, please make a deposit of ₹1,000.</strong>
+                To block this vehicle, please make a deposit of ₹1,000.
                 </li>
                 <li class="m-0 p-0">
-                <strong>This deposit is non-refundable.</strong>
+                This deposit is non-refundable.
                 </li>
                 <li class="m-0 p-0">
-                <strong>If you decide not to purchase this vehicle,this amount can be adjusted towards another vehicle purchased from us within 30-days of this payment.</strong>
+                If you decide not to purchase this vehicle,this amount can be adjusted towards another vehicle purchased from us within 30-days of this payment.
                 </li>
                  <li class="m-0 p-0">
-                <strong>This vehicle will be reserved exclusively for you for not more than 2 working days from the date of deposit.</strong>
+                This vehicle will be reserved exclusively for you for not more than 2 working days from the date of deposit.
                 </li>
             </ul>
             <div class="col-md-12 m-0 p-0 row addons mt-5">

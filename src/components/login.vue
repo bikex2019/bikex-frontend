@@ -64,7 +64,7 @@ export default {
             this.$swal({
                 position: 'top-end',
                 icon: 'error',
-                title: 'Already Signed in as ' + auth,
+                title: 'Already Signed in',
                 showConfirmButton: false,
                 timer: 2500
                 })
