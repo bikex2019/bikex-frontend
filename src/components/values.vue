@@ -508,7 +508,7 @@ transform: translateZ(20px);
 
 }
 .single-services {
-    box-shadow: 0 0 2px 0.5px rgba(0, 0, 0, 0.22);
+    /* box-shadow: 0 0 2px 0.5px rgba(0, 0, 0, 0.22); */
     padding: 30px 10px 25px;
     min-height: 100%;
 }
