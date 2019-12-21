@@ -1,25 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-Vue.use(Vuex);
+import VueRouter from 'vue-router'
 
-export const store = new Vuex.Store({
+Vue.use(Vuex, VueRouter);
+
+export default new Vuex.Store({
     state:{
         baseUrl:'https://backend-bikex.herokuapp.com/api',
         faqs:[],
     },
-    mutations: {
-        faqs_data(state, faqs) {
-          state.faqs = faqs;
-        }
-      },
-  actions: {
+    actions: {
       get_faqs(){
-        this.$http.get(this.baseUrl+'/faq')
+        this.$http.get('https://backend-bikex.herokuapp.com/api/faq')
         .then(result=>{
-            this.commit('faqs_data', result.data);
+            window.console.log(result)
         }).catch(error => {
             throw new Error(`API ${error}`);
           })
       }
-  }
+  },
+  mutations: {
+        faqs_data(state, faqs) {
+          state.faqs = faqs;
+        }
+      },
 })

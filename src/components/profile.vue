@@ -20,16 +20,16 @@
                             <li class="nav-item">
                                 <a class="nav-link active head1" id="Finance-tab" data-toggle="tab" href="#Finance" role="tab" aria-controls="Finance" aria-selected="true">HISTORY</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link head1" id="Refurbishing-tab" data-toggle="tab" href="#Refurbishing" role="tab" aria-controls="Refurbishing" aria-selected="false">WISH LIST</a>
-                            </li>
+                            </li> -->
                                     
                      </ul> 
                         <div class="tab-content mt-4 no-margin phone-left mb-3 col-md-12" v-if="loading_purchase == false && bookings.length>0">
                             <div class="tab-pane active border mb-3 p-2" id="Finance" role="tabpanel"  v-for="(data, index) in bookings" :key="index">
                             <div class="col-md-12 p-0 m-0  text-center d-flex justify-content-between">
-                                 <p class="pixel1 m-0 p-2">Order Id: {{data._id}}</p>
-                                 <p v-on:click="show_invoice(data._id)" class="show_invoice">View Invoice</p>
+                                 <p class="pixel1 m-0 p-2">Order ID: {{data._id}}</p>
+                                 <p v-on:click="show_invoice(data._id)" class="show_invoice">View Order</p>
                              </div>
                             <div class="row mt-3 no-margin">
                                 <div class="col-md-3">

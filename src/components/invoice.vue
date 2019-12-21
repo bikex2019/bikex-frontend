@@ -3,22 +3,22 @@
     <div class="card border p-0 M-0">
     <div class="modal-header m-0 p-0">
         <div class="back mt-5 ml-3 pt-5">
-          <h2 class="modal-title m-0 p-0" id="exampleModalLabel">INVOICE</h2>
+          <h2 class="modal-title m-0 p-0" id="exampleModalLabel">ORDER HISTORY</h2>
         </div>
       </div>
 
         <div class="container mt-3 mb-3">
                     <p v-if="loading">Fetching datas for you..</p>
-    <p class="name mt-4 mb-4">Dear,<strong>{{invoice.firstname}}</strong></p>
+    <p class="name mt-4 mb-4">Dear<strong> {{invoice.firstname}},</strong></p>
     <p>We're glad you've placed your trust in BikeX and have choosen our bike as your travel partner.</p>
     <hr>
     <div class="row">
         <div class="col-md-6 col-12 mt-4 mb-4">
-            <p>Order Id : <strong>{{invoice._id}}</strong></p>
+            <p>Order ID:<strong> {{invoice._id}}</strong></p>
         </div>
          <div class="col-md-6 col-12 mt-4 mb-4">
-            <p v-if="invoice.razorpay_payment_id">Payment Id: <strong>{{invoice.razorpay_payment_id}}</strong></p>
-            <p v-else>Payment Id: <strong>Cash on Delivery</strong></p>
+            <p v-if="invoice.razorpay_payment_id">Payment ID:<strong> {{invoice.razorpay_payment_id}}</strong></p>
+            <p v-else>Payment ID:<strong> Cash on Delivery</strong></p>
         </div>
         <div class="col-md-6 col-12 mt-4 mb-4">
             <p>Phone: <strong>{{invoice.phone}}</strong></p>

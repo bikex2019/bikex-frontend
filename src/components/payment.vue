@@ -261,8 +261,8 @@ export default {
                           this.auth_msg = res.body.msg;
                           this.payload = false
                       }else{
-                         this.myorder_id = res.body._id
-                        this.changeStatus()
+                        this.myorder_id = res.body._id
+                        this.makepayment()
                       }
                     })
                     .catch((err)=>{
@@ -297,10 +297,13 @@ export default {
                             "currency":"INR",
                             "payment_capture":1
                         }).then((res)=>{
+                            window.console.log(res)
                             this.loading= false
                             this.payload = false
                             var rzp1 = new window.Razorpay({...options,order_id:res.body.id}); 
                             rzp1.open()
+                            }).catch((err)=>{
+                                window.console.log(err)
                             })
         },
         updatedatabase(response){

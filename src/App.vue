@@ -36,6 +36,7 @@ export default {
     myfooter,
   },
   mounted () {
+    this.$store.dispatch('get_faqs')
   },
   beforeDestroy () {
   },

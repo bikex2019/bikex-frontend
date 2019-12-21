@@ -62,17 +62,17 @@
       </div>
     </div>
   </div>
-   <div class="price-panel ml-0 col-12 mb-1 p-0" style="background-color:white" >
+   <div class="price-panel ml-0 col-12 mb-1 m-0 p-0" style="background-color:white" >
      <div class="row col-12 col-md-10 p-0" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
-       <div class="col-md-3 col-12 ipad-col-3 description">
+       <div class="col-md-4 col-12 ml-0 p-0 ipad-col-5 description" v-bind:class="{'ipad-col-3':vehicles.status == 3}">
         <h1 class="margin" v-for="(models, index) in models" :key="index">
           <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
-           <span class="badge ml-4" v-if="vehicles.status == 4">Sale Pending</span>
+           <span class="badge ml-1" v-if="vehicles.status == 4">Sale Pending</span>
         </h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
         <label>BX{{id}}</label>
         </div>
-         <div class="col-md-5 ipad-col-3 col-12 pl-0 price" >
+         <div class="col-md-3 ipad-col-3 col-12 pl-0 price" v-bind:class="{'ipad-col-3':vehicles.status == 3}">
         <p class="margin">{{vehicles.selling_price | currency}}</p>
         <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
@@ -85,10 +85,10 @@
          <div class="col-md-2 ipad-col-3 px-1 mt-2 display-laptop" v-if="vehicles.status == 3">
            <button class="buttons" v-on:click="book" >RESERVE(₹1,000)</button>
         </div>
-        <div class="col-md-2 ipad-col-3 px-1 mt-2 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-3 ipad-col-3 px-1 mt-2 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">START PURCHASE</button>
         </div>
-        <div v-else  class="col-md-4 mt-2 display-laptop">
+        <div v-else  class="col-md-5 ipad-col-4 mt-2 mr-0 p-0 display-laptop">
           <!-- <span class="badge badge-danger">Sale Pending</span> -->
            <button class="buttons" v-on:click="gotocommuter">FIND A MATCH</button>
         </div>
@@ -116,7 +116,7 @@
   </div>
 
 
-  <div class="col-md-10 p-0 middle-align col-12 specification pt-4 pl-4">
+  <div class="col-md-10 p-0 middle-align col-12 specification pt-4">
     <div class="row col-12">
       <div class="col-md-12 col-12 m-0 p-0 pb-4">
         <!-- <div class="heading text-left ">
@@ -146,11 +146,11 @@
             <div class="history-content">
               <div class="row">
                 <div class="col-md-12 col-12 mr-0 pr-0 ml-0" v-for="(models, index) in models" :key="index">
-                  <p v-for="(vehicles, index) in vehicles" :key="index"><strong>Color</strong> : {{vehicles.color}}</p>
-                  <p><strong>Mileage</strong> : {{models.mileage}} kmpl</p>
-                  <p><strong>Fuel Capacity</strong> : {{models.tank_capacity}} L</p>
-                  <p><strong>Kerb Weight</strong> : {{models.tank_capacity}}kg</p>
-                  <p><strong>Displacement</strong> : {{models.engine_cc}}</p>
+                  <p v-for="(vehicles, index) in vehicles" :key="index"><strong>Color</strong>: {{vehicles.color}}</p>
+                  <p><strong>Mileage</strong>: {{models.mileage}} kmpl</p>
+                  <p><strong>Fuel Capacity</strong>: {{models.tank_capacity}} L</p>
+                  <p><strong>Kerb Weight</strong>: {{models.tank_capacity}}kg</p>
+                  <p><strong>Displacement</strong>: {{models.engine_cc}}</p>
                 </div>
               </div>
             </div>
@@ -166,12 +166,12 @@
                 <div class="history-content">
                   <div class="row">
                     <div class="col-md-12 col-12 mr-0 pr-0 ml-0" v-for="(models, index) in models" :key="index">
-                      <p><strong>Engine CC</strong> :{{models.engine_cc}}</p>
-                      <p><strong>No of Gears</strong> : {{models.number_of_gears}}</p>
-                      <p><strong>Wheel Type</strong> : {{models.wheel_type}}</p>
-                      <p><strong>Tyre Type</strong> : {{models.tyre_type}}</p>
-                      <p><strong>Fuel Delivery System</strong> : {{models.fuel_system}}</p>
-                      <p><strong>Cooling System</strong> : {{models.cooling_system}}</p>
+                      <p><strong>Engine CC</strong>: {{models.engine_cc}}</p>
+                      <p><strong>No of Gears</strong>: {{models.number_of_gears}}</p>
+                      <p><strong>Wheel Type</strong>: {{models.wheel_type}}</p>
+                      <p><strong>Tyre Type</strong>: {{models.tyre_type}}</p>
+                      <p><strong>Fuel Delivery System</strong>: {{models.fuel_system}}</p>
+                      <p><strong>Cooling System</strong>: {{models.cooling_system}}</p>
                     </div>
                   </div>
                 </div>
@@ -201,16 +201,16 @@
   <nav class="navbar-fix col-md-12 p-0 m-0 fixed-top" v-if="shownav">
     <div class="price-panel ml-0 col-12 mb-1 p-0" style="background-color:white" >
      <div class="row col-12 col-md-10 p-0" style="margin:0 auto" v-for="(vehicles, index) in vehicles" :key="index">
-       <div class="col-md-3 col-12 ipad-col-3 description">
+       <div class="col-md-4 col-12 ml-0 p-0 ipad-col-5 description" v-bind:class="{'ipad-col-3':vehicles.status == 3}">
         <h1 class="margin" v-for="(models, index) in models" :key="index">
           <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
-           <span class="badge ml-4" v-if="vehicles.status == 4">Sale Pending</span>
+           <span class="badge ml-1" v-if="vehicles.status == 4">Sale Pending</span>
         </h1>
         <h1 class="margin" v-if="models.length == 0" >Loading..</h1>
         <label>BX{{id}}</label>
         </div>
-         <div class="col-md-5 ipad-col-3 col-12 pl-0 price" >
-        <p class="margin">Rs. {{vehicles.selling_price}}</p>
+         <div class="col-md-3 ipad-col-3 col-12 pl-0 price" v-bind:class="{'ipad-col-3':vehicles.status == 3}">
+        <p class="margin">{{vehicles.selling_price | currency}}</p>
         <p class="label">Questions? <a class="phone" href="tel: +91 9742744444">+91 9742744444</a></p>
        </div>
        <div class="col-md-6 col-12 price" v-if="loading">
@@ -219,13 +219,13 @@
         <!-- <div class="col-md-3 col-12">
            <button class="buttons">START PURCHASE</button>
         </div> -->
-         <div class="col-md-2 ipad-col-3 mt-2 px-1 display-laptop" v-if="vehicles.status == 3">
+         <div class="col-md-2 ipad-col-3 px-1 mt-2 display-laptop" v-if="vehicles.status == 3">
            <button class="buttons" v-on:click="book" >RESERVE(₹1,000)</button>
         </div>
-        <div class="col-md-2 ipad-col-3 mt-2 px-1 display-laptop" v-if="vehicles.status == 3">
+        <div class="col-md-3 ipad-col-3 px-1 mt-2 display-laptop" v-if="vehicles.status == 3">
               <button class="buttons" v-on:click="checkout">START PURCHASE</button>
         </div>
-        <div v-else  class="col-md-4 mt-2 display-laptop">
+        <div v-else  class="col-md-5 ipad-col-4 mt-2 mr-0 p-0 display-laptop">
           <!-- <span class="badge badge-danger">Sale Pending</span> -->
            <button class="buttons" v-on:click="gotocommuter">FIND A MATCH</button>
         </div>
@@ -253,8 +253,8 @@
             <span class="sr-only">Loading...</span>
             </div>
         </div> -->
-       <div class="col-md-11 middle-align similar">
-        <h5 class="">Similar Vehicles:</h5 >
+       <div class="col-md-11 middle-align similar pl-0">
+        <h5 class="mb-3">Similar Vehicles:</h5 >
   <div class="row c mb-4  m-0 p-0"> 
      <div class="card-container  text-center ml-2 border" v-for="(similar, index) in megaData" :key="index">
             <div v-on:click="display_this(similar.vehicle_id)">
@@ -615,16 +615,27 @@ cursor: pointer;
   margin-top: 1%
 }
 @media only screen 
-  and (min-device-width: 768px) 
+  and (min-device-width: 600px) 
   and (max-device-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1){
     .ipad-col-4{
       flex: 0 0 33.333333%;
     max-width: 33.333333%;
     }
+    .description h1{
+  font-size: 15px !important;
+  font-weight: bold;
+}
+    .badge{
+      font-size: 45% !important
+    }
     .ipad-col-3{
-      flex: 0 0 25%;
-    max-width: 25%;
+      flex: 0 0 25% !important;
+    max-width: 25% !important;
+    }
+     .ipad-col-5{
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
     }
     .buttons{
     padding: 10px 15px 10px 15px !important;
@@ -632,13 +643,69 @@ cursor: pointer;
     .price .label{
     font-size: 10px !important;
     }
+    .no-ipad-margin{
+      margin: 0!important;
+      padding: 0 !important
+    }
     .buttons{
-    font-size: 12px !important;
+    font-size: 8px !important;
     font-weight: 700;
     height: inherit;
     letter-spacing: 1px !important;
 }
   }
+
+  @media only screen 
+  and (min-device-width: 600px) 
+  and (max-device-width: 767px) 
+  and (-webkit-min-device-pixel-ratio: 1){
+    .ipad-col-4{
+      flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    }
+    .description h1{
+  font-size: 15px !important;
+  font-weight: bold;
+  }
+  .price-panel{
+    padding: 10px !important
+  }
+  .specification{
+        padding: 10px !important
+
+  }
+  .similar h5{
+    padding: 10px !important
+  }
+    .badge{
+      font-size: 45% !important
+    }
+    .ipad-col-3{
+      flex: 0 0 25% !important;
+    max-width: 25% !important;
+    }
+     .ipad-col-5{
+    flex: 0 0 41.666667%;
+    max-width: 41.666667%;
+    }
+    .buttons{
+    padding: 10px 15px 10px 15px !important;
+    }
+    .price .label{
+    font-size: 10px !important;
+    }
+    .no-ipad-margin{
+      margin: 0!important;
+      padding: 0 !important
+    }
+    .buttons{
+    font-size: 8px !important;
+    font-weight: 700;
+    height: inherit;
+    letter-spacing: 1px !important;
+}
+  }
+
 @media only screen and (max-width: 600px) {
  .display-mobile{
   display: block;
@@ -647,6 +714,16 @@ cursor: pointer;
   margin: 0 !important;
 padding: 0 !important;
 }
+.specification{
+        padding: 10px !important
+
+  }
+  .similar h5{
+    padding: 10px !important
+  }
+  .badge{
+    font-size: 50% !important
+  }
 .buttons{
     font-size: 10px !important;
     font-weight: 700;
@@ -695,12 +772,12 @@ padding: 0 !important;
   padding: 10px 35px 10px 35px;
   background-color:#ffb52f;
     box-shadow: none;
-    font-size: 14px;
+    font-size: 11px;
     font-weight: 700;
     height: inherit;
     letter-spacing: 1.2px;
     color: #001232;
-    padding: 8px 22px;
+    padding: 10px 22px;
     outline: none;
     text-transform: uppercase;
     border:none;
@@ -709,7 +786,7 @@ padding: 0 !important;
   opacity: 0.9;
 }
 .mybtn{
- font-size: 14px;
+ font-size: 11px;
   font-weight: 400;
   height: inherit;
   letter-spacing: 1px;
@@ -718,6 +795,7 @@ padding: 0 !important;
   border: 1px solid transparent;
   color: #fff;
   box-shadow: none; 
+  width:100%
 }
 .row1:after {
   content: "";
@@ -905,7 +983,7 @@ img.hover-shadow {
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 600px){
   .modal-content-mobile {
     width: 100%;
     padding-top: 30%;

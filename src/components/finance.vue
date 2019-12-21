@@ -57,21 +57,21 @@
           <h2 class="modal-title m-0 p-0" id="exampleModalLongTitle">Loan Application</h2>
         </div>
         <!-- <h5 class="modal-title" >FILL</h5> -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" v-on:click="close_resp" aria-label="Close">
          <img src="../assets/close-button.svg" width="22px">
         </button>
         
       </div>
-      <div class="modal-body">
+      <div class="modal-body" v-if="!form_submitted">
         <p class="text-center"  style="color:red" v-if="message">{{message}}</p>
         
           <div class="form row">
               <div class="col-md-6 mb-4">
-                  <input list="hosting-plan1" type="text" class="form-control" v-model="fName" required>     
+                  <input list="hosting-plan1" type="text" class="form-control" v-model="first_name" required>     
                     <span class="floating-label">First Name</span>
                   </div>
               <div class="col-md-6 mb-4">
-                <input list="hosting-plan2" type="text" class="form-control" v-model="lname" required>
+                <input list="hosting-plan2" type="text" class="form-control" v-model="last_name" required>
                <span class="floating-label">Last Name</span>
               </div>  
           </div>
@@ -98,7 +98,7 @@
                 <span class="floating-label">Date of birth</span>
               </div>
               <div class="col-md-6 mb-4">
-                <input list="hosting-plan5" type="number" class="form-control" v-model="pincode" required> 
+                <input list="hosting-plan5" type="number" class="form-control" v-model="annual_income" required> 
                 <span class="floating-label">Annual Income</span>
               </div>    
           </div>
@@ -110,7 +110,12 @@
               </div> 
           </div>
       </div>
-      <div class="modal-footer ">
+    <div class="modal-body" v-else>
+       <h4>Thank you for your request.</h4>
+         <p>Our team will get in touch with you soon!</p>
+    </div> 
+
+      <div class="modal-footer" v-if="!form_submitted">
         <button type="button" class="viewbikes-button" v-on:click="apply"><strong>
            <span>SUBMIT</span>
             <div v-if="loading" class="spinner-border spinner-border-sm"></div>
@@ -274,15 +279,17 @@ export default {
       data:'',
       img:'',
       active:0,
-      fName:'',
-      lname:'',
+      first_name:'',
+      last_name:'',
       email:'',
       mobile:'',
       pincode:'',
       dob:'',
+      annual_income:'',
       vehicle:'',
       message:'',
-      loading:false
+      loading:false,
+      form_submitted:false,
     }
   },
  methods:{
@@ -290,9 +297,38 @@ export default {
     this.data = text
     this.active = active
   },
+      close_resp(){
+      if(this.form_submitted == true){
+        this.form_submitted = false
+      }else{
+        this.form_submitted = false
+      }
+    },
   apply(){
-
-  }
+      this.loading = true
+      this.$http.post('https://backend-bikex.herokuapp.com/api/finance',{
+              first_name:this.first_name,
+              last_name: this.last_name,
+              email: this.email,
+              mobile: this.mobile,
+              pincode: this.pincode,
+              dob: this.dob,
+              annual_income: this.annual_income,
+              vehicle: this.vehicle,
+            }).
+            then(response=>{
+            this.response = response.body;
+            this.loading = false
+            // this.$swal({
+            //   title:'Thank You!',
+            //   text:'We will get in touch with you shortly'
+            //   })
+            this.form_submitted = true
+            }).catch(error => { 
+                this.message = error.body.msg;
+                this.loading= false
+            })   
+    }
  },
      mounted(){
         window.scrollTo({
