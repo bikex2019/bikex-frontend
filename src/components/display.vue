@@ -112,7 +112,7 @@
   </div>
 
 <div class="col-md-10 margin text-center bg">
- <strong class="pfont"><p>This price inclusive of basic price, refurbishment cost, registration cost & transfer charges.</p></strong>
+ <strong class="pfont"><p>This price is inclusive of vehicle price, refurbishment cost, registration cost & transfer charges.</p></strong>
   </div>
 
 
