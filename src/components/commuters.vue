@@ -266,13 +266,16 @@ export default {
       perpage(){
           return this.itemperpage
       },
+       shuffle(){
+       return  _.shuffle(this.filtereddata)
+    },
     paginatedData(){
     const start = this.pageNumber * this.perpage,
           end = start + this.perpage;
-     return this.filtereddata.slice(start, end);
+     return this.shuffle.slice(start, end);
         },
     pageCount(){
-      let l = this.filtereddata.length,
+      let l = this.shuffle.length,
           s = this.itemperpage;
       return Math.ceil(l/s);
     }
