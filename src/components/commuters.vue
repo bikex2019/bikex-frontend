@@ -74,7 +74,7 @@
                                     <p class="bike-name bold"><span>{{data.model_id.make}} </span>{{data.model_id.modal_name}}
                                      <!-- <span>{{data.engine_cc}} </span>CC -->
                                      </p>
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between safari">
                                         <p class="bold bike-sp">{{data.selling_price | currency}}</p>
                                         <!-- <i class="fa fa-heart-o" aria-hidden="true"></i>         -->
                                         <img class="premium" v-if="data.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
@@ -109,7 +109,7 @@
             </div>
          </div>
 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && filtereddata.length == 0">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -138,6 +138,7 @@ export default {
      data(){
         return{
                     displayImage:[],
+                    // loading : true,
                     filter : 'all',
                     novehicle:false,
                     pageNumber: 0,
@@ -146,6 +147,9 @@ export default {
                     c_id:'',
                     wishlist:[]
         }
+    },
+    beforeCreate(){
+                 this.$store.state.loading = true
     },
      created(){
           this.$store.dispatch('load_scooters');
@@ -269,6 +273,10 @@ export default {
 }
 </script>
 <style scoped>
+.safari{
+    display: -webkit-flex;
+    webkit-justify-content: space-between;
+}
 .premium_img{
     width: 25px;
 }

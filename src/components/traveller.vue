@@ -147,6 +147,9 @@ export default {
                     wishlist:[]
         }
     },
+      beforeCreate(){
+         this.$store.state.loading = true
+    },
      created(){
           this.$store.dispatch('load_commuters');
     },

@@ -246,8 +246,8 @@ acceptance you could continue to use the Platform.</p>
 name and contact details of the Grievance Officer are provided below:</p>     
           <P class="ml-3 m-0 p-0">Name: Sumit Sarawgi </P>
           <P class="ml-3 m-0 p-0">Contact: info@bikex.in </P>
+                <img src="../assets/loading.gif">
         </div>
-  
 </template>
 <script>
 export default {

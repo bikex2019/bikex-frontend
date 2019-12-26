@@ -17,7 +17,7 @@ import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload, {
   preLoad: 1,
   error: './assets/bike.svg',
-  loading: './assets/loading.gif',
+  loading: 'https://bikex.in/img/bikex-logo.c828c99b.svg',
   attempt: 1,
   listenEvents: [ 'scroll' ]
 })
