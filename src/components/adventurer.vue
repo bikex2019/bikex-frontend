@@ -52,7 +52,7 @@
                 <p class="m-0 p-0 color" v-if="filtereddata.length!=0">{{filtereddata.length}} Results</p>
             </div>
             <div class="row pl-2 pr-2 mb-4" >
-                <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="paginatedData" v-for="(data, index) in paginatedData" :key="index">  
+                <div class="col-6 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="paginatedData" v-for="(data, index) in filtereddata" :key="index">  
                     <div class="moterbike"> 
                             <div class="card" v-on:click="display(data.vehicle_id)"> 
                                 <div class="image text-center" style="min-height:50px;">
@@ -74,7 +74,7 @@
                                     <p class="bike-name bold"><span>{{data.model_id.make}} </span>{{data.model_id.modal_name}}
                                      <!-- <span>{{data.engine_cc}} </span>CC -->
                                      </p>
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between safari">
                                         <p class="bold bike-sp">{{data.selling_price | currency}}</p>
                                         <!-- <i class="fa fa-heart-o" aria-hidden="true"></i>         -->
                                         <img class="premium" v-if="data.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
@@ -97,7 +97,7 @@
                 </div>
             </div>          
         </div>
-        <div class="col-md-12 mb-4">
+        <!-- <div class="col-md-12 mb-4">
             <div class="row">
                 <div class="col-md-12 text-center" v-if="paginatedData.length != 0">
                     <button class="btn mr-2" v-on:click="prevPage" :disabled="pageNumber==0"><i class="fa fa-angle-double-left" aria-hidden="true"></i>prev</button>
@@ -107,14 +107,14 @@
                     <button class="btn ml-2" v-on:click="nextPage" :disabled="pageNumber == pageCount - 1">next <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
                 </div>
             </div>
-         </div>
+         </div> -->
 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && filtereddata.length == 0">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="filtereddata.length == 0 ">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && filtereddata.length == 0 ">
             <!-- <p class="mt-4 bold">sorry :(</p> -->
             
             
@@ -138,6 +138,7 @@ export default {
      data(){
         return{
                     displayImage:[],
+                    // loading : true,
                     filter : 'all',
                     novehicle:false,
                     pageNumber: 0,
@@ -147,11 +148,10 @@ export default {
                     wishlist:[]
         }
     },
-      beforeCreate(){
-         this.$store.state.loading = true
+    beforeCreate(){
+                 this.$store.state.loading = true
     },
      created(){
-         this.loading = true
           this.$store.dispatch('load_adventurer');
     },
     mounted(){
@@ -228,7 +228,7 @@ export default {
         vehicles(){
              return this.$store.state.adventurer;
         },
-        loading(){
+          loading(){
         return  this.$store.state.loading
         },
         megaData(){
@@ -273,6 +273,10 @@ export default {
 }
 </script>
 <style scoped>
+.safari{
+    display: -webkit-flex;
+    webkit-justify-content: space-between;
+}
 .premium_img{
     width: 25px;
 }
@@ -323,8 +327,8 @@ img.premium {
         width: 13px !important;
     }
     img.premium {
-    margin-top: 0px !important;
-     width: 20% !important
+    margin-top: -10px !important;
+     width: 15% !important
 }
     .breadcrumb{  
         float: none;

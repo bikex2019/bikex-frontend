@@ -1,5 +1,5 @@
 <template>
-    <div class = "faq col-md-8 mb-5 mt-3 text-center" style="margin:0 auto">
+    <div class = "faq col-md-8 mb-5 text-center center-align">
          <h4><STRONG>FAQ</STRONG></h4>
 
        <div class="container mb-3" v-for="(faqs, index) in faq" :key="index">
@@ -101,7 +101,9 @@ export default {
   height:100%;
    
 }
-
+.center-align{
+  margin:0 auto
+}
   @keyframes expand {
       0% {
       opacity: 0;
@@ -153,39 +155,9 @@ export default {
     outline-offset: -1px;
     transform: rotate(45deg) scale(0.5);
   }
-  @keyframes rotate {
-      0% {
-      transform-origin: bottom left;
-      transform: translate(-5px, -105px) rotate(0deg) scale(1.1)
-      }
-      25% {
-      transform-origin: bottom left;
-      transform: translate(-5px, -105px) rotate(-180deg) scale(1.1);
-      }
-      26% {
-      transform-origin: top left;
-      transform: translate(-5px, 105px) rotate(-180deg) scale(1.1)
-      }
-      50% {
-      transform-origin: top left;
-      transform: translate(-5px, 105px) rotate(-360deg) scale(1.1);
-      }
-      51% {
-      transform-origin: top right;
-      transform: translate(5px, 105px) rotate(-360deg) scale(1.1)
-      }
-      75% {
-      transform-origin: top right;
-      transform: translate(5px, 105px) rotate(-540deg) scale(1.1)
-      }
-      76% {
-      transform-origin: bottom right;
-      transform: translate(5px, -105px) rotate(-540deg) scale(1.1)
-      }
-      100% {
-      transform-origin: bottom right;
-      transform: translate(5px, -105px) rotate(-720deg) scale(1.1)
-      }
+@media only screen and (max-width: 600px) {
+  .center-align{
+    top:20px
   }
-  
+}
 </style>
