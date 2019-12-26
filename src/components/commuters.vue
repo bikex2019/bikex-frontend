@@ -52,30 +52,32 @@
                 <p class="m-0 p-0 color" v-if="filtereddata.length!=0">{{filtereddata.length}} Results</p>
             </div>
             <div class="row pl-2 pr-2 mb-4" >
-                <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="paginatedData" v-for="(image, index) in paginatedData" :key="index">  
+                <div class="col-4 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="paginatedData" v-for="(data, index) in paginatedData" :key="index">  
                     <div class="moterbike"> 
-                            <div class="card" v-on:click="display(image.vehicle_id)"> 
+                            <div class="card" v-on:click="display(data.vehicle_id)"> 
                                 <div class="image text-center" style="min-height:50px;">
-                                    <div class="top-left" v-if="image.status==4">
+                                    <div class="top-left" v-if="data.status==4">
                                         <span>Sale Pending</span>
                                     </div>
-                                    <!-- <div class="top-right" v-if="alreadyAdded(image.vehicle_id)" v-on:click="removeFromWish(image.vehicle_id)">
+                                    <!-- <div class="top-right" v-if="alreadyAdded(data.vehicle_id)" v-on:click="removeFromWish(data.vehicle_id)">
                                         <i class="fa fa-heart" aria-hidden="true"></i>
                                     </div>
-                                      <div class="top-right" v-else v-on:click="addToWish(image.vehicle_id)">
+                                      <div class="top-right" v-else v-on:click="addToWish(data.vehicle_id)">
                                         <i class="fa fa-heart-o"  aria-hidden="true"></i>
                                     </div> -->
-                                    <img v-if="image.length == 0" src="../assets/placeholder.png" width="100%">
-                                    <img v-else :src="image.path" width="100%" height="30%">
+                                     <div v-lazy-container="{ selector: 'img' }">
+                                        <img :data-src="data.path" width="100%" height="30%"/>
+                                    </div>
+                                    <!-- <img v-if="data.length == 0" src="../assets/placeholder.png" width="100%"> -->
                                 </div>
                                 <div class="card-body text-left mt-1">
-                                    <p class="bike-name bold"><span>{{image.make}} </span>{{image.modal_name}}
-                                     <!-- <span>{{image.engine_cc}} </span>CC -->
+                                    <p class="bike-name bold"><span>{{data.model_id.make}} </span>{{data.model_id.modal_name}}
+                                     <!-- <span>{{data.engine_cc}} </span>CC -->
                                      </p>
                                     <div class="d-flex justify-content-between">
-                                        <p class="bold bike-sp">{{image.selling_price | currency}}</p>
+                                        <p class="bold bike-sp">{{data.selling_price | currency}}</p>
                                         <!-- <i class="fa fa-heart-o" aria-hidden="true"></i>         -->
-                                        <img class="premium" v-if="image.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
+                                        <img class="premium" v-if="data.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
                                       
                                     </div>
                                 </div>
@@ -107,12 +109,12 @@
             </div>
          </div>
 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading && filtereddata.length == 0">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="loading">
             <div class="spinner-border" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && filtereddata.length == 0 ">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="filtereddata.length == 0 ">
             <!-- <p class="mt-4 bold">sorry :(</p> -->
             
             
@@ -135,12 +137,7 @@ import * as _ from 'lodash'
 export default {
      data(){
         return{
-                    vehicles:[],
-                    models:[],
                     displayImage:[],
-                    mega:[],
-                    loading:true,
-                    loadingPage:true,
                     filter : 'all',
                     novehicle:false,
                     pageNumber: 0,
@@ -150,25 +147,18 @@ export default {
                     wishlist:[]
         }
     },
+     created(){
+          this.$store.dispatch('load_live_Vehicles');
+          this.$store.dispatch('load_models');
+    },
     mounted(){
         window.scrollTo({
                 top: 0,
                 left: 0,
             })
-    //        setTimeout(()=>{
-    //      this.loadingPage = false
-    //       window.console.log(this.loading)
-    //   }, 2000)
     },
     beforeMount(){
-
-    // let auth = localStorage.getItem('token')
     this.c_id = localStorage.getItem('temp')
-    
-	this.$http.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle')
-      .then(response=>{this.vehicles= response.body;
-      }).catch(()=>{this.loading = false});this.$http.get('https://backend-bikex.herokuapp.com/api/models/type/commuters')
-      .then(res=>{this.models= res.body;}).catch(()=>{this.loading = false});
       this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
       .then(resp=>{this.displayImage= resp.body.data;}).catch(()=>{this.loading = false});
       this.$http.get('https://backend-bikex.herokuapp.com/api/wishlist/'+ this.c_id)
@@ -232,20 +222,18 @@ export default {
         }
     },
     computed:{
-    datas(){
-        const temp = []
-        this.vehicles.forEach(x => {
-            this.models.forEach(y => {
-            if (x.model_id === y._id) {
-                temp.push({ ...x, ...y })
-            }
-            })
-        })
-      return temp
-    },
+         vehicles(){
+             return this.$store.state.vehicles;
+        },
+        models(){
+            return this.$store.state.models;
+        },
+          loading(){
+        return  this.$store.state.loading
+        },
     megaData(){
         const temp2 = []
-        this.datas.forEach(x => {
+        this.vehicles.forEach(x => {
             this.displayImage.forEach(y => {
             if (x.vehicle_id === y.vehicle_id) {
                 temp2.push({ ...x, ...y })

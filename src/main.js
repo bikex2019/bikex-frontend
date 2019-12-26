@@ -11,7 +11,16 @@ import store from './store'
 import 'sweetalert2/dist/sweetalert2.min.css';
 import VueZoomer from 'vue-zoomer'
 import VueGoodWizard from 'vue-good-wizard';
+import VueLazyload from 'vue-lazyload'
 
+
+Vue.use(VueLazyload, {
+  preLoad: 1,
+  error: './assets/bike.svg',
+  loading: './assets/loading.gif',
+  attempt: 1,
+  listenEvents: [ 'scroll' ]
+})
 Vue.use(VueGoodWizard);
 Vue.use(VueZoomer)
 Vue.use(VueSweetalert2);
