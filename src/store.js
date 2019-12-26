@@ -10,10 +10,13 @@ export default new Vuex.Store({
 state: {
     faqs: [],
     vehicles:[],
+    scooters:[],
+    commuters:[],
+    adventurer:[],
     models:[],
     display_images:[],
-    loading:true
-
+    loading:true,
+    logged:false
     },
   mutations: {
     LOAD_STATUS(state, value){
@@ -25,14 +28,31 @@ state: {
     FETCH_VEHICLES(state, vehicles){
         state.vehicles = vehicles
     },
+    FETCH_SCOOTERS(state, scooters){
+      state.scooters = scooters
+    },
+    FETCH_COMMUTERS(state, commuters){
+      state.commuters = commuters
+    },
+    FETCH_ADVENTURER(state, adventurer){
+      state.adventurer = adventurer
+    },
     FETCH_MODELS(state, models){
         state.models = models
     },
     FETCH_DISPLAY_IMAGES(state, display_images){
         state.display_images = display_images
+    },
+    IS_LOGGED_IN(state, value){
+      state.loggedin = value
     }
   },
   actions: {
+    log_out({commit}){
+      localStorage.removeItem('token')
+      localStorage.removeItem('temp')
+      commit('IS_LOGGED_IN', false);
+    },
     loadFaq({commit}) {
       axios.get('https://backend-bikex.herokuapp.com/api/faq').then(result => {
         commit('FETCH_FAQ', result.data);
@@ -47,6 +67,31 @@ state: {
         }).catch(error => {
           throw new Error(`API ${error}`);
         });
+    },
+    load_scooters({commit}) {
+      axios.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle/scooters').then(result => {
+        commit('FETCH_SCOOTERS', result.data);
+        commit('LOAD_STATUS', false);
+
+      }).catch(error => {
+        throw new Error(`API ${error}`);
+      });
+      },
+      load_commuters({commit}) {
+        axios.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle/commuters').then(result => {
+          commit('FETCH_COMMUTERS', result.data);
+          commit('LOAD_STATUS', false);
+        }).catch(error => {
+          throw new Error(`API ${error}`);
+        });
+    },
+    load_adventurer({commit}) {
+      axios.get('https://backend-bikex.herokuapp.com/api/fetch/live-vehicle/adventurer').then(result => {
+        commit('FETCH_ADVENTURER', result.data);
+        commit('LOAD_STATUS', false);
+      }).catch(error => {
+        throw new Error(`API ${error}`);
+      });
     },
     load_models({commit}) {
         axios.get('https://backend-bikex.herokuapp.com/api/models').then(result => {

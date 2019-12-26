@@ -27,7 +27,7 @@ export default[
    {path:'/', component:home},
    {path:'/vehicles/:id', component:vehicles},
    {path:'/scooter', component:commuters},
-   {path:'/traveller', component:traveller},
+   {path:'/commuter', component:traveller},
    {path:'/adventurer', component:adventurer},
    {path:'/finance', component:finance},
    {path:'/termsandcondition', component:terms},

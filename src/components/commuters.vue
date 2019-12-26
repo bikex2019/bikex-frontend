@@ -7,7 +7,7 @@
                 <div class="col-12 col-md-10 mt-4 p-0" style="margin:0 auto">
                      <ol class="breadcrumb pull-left">
                     <li class="breadcrumb-item"><router-link to="/scooter" exact-active-class="active">SCOOTERS</router-link></li>
-                    <li class="breadcrumb-item"><router-link to="/traveller" class="left" exact-active-class="active">COMMUTERS</router-link></li>
+                    <li class="breadcrumb-item"><router-link to="/commuter" class="left" exact-active-class="active">COMMUTERS</router-link></li>
                     <li class="breadcrumb-item"><router-link to="/adventurer" class="left" exact-active-class="active">ADVENTURERS</router-link></li>
 
                     </ol>
@@ -114,7 +114,7 @@
                 <span class="sr-only">Loading...</span>
             </div>
         </div> 
-        <div class="loading text-center mb-4" style="min-height:200px" v-if="filtereddata.length == 0 ">
+        <div class="loading text-center mb-4" style="min-height:200px" v-if="!loading && filtereddata.length == 0 ">
             <!-- <p class="mt-4 bold">sorry :(</p> -->
             
             
@@ -148,8 +148,7 @@ export default {
         }
     },
      created(){
-          this.$store.dispatch('load_live_Vehicles');
-          this.$store.dispatch('load_models');
+          this.$store.dispatch('load_scooters');
     },
     mounted(){
         window.scrollTo({
@@ -194,7 +193,7 @@ export default {
                             v_id:veh_id
                         }).then(response=>{
                             window.console.log(response)
-                            window.location.reload()
+                             window.location.reload()
                         })
             }else{
                 this.$swal({
@@ -222,16 +221,13 @@ export default {
         }
     },
     computed:{
-         vehicles(){
-             return this.$store.state.vehicles;
-        },
-        models(){
-            return this.$store.state.models;
+        vehicles(){
+             return this.$store.state.scooters;
         },
           loading(){
         return  this.$store.state.loading
         },
-    megaData(){
+        megaData(){
         const temp2 = []
         this.vehicles.forEach(x => {
             this.displayImage.forEach(y => {
