@@ -270,6 +270,7 @@
          </div>
       </div>
     </div>
+    {{vehicles}}
 </div>
 </template>
 <script>
@@ -291,6 +292,11 @@ export default {
       loading:false,
       form_submitted:false,
     }
+  },
+  created(){      
+          this.$store.dispatch('load_images_array');
+            this.$store.dispatch('load_live_Vehicles');
+
   },
  methods:{
   set(text, active){
@@ -337,6 +343,12 @@ export default {
                 behavior: 'smooth'
             })
     },
+    computed: {
+      vehicles () {
+        const x = this.$store.getters.images_array(10007)
+         return x[0].images
+      }
+    }
 }
 </script>
 <style scoped>

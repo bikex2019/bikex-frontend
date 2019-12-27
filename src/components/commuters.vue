@@ -137,7 +137,7 @@ import * as _ from 'lodash'
 export default {
      data(){
         return{
-                    displayImage:[],
+                    // displayImage:[],
                     // loading : true,
                     filter : 'all',
                     novehicle:false,
@@ -152,7 +152,14 @@ export default {
                  this.$store.state.loading = true
     },
      created(){
-          this.$store.dispatch('load_scooters');
+            window.scrollTo({
+                top: 0,
+                left: 0,
+            })
+                        this.$store.dispatch('load_display_images');
+
+        //   this.$store.dispatch('load_scooters');
+        //   this.$store.dispatch('load_display_images');
     },
     mounted(){
         window.scrollTo({
@@ -161,11 +168,11 @@ export default {
             })
     },
     beforeMount(){
+    // window.console.log(this.$store.getters.images_array(10007))
+    //  window.console.log(this.$store.state.display_images)
     this.c_id = localStorage.getItem('temp')
-      this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display')
-      .then(resp=>{this.displayImage= resp.body.data;}).catch(()=>{this.loading = false});
-      this.$http.get('https://backend-bikex.herokuapp.com/api/wishlist/'+ this.c_id)
-      .then(respon=>{this.wishlist= respon.data;window.console.log(this.wishlist)}).catch(()=>{this.loading = false});
+    // this.$http.get('https://backend-bikex.herokuapp.com/api/wishlist/'+ this.c_id)
+    // .then(respon=>{this.wishlist= respon.data;window.console.log(this.wishlist)}).catch(()=>{this.loading = false});
     },
     methods:{
         display(id){
@@ -174,7 +181,7 @@ export default {
         filterkey(id){
             this.pageNumber = 0
             this.filter = id
-            this.loading = false
+            // this.loading = false
              window.scrollTo({
                 top: 0,
                 left: 0,
@@ -190,30 +197,30 @@ export default {
                 }
             }
         },
-        addToWish(veh_id){
-            if(this.c_id){
-            this.$http.post('https://backend-bikex.herokuapp.com/api/wishlist',{
-                            c_id:this.c_id,
-                            v_id:veh_id
-                        }).then(response=>{
-                            window.console.log(response)
-                             window.location.reload()
-                        })
-            }else{
-                this.$swal({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Please Log in',
-                showConfirmButton: false,
-                timer: 2500
-                })
-                this.$router.push('/login')
-            }
+        // addToWish(veh_id){
+        //     if(this.c_id){
+        //     this.$http.post('https://backend-bikex.herokuapp.com/api/wishlist',{
+        //                     c_id:this.c_id,
+        //                     v_id:veh_id
+        //                 }).then(response=>{
+        //                     window.console.log(response)
+        //                      window.location.reload()
+        //                 })
+        //     }else{
+        //         this.$swal({
+        //         position: 'top-end',
+        //         icon: 'error',
+        //         title: 'Please Log in',
+        //         showConfirmButton: false,
+        //         timer: 2500
+        //         })
+        //         this.$router.push('/login')
+        //     }
             
-        },
-        removeFromWish(){
+        // },
+        // removeFromWish(){
 
-        },
+        // },
         nextPage(){
              this.pageNumber++;
         },
@@ -230,6 +237,9 @@ export default {
         },
           loading(){
         return  this.$store.state.loading
+        },
+        displayImage(){
+                 return  this.$store.state.display_images   
         },
         megaData(){
         const temp2 = []

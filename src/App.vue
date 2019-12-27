@@ -36,7 +36,12 @@ export default {
     myfooter,
   },
   mounted () {
-    this.$store.dispatch('get_faqs')
+    this.$store.dispatch('load_scooters');
+    this.$store.dispatch('load_images_array');
+    this.$store.dispatch('load_display_images');
+      // this.$store.dispatch('load_display_images');
+  this.$store.dispatch('load_live_Vehicles');
+  // this.$store.dispatch('load_images_array');
   },
   beforeDestroy () {
   },
