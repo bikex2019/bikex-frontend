@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-4 col-4 col-lg-4 pl-0 pr-1 m-0">
                             <div class="banner-wrapper mb-3">
-                               <router-link to="/traveller">
+                               <router-link to="/commuter">
                                 <a ><img class="resize_fit_center" src="../assets/traveller1.jpg" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>COMMUTER</h2>
