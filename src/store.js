@@ -17,12 +17,16 @@ state: {
     display_images:[],
     display_image_array:[],
     loading:true,
-    logged:false
+    logged:false,
+    image_loading:true
     },
   mutations: {
     LOAD_STATUS(state, value){
         state.loading = value
     },
+    IMAGE_LOAD(state, value){
+      state.image_loading = value
+  },
     FETCH_FAQ(state, faqs) {
       state.faqs = faqs;
     },
@@ -115,7 +119,7 @@ state: {
       load_images_array({commit}) {
         axios.get('https://backend-bikex.herokuapp.com/api/uploads/get/images').then(result => {
           commit('FETCH_IMAGES_ARRAY', result.data);
-          commit('LOAD_STATUS', false);
+          commit('IMAGE_LOAD', false);
         }).catch(error => {
           throw new Error(`API ${error}`);
         });
@@ -134,6 +138,11 @@ state: {
     },
     images_array(state) {
       return id => state.display_image_array.filter(item =>{
+        return item.vehicle_id === id
+      });
+    },
+    display_image(state) {
+      return id => state.display_images.filter(item =>{
         return item.vehicle_id === id
       });
     },

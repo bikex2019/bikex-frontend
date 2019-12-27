@@ -65,7 +65,7 @@
                                       <div class="top-right" v-else v-on:click="addToWish(data.vehicle_id)">
                                         <i class="fa fa-heart-o"  aria-hidden="true"></i>
                                     </div> -->
-                                     <div v-lazy-container="{ selector: 'img' }">
+                                     <div v-lazy-container="{ selector: 'img' }"> 
                                         <img :data-src="data.path" width="100%" height="30%"/>
                                     </div>
                                     <!-- <img v-if="data.length == 0" src="../assets/placeholder.png" width="100%"> -->

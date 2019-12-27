@@ -9,9 +9,9 @@
       </slide>
     </carousel>
   </div>
-  <!-- <div class="loader display-mobile" v-if="loading">
+  <div class="loader display-mobile" v-if="image_loading">
     <p>Loading Images..</p>
-  </div> -->
+  </div>
   <div id="myModalMobile" class="modalmobile" v-bind:class="{'block': isExpand}">
   <span class="closemobile" v-on:click="closemobileModal">&times;</span>
     <div class="image_holder">
@@ -404,6 +404,9 @@ created(){
         
       },
       computed:{
+        image_loading(){
+          return this.$store.state.image_loading
+        },
         id(){
           return Number(this.$route.params.id)
         },

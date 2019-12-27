@@ -28,8 +28,8 @@
           <ul class="list-group mb-3">
             <li class="list-group-item d-flex justify-content-between p-2 bottom">
               <div class="text-left">
-                <h4 class="my-0" v-for="(models, index) in models" :key="index">
-                   <span>{{models.make}} </span> <span>{{models.modal_name}}</span>
+                <h4 class="my-0" v-for="(vehicle, index) in vehicle" :key="index">
+                   <span>{{vehicle.model_id.make}} </span> <span>{{vehicle.model_id.modal_name}}</span>
                 </h4>
                  <small class="text-muted " v-for="(vehicle, index) in vehicle" :key="index">
                   <span class="" > Color:</span> {{vehicle.color}}
@@ -152,7 +152,6 @@
               </div>
             </div>
             <div class="col-md-8 col-12 mobile-margin" v-if="open == 'payment'">
-                <!-- <checkout :v_id="10007"></checkout> -->
               <div class="card col-md-12 mb-4 p-2 text-left">
                 <p class="top-header mt-0">How would you like to pay?</p>
                 <div class="row border m-0 p-0 mb-4">
@@ -193,12 +192,8 @@
                       <img v-bind:class="{ gray: active != 5 } " class="size1" src="../assets/lend/lenboxcolored.png" width="100%">   
                        </a>
                     </div>
-                      <!-- <p class="p-3" style="color:#001232">{{data}}</p> -->
                         </div>
                     </div>
-                <!-- <div class="col-md-3 mt-4">
-                    <button class="action-button">APPLY</button>
-                </div> -->
                   </div>
                   <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
@@ -209,17 +204,6 @@
                       <button class="action-button2" v-on:click="go_shipping('Online Pay')">PROCEED</button> 
                       </div>
                   </div>
-
-                  <!-- <div class="row border m-0 p-0 mb-4 py-3">
-                      <div class="col-md-8">
-                          <p class="header m-0 p-0 ">CASH ON DELIVERY</p>
-                          <p class="paragraph m-0 p-0">Pay via cash/card upon delivery </p>
-                      </div>
-                      <div class="col-md-4 mobile-top ">
-                      <button class="action-button2" v-on:click="go_shipping('Cash on Delivery')">PROCEED</button> 
-                      </div>
-                  </div> -->
-
                   <div class="row border m-0 p-0 mb-4 py-3">
                       <div class="col-md-8">
                               <p class="header m-0 p-0 ">NOT SURE YET?</p>
@@ -233,7 +217,7 @@
               </div>
 
               <div class="col-md-8 col-12 mobile-margin" v-if="open == 'shipping'">
-                <payment :v_id="Number(id)" :payment_mode="payment_mode" :total_price="Number(price_comp)" :vehicle_status="Number(5)"
+                <payment :v_id="Number(identity)" :payment_mode="payment_mode" :total_price="Number(price_comp)" :vehicle_status="Number(5)"
                 :tefflon="Number(tefflon)" :extended_w="Number(extended_w)" :rsa="Number(rsa)" :comprehensive="Number(comprehensive)"
                 ></payment>
               </div>
@@ -245,7 +229,6 @@
 
 <script>
 import payment from './payment'
-// import checkout from './checkout'
 export default {
     data(){
         return{
@@ -254,14 +237,10 @@ export default {
           img:'',
             open:'review',
             id:'',
-            vehicle:[],
             models:[],
-            displayImage:[],
             email:'',
-            price:0,
             password:'',
             response_message:'',
-            loading:true,
             tefflon:[],
             extended_w:[],
             rsa:[],
@@ -277,11 +256,12 @@ export default {
     },
     components:{
       payment,
-      // checkout
     },
-    created(){
+    created(){ 
           let auth = localStorage.getItem('token')
-        this.id = localStorage.getItem('temp')
+          this.id = localStorage.getItem('temp')
+          this.$store.dispatch('load_display_images');
+          this.$store.dispatch('load_live_Vehicles');
         if(!auth){
             this.$swal({
                 position: 'top-end',
@@ -296,18 +276,6 @@ export default {
                 top: 0,
                 left: 0,
             })
-      let i = 0
-        this.id = this.$route.params.id
-           this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
-          .then(res=>{
-          this.vehicle = res.body
-          this.price = this.vehicle[i].selling_price
-          this.$http.get('https://backend-bikex.herokuapp.com/api/models/'+ res.body[i].model_id).then(response=>{
-            this.models = response.body
-          })
-          })
-           this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display/' + this.id)
-            .then(resp=>{this.displayImage= resp.body.data;this.loading = false;});
     },
     methods:{
       book(){
@@ -350,12 +318,27 @@ export default {
            this.coupon_message = 'Enter coupon!'
         }
       }
-        },
+        }, 
         computed:{
+            loading(){
+        return  this.$store.state.loading
+        },
+          identity(){
+            return Number(this.$route.params.id)
+          },
+          price(){
+            return Number(this.vehicle[0].selling_price)
+          },
           price_comp(){
             return this.price + Number(this.tefflon) + Number(this.extended_w)+
              Number(this.rsa)+ Number(this.comprehensive) +
             Number(this.delivery)-Number(this.discount)
+          },
+          vehicle(){
+            return this.$store.getters.vehicle(this.identity)
+          },
+          displayImage(){
+            return this.$store.getters.display_image(this.identity)
           }
         }
 }
