@@ -107,7 +107,9 @@ export default {
                 showConfirmButton: false,
                 timer: 2500
                 })
-                this.$router.push('/login')
+                this.$router.push(
+                {path:'/login', query: { next: 'profile'}}
+                )
         }
          this.$http.get('https://backend-bikex.herokuapp.com/api/customers/'+ this.id)
           .then(response=>{

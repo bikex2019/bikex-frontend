@@ -161,7 +161,9 @@ export default {
                 showConfirmButton: false,
                 timer: 2500
                 })
-                this.$router.push('/login')
+                this.$router.push(
+                  {path:'/login', query: { next: 'booking/'+ this.identity}}
+                )
         }
        window.scrollTo({
                 top: 10,
@@ -169,8 +171,7 @@ export default {
             })
 
       let i = 0
-        this.id = this.$route.params.id
-           this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.id)
+           this.$http.get('https://backend-bikex.herokuapp.com/api/procurements/'+ this.identity)
           .then(res=>{
           this.vehicle = res.body
           this.price = this.vehicle[i].selling_price
@@ -178,7 +179,7 @@ export default {
             this.models = response.body
           })
           })
-           this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display/' + this.id)
+           this.$http.get('https://backend-bikex.herokuapp.com/api/upload-display/' + this.identity)
             .then(resp=>{this.displayImage= resp.body.data;this.loading = false;});
     },
     methods:{
@@ -186,7 +187,7 @@ export default {
 
       },
       go_direct_pay(){
-          this.$router.push('/checkout/'+ this.id)
+          this.$router.push('/checkout/'+ this.identity)
       },
     set(text, active){
     this.data = text
@@ -230,6 +231,9 @@ export default {
         computed:{
           price_comp(){
             return Number(this.delivery)+Number(this.reserve)
+          },
+          identity(){
+            return this.$route.params.id
           }
         }
 }

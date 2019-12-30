@@ -55,10 +55,12 @@ export default {
             password:'',
             response_message:'',
             data:[],
-            loading:false
+            loading:false,
+            next:'aaa'
         }
     },
     created(){
+        this.next=this.$route.query.next
         let auth = localStorage.getItem('token')
         if(auth){
             this.$swal({
@@ -85,7 +87,7 @@ export default {
                 this.response_message = this.data.msg
                 localStorage.setItem('token', this.data.data[0].firstname)
                 localStorage.setItem('temp', this.data.data[0]._id)
-                this.$router.push('/profile')
+                this.$router.push('/'+this.next)
                 window.location.reload()
             }else{
                 this.response_message = this.data.msg 

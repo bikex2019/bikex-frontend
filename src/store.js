@@ -81,6 +81,7 @@ state: {
     load_live_Vehicles({commit}) {
         axios.get(this.getters.baseUrl+'/fetch/live-vehicle').then(result => {
           commit('FETCH_VEHICLES', result.data);
+          commit('LOAD_STATUS', false);
         }).catch(error => {
           throw new Error(`API ${error}`);
         });

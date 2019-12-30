@@ -270,7 +270,9 @@ export default {
                 showConfirmButton: false,
                 timer: 2500
                 })
-                this.$router.push('/login')
+                this.$router.push(
+                  {path:'/login', query: { next: 'checkout/'+ this.identity}
+                  })
         }
        window.scrollTo({
                 top: 0,
@@ -282,7 +284,7 @@ export default {
 
       },
        go_to_book(){
-          this.$router.push('/booking/'+ this.id)
+          this.$router.push('/booking/'+ this.identity)
       },
       go_payment(){
           this.open = 'payment'
