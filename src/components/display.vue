@@ -42,9 +42,9 @@
             <img src="../assets/close.svg" width="30px">
           </span>
           <div class="numbertext">
-            <p>{{currentSlide + 1}} / {{images.length}}</p>
+            <p>{{currentSlide + 1}} / {{images[0].images.length}}</p>
           </div>
-            <img :src="images[currentSlide]" style="width:auto" height="465px" class="image-modal">
+            <img :src="images[0].images[currentSlide]" style="width:auto" height="465px" class="image-modal">
         </div>
         <a class="prev" v-on:click="minusSlides()">
           <img src="../assets/back.svg" width="50px">
@@ -54,7 +54,7 @@
         </a>
         <div class="preview mb-4">
           <div class="row p-0 m-0">
-            <div class="col-md-1 p-0 m-0" v-for="(image, index) in images" :key="index" >
+            <div class="col-md-1 p-0 m-0" v-for="(image, index) in images[0].images" :key="index" >
               <img class="demo cursor" :src="image" style="width:auto" height="70px" v-on:click="openModal(index)" alt="Nature and sunrise">
             </div>
           </div>
@@ -373,7 +373,7 @@ created(){
             this.displayBlock = false;
           },
           plusSlides(){
-              if(this.currentSlide < this.images.length - 1){
+              if(this.currentSlide < this.images[0].images.length - 1){
                 this.currentSlide++
               }else{
                 this.currentSlide = 0
@@ -382,6 +382,8 @@ created(){
             minusSlides(){
               if(this.currentSlide > 0){
                 this.currentSlide--
+              }else{
+                this.currentSlide = this.images[0].images.length - 1
               }
           },
           checkout(){
