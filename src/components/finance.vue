@@ -270,7 +270,6 @@
          </div>
       </div>
     </div>
-    {{vehicles}}
 </div>
 </template>
 <script>

@@ -60,13 +60,13 @@
     </div>
 </div> 
 
-<div class="services-area col-md-12 col-lg-12 m-0 p-0 mt-4 margin">
+<div class="services-area col-md-12 col-lg-12 m-0 p-0 mt-4 margin"  v-lazy-container="{ selector: 'img' }">
                 <div class="container m-0 p-0 margin">
                     <div class="row m-0 p-0 margin">
                         <div class="col-lg-3 col-md-6 mb-4 m-0 pr-2 p-0 no-mobile-pad col-12">
                             <div class="single-services row orange mb-30 col-12 margin text-center">
                                 <div class="services-icon col-3 col-md-12">
-                                    <img alt="" src="../assets/support.svg" width="25%">
+                                    <img alt="" :data-src="image.support" width="25%">
                                 </div>
                                 <div class="services-text col-9 col-md-12">
                                     <h5><strong>24/7 Support</strong></h5>
@@ -77,7 +77,7 @@
                         <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad col-12">
                             <div class="single-services row yellow mb-30 col-12 margin text-center">
                                 <div class="services-icon col-3 col-md-12">
-                                    <img alt="" src="../assets/tracking.png" width="25%">
+                                    <img alt="" :data-src="image.tracking" width="25%">
                                 </div>
                                 <div class="services-text col-9 col-md-12">
                                     <h5><strong>Doorstep Delivery</strong></h5>
@@ -90,7 +90,7 @@
                         <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 pr-2 no-mobile-pad col-12">
                             <div class="single-services row purple mb-30 col-12 margin text-center">
                                 <div class="services-icon col-3 col-md-12">
-                                    <img alt="" src="../assets/mechanic.png" width="25%">
+                                    <img alt="" :data-src="image.mechanic" width="25%">
                                 </div>
                                 <div class="services-text col-9 col-md-12">
                                     <h5><strong>Road Side Assistance</strong></h5>
@@ -103,7 +103,7 @@
                         <div class="col-lg-3 col-md-6 mb-4 m-0 p-0 no-mobile-pad col-12">
                             <div class="single-services row sky mb-30 col-12  margin text-center">
                                 <div class="services-icon col-3 col-md-12">
-                                    <img alt="" src="../assets/key.png" width="25%">
+                                    <img alt="" :data-src="image.key" width="25%">
                                 </div>
                                 <div class="services-text col-9 col-md-12">
                                    <h5 class="m-0 p-0"><strong>Assured buy-back</strong></h5>
@@ -114,10 +114,21 @@
                     </div>
                 </div>
             </div>
-
     </div>
 </template>
-
+<script>
+export default {
+    data(){
+        return{
+        }
+    },
+    computed:{
+        image(){
+            return this.$store.state.assets_images
+        }
+    }
+}
+</script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');

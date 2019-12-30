@@ -150,8 +150,8 @@
 </div>
           </div>
       </div>
-      <div class="col-md-6 mt-0">
-         <img src="../assets/sellimage.jpg" alt="src" width="100%">
+      <div class="col-md-6 mt-0" v-lazy-container="{ selector: 'img' }">
+         <img :data-src="sell_image" alt="src" width="100%">
       </div>
     </div>
 </div>
@@ -293,6 +293,7 @@ export default {
   data(){
     return{
         make: '',
+        sell_image:'https://loader-image.s3.ap-south-1.amazonaws.com/sellimage.jpg',
         model:  '',
         engine_cc:  '',
         manufacture_year:  '',

@@ -166,6 +166,7 @@ export default {
                 top: 0,
                 left: 0,
             })
+            window.console.log(this.$store.getters.commuters)
     },
     beforeMount(){
     // window.console.log(this.$store.getters.images_array(10007))

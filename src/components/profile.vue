@@ -15,8 +15,8 @@
                             </div>
                     </div>
                     <div class="col-md-9 margin ">
-                   <div class="col-md-12 border ml-1 margin">  
-                     <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
+                   <div class="col-md-12 ml-1 margin ">  
+                     <ul class="nav nav-tabs margin-top" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active head1" id="Finance-tab" data-toggle="tab" href="#Finance" role="tab" aria-controls="Finance" aria-selected="true">HISTORY</a>
                             </li>
@@ -31,7 +31,7 @@
                                  <p class="pixel1 m-0 p-2">Order ID: {{data._id}}</p>
                                  <p v-on:click="show_invoice(data._id)" class="show_invoice">View Order</p>
                              </div>
-                            <div class="row mt-3 no-margin">
+                            <div class="row no-margin">
                                 <div class="col-md-3">
                                    <img :src="data.image" alt="cd" width="100px" height="75px">
                                 </div>
@@ -66,8 +66,8 @@
                                  </div>
                             </div>
                         </div>
-                        <div class="tab-content mt-3 no-margin mb-3 col-md-12 border" v-if="loading_purchase == false && bookings.length == 0">
-                            <div class="tab-pane active" id="Finance" role="tabpanel">
+                        <div class="tab-content mt-4 no-margin mb-3 col-md-12 border" v-if="loading_purchase == false && bookings.length == 0">
+                            <div class="tab-pane active p-4" id="Finance" role="tabpanel">
                                 <p>You have not made any bookings.</p>
                             </div>
                         </div>
@@ -185,10 +185,14 @@ export default {
         margin-top: 19px !important;
         text-align: center
     }
-    .no-margin{
+
+    .margin-top{
+        margin-top: 10px;
+    }
+    /* .no-margin{
         padding: 0 !important;
         margin:0 !important
-    }
+    } */
     .phone-left{
         text-align: left !important
     }

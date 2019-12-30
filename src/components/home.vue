@@ -33,14 +33,14 @@
                 </div>
             </div>
 
-     <div class="banner-area mb-4 m-0 p-0">
+     <div class="banner-area mb-4 m-0 p-0" v-lazy-container="{ selector: 'img' }">
                 <div class="container phone-center mb-4 m-0 p-0">
                     <p class="m-0 mb-4 p-0 mobile-top" style="font-size:19px"><strong>EXPLORE OUR SELECTION</strong></p>
                     <div class="row p-0 m-0">
                         <div class="col-md-4 col-4 col-lg-4 pl-0 pr-2 m-0">
                             <div class="banner-wrapper mb-3">
                                <router-link to="/scooter">
-                                  <a><img class="resize_fit_center" src="../assets/commuters16.jpg" alt="image"></a>
+                                  <a><img class="resize_fit_center" :data-src="images.scooter" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>SCOOTER</h2>
                                 </div>
@@ -50,7 +50,7 @@
                         <div class="col-md-4 col-4 col-lg-4 pl-0 pr-1 m-0">
                             <div class="banner-wrapper mb-3">
                                <router-link to="/commuter"> 
-                                <a ><img class="resize_fit_center" src="../assets/traveller1.jpg" alt="image"></a>
+                                <a ><img class="resize_fit_center" :data-src="images.commuter" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>COMMUTER</h2>
                                 </div>
@@ -60,7 +60,7 @@
                         <div class="col-md-4 col-4 col-lg-4 pl-1 p-0 m-0">
                             <div class="banner-wrapper mb-3">
                                <router-link to="adventurer">
-                                  <a><img class="resize_fit_center" src="../assets/enfield.jpg" alt="image"></a>
+                                  <a><img class="resize_fit_center" :data-src="images.adventurer" alt="image"></a>
                                 <div class="banner-content">
                                     <h2>ADVENTURER</h2>
                                 </div>
@@ -97,6 +97,9 @@ export default {
   computed:{
       load(){
         return this.loading
+      },
+      images(){
+            return this.$store.state.assets_images
       }
   },
     methods:{
