@@ -14,41 +14,44 @@
       <div class="modal-body">
     <div class="row text-center col-md-10"  style="margin:0 auto">
                 <div class="col-md-12 mt-2">
-                    <p class="error m-0 p-0">{{response_message}}</p>
+                    <p class="error my-3 m-0 p-0">{{response_message}}</p>
                 </div>
                 <div class="col-md-6 mb-4 mt-2">
                   <input type="text" v-model="firstname" class="inputText form-control" required />
-                  <span class="floating-label" >First Name</span>
+                  <span class="floating-label" >First Name <span style="color:red">*</span></span>
                 </div>
                 <div class="col-md-6 mb-4 mt-2">
                   <input type="text" v-model="lastname" class="inputText form-control" required />
-                  <span class="floating-label" >Last Name</span>
+                  <span class="floating-label" >Last Name<span style="color:red">*</span></span>
                 </div>
                  <div class="col-md-12 mb-4">
                   <input type="number" v-model="phone" class="inputText form-control" required />
-                  <span class="floating-label" >Phone</span>
+                  <span class="floating-label" >Phone<span style="color:red">*</span></span>
                 </div>
                 <div class="col-md-12">
                     <p class="error">{{emessage}}</p>
                 </div>
                  <div class="col-md-12 mb-4">
                   <input type="email" v-model="email" class="inputText form-control" required @blur="checkmail" />
-                  <span class="floating-label" >Email</span>
+                  <span class="floating-label" >Email<span style="color:red">*</span></span>
                 </div>
                   <div class="col-md-12 mb-4">
                   <input type="password" v-model="password" class="inputText form-control" required />
-                  <span class="floating-label" >Password</span>
+                  <span class="floating-label" >Password<span style="color:red">*</span></span>
                 </div>
                 <div class="col-md-12">
                     <p class="error">{{pmessage}}</p>
                 </div>
                 <div class="col-md-12 mb-4">
                   <input type="password" v-model="repeat" class="inputText form-control" required @blur="match" />
-                  <span class="floating-label" >Repeat password</span>
+                  <span class="floating-label" >Repeat password<span style="color:red">*</span></span>
                 </div>
             
-                <div class="col-md-12 text-center p-4">
-                    <button class="action-button" v-bind:class="{disable:disable}" v-on:click="signup">
+                <div class="col-md-12 text-center p-0 m-0">
+                    <div class="col-md-12 p-3 text-center labels">
+                    <p>Please fill all the mandatory (<span style="color:red">*</span>) fields.</p>
+                </div>
+                    <button class="action-button"  :disabled="disable" v-on:click="signup">
                         <span v-if="!loading">SIGNUP</span>
                        <div v-else class="spinner-border spinner-border-sm"></div>
                     </button>
@@ -60,6 +63,31 @@
             </div>
       </div>
     </div>
+
+<div id="myModal" class="modalss" v-if="otp_sent">
+
+  <!-- modalss content -->
+  <div class="modalss-content">
+    <span class="close" v-on:click="otp_sent != otp_sent">&times;</span>
+                <p class="mt-5 m-0 p-0">OTP has been sent to {{phone}}</p>
+    <div class="col-md-12 mb-4 mt-5 p-0">
+                  <input type="number" v-model="otp" class="inputText form-control" required />
+                  <span class="floating-label" >Enter OTP and Verify</span>
+    </div>
+    <div class="col-md-12 text-center p-4">
+                    <button class="action-button"  v-on:click="otpverify">
+                        <span v-if="!otp_load">Verify</span>
+                       <div v-else class="spinner-border spinner-border-sm"></div>
+                    </button>
+        <p style="color:red" class="mt-3">{{otp_message}}</p>
+
+        <p>Didn't receive code? <span class="resend" v-on:click="resendotp">Resend</span></p>
+    </div>
+  </div>
+
+</div>
+
+
     </div>
 </template>
 
@@ -78,7 +106,11 @@ export default {
             email_message:'',
             data:[],
             response_message:'',
-            users:[]
+            users:[],
+            otp_sent:false,
+            otp:'',
+            otp_message:'',
+            otp_load:false
         }
     },
         created(){
@@ -115,8 +147,66 @@ export default {
             })   
         },
         signup(){
-           if(!this.email_message && !this.password_message){
-            this.loading=true
+            if(this.password.length > 5){
+                this.loading=true
+            this.$http.post('https://backend-bikex.herokuapp.com/api/customers/sendotp',{
+              phone:this.phone,
+            }).
+            then(response=>{
+                if(response.body.type == 'success'){
+                    this.loading = false
+                    this.otp_sent = true
+                    window.console.log(response)
+                }else{
+                    this.response_message = 'Some error occured plaease try again.';
+                }
+            }).catch(error => { 
+                this.response_message = error.body.msg;
+                this.loading= false
+            })   
+            }else{
+                this.response_message = 'Password must be more than 5 characters.'
+            }
+        },
+        resendotp(){
+            this.$http.post('https://backend-bikex.herokuapp.com/api/customers/otp-retry',{
+              phone:this.phone,
+            }).
+            then(response=>{
+                if(response.body.type == 'success'){
+                    this.otp_message = 'OTP re-send sucessfully.'
+                }else{
+                    this.otp_message = 'Some error occured plaease try again.';
+                }
+            }).catch(error => { 
+                this.otp_message = error.body.msg;
+            })   
+        },
+        otpverify(){
+            this.otp_load = true
+             this.$http.post('https://backend-bikex.herokuapp.com/api/customers/verifyotp',{
+              phone:this.phone,
+              otp:this.otp
+            }).
+            then(response=>{
+                this.otp_load = false
+                // this.loading = false
+                // this.otp_sent = true
+                if(response.body == 'OTP verified successfully'){
+                        this.addtodatabase()
+                }else{
+                    this.otp_message = 'Please input valid OTP.'
+                }
+                window.console.log(response)
+                
+            }).catch(error => { 
+                this.response_message = error.body.msg;
+                this.otp_load= false
+            })   
+
+            // window.console.log('abhinash')
+        },
+        addtodatabase(){
             this.$http.post('https://backend-bikex.herokuapp.com/api/customers',{
               firstname:this.firstname,
               lastname:this.lastname,
@@ -133,12 +223,11 @@ export default {
                 this.response_message = error.body.msg;
                 this.loading= false
             })   
-            }
-           }
-        },
+           },
         login(){
         this.$router.push({path:'/login'})  
         },
+    },
         computed:{
             pmessage(){
                 return this.password_message
@@ -147,11 +236,18 @@ export default {
                 return this.email_message
             },
             disable(){
-                if(this.email == ''){
+                if(this.email == '' || !this.repeat || this.password != this.repeat || !this.phone || this.emailindex == -1|| this.dotindex == -1 || !this.firstname || !this.lastname){
                     return true
-                }else{
+                }
+                else{
                     return false
                 }
+            },
+            emailindex(){
+                return this.email.indexOf('@')
+            },
+            dotindex(){
+                return this.email.indexOf('.')
             }
         }
 }
@@ -171,6 +267,10 @@ export default {
   overflow: hidden
 
 }
+.resend{
+    color:#ffb52f;
+    cursor: pointer;
+}
  .modal-title{
     color: #fefefe;
     font-size: 30px;
@@ -182,6 +282,13 @@ export default {
   }
 .login{
     background-color: #fefefe;
+}
+button.action-button:disabled {
+    opacity: 0.4;
+    cursor: text;
+}
+button.action-button:disabled:hover {
+    opacity: 0.4;
 }
 .action-button{
     border: 1.5px solid #001232;
@@ -207,6 +314,13 @@ export default {
   .mobile{
       display: none !important
   }
+  .modalss-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90% !important;
+}
 }
 /* button.action-button.disable{
     opacity: 0.8 !important;
@@ -252,4 +366,43 @@ input:not(:focus):valid ~ .floating-label{
   outline: none !important;
   box-shadow: none !important
 }
+
+
+.modalss {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* modalss Content */
+.modalss-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 </style>

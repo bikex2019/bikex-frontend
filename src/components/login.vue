@@ -60,7 +60,7 @@ export default {
         }
     },
     created(){
-        this.next=this.$route.query.next
+        this.next=this.$route.query.next || 'profile'
         let auth = localStorage.getItem('token')
         if(auth){
             this.$swal({
