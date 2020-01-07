@@ -74,10 +74,14 @@
                                     <p class="bike-name bold"><span>{{data.model_id.make}} </span>{{data.model_id.modal_name}}
                                      <!-- <span>{{data.engine_cc}} </span>CC -->
                                      </p>
-                                    <div class="d-flex justify-content-between safari">
-                                        <p class="bold bike-sp">{{data.selling_price | currency}}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="bold bike-sp">{{data.selling_price | currency}}</p>
+                                        </div>
+                                        <div class="text-right">
+                                          <img class="premium" v-if="data.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
+                                        </div>
                                         <!-- <i class="fa fa-heart-o" aria-hidden="true"></i>         -->
-                                        <img class="premium" v-if="data.type == 'premium' && filter == 'all'" src="../assets/premium.svg" width="10%">
                                       
                                     </div>
                                 </div>

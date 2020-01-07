@@ -202,30 +202,6 @@ export default {
                 }
             }
         },
-        // addToWish(veh_id){
-        //     if(this.c_id){
-        //     this.$http.post('https://backend-bikex.herokuapp.com/api/wishlist',{
-        //                     c_id:this.c_id,
-        //                     v_id:veh_id
-        //                 }).then(response=>{
-        //                     window.console.log(response)
-        //                      window.location.reload()
-        //                 })
-        //     }else{
-        //         this.$swal({
-        //         position: 'top-end',
-        //         icon: 'error',
-        //         title: 'Please Log in',
-        //         showConfirmButton: false,
-        //         timer: 2500
-        //         })
-        //         this.$router.push('/login')
-        //     }
-            
-        // },
-        // removeFromWish(){
-
-        // },
         nextPage(){
              this.pageNumber++;
         },
