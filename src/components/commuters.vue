@@ -52,7 +52,7 @@
                 <p class="m-0 p-0 color" v-if="filtereddata.length!=0">{{filtereddata.length}} Results</p>
             </div>
             <div class="row pl-2 pr-2 mb-4" >
-                <div class="col-6 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="paginatedData" v-for="(data, index) in filtereddata" :key="index">  
+                <div class="col-6 col-md-4 col-lg-3 pt-2 pr-1 pl-1" v-show="paginatedData" v-for="(data, index) in shuffle" :key="index">  
                     <div class="moterbike"> 
                             <div class="card" v-on:click="display(data.vehicle_id)"> 
                                 <div class="image text-center" style="min-height:50px;">

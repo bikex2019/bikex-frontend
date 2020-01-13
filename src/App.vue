@@ -18,12 +18,14 @@
     <router-view></router-view>
   </div>
 <myfooter></myfooter>
+<support></support>
   </div>
 </template>
 
 <script>
 import navigation from './components/navigation'
 import myfooter from './components/footer'
+import support from './components/supportbutton'
 export default {
   name: 'app',
   data(){
@@ -34,6 +36,7 @@ export default {
   components: {
     navigation,
     myfooter,
+    support
   },
   mounted () {
     this.$store.dispatch('load_scooters');
@@ -90,5 +93,6 @@ export default {
 .close{
   cursor: pointer;
 }
+
 </style>
 
