@@ -26,7 +26,7 @@
                         <link rel="stylesheet" href="../assets/css/icofont.css">
                         <div class="col-md-6 ipad-col-8 p-0 m-0 no-mobile">
                             <div class="overview-img pl-3">
-                                <img class="tilter m-0 p-0" src="../assets/BikeX_Hero_Image2.png"  alt="">
+                                <img class="tilter m-0 p-0" src="https://loader-image.s3.ap-south-1.amazonaws.com/Bikex_HERO.jpg"  alt="">
                             </div>
                         </div>
                     </div>
