@@ -11,7 +11,7 @@ import copyright from './components/copyright'
 import faq from './components/faq'
 import notFound from './components/notfound'
 import display from './components/display'
-import sell from './components/sell'
+// import sell from './components/sell'
 import checkout from './components/checkout'
 import ourstory from './components/ourstory'
 import pay from './components/payment'
@@ -35,7 +35,7 @@ export default[
    {path:'/privacypolicy', component:privacypolicy},
    {path:'/copyright', component:copyright},
    {path:'/faq', component:faq},
-   {path:'/sell', component:sell},
+   // {path:'/sell', component:sell},
    {path:'/ourstory', component:ourstory},
    {path:'/vehicle/:id', component:display},
    {path:'/checkout/:id',component:checkout},

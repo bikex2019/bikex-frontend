@@ -23,9 +23,9 @@
             <li class="nav-item" >
                 <a class="story" v-on:click="navigation = false"><router-link to="/scooter" exact-active-class="active">BUY</router-link></a>
             </li>
-             <li class="nav-item">
+             <!-- <li class="nav-item">
             <a class="models" v-on:click="navigation = false"><router-link to="/sell" exact-active-class="active">SELL</router-link></a>
-            </li>
+            </li> -->
             <li class="nav-item">
             <a class="models" v-on:click="navigation = false"><router-link to="/finance" exact-active-class="active">FINANCE</router-link></a>
             </li>
