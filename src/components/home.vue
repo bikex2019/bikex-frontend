@@ -1,11 +1,34 @@
 <template>
 <div class="col-md-10 margin">
-   <div class="overview-area pb-4 text-left">
+
+<div id="carouselExampleIndicators" class="carousel slide mt-3" data-ride="carousel">
+  <ol class="carousel-indicators" v-for="(data, index) in banners" :key="index">
+    <li data-target="#carouselExampleIndicators" :data-slide-to="index" v-bind:class="{'active': index == 0}"></li>
+    <!-- <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item" v-bind:class="{'active': index == 0}" v-for="(data, index) in banners" :key="index">
+      <img class="d-block w-100" :src="data.path" >
+    </div>
+    
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+   <div class="overview-area text-left">
                 <div class="container p-0 m-0">
                     <div class="row p-0 m-0">
                         <div class="col-md-6 ipad-col-4 p-0 m-0 background">
                             <div class="overview-content mobile-top">
-                                <h1>HANDPICKED
+                                <!-- <h1>HANDPICKED
                                   <span>RE</span><strong>FURBISHED</strong></h1>
                                 <h2>TWO-WHEELERS AT <span>FIXED PRICE</span></h2>
                                 <p class="monte"><strong>High quality</strong> 
@@ -15,7 +38,7 @@
 
                                  <p class="mt-4 no-mobile">
                                      In our store, every handpicked bike comes with a story of its own. You get to create a new one.
-                                 </p>
+                                 </p> -->
                                     <div class="question-area">
                                   <div class="button text-left mb-4 mt-4">
                                    <router-link to="/scooter"><button class="viewbikes-button">View Bikes</button></router-link>
@@ -26,14 +49,14 @@
                         <link rel="stylesheet" href="../assets/css/icofont.css">
                         <div class="col-md-6 ipad-col-8 p-0 m-0 no-mobile">
                             <div class="overview-img pl-3">
-                                <img class="tilter m-0 p-0" src="https://loader-image.s3.ap-south-1.amazonaws.com/Bikex_HERO.jpg"  alt="">
+                                <!-- <img class="tilter m-0 p-0" src="https://loader-image.s3.ap-south-1.amazonaws.com/Bikex_HERO.jpg"  alt=""> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-     <div class="banner-area mb-4 m-0 p-0" v-lazy-container="{ selector: 'img' }">
+     <div class="banner-area mb-4 m-0 p-0 mt-0" v-lazy-container="{ selector: 'img' }">
                 <div class="container phone-center mb-4 m-0 p-0">
                     <p class="m-0 mb-4 p-0 mobile-top" style="font-size:19px"><strong>EXPLORE OUR SELECTION</strong></p>
                     <div class="row p-0 m-0">
@@ -79,18 +102,28 @@ export default {
   data(){
     return{
       isScrolled:false,
+      banners:[]
     }
   },
   components:{
     values
   },
-  beforeCreate(){
+  created(){
+                  this.$store.dispatch('fetch_banner')
+                  window.console.log(this.banners)
   },
     mounted () {
          window.scrollTo({
                 top: 0,
                 left: 0,
             })
+
+            
+
+             this.$http.get('https://backend-bikex.herokuapp.com/api/banners/visible').then((res)=>{
+                 window.console.log(res.data.banners)
+                 this.banners = res.data.banners
+             })
   },
   beforeDestroy () {
   },
@@ -100,7 +133,10 @@ export default {
       },
       images(){
             return this.$store.state.assets_images
-      }
+      },
+    //   banners(){
+    //         return this.$store.state.banners
+    //   }
   },
     methods:{
     }
@@ -154,7 +190,7 @@ export default {
         width: 66.66% !important;
     }
     .viewbikes-button{
-        width: 70% !important
+        width: 50% !important
     }
     .overview-content{
         margin-top: 10px !important;
@@ -180,7 +216,7 @@ export default {
     margin-left: auto !important;
 }
     .overview-content {
-        margin-top: 25px !important;
+        margin-top: 0px !important;
         text-align: center;
     }
     .mobile-margin{
@@ -198,15 +234,15 @@ export default {
     border: none !important
     }
     .mobile-top{
-        margin-top: 50px !important;
-        margin-bottom: 20px !important
+        margin-top: 0px !important;
+        margin-bottom: 0px !important
     }
     .background{
             /* background-color: black; */
     }
     .overview-area{
-        background-color: rgba(231, 227, 161, 0.1);
-        background-image: url('../assets/back.png'); 
+        /* background-color: rgba(231, 227, 161, 0.1); */
+        /* background-image: url('../assets/back.png');  */
         /*   
         background-size: 115%;
       
@@ -214,7 +250,7 @@ export default {
           padding-bottom: 0px !important; 
             }
     .overview-content{
-        padding: 13px !important
+        padding: 0px !important
     }
     .overview-content h1 , .overview-content h2 {
         color: black !important;
@@ -366,7 +402,7 @@ transform: translateZ(20px);
     cursor: pointer;
 }
 .overview-content{
-  margin-top: 65px;
+  margin-top: 0px;
 }
 .overview-content h1 , .overview-content h2 {
     color: #001232;

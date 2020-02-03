@@ -307,7 +307,7 @@ export default {
           if(this.coupon === 'FREEDELIVERY'){
          setTimeout(()=>{
           this.coupon_message = '500 Discount added!'
-          this.discount = 500
+          this.discount = 48999
            this.coupon_check= false
          }, 1000)
             }else{

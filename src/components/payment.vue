@@ -241,7 +241,7 @@ export default {
                     lastname: this.lastname,
                     phone: this.phone,
                     email: this.email,
-                    mode_of_payment:this.payment_mode,
+                     mode_of_payment:this.payment_mode,
                     image:this.displayImage[0].path,
                     model:this.model_name[0].modal_name,
                     tefflon: this.tefflon,
@@ -309,10 +309,7 @@ export default {
         updatedatabase(response){
             this.loading = true
             this.$http.put('https://backend-bikex.herokuapp.com/api/purchases/' + this.myorder_id,{
-                    razorpay_order_id:response.razorpay_order_id,
-                    razorpay_payment_id:response.razorpay_payment_id,
-                    razorpay_signature:response.razorpay_signature,
-                    payment_status:1
+                    razorpay_order_id:response.razorpay_order_id,razorpay_payment_id:response.razorpay_payment_id,razorpay_signature:response.razorpay_signature,phone:this.phone,firstname:this.name,order_id:this.myorder_id,payment_status:1
                     }).then((res)=>{
                         window.console.log(res)
                         this.changeStatus()

@@ -19,6 +19,7 @@ state: {
     loading:true,
     logged:false,
     image_loading:true,
+    banners:[],
     assets_images:{
       support:"https://loader-image.s3.ap-south-1.amazonaws.com/support.svg",
       tracking:'https://loader-image.s3.ap-south-1.amazonaws.com/tracking.png',
@@ -38,6 +39,9 @@ state: {
   },
     FETCH_FAQ(state, faqs) {
       state.faqs = faqs;
+    },
+    FETCH_BANNER(state, banners) {
+      state.banners = banners;
     },
     FETCH_VEHICLES(state, vehicles){
         state.vehicles = vehicles
@@ -86,6 +90,14 @@ state: {
           throw new Error(`API ${error}`);
         });
     },
+    fetch_banner({commit}) {
+      axios.get(this.getters.baseUrl+'/banners/visible').then(result => {
+        commit('FETCH_BANNER', result.data.banners);
+        commit('LOAD_STATUS', false);
+      }).catch(error => {
+        throw new Error(`API ${error}`);
+      });
+  },
     load_scooters({commit}) {
       axios.get(this.getters.baseUrl+'/fetch/live-vehicle/scooters').then(result => {
         commit('FETCH_SCOOTERS', result.data);
