@@ -14,12 +14,10 @@
     
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
+    <img src="../assets/left-arrow.svg" class="svg" width="40px">
   </a>
   <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
+   <img src="../assets/right-arrow.svg" class="svg" width="40px">
   </a>
 </div>
 
@@ -147,6 +145,25 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Monda|Montserrat&display=swap');
 @import '../assets/css/loader.css';
 
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 5%;
+    color: #ffb52f;
+    /* box-shadow: 5px 10px #888888; */
+    text-align: center;
+    opacity: 0.5;
+    transition: opacity .15s ease;
+}
+
 @media (min-width: 1200px){
 .container {
     max-width: 100% !important;
@@ -154,6 +171,10 @@ export default {
 .resize_fit_center{
     width: 100% !important;
     height: auto;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  opacity: 0.9
 }
 }
 @media only screen 
